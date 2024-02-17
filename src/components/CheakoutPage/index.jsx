@@ -40,7 +40,7 @@ function CheakoutPage() {
   const [home, setHome] = useState(true);
   const [office, setOffice] = useState(false);
   const [countryDropdown, setCountryDropdown] = useState(null);
-  const [country, setCountry] = useState(null);
+  const [country, setCountry] = useState(105);
   const [stateDropdown, setStateDropdown] = useState(null);
   const [state, setState] = useState(null);
   const [cityDropdown, setCityDropdown] = useState(null);
@@ -305,6 +305,7 @@ function CheakoutPage() {
         .then((res) => {
           if (res.data) {
             setCountryDropdown(res.data.countries);
+            getState(country);    
           }
         })
         .catch((err) => {
@@ -314,11 +315,12 @@ function CheakoutPage() {
   }, []);
   const getState = (value) => {
     if (auth() && value) {
-      setCountry(value.id);
+      const countryId = value.id ? value.id : country
+      setCountry(countryId);
       axios
         .get(
           `${process.env.NEXT_PUBLIC_BASE_URL}api/user/state-by-country/${
-            value.id
+            countryId
           }?token=${auth().access_token}`
         )
         .then((res) => {
@@ -1013,6 +1015,7 @@ function CheakoutPage() {
               isBecomeSeller={true}
               breadcrumb={[
                 { name: ServeLangItem()?.home, path: "/" },
+                { name: "Store", path: "/store" },
                 { name: ServeLangItem()?.Checkout, path: "/checkout" },
               ]}
             />
@@ -1372,8 +1375,8 @@ function CheakoutPage() {
                             </div>
                           </div>
 
-                          <div className="flex space-x-5 items-center mb-6">
-                            <div className="sm:w-1/2 w-full">
+                          <div className="flex sm:space-x-5 items-center mb-6 sm:flex-nowrap flex-wrap">
+                            <div className="sm:w-1/2 w-full sm:mb-0 mb-5">
                               <InputCom
                                 label={ServeLangItem()?.Email_Address}
                                 placeholder={ServeLangItem()?.Email}
@@ -1428,13 +1431,14 @@ function CheakoutPage() {
                               )}
                             </div>
                           </div>
-                          <div className="mb-6">
+                          <div className="sm:space-x-5 items-center mb-6 flex sm:flex-nowrap flex-wrap">
+                          <div className="sm:w-1/2 w-full sm:mb-0 mb-5">
                             <h1 className="input-label capitalize mb-2 text-white text-[13px] font-normal flex">
                               {ServeLangItem()?.Country}{" "}
                               <span className={"text-red-600 ml-1"}>*</span>
                             </h1>
                             <div
-                              className={`w-full h-[50px] border bg-white px-5 flex justify-between items-center mb-2 ${
+                              className={`w-full h-[45px] border bg-white px-5 flex justify-between items-center mb-2 ${
                                 (errors?.country)
                                   ? "border-qred"
                                   : "border-[#EDEDED]"
@@ -1442,8 +1446,19 @@ function CheakoutPage() {
                             >
                               <Selectbox
                                 action={getState}
-                                className="w-full"
-                                defaultValue="Select"
+                                className="w-full"    
+                                defaultValue={
+                                  countryDropdown &&
+                                  countryDropdown.length > 0 &&
+                                  (function () {
+                                    let item =
+                                      countryDropdown.length > 0 &&
+                                      countryDropdown.find(
+                                        (item) => parseInt(item.id) === parseInt(country)
+                                      );
+                                    return item ? item.name : "Select";
+                                  })()
+                                }
                                 datas={countryDropdown && countryDropdown}
                               >
                                 {({ item }) => (
@@ -1481,15 +1496,14 @@ function CheakoutPage() {
                             ) : (
                               ""
                             )}
-                          </div>
-                          <div className="flex space-x-5 items-center mb-6">
-                            <div className="w-1/2">
+                            </div>
+                            <div className="sm:w-1/2 w-full">
                               <h1 className="input-label capitalize block  mb-2 text-white text-[13px] font-normal">
                                 {ServeLangItem()?.State}
                                 <span className={"text-red-600 ml-1"}>*</span>
                               </h1>
                               <div
-                                className={`w-full h-[50px] border bg-white px-5 flex justify-between items-center mb-2 ${
+                                className={`w-full h-[45px] border bg-white px-5 flex justify-between items-center mb-2 ${
                                   (errors?.state)
                                     ? "border-qred"
                                     : "border-[#EDEDED]"
@@ -1536,14 +1550,16 @@ function CheakoutPage() {
                                 ""
                               )}
                             </div>
-                            <div className="w-1/2">
-                              <div className="input-item mb-2">
+                          </div>
+                          <div className="flex sm:space-x-5 items-center mb-6 sm:flex-nowrap flex-wrap">                          
+                            <div className="sm:w-1/2 w-full sm:mb-0 mb-5">
+                              <div className="input-item">
                                 <h1 className="input-label capitalize block  mb-2 text-white text-[13px] font-normal">
                                   {ServeLangItem()?.City}{" "}
                                   <span className={"text-red-600 ml-1"}>*</span>
                                 </h1>
                                 <div
-                                  className={`w-full h-[50px] border px-5 flex justify-between items-center mb-2 bg-white ${
+                                  className={`w-full h-[45px] border px-5 flex justify-between items-center mb-0 bg-white ${
                                     (errors?.city)
                                       ? "border-qred"
                                       : "border-[#EDEDED]"
@@ -1610,8 +1626,7 @@ function CheakoutPage() {
                                 )} */}
                               </div>
                             </div>
-                          </div>
-                          <div className="sm:w-1/2 w-full">
+                            <div className="sm:w-1/2 w-full">
                             <InputCom
                               label={"Zip Code"}
                               placeholder="123123"
@@ -1629,7 +1644,7 @@ function CheakoutPage() {
                                 (errors?.pincode)
                               }
                             />
-                            {pincode && pincode.length < 6 && pincode && pincode.length > 6 &&(
+                            {pincode && (pincode.length < 6 || pincode.length > 6) &&(
                               <span className="text-sm mt-1 text-qred">
                                 Please enter zip code number 6 digit
                               </span>
@@ -1642,8 +1657,10 @@ function CheakoutPage() {
                               ""
                             )}
                           </div>
+                          </div>
+                          
 
-                          <div className=" mb-6 py-3">
+                          <div className=" mb-6">
                             <div className="w-full py-3">
                               <label
                                 className={`input-label capitalize block mb-2 text-white text-[13px] font-normal`}

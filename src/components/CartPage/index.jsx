@@ -127,6 +127,7 @@ function CardPage() {
               title="Your Cart"
               breadcrumb={[
                 { name: ServeLangItem()?.home, path: "/" },
+                { name: "Store", path: "/store" },
                 { name: ServeLangItem()?.cart, path: "/cart" },
               ]}
               isBecomeSeller={true}

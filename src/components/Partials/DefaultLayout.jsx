@@ -5,7 +5,7 @@ import { fetchCart } from "../../store/Cart";
 import { fetchCompareProducts } from "../../store/compareProduct";
 import { setupAction } from "../../store/websiteSetup";
 import { fetchWishlist } from "../../store/wishlistData";
-import TawkTo from "tawkto-react";
+// import TawkTo from "tawkto-react";
 import Consent from "../Helpers/Consent";
 import Script from "next/script";
 import { useRouter } from "next/router";
@@ -27,7 +27,7 @@ export default function DefaultLayout({ children }) {
   const dispatch = useDispatch();
   const getLoginContexts = useContext(LoginContext);
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
-  const [twkData, setTwkData] = useState(null);
+  // const [twkData, setTwkData] = useState(null);
   const [gtagId, setgTagId] = useState(null);
   const [fbPixexl, setFbPixel] = useState(null);
   const [load, setLoad] = useState(true);
@@ -48,10 +48,10 @@ export default function DefaultLayout({ children }) {
 
         if (res.data) {
           setgTagId(res.data.googleAnalytic.analytic_id);
-          setTwkData({
-            widgetId: res.data.tawk_setting.widget_id,
-            propertyId: res.data.tawk_setting.property_id,
-          });
+          // setTwkData({
+          //   widgetId: res.data.tawk_setting.widget_id,
+          //   propertyId: res.data.tawk_setting.property_id,
+          // });
           setFbPixel(res.data.facebookPixel);
           localStorage.setItem("language", JSON.stringify(res.data.language));
           const checkLangExists = localStorage.getItem("language");
@@ -87,14 +87,14 @@ export default function DefaultLayout({ children }) {
       setLoad(false);
     }
   }, [websiteSetup, apiFetch, dispatch]);
-  useEffect(() => {
-    if (twkData) {
-      let tawk = new TawkTo(`${twkData.widgetId}`, `${twkData.propertyId}`);
-      tawk.onStatusChange((status) => {
-        console.log(status);
-      });
-    }
-  }, [twkData]);
+  // useEffect(() => {
+  //   if (twkData) {
+  //     let tawk = new TawkTo(`${twkData.widgetId}`, `${twkData.propertyId}`);
+  //     tawk.onStatusChange((status) => {
+  //       console.log(status);
+  //     });
+  //   }
+  // }, [twkData]);
   useEffect(() => {
     if (fbPixexl) {
       import("react-facebook-pixel")

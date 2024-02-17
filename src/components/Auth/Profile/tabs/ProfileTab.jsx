@@ -15,8 +15,11 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
   const [phone, setPhone] = useState(null);
   const [countryDropdown, setCountryDropdown] = useState(null);
   const [country, setCountry] = useState(null);
+  const[pincode ,setPincode] = useState(null);
+
   useEffect(()=>{
     if(profileInfo){
+      setPincode(profileInfo.personInfo.zip_code);
       if(profileInfo.personInfo.country_id&& profileInfo.personInfo.country_id!==''){
         setCountry(parseInt(profileInfo.personInfo.country_id));
       }else{
@@ -158,7 +161,7 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
     }
   };
   const updateProfile = async () => {
-    if (auth()) {
+    if (auth() && pincode.length=== 6 ) {
       const formData = new FormData();
       formData.append("name", name);
       formData.append("email", email);
@@ -168,6 +171,7 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
       formData.append("image", formImg);
       formData.append("state", state);
       formData.append("city", city);
+      formData.append("zip_code",pincode);
       await axios({
         method: "post",
         url: `${
@@ -304,7 +308,9 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
                 </div>
               </div>
 
-              <div className="mb-6">
+              <div className="md:flex md:space-x-5 rtl:space-x-reverse items-center mb-6">
+              <div className="md:w-1/2 mb-8 md:mb-0">
+
                 <h1 className="input-label capitalize block  mb-2 text-qgray text-[13px] font-normal">
                   {ServeLangItem()?.Country}<span className={"text-red-600 ml-1"}>*</span>
                 </h1>
@@ -368,8 +374,7 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
                 ) : (
                   ""
                 )}
-              </div>
-              <div className="md:flex md:space-x-5 rtl:space-x-reverse items-center mb-6">
+                </div>
                 <div className="md:w-1/2 mb-8 md:mb-0">
                   <h1 className="input-label capitalize block  mb-2 text-qgray text-[13px] font-normal">
                     {ServeLangItem()?.State} <span className={"text-red-600 ml-1"}>*</span>
@@ -433,12 +438,14 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
                     ""
                   )}
                 </div>
+              </div>
+              <div className="md:flex md:space-x-5 rtl:space-x-reverse items-center mb-6">
                 <div className="md:w-1/2 w-full">
                   <h1 className="input-label capitalize block  mb-2 text-qgray text-[13px] font-normal">
                     {ServeLangItem()?.City}<span className={"text-red-600 ml-1"}>*</span>
                   </h1>
                   <div
-                    className={`w-full h-[50px] border border-qgray-border px-5 flex justify-between items-center mb-2 ${
+                    className={`w-full h-[50px] border border-qgray-border px-5 flex justify-between items-center ${
                       !!(errors && Object.hasOwn(errors, "city"))
                         ? "border-qred"
                         : "border-qgray-border"
@@ -508,6 +515,33 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
                       ""
                     )}
                   {/* </div> */}
+                </div>
+                <div className="md:w-1/2 mb-8 md:mb-0">
+                <InputCom
+                        label={"Zip Code"}
+                        placeholder="123123"
+                        type={"number"}
+                        inputClasses="w-full !h-[50px] py-3"
+                        labelClasses={'text-qgray text-[13px]'}
+                        value={pincode}
+                        mandatory={true}
+                        patternValidation={"[1-6]{1}[0-6]{6}"}
+                        inputHandler={(e) => setPincode(e.target.value)}
+                        error={!!(errors && Object.hasOwn(errors, "zip_code"))}
+                      />
+                      {console.log('errors', pincode)}
+                      {errors && Object.hasOwn(errors, "zip_code") ? (
+                        <span className="text-sm mt-1 text-qred">
+                          {errors.zip_code[0]}
+                        </span>
+                          ) : (
+                              ""
+                      )}
+                      {pincode && (pincode.length < 6 || pincode.length > 6) &&(
+                        <span className="text-sm mt-1 text-qred">
+                          Please enter zip code number 6 digit
+                        </span>
+                      )}
                 </div>
               </div>
 

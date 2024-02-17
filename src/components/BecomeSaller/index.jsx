@@ -9,11 +9,21 @@ import InputCom from "../Helpers/InputCom";
 import PageTitle from "../Helpers/PageTitle";
 import { useSelector } from "react-redux";
 import ServeLangItem from "../Helpers/ServeLangItem";
+import Selectbox from "../Helpers/Selectbox";
+import auth from "../../../utils/auth";
+
 function BecomeSaller() {
   const router = useRouter();
   const [logoImg, setLogoImg] = useState(null);
   const [coverImg, setCoverImg] = useState(null);
   const [checked, setCheck] = useState(false);
+  const [countryDropdown, setCountryDropdown] = useState(null);
+  const [stateDropdown, setStateDropdown] = useState(null);
+  const [cityDropdown, setCityDropdown] = useState(null);
+  const [state, setState] = useState(null);
+  const [country, setCountry] = useState(105);
+  const [city, setcity] = useState(null);
+  const [pincode, setPincode] = useState(null);
   const [sellerFirstName, setSellerFirstName] = useState("");
   const [sellerLastName, setSellerLastName] = useState("");
   const [sellerPassword, setSellerPassword] = useState("");
@@ -33,6 +43,7 @@ function BecomeSaller() {
   const [defaultCover, setDefaultCover] = useState(null);
   const [defaultLogo, setLogo] = useState(null);
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
+
   useEffect(() => {
     if (!defaultCover || !defaultLogo) {
       if (websiteSetup) {
@@ -167,7 +178,10 @@ function BecomeSaller() {
     formData.append("first_name", sellerFirstName);
     formData.append("last_name", sellerLastName);
     formData.append("artist_gov_reg_no", artistGovRegNo);
-    formData.append("name", "test");
+    formData.append("city_id",city);
+    formData.append("state_id",state);
+    formData.append("country_id",country);
+    formData.append("zip_code",pincode);
 
     const options = {
       onUploadProgress: (progressEvent) => {
@@ -207,6 +221,80 @@ function BecomeSaller() {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const isValid = emailPattern.test(inputEmail);
     setIsValidEmail(isValid);
+  };
+
+  useEffect(() => {
+    if (auth()) {
+        axios
+            .get(
+                `${process.env.NEXT_PUBLIC_BASE_URL}api/user/address/create?token=${
+                    auth().access_token
+                }`
+            )
+            .then((res) => {
+              if (res.data) {
+                setCountryDropdown(res.data.countries);
+                getState(country);                     
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+      }
+  }, []);
+
+  const getState = (value) => {
+    setState(null);
+    if (auth() && value) {
+      const countryId = value.id ? value.id : country
+      setCountry(countryId);
+      axios
+        .get(
+          `${process.env.NEXT_PUBLIC_BASE_URL}api/user/state-by-country/${
+            countryId
+          }?token=${auth().access_token}`
+        )
+        .then((res) => {
+          setCityDropdown(null);
+          setStateDropdown(res.data && res.data.states);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      return false;
+    }
+  };
+
+  // useEffect(()=>{    
+  //   console.log('in useEffect');
+  //   getState(country);
+  // },[])
+  
+  const getcity = (value) => {
+    if (auth() && value) {
+      setState(value.id);
+      axios
+        .get(
+          `${process.env.NEXT_PUBLIC_BASE_URL}api/user/city-by-state/${
+            value.id
+          }?token=${auth().access_token}`
+        )
+        .then((res) => {
+          setCityDropdown(res.data && res.data.cities);
+        })
+        .catch((err) => {
+          console.log(err.response);
+        });
+    } else {
+      return false;
+    }
+  };
+
+  const selectCity = (value) => {
+    if (auth() && value) {
+      setcity(value.id);
+    }
   };
 
   return (
@@ -499,6 +587,218 @@ function BecomeSaller() {
                     }
                   </p>
                 </div>
+                <div className="md:flex md:space-x-5 rtl:space-x-reverse items-center mb-6">
+                  <div className="md:w-1/2 mb-8 md:mb-0">
+                  <h1 className="input-label capitalize block  mb-2 text-qgray text-[13px] font-normal">
+                  {ServeLangItem()?.Country}<span className={"text-red-600 ml-1"}>*</span>
+                </h1>
+
+                <div
+                  className={`w-full h-[50px] border border-qgray-border px-5 flex justify-between items-center mb-2 ${
+                    !!(errors && Object.hasOwn(errors, "country"))
+                      ? "border-qred"
+                      : "border-qgray-border"
+                  }`}
+                >
+                  <Selectbox
+                    action={getState}
+                    className="w-full"
+                    defaultValue={
+                      countryDropdown &&
+                      countryDropdown.length > 0 &&
+                      (function () {
+                        let item =
+                          countryDropdown.length > 0 &&
+                          countryDropdown.find(
+                            (item) => parseInt(item.id) === parseInt(country)
+                          );
+                        return item ? item.name : "Select";
+                      })()
+                    }
+                    datas={countryDropdown && countryDropdown}
+                  >
+                    {({ item }) => (
+                      <>
+                        <div className="flex justify-between items-center w-full">
+                          <div>
+                            <span className="text-[13px] text-qblack">
+                              {item}
+                            </span>
+                          </div>
+                          <span>
+                            <svg
+                              width="11"
+                              height="7"
+                              viewBox="0 0 11 7"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M5.4 6.8L0 1.4L1.4 0L5.4 4L9.4 0L10.8 1.4L5.4 6.8Z"
+                                fill="#222222"
+                              />
+                            </svg>
+                          </span>
+                        </div>
+                      </>
+                    )}
+                  </Selectbox>
+                </div>
+                {errors && Object.hasOwn(errors, "country") ? (
+                  <span className="text-sm mt-1 text-qred">
+                    {errors.country[0]}
+                  </span>
+                ) : (
+                  ""
+                )}
+                  </div>
+               
+                  <div className="md:w-1/2 w-full">
+                          <h1 className="input-label capitalize block  mb-2 text-qgray text-[13px] font-normal">
+                    {ServeLangItem()?.State} <span className={"text-red-600 ml-1"}>*</span>
+                  </h1>
+                  <div
+                    className={`w-full h-[50px] border border-qgray-border px-5 flex justify-between items-center mb-2 ${
+                      !!(errors && Object.hasOwn(errors, "state"))
+                        ? "border-qred"
+                        : "border-qgray-border"
+                    }`}
+                  >
+                    <Selectbox
+                      action={getcity}
+                      className="w-full"
+                      datas={stateDropdown && stateDropdown}
+                    >
+                      {({ item }) => (
+                        <>
+                          <div className="flex justify-between items-center w-full">
+                            <div>
+                              <span className="text-[13px] text-qblack">
+                                {item}
+                              </span>
+                            </div>
+                            <span>
+                              <svg
+                                width="11"
+                                height="7"
+                                viewBox="0 0 11 7"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M5.4 6.8L0 1.4L1.4 0L5.4 4L9.4 0L10.8 1.4L5.4 6.8Z"
+                                  fill="#222222"
+                                />
+                              </svg>
+                            </span>
+                          </div>
+                        </>
+                      )}
+                    </Selectbox>
+                  </div>
+                  {errors && Object.hasOwn(errors, "state") ? (
+                    <span className="text-sm mt-1 text-qred">
+                      {errors.state[0]}
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                  </div>          
+                </div>
+
+              <div className="md:flex md:space-x-5 rtl:space-x-reverse items-center mb-6">             
+                <div className="md:w-1/2 mb-8 md:mb-0">
+                  <h1 className="input-label capitalize block  mb-2 text-qgray text-[13px] font-normal">
+                    {ServeLangItem()?.City}<span className={"text-red-600 ml-1"}>*</span>
+                  </h1>
+                  <div
+                    className={`w-full h-[50px] border border-qgray-border px-5 flex justify-between items-center ${
+                      !!(errors && Object.hasOwn(errors, "city"))
+                        ? "border-qred"
+                        : "border-qgray-border"
+                    }`}
+                  >
+                    <Selectbox
+                      action={selectCity}
+                      className="w-full"
+                      datas={cityDropdown && cityDropdown}
+                    >
+                      {({ item }) => (
+                        <>
+                          <div className="flex justify-between items-center w-full">
+                            <div>
+                              <span className="text-[13px] text-qblack">
+                                {item}
+                              </span>
+                            </div>
+                            <span>
+                              <svg
+                                width="11"
+                                height="7"
+                                viewBox="0 0 11 7"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M5.4 6.8L0 1.4L1.4 0L5.4 4L9.4 0L10.8 1.4L5.4 6.8Z"
+                                  fill="#222222"
+                                />
+                              </svg>
+                            </span>
+                          </div>
+                        </>
+                      )}
+                    </Selectbox>
+                {/* <div className="input-item mb-2"> */}
+                      {/* <InputCom
+                        placeholder={ServeLangItem()?.City}
+                        label={ServeLangItem()?.City}
+                        mandatory={true}
+                        name="city"
+                        type="text"
+                        inputClasses="!h-[50px] py-3"
+                        value={city}
+                        inputHandler={(e) => setcity(e.target.value)}
+                        error={!!(errors && Object.hasOwn(errors, "city"))}
+                      /> */}
+                    </div>
+                    {errors && Object.hasOwn(errors, "city") ? (
+                      <span className="text-sm mt-1 text-qred">
+                        {errors.city[0]}
+                      </span>
+                    ) : (
+                      ""
+                    )}
+                  {/* </div> */}
+                </div>
+                <div className="md:w-1/2 w-full">
+                 <InputCom
+                        label={"Zip Code"}
+                        placeholder="123123"
+                        type={"number"}
+                        inputClasses="w-full !h-[50px] py-3"
+                        labelClasses={'text-qgray text-[13px]'}
+                        value={pincode}
+                        mandatory={true}
+                        patternValidation={"[1-6]{1}[0-6]{6}"}
+                        inputHandler={(e) => setPincode(e.target.value)}
+                        error={!!(errors && Object.hasOwn(errors, "zip_code"))}
+                      />
+                      {errors && Object.hasOwn(errors, "zip_code") ? (
+                        <span className="text-sm mt-1 text-qred">
+                          {errors.zip_code[0]}
+                        </span>
+                          ) : (
+                              ""
+                      )}
+                      {pincode && (pincode.length < 6 || pincode.length > 6) &&(
+                        <span className="text-sm mt-1 text-qred">
+                          Please enter zip code number 6 digit
+                        </span>
+                      )}
+                </div>
+              </div>
+
                 <div className="input-area">
                   <label
                     className={`text-gray-500 text-[13px]`}
@@ -621,7 +921,9 @@ function BecomeSaller() {
                           shopName &&
                           shopAddress &&
                           sellerFirstName &&
+                          pincode && pincode.length === 6 &&
                           sellerLastName &&
+                          state && country && city && 
                           artistGovRegNo &&
                           !checkMinPassword &&
                           isValidEmail

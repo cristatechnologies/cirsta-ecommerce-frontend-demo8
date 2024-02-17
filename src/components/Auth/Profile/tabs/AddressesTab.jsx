@@ -18,7 +18,7 @@ export default function AddressesTab() {
   const [home, setHome] = useState(true);
   const [office, setOffice] = useState(false);
   const [countryDropdown, setCountryDropdown] = useState(null);
-  const [country, setCountry] = useState(null);
+  const [country, setCountry] = useState(105);
   const [stateDropdown, setStateDropdown] = useState(null);
   const [pincode, setPincode] = useState(null);
   const [state, setState] = useState(null);
@@ -54,6 +54,7 @@ export default function AddressesTab() {
         .then((res) => {
           if (res.data) {
             setCountryDropdown(res.data.countries);
+            getState(country);
           }
         })
         .catch((err) => {
@@ -63,11 +64,12 @@ export default function AddressesTab() {
   }, []);
   const getState = async (value) => {
     if (auth() && value) {
-      setCountry(value.id);
+      const countryId = value.id ? value.id : country
+      setCountry(countryId);
       await axios
         .get(
           `${process.env.NEXT_PUBLIC_BASE_URL}api/user/state-by-country/${
-            value.id
+            countryId
           }?token=${auth().access_token}`
         )
         .then((res) => {
@@ -226,7 +228,7 @@ export default function AddressesTab() {
     setAddress("");
     setHome(true);
     setOffice(false);
-    setCountry(null);
+    // setCountry(null);
     setState(null);
     setcity(null);
     setNewAddress(newAddress ? true : true);
