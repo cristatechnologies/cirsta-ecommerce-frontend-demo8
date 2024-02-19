@@ -140,7 +140,7 @@ export default function Blog({ details }) {
                         </svg>
                       </span>
                       <span className="text-base text-white capitalize">
-                        By kalalay
+                        By Frenzy Mart
                       </span>
                     </div>
                     {/* <div className="flex space-x-1.5 rtl:space-x-reverse items-center">
