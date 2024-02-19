@@ -85,6 +85,7 @@ export default function DefaultLayout({ children }) {
       const root = document.querySelector(":root");
       root.style.setProperty("--primary-color", `${themeColor?.theme_one}`);
       root.style.setProperty("--secondary-color", `${themeColor?.theme_two}`);
+      root.style.setProperty("--text-color", `${themeColor?.text_color}`);
       document.body.style.backgroundColor = `${themeColor.theme_two}`;
     }
     if (languageModel()) {

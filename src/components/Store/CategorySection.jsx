@@ -12,6 +12,7 @@ function CategorySection({ sectionTitle, categories }) {
   const mageMenuList = websiteSetup && websiteSetup.payload.megaMenuCategories;
   const megaMenuBanner = websiteSetup && websiteSetup.payload.megaMenuBanner;
   const customPages = websiteSetup && websiteSetup.payload.customPages;
+
   return (
     <div className="category-section-wrapper container-x mx-auto flex px-10 py-10">
       <div className="min-h-[576px] h-auto w-[350px] border border-black-800 relative hidden lg:block sm:block bg-white">
@@ -231,7 +232,7 @@ function CategorySection({ sectionTitle, categories }) {
                             />
                           </div>
                         </div>
-                        <p className="text-base text-white text-center mt-5 group-hover:text-qgreen transition duration-300 ease-in-out">
+                        <p className="text-base text-[var(--text-color)] text-center mt-5 group-hover:text-qgreen transition duration-300 ease-in-out">
                           {item.name}
                         </p>
                       </a>
