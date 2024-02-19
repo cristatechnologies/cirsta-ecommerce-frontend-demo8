@@ -117,12 +117,13 @@ export default function ForgotPass() {
                     <div className="input-item mb-5">
                       <InputCom
                         placeholder={ServeLangItem()?.Email_Address}
-                        label={ServeLangItem()?.Email_Address + "*"}
+                        label={ServeLangItem()?.Email_Address}
                         name="email"
                         type="email"
-                        inputClasses="h-[50px]"
+                        inputClasses="!h-[50px]"
                         inputHandler={(e) => setEmail(e.target.value.trim())}
                         value={email}
+                        mandatory={true}
                       />
                     </div>
 
@@ -178,7 +179,8 @@ export default function ForgotPass() {
                         label={ServeLangItem()?.OTP}
                         name="otp"
                         type="text"
-                        inputClasses="h-[50px]"
+                        inputClasses="!h-[50px]"
+                        mandatory={true}
                         value={otp}
                         error={errors}
                         inputHandler={(e) => setOtp(e.target.value.trim())}
