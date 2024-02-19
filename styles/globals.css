@@ -418,10 +418,6 @@ body {
 /*product style row two end*/
 
 /*TODO:=========home one=========*/
-.search-btn {
-  @apply text-qblack;
-  background: var(--primary-color);
-}
 .cart-wrappwer {
   border-color: var(--primary-color);
 }

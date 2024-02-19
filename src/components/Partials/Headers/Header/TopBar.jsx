@@ -213,20 +213,20 @@ export default function TopBar({ className, contact, settings }) {
                     <li className={`ml-5`}>
                       <div className="ml-8">
                         {auth ? (
-                         <span onClick={logout} className="flex items-center gap-3 border border-orange-600 rounded-xl p-2 w-28 cursor-pointer">
+                         <span onClick={logout} className="flex items-center gap-3 border border-[var(--primary-color)] rounded-xl p-2 w-28 cursor-pointer">
                          <IcoLogout
-                           className={"fill-orange-600"}
-                           pathClassName={"fill-orange-600"}
+                           className={"fill-[var(--primary-color)]"}
+                           pathClassName={"fill-[var(--primary-color)]"}
                          />
-                         <span className="text-[14px] text-orange-600">Logout</span>
+                         <span className="text-[14px] text-[var(--primary-color)]">Logout</span>
                        </span>
                         ) : (
-                          <div onClick={() => location.push("/login")} className="flex items-center gap-3 border border-orange-600 rounded-xl p-2 w-28 cursor-pointer">
+                          <div onClick={() => location.push("/login")} className="flex items-center gap-3 border border-[var(--primary-color)] rounded-xl p-2 w-28 cursor-pointer">
                           <Login
-                            className={"fill-orange-600"}
-                            pathClassName={"fill-orange-600"}
+                               className={"fill-[var(--primary-color)]"}
+                               pathClassName={"fill-[var(--primary-color)]"}
                           />
-                          <span className="text-[14px] text-orange-600">Login</span>
+                          <span className="text-[14px] text-[var(--primary-color)]">Login</span>
                         </div>
                         )}
                       </div>
@@ -363,20 +363,20 @@ export default function TopBar({ className, contact, settings }) {
                         <Cart className="absolute text-white ltr:-right-[45px] rtl:-left-[45px] top-11 z-50 hidden group-hover:block" />
                       </div>
                       {auth ? (
-                       <span onClick={logout} className="flex items-center gap-3 border border-orange-600 rounded-xl p-2 w-28 cursor-pointer">
+                       <span onClick={logout} className="flex items-center gap-3 border border-[var(--primary-color)] rounded-xl p-2 w-28 cursor-pointer">
                        <IcoLogout
-                         className={"fill-orange-600"}
-                         pathClassName={"fill-orange-600"}
+                         className={"fill-[var(--primary-color)]"}
+                         pathClassName={"fill-[var(--primary-color)]"}
                        />
-                       <span className="text-[14px] text-orange-600">Logout</span>
+                       <span className="text-[14px] text-[var(--text-color)]">Logout</span>
                        </span>
                       ) : (
-                        <div onClick={() => location.push("/login")} className="flex items-center gap-3 border border-orange-600 rounded-xl p-2 w-28 cursor-pointer">
+                        <div onClick={() => location.push("/login")} className="flex items-center gap-3 border border-[var(--primary-color)] rounded-xl p-2 w-28 cursor-pointer">
                             <Login
-                              className={"fill-orange-600"}
-                              pathClassName={"fill-orange-600"}
+                              className={"fill-[var(--primary-color)]"}
+                              pathClassName={"fill-[var(--primary-color)]"}
                             />
-                            <span className="text-[14px] text-orange-600">Login</span>
+                            <span className="text-[14px] text-[var(--text-color)]">Login</span>
                         </div>
                       )}
                       {/* <div>

@@ -200,7 +200,7 @@ export default function Footer({ settings }) {
           </div>
         </div>
         <div
-          className="bg-orange-600 lg:h-[82px] flex lg:flex-row flex-col-reverse
+          className="bg-[var(--primary-color)] lg:h-[82px] flex lg:flex-row flex-col-reverse
          justify-between items-center w-full  "
         >
           <div className="flex px-20 flex-wrap sm:flex-nowrap lg:flex-nowrap sm:px-32 lg:px-40 justify-evenly sm:justify-between lg:justify-between items-center mb-3 w-full lg:max-w-6xl lg:mx-auto">

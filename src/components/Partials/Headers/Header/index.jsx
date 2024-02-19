@@ -42,29 +42,7 @@ export default function Header({ drawerAction, settings, contact }) {
     setIsSubmenu(!isSubmenu);
   };
 
-  const googleTranslateElementInit = (language) => {
-    new window.google.translate.TranslateElement(
-      {
-        pageLanguage: language,
-        autoDisplay: false,
-        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
-        includedLanguages: "en,bn,gu,hi,ml,mr,ta,te",
-        gaTrack: true,
-      },
-      "google_translate_element"
-    );
-  };
-
-  useEffect(() => {
-    var addScript = document.createElement("script");
-    addScript.setAttribute(
-      "src",
-      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-    );
-    document.body.appendChild(addScript);
-    window.googleTranslateElementInit = googleTranslateElementInit;
-  }, []);
-
+ 
   const RouterMapper = [
     '/become-seller',
     '/',
@@ -84,10 +62,6 @@ export default function Header({ drawerAction, settings, contact }) {
 
   return (
     <header className="header-section-wrapper relative print:hidden">
-      <div className="bg-[#d95422] p-15 h-7">
-        <div id="google_translate_element" style={{ marginLeft: "10px" }}></div>
-      </div>
-
       <TopBar
         contact={contact && contact}
         className="quomodo-shop-top-bar"
