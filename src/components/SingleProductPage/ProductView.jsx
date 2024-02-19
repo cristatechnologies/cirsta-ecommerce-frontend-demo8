@@ -3,7 +3,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FacebookShareButton, TwitterShareButton, WhatsappIcon, WhatsappShareButton } from "react-share";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappIcon,
+  WhatsappShareButton,
+} from "react-share";
 import { toast } from "react-toastify";
 import apiRequest from "../../../utils/apiRequest";
 import auth from "../../../utils/auth";
@@ -43,8 +48,6 @@ export default function ProductView({
   const router = useRouter();
   const dispatch = useDispatch();
   const [more, setMore] = useState(false);
-  const [isShowSellerProfile,setIsShowSellerProfile] = useState(false);
-
   const productsImg = images && images.length > 0 && images;
   const varients =
     product && product.active_variants.length > 0 && product.active_variants;
@@ -56,7 +59,7 @@ export default function ProductView({
   );
   const [price, setPrice] = useState(null);
   const [offerPrice, setOffer] = useState(null);
-  const [src, setSrc] = useState('');
+  const [src, setSrc] = useState("");
   const tags = product && JSON.parse(product.tags);
   const loginPopupBoard = useContext(LoginContext);
   const messageHandler = useContext(messageContext);
@@ -64,7 +67,7 @@ export default function ProductView({
   const changeImgHandler = (current) => {
     setSrc(current);
   };
-  
+
   useEffect(() => {
     setSrc(product.thumb_image);
   }, [product]);
@@ -177,12 +180,12 @@ export default function ProductView({
         const variantQuery = data.variants.map((value, index) => {
           return `variants[]=${value}`;
         });
-        const variantString = variantQuery.map((value) => value + '&').join('');
+        const variantString = variantQuery.map((value) => value + "&").join("");
 
         const itemsQuery = data.variantItems.map((value, index) => {
           return `items[]=${value}`;
         });
-        const itemQueryStr = itemsQuery.map((value) => value + '&').join('');
+        const itemQueryStr = itemsQuery.map((value) => value + "&").join("");
         const uri = `token=${data.token}&product_id=${data.id}&${variantString}${itemQueryStr}quantity=${data.quantity}`;
         apiRequest
           .addToCard(uri)
@@ -219,8 +222,8 @@ export default function ProductView({
       }
     } else {
       localStorage.setItem(
-        'data-hold',
-        JSON.stringify({ type: 'add-to-cart', ...data })
+        "data-hold",
+        JSON.stringify({ type: "add-to-cart", ...data })
       );
       loginPopupBoard.handlerPopup(true);
     }
@@ -263,7 +266,7 @@ export default function ProductView({
 
   const { currency_icon } = settings();
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
-  const [pricePercent, setPricePercent] = useState('');
+  const [pricePercent, setPricePercent] = useState("");
   useEffect(() => {
     if (websiteSetup) {
       const offerFlashSale = websiteSetup.payload.flashSale;
@@ -291,10 +294,6 @@ export default function ProductView({
     }
   }, [websiteSetup]);
 
-  useEffect(() => {
-    setIsShowSellerProfile(seller?.seller_profile_page=== 1 ? true:false);
-  }, [seller])
-  
   const popupMessageHandler = () => {
     if (auth()) {
       messageHandler.toggleHandler(seller);
@@ -307,7 +306,7 @@ export default function ProductView({
     <>
       <div
         className={`product-view w-full lg:flex justify-between ${
-          className || ''
+          className || ""
         }`}
       >
         <div
@@ -355,7 +354,7 @@ export default function ProductView({
                   }`}
                   alt=""
                   className={`w-full h-full object-contain transform scale-110 ${
-                    src !== product.thumb_image ? 'opacity-50' : ''
+                    src !== product.thumb_image ? "opacity-50" : ""
                   } `}
                 />
               </div>
@@ -373,7 +372,7 @@ export default function ProductView({
                       src={`${process.env.NEXT_PUBLIC_BASE_URL + img.image}`}
                       alt=""
                       className={`w-full h-full object-contain ${
-                        src !== img.image ? 'opacity-50' : ''
+                        src !== img.image ? "opacity-50" : ""
                       } `}
                     />
                   </div>
@@ -387,7 +386,7 @@ export default function ProductView({
               <span
                 data-aos="fade-up"
                 className={`${
-                  quickViewData ? 'text-black' : 'text-white'
+                  quickViewData ? "text-black" : "text-white"
                 } text-xs font-normal uppercase tracking-wider mb-2 inline-block`}
               >
                 {product.brand.name}
@@ -397,7 +396,7 @@ export default function ProductView({
             <p
               data-aos="fade-up"
               className={`text-xl font-medium mb-4 ${
-                quickViewData ? 'text-black' : 'text-white'
+                quickViewData ? "text-black" : "text-white"
               } `}
             >
               {product.name}
@@ -406,37 +405,43 @@ export default function ProductView({
               data-aos="fade-up"
               className="flex space-x-[10px] items-center mb-6"
             >
-             {parseInt(product.averageRating)>0 && <div className="flex">
-                {/*{Array.from(Array(parseInt(product.averageRating)), () => (*/}
-                {/*  <Star />*/}
-                {/*))}*/}
-                {Array.from(Array(parseInt(product.averageRating)), () => (
-                  <span key={parseInt(product.averageRating) + Math.random()}>
-                    <Star />
-                  </span>
-                ))}
-                {parseInt(product.averageRating) < 5 && (
-                  <>
-                    {Array.from(
-                      Array(5 - parseInt(product.averageRating)),
-                      () => (
-                        <span
-                          key={parseInt(product.averageRating) + Math.random()}
-                          className="text-white"
-                        >
-                          <Star defaultValue={false} />
-                        </span>
-                      )
-                    )}
-                  </>
-                )}
-              </div>}
+              {parseInt(product.averageRating) > 0 && (
+                <div className="flex">
+                  {/*{Array.from(Array(parseInt(product.averageRating)), () => (*/}
+                  {/*  <Star />*/}
+                  {/*))}*/}
+                  {Array.from(Array(parseInt(product.averageRating)), () => (
+                    <span key={parseInt(product.averageRating) + Math.random()}>
+                      <Star />
+                    </span>
+                  ))}
+                  {parseInt(product.averageRating) < 5 && (
+                    <>
+                      {Array.from(
+                        Array(5 - parseInt(product.averageRating)),
+                        () => (
+                          <span
+                            key={
+                              parseInt(product.averageRating) + Math.random()
+                            }
+                            className="text-white"
+                          >
+                            <Star defaultValue={false} />
+                          </span>
+                        )
+                      )}
+                    </>
+                  )}
+                </div>
+              )}
               <span
                 className={`text-[13px] font-normal ${
-                  quickViewData ? 'text-qblack' : 'text-white'
+                  quickViewData ? "text-qblack" : "text-white"
                 }`}
               >
-                {parseInt(product.averageRating)>0?parseInt(product.averageRating):'Be The First to'}{' '}
+                {parseInt(product.averageRating) > 0
+                  ? parseInt(product.averageRating)
+                  : "Be The First to"}{" "}
                 {ServeLangItem()?.Reviews}
               </span>
             </div>
@@ -448,8 +453,8 @@ export default function ProductView({
                 suppressHydrationWarning
                 className={`main-price  font-600  ${
                   offerPrice
-                    ? 'line-through text-qgray text-[15px]'
-                    : 'text-white text-[24px]'
+                    ? "line-through text-qgray text-[15px]"
+                    : "text-white text-[24px]"
                 }`}
               >
                 {offerPrice ? (
@@ -477,8 +482,8 @@ export default function ProductView({
             <div data-aos="fade-up" className="mb-[30px]">
               <div
                 className={`text-sm text-normal  leading-7 ${
-                  quickViewData ? 'text-black' : 'text-white'
-                } ${more ? '' : 'line-clamp-2'}`}
+                  quickViewData ? "text-black" : "text-white"
+                } ${more ? "" : "line-clamp-2"}`}
               >
                 {product.short_description}
               </div>
@@ -487,7 +492,7 @@ export default function ProductView({
                 type="button"
                 className="text-blue-500 text-xs font-bold"
               >
-                {more ? 'See Less' : 'See More'}
+                {more ? "See Less" : "See More"}
               </button>
             </div>
             {/* <div className="p-3 primary-bglow flex items-center space-x-2 mb-[30px] w-fit">
@@ -559,7 +564,7 @@ export default function ProductView({
                               <div>
                                 <span
                                   className={`text-[13px] ${
-                                    quickViewData ? 'text-black' : 'text-white'
+                                    quickViewData ? "text-black" : "text-white"
                                   }`}
                                 >
                                   {item}
@@ -604,13 +609,13 @@ export default function ProductView({
                     onClick={decrement}
                     type="button"
                     className={`${
-                      quickViewData ? 'text-black' : 'text-white'
+                      quickViewData ? "text-black" : "text-white"
                     } text-base`}
                   >
                     -
                   </button>
                   <span
-                    className={`${quickViewData ? 'text-black' : 'text-white'}`}
+                    className={`${quickViewData ? "text-black" : "text-white"}`}
                   >
                     {quantity}
                   </span>
@@ -618,7 +623,7 @@ export default function ProductView({
                     onClick={increment}
                     type="button"
                     className={`${
-                      quickViewData ? 'text-black' : 'text-white'
+                      quickViewData ? "text-black" : "text-white"
                     } text-base`}
                   >
                     +
@@ -653,7 +658,7 @@ export default function ProductView({
                     <span className="w-10 h-10 flex justify-center items-center">
                       <ThinLove
                         className={`${
-                          quickViewData ? 'fill-black' : 'fill-white'
+                          quickViewData ? "fill-black" : "fill-white"
                         }`}
                       />
                     </span>
@@ -688,42 +693,42 @@ export default function ProductView({
             <div data-aos="fade-up" className="mb-[20px]">
               <p
                 className={`text-[13px] ${
-                  quickViewData ? 'text-black' : 'text-white'
+                  quickViewData ? "text-black" : "text-white"
                 } leading-7`}
               >
                 <span
-                  className={`${quickViewData ? 'text-black' : 'text-white'}`}
+                  className={`${quickViewData ? "text-black" : "text-white"}`}
                 >
                   Category :
-                </span>{' '}
+                </span>{" "}
                 {product.category.name}
               </p>
               {tags && (
                 <p
                   className={`text-[13px] ${
-                    quickViewData ? 'text-black' : 'text-white'
+                    quickViewData ? "text-black" : "text-white"
                   } leading-7`}
                 >
-                  <span className="text-white">Tags:</span>{' '}
+                  <span className="text-white">Tags:</span>{" "}
                   {tags.length > 0 &&
                     tags.map((item, i) => (
-                      <span key={i}>{item.value + ', '}</span>
+                      <span key={i}>{item.value + ", "}</span>
                     ))}
                 </p>
               )}
               {product.sku && (
                 <p
                   className={`text-[13px] ${
-                    quickViewData ? 'text-black' : 'text-white'
+                    quickViewData ? "text-black" : "text-white"
                   } leading-7`}
                 >
                   <span
                     className={`${
-                      quickViewData ? 'text-black' : 'text-white'
+                      quickViewData ? "text-black" : "text-white"
                     } uppercase`}
                   >
                     {ServeLangItem()?.SKU}:
-                  </span>{' '}
+                  </span>{" "}
                   {product.sku}
                 </p>
               )}
@@ -763,7 +768,7 @@ export default function ProductView({
             >
               <span
                 className={`${
-                  quickViewData ? 'text-black' : 'text-white'
+                  quickViewData ? "text-black" : "text-white"
                 } text-[13px] mr-[17px] inline-block"`}
               >
                 {ServeLangItem()?.Share_This}
@@ -772,10 +777,10 @@ export default function ProductView({
               <div className="flex space-x-5 items-center">
                 <FacebookShareButton
                   url={`${
-                    typeof window !== 'undefined' &&
+                    typeof window !== "undefined" &&
                     window.location.origin &&
                     window.location.origin +
-                      '/single-product?slug=' +
+                      "/single-product?slug=" +
                       product.slug
                   }`}
                   quotes={product.name}
@@ -797,10 +802,10 @@ export default function ProductView({
                 </FacebookShareButton>
                 <WhatsappShareButton
                   url={`${
-                    typeof window !== 'undefined' &&
+                    typeof window !== "undefined" &&
                     window.location.origin &&
                     window.location.origin +
-                      '/single-product?slug=' +
+                      "/single-product?slug=" +
                       product.slug
                   }`}
                   quotes={product.name}
@@ -825,10 +830,6 @@ export default function ProductView({
                 {/*</Link>*/}
               </div>
             </div>
-
-            {isShowSellerProfile&&<Link href={`${seller.slug}`}>
-                    <button className="text-sm bg-orange-500 text-white p-2 rounded-md w-40 mb-5 font-bold">See Seller info</button>
-              </Link>}
             {/* {seller && (
               <div data-aos="fade-up" className="message-btn">
                 <button

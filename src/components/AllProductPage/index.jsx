@@ -25,7 +25,6 @@ export default function AllProductPage({ response, sellerInfo }) {
   const [categoriesFilter, setCategoriesFilter] = useState(null);
   const [brands, setBrands] = useState(null);
   const [cardViewStyle, setCardViewStyle] = useState("row");
-  const [isShowSellerProfile, setIsShowSellerProfile] = useState(false);
 
   const location = useRouter();
   const { pathname } = location;
@@ -198,9 +197,6 @@ export default function AllProductPage({ response, sellerInfo }) {
           ...response.data.products.data.map((item) => parseInt(item.price))
         ),
     });
-    setIsShowSellerProfile(
-      response.data?.seller?.seller_profile_page === 1 ? true : false
-    );
   }, [response.data]);
   useEffect(() => {
     if (response.data) {
@@ -341,13 +337,6 @@ export default function AllProductPage({ response, sellerInfo }) {
       <Layout>
         <div className="products-page-wrapper w-full">
           <div className="container-x mx-auto">
-            {isShowSellerProfile && (
-              <Link href={`${response.data.seller.slug}`}>
-                <button className="text-sm bg-orange-500 text-white p-2 rounded-md w-40 mb-5 font-bold">
-                  See Seller info
-                </button>
-              </Link>
-            )}
             {/*<BreadcrumbCom />*/}
             <div className="w-full lg:flex lg:space-x-[30px] rtl:space-x-reverse">
               <div className="lg:w-[270px]">
@@ -470,7 +459,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                     <div className="products-sorting w-full bg-white md:h-[70px] flex md:flex-row flex-col md:space-y-0 space-y-5 md:justify-between md:items-center p-[30px] mb-[40px]">
                       <div className="flex items-center gap-3">
                         <Link href={"/"}>
-                          <button className="text-sm bg-orange-500 text-white p-2 rounded-md">
+                          <button className="text-sm bg-[var(--primary-color)] text-white p-2 rounded-md">
                             Back to Home
                           </button>
                         </Link>
