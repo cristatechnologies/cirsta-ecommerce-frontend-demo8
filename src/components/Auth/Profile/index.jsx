@@ -134,7 +134,6 @@ function Profile() {
           <BreadcrumbCom
             paths={[
               { name: ServeLangItem()?.home, path: "/" },
-              { name: "Store", path: "/store" },
               { name: ServeLangItem()?.profile, path: "/profile" },
             ]}
           />

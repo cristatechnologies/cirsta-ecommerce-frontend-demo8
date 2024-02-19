@@ -25,10 +25,10 @@ export default function AllProductPage({ response, sellerInfo }) {
   const [categoriesFilter, setCategoriesFilter] = useState(null);
   const [brands, setBrands] = useState(null);
   const [cardViewStyle, setCardViewStyle] = useState("row");
-  const [isShowSellerProfile,setIsShowSellerProfile] = useState(false);
+  const [isShowSellerProfile, setIsShowSellerProfile] = useState(false);
 
   const location = useRouter();
-  const{pathname} = location
+  const { pathname } = location;
   const products =
     resProducts &&
     resProducts.length > 0 &&
@@ -53,7 +53,7 @@ export default function AllProductPage({ response, sellerInfo }) {
   );
   const [selectedBrandsFilterItem, setSelectedBrandsFilterItem] = useState([]);
   const [volume, setVolume] = useState({ min: 0, max: 0 });
-  
+
   const volumeHandler = (value) => {
     setVolume(value);
   };
@@ -198,7 +198,9 @@ export default function AllProductPage({ response, sellerInfo }) {
           ...response.data.products.data.map((item) => parseInt(item.price))
         ),
     });
-    setIsShowSellerProfile(response.data?.seller?.seller_profile_page=== 1 ? true:false);
+    setIsShowSellerProfile(
+      response.data?.seller?.seller_profile_page === 1 ? true : false
+    );
   }, [response.data]);
   useEffect(() => {
     if (response.data) {
@@ -212,7 +214,7 @@ export default function AllProductPage({ response, sellerInfo }) {
         Math.max(
           ...response.data.products.data.map((item) => parseInt(item.price))
         );
-      
+
       const check =
         selectedVarientFilterItem.length > 0 ||
         selectedCategoryFilterItem.length > 0 ||
@@ -339,9 +341,13 @@ export default function AllProductPage({ response, sellerInfo }) {
       <Layout>
         <div className="products-page-wrapper w-full">
           <div className="container-x mx-auto">
-             {isShowSellerProfile && <Link href={`${response.data.seller.slug}`}>
-                  <button className="text-sm bg-orange-500 text-white p-2 rounded-md w-40 mb-5 font-bold">See Seller info</button>
-              </Link>}
+            {isShowSellerProfile && (
+              <Link href={`${response.data.seller.slug}`}>
+                <button className="text-sm bg-orange-500 text-white p-2 rounded-md w-40 mb-5 font-bold">
+                  See Seller info
+                </button>
+              </Link>
+            )}
             {/*<BreadcrumbCom />*/}
             <div className="w-full lg:flex lg:space-x-[30px] rtl:space-x-reverse">
               <div className="lg:w-[270px]">
@@ -374,7 +380,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                   volumeHandler={(value) => volumeHandler(value)}
                   className="mb-[30px]"
                   variantsFilter={variantsFilter}
-                  searchProductFilter={pathname ==='/search' ? true:false}
+                  searchProductFilter={pathname === "/search" ? true : false}
                 />
 
                 {/* {response.data && response.data.shopPageSidebarBanner && (
@@ -463,8 +469,10 @@ export default function AllProductPage({ response, sellerInfo }) {
                   <div className="w-full">
                     <div className="products-sorting w-full bg-white md:h-[70px] flex md:flex-row flex-col md:space-y-0 space-y-5 md:justify-between md:items-center p-[30px] mb-[40px]">
                       <div className="flex items-center gap-3">
-                        <Link href={'/store'}>
-                        <button className="text-sm bg-orange-500 text-white p-2 rounded-md">Back to store</button>
+                        <Link href={"/"}>
+                          <button className="text-sm bg-orange-500 text-white p-2 rounded-md">
+                            Back to Home
+                          </button>
                         </Link>
                         <p className="font-400 text-[13px]">
                           <span className="text-qgray">

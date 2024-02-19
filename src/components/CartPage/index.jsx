@@ -103,7 +103,7 @@ function CardPage() {
       return false;
     }
   };
-  
+
   return (
     <>
       {getCarts && getCarts.length === 0 ? (
@@ -112,7 +112,6 @@ function CardPage() {
             <BreadcrumbCom
               paths={[
                 { name: ServeLangItem()?.home, path: "/" },
-                { name: "Store", path: "/store" },
                 { name: ServeLangItem()?.cart, path: "/cart" },
               ]}
               isBecomeSeller={false}
@@ -127,7 +126,6 @@ function CardPage() {
               title="Your Cart"
               breadcrumb={[
                 { name: ServeLangItem()?.home, path: "/" },
-                { name: "Store", path: "/store" },
                 { name: ServeLangItem()?.cart, path: "/cart" },
               ]}
               isBecomeSeller={true}

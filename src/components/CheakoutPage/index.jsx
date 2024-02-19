@@ -305,7 +305,7 @@ function CheakoutPage() {
         .then((res) => {
           if (res.data) {
             setCountryDropdown(res.data.countries);
-            getState(country);    
+            getState(country);
           }
         })
         .catch((err) => {
@@ -315,13 +315,13 @@ function CheakoutPage() {
   }, []);
   const getState = (value) => {
     if (auth() && value) {
-      const countryId = value.id ? value.id : country
+      const countryId = value.id ? value.id : country;
       setCountry(countryId);
       axios
         .get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}api/user/state-by-country/${
-            countryId
-          }?token=${auth().access_token}`
+          `${
+            process.env.NEXT_PUBLIC_BASE_URL
+          }api/user/state-by-country/${countryId}?token=${auth().access_token}`
         )
         .then((res) => {
           setCityDropdown(null);
@@ -360,14 +360,20 @@ function CheakoutPage() {
   };
   const saveAddress = async () => {
     setLoading(true);
-    if (auth()&&fName?.length !== 0 &&
-    lName.length !== 0 &&
-    email.length !== 0  &&
-   phone.length !== 0 && phone?.length ===10 &&
-   country !== null &&
-   state !== null &&
-   city !== null &&
-   pincode !== null && pincode?.length === 6 && address?.length !== 0) {
+    if (
+      auth() &&
+      fName?.length !== 0 &&
+      lName.length !== 0 &&
+      email.length !== 0 &&
+      phone.length !== 0 &&
+      phone?.length === 10 &&
+      country !== null &&
+      state !== null &&
+      city !== null &&
+      pincode !== null &&
+      pincode?.length === 6 &&
+      address?.length !== 0
+    ) {
       apiRequest
         .saveAddress(auth().access_token, {
           name: fName && lName ? fName + " " + lName : null,
@@ -400,64 +406,54 @@ function CheakoutPage() {
         .catch((err) => {
           console.log(err);
           setLoading(false);
-          
+
           setErrors({
-            fName:
-              fName.length === 0
-                ? "Please enter your first name"
-                : "",
-            lName:
-              lName.length === 0
-                ? "Please enter your last name"
-                : "",
-            email:
-              email.length === 0
-                ? "Please enter your email"
-                : "",
+            fName: fName.length === 0 ? "Please enter your first name" : "",
+            lName: lName.length === 0 ? "Please enter your last name" : "",
+            email: email.length === 0 ? "Please enter your email" : "",
             phone:
               phone.length === 0
                 ? "Please enter your phone number"
-                : phone.length > 10 ? 'Please enter 10 digit number': phone.length < 10?'Please enter 10 digit number':'',
-            country:
-              country === null ? "Please select your country":'',
-            state:
-              state === null ? "Please select your state":'',
-            city:
-              city === null ? "Please select your city":'',
+                : phone.length > 10
+                ? "Please enter 10 digit number"
+                : phone.length < 10
+                ? "Please enter 10 digit number"
+                : "",
+            country: country === null ? "Please select your country" : "",
+            state: state === null ? "Please select your state" : "",
+            city: city === null ? "Please select your city" : "",
             pincode:
-              pincode === null? "Please enter your zip code":pincode.length<6?'Please enter 6 digit zip code':'',
-            address:
-              address?.length === 0 ? "Please enter your address":''
+              pincode === null
+                ? "Please enter your zip code"
+                : pincode.length < 6
+                ? "Please enter 6 digit zip code"
+                : "",
+            address: address?.length === 0 ? "Please enter your address" : "",
           });
         });
     } else {
       setErrors({
-        fName:
-          fName.length === 0
-            ? "Please enter your first name"
-            : "",
-        lName:
-          lName.length === 0
-            ? "Please enter your last name"
-            : "",
-        email:
-          email.length === 0
-            ? "Please enter your email"
-            : "",
+        fName: fName.length === 0 ? "Please enter your first name" : "",
+        lName: lName.length === 0 ? "Please enter your last name" : "",
+        email: email.length === 0 ? "Please enter your email" : "",
         phone:
           phone.length === 0
             ? "Please enter your phone number"
-            : phone.length > 10 ? 'Please enter 10 digit number': phone.length < 10?'Please enter 10 digit number':'',
-        country:
-          country === null ? "Please select your country":'',
-        state:
-          state === null ? "Please select your state":'',
-        city:
-          city === null ? "Please select your city":'',
+            : phone.length > 10
+            ? "Please enter 10 digit number"
+            : phone.length < 10
+            ? "Please enter 10 digit number"
+            : "",
+        country: country === null ? "Please select your country" : "",
+        state: state === null ? "Please select your state" : "",
+        city: city === null ? "Please select your city" : "",
         pincode:
-          pincode === null? "Please enter your zip code":pincode.length<6?'Please enter 6 digit zip code':'',
-        address:
-          address?.length === 0 ? "Please enter your address":''
+          pincode === null
+            ? "Please enter your zip code"
+            : pincode.length < 6
+            ? "Please enter 6 digit zip code"
+            : "",
+        address: address?.length === 0 ? "Please enter your address" : "",
       });
       setLoading(false);
       return false;
@@ -663,321 +659,321 @@ function CheakoutPage() {
     if (auth() && (checkDeliverable.cod || checkDeliverable.pre_paid)) {
       if (selectedBilling && selectedShipping) {
         // if (selectShippingRuleId < 0) {
-          if (selectPayment) {
-            if (selectPayment && selectPayment === "cashOnDelivery") {
-              await apiRequest
-                .cashOnDelivery(
-                  {
-                    shipping_address_id: selectedShipping,
-                    billing_address_id: selectedBilling,
-                    shipping_method_id: parseInt(selectShippingRuleId),
-                    // shipping_method_id: selectShippingRuleId,
-                    coupon: couponCode && couponCode.code,
-                  },
-                  auth().access_token
-                )
-                .then((res) => {
-                  if (res.data) {
-                    toast.success(res.data.message);
-                    router.push("/profile#order");
-                    dispatch(fetchCart());
-                    localStorage.removeItem("coupon_set_date");
-                    localStorage.removeItem("coupon");
-                  }
-                })
-                .catch((err) => {
-                  console.log(err);
-                  toast.success(err.response && err.response.message);
-                });
-            } else if (selectPayment && selectPayment === "stripe") {
-              setStrpLoading(true);
-              await apiRequest
-                .stipePay(
-                  {
-                    agree_terms_condition: 1,
-                    card_number: strpeNumber,
-                    year: expireDate && expireDate.formated.year,
-                    month: expireDate && expireDate.formated.month,
-                    cvv: cvv,
-                    card_holder_name: cardHolderName,
-                    shipping_address_id: selectedShipping,
-                    billing_address_id: selectedBilling,
-                    shipping_method_id: parseInt(selectShippingRuleId),
-                    coupon: couponCode && couponCode.code,
-                  },
-                  auth().access_token
-                )
-                .then((res) => {
-                  toast.success(res.data && res.data.message);
-                  router.push(`/order/${res.data.order_id}`);
+        if (selectPayment) {
+          if (selectPayment && selectPayment === "cashOnDelivery") {
+            await apiRequest
+              .cashOnDelivery(
+                {
+                  shipping_address_id: selectedShipping,
+                  billing_address_id: selectedBilling,
+                  shipping_method_id: parseInt(selectShippingRuleId),
+                  // shipping_method_id: selectShippingRuleId,
+                  coupon: couponCode && couponCode.code,
+                },
+                auth().access_token
+              )
+              .then((res) => {
+                if (res.data) {
+                  toast.success(res.data.message);
+                  router.push("/profile#order");
                   dispatch(fetchCart());
-                  setStrpError(null);
-                  setHolderName("");
-                  setExpireDate(null);
-                  setCvv("");
-                  setStrpeNumber("");
-                  setPaymentMethod("");
-                  setStrpLoading(false);
                   localStorage.removeItem("coupon_set_date");
                   localStorage.removeItem("coupon");
-                })
-                .catch((err) => {
-                  setStrpLoading(false);
-                  setStrpError(err.response && err.response.data.errors);
-                  console.error(err);
-                });
-            } else if (selectPayment && selectPayment === "paypal") {
-              setStrpLoading(true);
-              const url = `${
-                process.env.NEXT_PUBLIC_BASE_URL
-              }user/checkout/paypal-react-web-view?token=${
-                auth().access_token
-              }&shipping_method_id=${parseInt(
-                selectShippingRuleId
-              )}&shipping_address_id=${selectedShipping}&coupon=${
-                couponCode && couponCode.code
-              }&billing_address_id=${selectedBilling}&success_url=${
-                typeof window !== "undefined" && window.location.origin
-                  ? window.location.origin + "/order/"
-                  : ""
-              }&faild_url=${
-                typeof window !== "undefined" && window.location.origin
-                  ? window.location.origin + "/payment-faild"
-                  : ""
-              }`;
-              router.push(url);
-              localStorage.removeItem("coupon_set_date");
-              localStorage.removeItem("coupon");
-            } else if (selectPayment && selectPayment === "razorpay") {
-              const url = `${
-                process.env.NEXT_PUBLIC_BASE_URL
-              }user/checkout/razorpay-order?token=${
-                auth().access_token
-              }&shipping_method_id=${parseInt(
-                selectShippingRuleId
-              )}&shipping_address_id=${selectedShipping}&coupon=${
-                couponCode && couponCode.code
-              }&billing_address_id=${selectedBilling}`;
-              await axios
-                .get(url)
-                .then((res) => {
-                  const order_id = res.data && res.data.order_id;
-                  const amount = res.data && res.data.amount;
-                  if (res.data) {
-                    const provideUrl = `${
-                      process.env.NEXT_PUBLIC_BASE_URL
-                    }user/checkout/razorpay-web-view?token=${
-                      auth().access_token
-                    }&shipping_address_id=${selectedShipping}&coupon=${
-                      couponCode && couponCode.code
-                    }&billing_address_id=${selectedBilling}&shipping_method_id=${parseInt(
-                      selectShippingRuleId
-                    )}&frontend_success_url=${
-                      typeof window !== "undefined" && window.location.origin
-                        ? window.location.origin + "/order/"
-                        : ""
-                    }&frontend_faild_url=${
-                      typeof window !== "undefined" && window.location.origin
-                        ? window.location.origin + "/payment-faild"
-                        : ""
-                    }&request_from=react_web&amount=${amount}&order_id=${order_id}`;
-                    router.push(provideUrl);
-                    localStorage.removeItem("coupon_set_date");
-                    localStorage.removeItem("coupon");
-                  }
-                })
-                .catch((err) => {
-                  console.log(err);
-                });
-            } else if (selectPayment && selectPayment === "flutterWave") {
-              const url = `${
-                process.env.NEXT_PUBLIC_BASE_URL
-              }user/checkout/flutterwave-web-view?token=${
-                auth().access_token
-              }&shipping_method_id=${parseInt(
-                selectShippingRuleId
-              )}&shipping_address_id=${selectedShipping}&coupon=${
-                couponCode && couponCode.code
-              }&billing_address_id=${selectedBilling}&request_from=react_web&frontend_success_url=${
-                typeof window !== "undefined" && window.location.origin
-                  ? window.location.origin + "/order/"
-                  : ""
-              }&frontend_faild_url=${
-                typeof window !== "undefined" && window.location.origin
-                  ? window.location.origin + "/payment-faild"
-                  : ""
-              }`;
-              router.push(url);
-              localStorage.removeItem("coupon_set_date");
-              localStorage.removeItem("coupon");
-            } else if (selectPayment && selectPayment === "mollie") {
-              const url = `${
-                process.env.NEXT_PUBLIC_BASE_URL
-              }user/checkout/pay-with-mollie?token=${
-                auth().access_token
-              }&shipping_method_id=${parseInt(
-                selectShippingRuleId
-              )}&shipping_address_id=${selectedShipping}&coupon=${
-                couponCode && couponCode.code
-              }&billing_address_id=${selectedBilling}&request_from=react_web&frontend_success_url=${
-                typeof window !== "undefined" && window.location.origin
-                  ? window.location.origin + "/order/"
-                  : ""
-              }&frontend_faild_url=${
-                typeof window !== "undefined" && window.location.origin
-                  ? window.location.origin + "/payment-faild"
-                  : ""
-              }`;
-              router.push(url);
-              localStorage.removeItem("coupon_set_date");
-              localStorage.removeItem("coupon");
-            } else if (selectPayment && selectPayment === "myfatoorah") {
-              const url = `${
-                process.env.NEXT_PUBLIC_BASE_URL
-              }user/checkout/myfatoorah-webview?token=${
-                auth().access_token
-              }&shipping_method_id=${parseInt(
-                selectShippingRuleId
-              )}&shipping_address_id=${selectedShipping}&coupon=${
-                couponCode && couponCode.code
-              }&billing_address_id=${selectedBilling}&request_from=react_web&frontend_success_url=${
-                typeof window !== "undefined" && window.location.origin
-                  ? window.location.origin + "/order/"
-                  : ""
-              }&frontend_faild_url=${
-                typeof window !== "undefined" && window.location.origin
-                  ? window.location.origin + "/payment-faild"
-                  : ""
-              }`;
-              router.push(url);
-              localStorage.removeItem("coupon_set_date");
-              localStorage.removeItem("coupon");
-            } else if (selectPayment && selectPayment === "instamojo") {
-              const url = `${
-                process.env.NEXT_PUBLIC_BASE_URL
-              }user/checkout/pay-with-instamojo?token=${
-                auth().access_token
-              }&shipping_method_id=${parseInt(
-                selectShippingRuleId
-              )}&shipping_address_id=${selectedShipping}&coupon=${
-                couponCode && couponCode.code
-              }&billing_address_id=${selectedBilling}&request_from=react_web&frontend_success_url=${
-                typeof window !== "undefined" && window.location.origin
-                  ? window.location.origin + "/order/"
-                  : ""
-              }&frontend_faild_url=${
-                typeof window !== "undefined" && window.location.origin
-                  ? window.location.origin + "/payment-faild"
-                  : ""
-              }`;
-              router.push(url);
-              localStorage.removeItem("coupon_set_date");
-              localStorage.removeItem("coupon");
-            } else if (selectPayment && selectPayment === "paystack") {
-              const url = `${
-                process.env.NEXT_PUBLIC_BASE_URL
-              }user/checkout/paystack-web-view?token=${
-                auth().access_token
-              }&shipping_method_id=${parseInt(
-                selectShippingRuleId
-              )}&shipping_address_id=${selectedShipping}&coupon=${
-                couponCode && couponCode.code
-              }&billing_address_id=${selectedBilling}&request_from=react_web&frontend_success_url=${
-                typeof window !== "undefined" && window.location.origin
-                  ? window.location.origin + "/order/"
-                  : ""
-              }&frontend_faild_url=${
-                typeof window !== "undefined" && window.location.origin
-                  ? window.location.origin + "/payment-faild"
-                  : ""
-              }`;
-              router.push(url);
-              localStorage.removeItem("coupon_set_date");
-              localStorage.removeItem("coupon");
-            } else if (selectPayment && selectPayment === "bankpayment") {
-              await apiRequest
-                .bankPayment(
-                  {
-                    shipping_address_id: selectedShipping,
-                    billing_address_id: selectedBilling,
-                    shipping_method_id: parseInt(selectShippingRuleId),
-                    tnx_info: transactionInfo,
-                    coupon: couponCode && couponCode.code,
-                  },
-                  auth().access_token
-                )
-                .then((res) => {
-                  if (res.data) {
-                    toast.success(res.data.message);
-                    router.push(`/order/${res.data.order_id}`);
-                    dispatch(fetchCart());
-                    localStorage.removeItem("coupon_set_date");
-                    localStorage.removeItem("coupon");
-                  }
-                })
-                .catch((err) => {
-                  console.log(err);
-                  toast.success(err.response && err.response.message);
-                });
-            } else if (selectPayment && selectPayment === "sslcommerce") {
-              const url = `${
-                process.env.NEXT_PUBLIC_BASE_URL
-              }user/checkout/sslcommerz-web-view?token=${
-                auth().access_token
-              }&shipping_method_id=${parseInt(
-                selectShippingRuleId
-              )}&shipping_address_id=${selectedShipping}&coupon=${
-                couponCode && couponCode.code
-              }&billing_address_id=${selectedBilling}&request_from=react_web&frontend_success_url=${
-                typeof window !== "undefined" && window.location.origin
-                  ? window.location.origin + "/order/"
-                  : ""
-              }&frontend_faild_url=${
-                typeof window !== "undefined" && window.location.origin
-                  ? window.location.origin + "/payment-faild"
-                  : ""
-              }`;
-
-              router.push(url);
-              localStorage.removeItem("coupon_set_date");
-              localStorage.removeItem("coupon");
-            } else if (
-              selectPayment &&
-              (selectPayment === "debitCard" ||
-                selectPayment === "creditCard" ||
-                selectPayment === "netBanking" ||
-                selectPayment === "wallet")
-            ) {
-              const url = `${process.env.NEXT_PUBLIC_BASE_URL}user/checkout/phonepe-order?shipping_method_id=${selectShippingRuleId}&shipping_address_id=${selectedShipping}&billing_address_id=${selectedBilling}`;
-
-              const response = await axios({
-                method: "get",
-                url: url,
-                headers: { Authorization: `Bearer ${auth().access_token}` },
-                Accept: "application/json",
-                "Content-Type": "application/json",
+                }
+              })
+              .catch((err) => {
+                console.log(err);
+                toast.success(err.response && err.response.message);
               });
-
-              if (response) {
-                try {
+          } else if (selectPayment && selectPayment === "stripe") {
+            setStrpLoading(true);
+            await apiRequest
+              .stipePay(
+                {
+                  agree_terms_condition: 1,
+                  card_number: strpeNumber,
+                  year: expireDate && expireDate.formated.year,
+                  month: expireDate && expireDate.formated.month,
+                  cvv: cvv,
+                  card_holder_name: cardHolderName,
+                  shipping_address_id: selectedShipping,
+                  billing_address_id: selectedBilling,
+                  shipping_method_id: parseInt(selectShippingRuleId),
+                  coupon: couponCode && couponCode.code,
+                },
+                auth().access_token
+              )
+              .then((res) => {
+                toast.success(res.data && res.data.message);
+                router.push(`/order/${res.data.order_id}`);
+                dispatch(fetchCart());
+                setStrpError(null);
+                setHolderName("");
+                setExpireDate(null);
+                setCvv("");
+                setStrpeNumber("");
+                setPaymentMethod("");
+                setStrpLoading(false);
+                localStorage.removeItem("coupon_set_date");
+                localStorage.removeItem("coupon");
+              })
+              .catch((err) => {
+                setStrpLoading(false);
+                setStrpError(err.response && err.response.data.errors);
+                console.error(err);
+              });
+          } else if (selectPayment && selectPayment === "paypal") {
+            setStrpLoading(true);
+            const url = `${
+              process.env.NEXT_PUBLIC_BASE_URL
+            }user/checkout/paypal-react-web-view?token=${
+              auth().access_token
+            }&shipping_method_id=${parseInt(
+              selectShippingRuleId
+            )}&shipping_address_id=${selectedShipping}&coupon=${
+              couponCode && couponCode.code
+            }&billing_address_id=${selectedBilling}&success_url=${
+              typeof window !== "undefined" && window.location.origin
+                ? window.location.origin + "/order/"
+                : ""
+            }&faild_url=${
+              typeof window !== "undefined" && window.location.origin
+                ? window.location.origin + "/payment-faild"
+                : ""
+            }`;
+            router.push(url);
+            localStorage.removeItem("coupon_set_date");
+            localStorage.removeItem("coupon");
+          } else if (selectPayment && selectPayment === "razorpay") {
+            const url = `${
+              process.env.NEXT_PUBLIC_BASE_URL
+            }user/checkout/razorpay-order?token=${
+              auth().access_token
+            }&shipping_method_id=${parseInt(
+              selectShippingRuleId
+            )}&shipping_address_id=${selectedShipping}&coupon=${
+              couponCode && couponCode.code
+            }&billing_address_id=${selectedBilling}`;
+            await axios
+              .get(url)
+              .then((res) => {
+                const order_id = res.data && res.data.order_id;
+                const amount = res.data && res.data.amount;
+                if (res.data) {
                   const provideUrl = `${
                     process.env.NEXT_PUBLIC_BASE_URL
-                  }user/checkout/phonepe-web-view?token=${
+                  }user/checkout/razorpay-web-view?token=${
                     auth().access_token
-                  }&amount=${mainTotalPrice}&master_order_id=${
-                    response.data.order[0].master_order_id
-                  }`;
+                  }&shipping_address_id=${selectedShipping}&coupon=${
+                    couponCode && couponCode.code
+                  }&billing_address_id=${selectedBilling}&shipping_method_id=${parseInt(
+                    selectShippingRuleId
+                  )}&frontend_success_url=${
+                    typeof window !== "undefined" && window.location.origin
+                      ? window.location.origin + "/order/"
+                      : ""
+                  }&frontend_faild_url=${
+                    typeof window !== "undefined" && window.location.origin
+                      ? window.location.origin + "/payment-faild"
+                      : ""
+                  }&request_from=react_web&amount=${amount}&order_id=${order_id}`;
                   router.push(provideUrl);
-                } catch (error) {
-                  console.error("Router push error:", error);
+                  localStorage.removeItem("coupon_set_date");
+                  localStorage.removeItem("coupon");
                 }
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          } else if (selectPayment && selectPayment === "flutterWave") {
+            const url = `${
+              process.env.NEXT_PUBLIC_BASE_URL
+            }user/checkout/flutterwave-web-view?token=${
+              auth().access_token
+            }&shipping_method_id=${parseInt(
+              selectShippingRuleId
+            )}&shipping_address_id=${selectedShipping}&coupon=${
+              couponCode && couponCode.code
+            }&billing_address_id=${selectedBilling}&request_from=react_web&frontend_success_url=${
+              typeof window !== "undefined" && window.location.origin
+                ? window.location.origin + "/order/"
+                : ""
+            }&frontend_faild_url=${
+              typeof window !== "undefined" && window.location.origin
+                ? window.location.origin + "/payment-faild"
+                : ""
+            }`;
+            router.push(url);
+            localStorage.removeItem("coupon_set_date");
+            localStorage.removeItem("coupon");
+          } else if (selectPayment && selectPayment === "mollie") {
+            const url = `${
+              process.env.NEXT_PUBLIC_BASE_URL
+            }user/checkout/pay-with-mollie?token=${
+              auth().access_token
+            }&shipping_method_id=${parseInt(
+              selectShippingRuleId
+            )}&shipping_address_id=${selectedShipping}&coupon=${
+              couponCode && couponCode.code
+            }&billing_address_id=${selectedBilling}&request_from=react_web&frontend_success_url=${
+              typeof window !== "undefined" && window.location.origin
+                ? window.location.origin + "/order/"
+                : ""
+            }&frontend_faild_url=${
+              typeof window !== "undefined" && window.location.origin
+                ? window.location.origin + "/payment-faild"
+                : ""
+            }`;
+            router.push(url);
+            localStorage.removeItem("coupon_set_date");
+            localStorage.removeItem("coupon");
+          } else if (selectPayment && selectPayment === "myfatoorah") {
+            const url = `${
+              process.env.NEXT_PUBLIC_BASE_URL
+            }user/checkout/myfatoorah-webview?token=${
+              auth().access_token
+            }&shipping_method_id=${parseInt(
+              selectShippingRuleId
+            )}&shipping_address_id=${selectedShipping}&coupon=${
+              couponCode && couponCode.code
+            }&billing_address_id=${selectedBilling}&request_from=react_web&frontend_success_url=${
+              typeof window !== "undefined" && window.location.origin
+                ? window.location.origin + "/order/"
+                : ""
+            }&frontend_faild_url=${
+              typeof window !== "undefined" && window.location.origin
+                ? window.location.origin + "/payment-faild"
+                : ""
+            }`;
+            router.push(url);
+            localStorage.removeItem("coupon_set_date");
+            localStorage.removeItem("coupon");
+          } else if (selectPayment && selectPayment === "instamojo") {
+            const url = `${
+              process.env.NEXT_PUBLIC_BASE_URL
+            }user/checkout/pay-with-instamojo?token=${
+              auth().access_token
+            }&shipping_method_id=${parseInt(
+              selectShippingRuleId
+            )}&shipping_address_id=${selectedShipping}&coupon=${
+              couponCode && couponCode.code
+            }&billing_address_id=${selectedBilling}&request_from=react_web&frontend_success_url=${
+              typeof window !== "undefined" && window.location.origin
+                ? window.location.origin + "/order/"
+                : ""
+            }&frontend_faild_url=${
+              typeof window !== "undefined" && window.location.origin
+                ? window.location.origin + "/payment-faild"
+                : ""
+            }`;
+            router.push(url);
+            localStorage.removeItem("coupon_set_date");
+            localStorage.removeItem("coupon");
+          } else if (selectPayment && selectPayment === "paystack") {
+            const url = `${
+              process.env.NEXT_PUBLIC_BASE_URL
+            }user/checkout/paystack-web-view?token=${
+              auth().access_token
+            }&shipping_method_id=${parseInt(
+              selectShippingRuleId
+            )}&shipping_address_id=${selectedShipping}&coupon=${
+              couponCode && couponCode.code
+            }&billing_address_id=${selectedBilling}&request_from=react_web&frontend_success_url=${
+              typeof window !== "undefined" && window.location.origin
+                ? window.location.origin + "/order/"
+                : ""
+            }&frontend_faild_url=${
+              typeof window !== "undefined" && window.location.origin
+                ? window.location.origin + "/payment-faild"
+                : ""
+            }`;
+            router.push(url);
+            localStorage.removeItem("coupon_set_date");
+            localStorage.removeItem("coupon");
+          } else if (selectPayment && selectPayment === "bankpayment") {
+            await apiRequest
+              .bankPayment(
+                {
+                  shipping_address_id: selectedShipping,
+                  billing_address_id: selectedBilling,
+                  shipping_method_id: parseInt(selectShippingRuleId),
+                  tnx_info: transactionInfo,
+                  coupon: couponCode && couponCode.code,
+                },
+                auth().access_token
+              )
+              .then((res) => {
+                if (res.data) {
+                  toast.success(res.data.message);
+                  router.push(`/order/${res.data.order_id}`);
+                  dispatch(fetchCart());
+                  localStorage.removeItem("coupon_set_date");
+                  localStorage.removeItem("coupon");
+                }
+              })
+              .catch((err) => {
+                console.log(err);
+                toast.success(err.response && err.response.message);
+              });
+          } else if (selectPayment && selectPayment === "sslcommerce") {
+            const url = `${
+              process.env.NEXT_PUBLIC_BASE_URL
+            }user/checkout/sslcommerz-web-view?token=${
+              auth().access_token
+            }&shipping_method_id=${parseInt(
+              selectShippingRuleId
+            )}&shipping_address_id=${selectedShipping}&coupon=${
+              couponCode && couponCode.code
+            }&billing_address_id=${selectedBilling}&request_from=react_web&frontend_success_url=${
+              typeof window !== "undefined" && window.location.origin
+                ? window.location.origin + "/order/"
+                : ""
+            }&frontend_faild_url=${
+              typeof window !== "undefined" && window.location.origin
+                ? window.location.origin + "/payment-faild"
+                : ""
+            }`;
+
+            router.push(url);
+            localStorage.removeItem("coupon_set_date");
+            localStorage.removeItem("coupon");
+          } else if (
+            selectPayment &&
+            (selectPayment === "debitCard" ||
+              selectPayment === "creditCard" ||
+              selectPayment === "netBanking" ||
+              selectPayment === "wallet")
+          ) {
+            const url = `${process.env.NEXT_PUBLIC_BASE_URL}user/checkout/phonepe-order?shipping_method_id=${selectShippingRuleId}&shipping_address_id=${selectedShipping}&billing_address_id=${selectedBilling}`;
+
+            const response = await axios({
+              method: "get",
+              url: url,
+              headers: { Authorization: `Bearer ${auth().access_token}` },
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            });
+
+            if (response) {
+              try {
+                const provideUrl = `${
+                  process.env.NEXT_PUBLIC_BASE_URL
+                }user/checkout/phonepe-web-view?token=${
+                  auth().access_token
+                }&amount=${mainTotalPrice}&master_order_id=${
+                  response.data.order[0].master_order_id
+                }`;
+                router.push(provideUrl);
+              } catch (error) {
+                console.error("Router push error:", error);
               }
-            } else {
-              toast.error(ServeLangItem()?.Select_your_payment_system);
             }
           } else {
-            toast.error(ServeLangItem()?.Please_Select_Your_Payment_Method);
+            toast.error(ServeLangItem()?.Select_your_payment_system);
           }
+        } else {
+          toast.error(ServeLangItem()?.Please_Select_Your_Payment_Method);
+        }
         // } else {
         //   toast.error(ServeLangItem()?.Please_Select_Shipping_Rule);
         // }
@@ -991,13 +987,16 @@ function CheakoutPage() {
         method: "get",
         url: `${process.env.NEXT_PUBLIC_BASE_URL}api/user/delhivery-pincode?filter_codes=${pincode}`,
       })
-        .then((res) => {      
+        .then((res) => {
           if (res.data.delivery_codes.length === 0) {
             setCheckDeliverable({ cod: false, pre_paid: false });
-        } else {
+          } else {
             const { cod, pre_paid } = res.data.delivery_codes[0].postal_code;
-            setCheckDeliverable({ cod: cod !== "N", pre_paid: pre_paid !== "N" });
-        }
+            setCheckDeliverable({
+              cod: cod !== "N",
+              pre_paid: pre_paid !== "N",
+            });
+          }
         })
         .catch((err) => {
           console.error(err);
@@ -1015,7 +1014,6 @@ function CheakoutPage() {
               isBecomeSeller={true}
               breadcrumb={[
                 { name: ServeLangItem()?.home, path: "/" },
-                { name: "Store", path: "/store" },
                 { name: ServeLangItem()?.Checkout, path: "/checkout" },
               ]}
             />
@@ -1074,7 +1072,10 @@ function CheakoutPage() {
                             addresses.length > 0 &&
                             addresses.map((address, i) => (
                               <div
-                                onClick={() => {setBilling(address.id);checkDeliveredAddress(address.zip_code)}}
+                                onClick={() => {
+                                  setBilling(address.id);
+                                  checkDeliveredAddress(address.zip_code);
+                                }}
                                 key={i}
                                 className={`w-full p-5 border cursor-pointer relative ${
                                   address.id === selectedBilling
@@ -1397,7 +1398,7 @@ function CheakoutPage() {
                                 ""
                               )}
                             </div>
-                            
+
                             <div className="sm:w-1/2 w-full">
                               <InputCom
                                 label={ServeLangItem()?.Phone_Number}
@@ -1408,20 +1409,18 @@ function CheakoutPage() {
                                 mandatory={true}
                                 patternValidation={"[1-9]{1}[0-9]{9}"}
                                 inputHandler={(e) => setPhone(e.target.value)}
-                                error={
-                                  (errors?.phone)
-                                }
+                                error={errors?.phone}
                               />
                               {phone && phone.length < 10 && (
                                 <span className="text-sm mt-1 text-qred">
                                   Please enter phone number 10 digit
                                 </span>
                               )}
-                               {phone && phone.length > 10 && (
-                              <span className="text-sm mt-1 text-qred">
-                                Please enter phone number 10 digit
-                              </span>
-                            )}
+                              {phone && phone.length > 10 && (
+                                <span className="text-sm mt-1 text-qred">
+                                  Please enter phone number 10 digit
+                                </span>
+                              )}
                               {errors && Object.hasOwn(errors, "phone") ? (
                                 <span className="text-sm mt-1 text-qred">
                                   {errors.phone}
@@ -1432,70 +1431,72 @@ function CheakoutPage() {
                             </div>
                           </div>
                           <div className="sm:space-x-5 items-center mb-6 flex sm:flex-nowrap flex-wrap">
-                          <div className="sm:w-1/2 w-full sm:mb-0 mb-5">
-                            <h1 className="input-label capitalize mb-2 text-white text-[13px] font-normal flex">
-                              {ServeLangItem()?.Country}{" "}
-                              <span className={"text-red-600 ml-1"}>*</span>
-                            </h1>
-                            <div
-                              className={`w-full h-[45px] border bg-white px-5 flex justify-between items-center mb-2 ${
-                                (errors?.country)
-                                  ? "border-qred"
-                                  : "border-[#EDEDED]"
-                              }`}
-                            >
-                              <Selectbox
-                                action={getState}
-                                className="w-full"    
-                                defaultValue={
-                                  countryDropdown &&
-                                  countryDropdown.length > 0 &&
-                                  (function () {
-                                    let item =
-                                      countryDropdown.length > 0 &&
-                                      countryDropdown.find(
-                                        (item) => parseInt(item.id) === parseInt(country)
-                                      );
-                                    return item ? item.name : "Select";
-                                  })()
-                                }
-                                datas={countryDropdown && countryDropdown}
+                            <div className="sm:w-1/2 w-full sm:mb-0 mb-5">
+                              <h1 className="input-label capitalize mb-2 text-white text-[13px] font-normal flex">
+                                {ServeLangItem()?.Country}{" "}
+                                <span className={"text-red-600 ml-1"}>*</span>
+                              </h1>
+                              <div
+                                className={`w-full h-[45px] border bg-white px-5 flex justify-between items-center mb-2 ${
+                                  errors?.country
+                                    ? "border-qred"
+                                    : "border-[#EDEDED]"
+                                }`}
                               >
-                                {({ item }) => (
-                                  <>
-                                    <div className="flex justify-between items-center w-full">
-                                      <div>
-                                        <span className="text-[13px] text-qblack">
-                                          {item}
+                                <Selectbox
+                                  action={getState}
+                                  className="w-full"
+                                  defaultValue={
+                                    countryDropdown &&
+                                    countryDropdown.length > 0 &&
+                                    (function () {
+                                      let item =
+                                        countryDropdown.length > 0 &&
+                                        countryDropdown.find(
+                                          (item) =>
+                                            parseInt(item.id) ===
+                                            parseInt(country)
+                                        );
+                                      return item ? item.name : "Select";
+                                    })()
+                                  }
+                                  datas={countryDropdown && countryDropdown}
+                                >
+                                  {({ item }) => (
+                                    <>
+                                      <div className="flex justify-between items-center w-full">
+                                        <div>
+                                          <span className="text-[13px] text-qblack">
+                                            {item}
+                                          </span>
+                                        </div>
+                                        <span>
+                                          <svg
+                                            width="11"
+                                            height="7"
+                                            viewBox="0 0 11 7"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          >
+                                            <path
+                                              d="M5.4 6.8L0 1.4L1.4 0L5.4 4L9.4 0L10.8 1.4L5.4 6.8Z"
+                                              fill="#222222"
+                                            />
+                                          </svg>
                                         </span>
                                       </div>
-                                      <span>
-                                        <svg
-                                          width="11"
-                                          height="7"
-                                          viewBox="0 0 11 7"
-                                          fill="none"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                          <path
-                                            d="M5.4 6.8L0 1.4L1.4 0L5.4 4L9.4 0L10.8 1.4L5.4 6.8Z"
-                                            fill="#222222"
-                                          />
-                                        </svg>
-                                      </span>
-                                    </div>
-                                  </>
-                                )}
-                              </Selectbox>
-                            </div>
-                            
-                            {country === null  ? (
-                              <span className="text-sm mt-1 text-qred">
-                                {errors?.country}
-                              </span>
-                            ) : (
-                              ""
-                            )}
+                                    </>
+                                  )}
+                                </Selectbox>
+                              </div>
+
+                              {country === null ? (
+                                <span className="text-sm mt-1 text-qred">
+                                  {errors?.country}
+                                </span>
+                              ) : (
+                                ""
+                              )}
                             </div>
                             <div className="sm:w-1/2 w-full">
                               <h1 className="input-label capitalize block  mb-2 text-white text-[13px] font-normal">
@@ -1504,7 +1505,7 @@ function CheakoutPage() {
                               </h1>
                               <div
                                 className={`w-full h-[45px] border bg-white px-5 flex justify-between items-center mb-2 ${
-                                  (errors?.state)
+                                  errors?.state
                                     ? "border-qred"
                                     : "border-[#EDEDED]"
                                 }`}
@@ -1551,7 +1552,7 @@ function CheakoutPage() {
                               )}
                             </div>
                           </div>
-                          <div className="flex sm:space-x-5 items-center mb-6 sm:flex-nowrap flex-wrap">                          
+                          <div className="flex sm:space-x-5 items-center mb-6 sm:flex-nowrap flex-wrap">
                             <div className="sm:w-1/2 w-full sm:mb-0 mb-5">
                               <div className="input-item">
                                 <h1 className="input-label capitalize block  mb-2 text-white text-[13px] font-normal">
@@ -1560,7 +1561,7 @@ function CheakoutPage() {
                                 </h1>
                                 <div
                                   className={`w-full h-[45px] border px-5 flex justify-between items-center mb-0 bg-white ${
-                                    (errors?.city)
+                                    errors?.city
                                       ? "border-qred"
                                       : "border-[#EDEDED]"
                                   }`}
@@ -1598,7 +1599,7 @@ function CheakoutPage() {
                                     )}
                                   </Selectbox>
                                 </div>
-                                {errors && errors.city? (
+                                {errors && errors.city ? (
                                   <span className="text-sm mt-1 text-qred">
                                     {errors.city}
                                   </span>
@@ -1627,38 +1628,36 @@ function CheakoutPage() {
                               </div>
                             </div>
                             <div className="sm:w-1/2 w-full">
-                            <InputCom
-                              label={"Zip Code"}
-                              placeholder="123123"
-                              type={"number"}
-                              inputClasses="w-full h-[50px] py-3"
-                              labelClasses={"text-white text-[13px]"}
-                              value={pincode}
-                              mandatory={true}
-                              patternValidation={"[1-6]{1}[0-6]{6}"}
-                              inputHandler={(e) => {
-                                setPincode(e.target.value);
-                                checkDeliveredAddress(e.target.value);
-                              }}
-                              error={
-                                (errors?.pincode)
-                              }
-                            />
-                            {pincode && (pincode.length < 6 || pincode.length > 6) &&(
-                              <span className="text-sm mt-1 text-qred">
-                                Please enter zip code number 6 digit
-                              </span>
-                            )}
-                            {errors && Object.hasOwn(errors, "pincode") ? (
-                              <span className="text-sm mt-1 text-qred">
-                                {errors.pincode}
-                              </span>
-                            ) : (
-                              ""
-                            )}
+                              <InputCom
+                                label={"Zip Code"}
+                                placeholder="123123"
+                                type={"number"}
+                                inputClasses="w-full h-[50px] py-3"
+                                labelClasses={"text-white text-[13px]"}
+                                value={pincode}
+                                mandatory={true}
+                                patternValidation={"[1-6]{1}[0-6]{6}"}
+                                inputHandler={(e) => {
+                                  setPincode(e.target.value);
+                                  checkDeliveredAddress(e.target.value);
+                                }}
+                                error={errors?.pincode}
+                              />
+                              {pincode &&
+                                (pincode.length < 6 || pincode.length > 6) && (
+                                  <span className="text-sm mt-1 text-qred">
+                                    Please enter zip code number 6 digit
+                                  </span>
+                                )}
+                              {errors && Object.hasOwn(errors, "pincode") ? (
+                                <span className="text-sm mt-1 text-qred">
+                                  {errors.pincode}
+                                </span>
+                              ) : (
+                                ""
+                              )}
+                            </div>
                           </div>
-                          </div>
-                          
 
                           <div className=" mb-6">
                             <div className="w-full py-3">
@@ -1668,9 +1667,7 @@ function CheakoutPage() {
                                 {ServeLangItem()?.Address}{" "}
                                 <span className={"text-red-600 ml-1"}>*</span>
                               </label>
-                              <div
-                                className="input-wrapper w-full h-full overflow-hidden relative"
-                              >
+                              <div className="input-wrapper w-full h-full overflow-hidden relative">
                                 <textarea
                                   value={address}
                                   onChange={(e) => setAddress(e.target.value)}
@@ -1678,7 +1675,9 @@ function CheakoutPage() {
                                   placeholder={
                                     ServeLangItem()?.your_address_here
                                   }
-                                  className={`w-full h-[50px] py-3 px-6 ${errors?.address ?"border border-qred":''}`}
+                                  className={`w-full h-[50px] py-3 px-6 ${
+                                    errors?.address ? "border border-qred" : ""
+                                  }`}
                                   name="address"
                                 />
                               </div>
@@ -1737,9 +1736,19 @@ function CheakoutPage() {
                             onClick={saveAddress}
                             type="button"
                             className="w-full h-[50px]"
-                            disabled={!checkDeliverable.cod && !checkDeliverable.pre_paid}
+                            disabled={
+                              !checkDeliverable.cod &&
+                              !checkDeliverable.pre_paid
+                            }
                           >
-                            <div className={` ${!checkDeliverable.cod && !checkDeliverable.pre_paid ? 'bg-gray-400 p-3' : 'yellow-btn'}`}>
+                            <div
+                              className={` ${
+                                !checkDeliverable.cod &&
+                                !checkDeliverable.pre_paid
+                                  ? "bg-gray-400 p-3"
+                                  : "yellow-btn"
+                              }`}
+                            >
                               <span className="text-sm">Save Address</span>
                               {loading && (
                                 <span
@@ -2197,50 +2206,47 @@ function CheakoutPage() {
                               )}
                             </div>
                           ))} */}
-                          <div className="flex justify-between items-center">
-                                          <div className="flex space-x-2.5 rtl:space-x-reverse items-center">
-                                            <div className="input-radio">
-                                              <input
-                                                //     onChange={(e) =>
-                                                //      selectedRuleHandler(
-                                                //         e,
-                                                //         rule.shipping_fee
-                                                //       )
-                                                //     }
-                                                // ref={() => {
-                                                //   selectShippingRule.current.selectShippingRuleId =
-                                                //     0;
-                                                //   selectShippingRule.current.selectShippingFee =
-                                                //     0;
-                                                // }}
-                                                defaultChecked={0}
-                                                value={0}
-                                                type="radio"
-                                                name="price"
-                                                className="accent-pink-500 hidden"
-                                              />
-                                              <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="24"
-                                                height="24"
-                                                viewBox="0 0 24 24"
-                                                className="w-6 h-6 mr-2 text-green-500 rounded"
-                                              >
-                                                <path
-                                                  fill="green"
-                                                  d="M0 0h24v24H0z"
-                                                />
-                                                <path
-                                                  d="M9 16.2l-3.8-3.8-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"
-                                                  fill="white"
-                                                />
-                                              </svg>
-                                            </div>
-                                            <span className="text-[15px] text-normal text-white">
-                                              Free Shipping
-                                            </span>
-                                          </div>
-                                          {/* <span
+                        <div className="flex justify-between items-center">
+                          <div className="flex space-x-2.5 rtl:space-x-reverse items-center">
+                            <div className="input-radio">
+                              <input
+                                //     onChange={(e) =>
+                                //      selectedRuleHandler(
+                                //         e,
+                                //         rule.shipping_fee
+                                //       )
+                                //     }
+                                // ref={() => {
+                                //   selectShippingRule.current.selectShippingRuleId =
+                                //     0;
+                                //   selectShippingRule.current.selectShippingFee =
+                                //     0;
+                                // }}
+                                defaultChecked={0}
+                                value={0}
+                                type="radio"
+                                name="price"
+                                className="accent-pink-500 hidden"
+                              />
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                className="w-6 h-6 mr-2 text-green-500 rounded"
+                              >
+                                <path fill="green" d="M0 0h24v24H0z" />
+                                <path
+                                  d="M9 16.2l-3.8-3.8-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"
+                                  fill="white"
+                                />
+                              </svg>
+                            </div>
+                            <span className="text-[15px] text-normal text-white">
+                              Free Shipping
+                            </span>
+                          </div>
+                          {/* <span
                                             suppressHydrationWarning
                                             className="text-[15px] text-normal text-white"
                                           >
@@ -2249,7 +2255,7 @@ function CheakoutPage() {
                                                 rule.shipping_fee
                                               : rule.shipping_fee}
                                           </span> */}
-                                        </div>
+                        </div>
                       </div>
                     </div>
                     <div className="mt-[30px]">
@@ -2312,7 +2318,7 @@ function CheakoutPage() {
                               )}
                             </div>
                           )}
-                          {checkDeliverable.pre_paid && 
+                          {checkDeliverable.pre_paid && (
                             <div
                               onClick={() => setPaymentMethod("debitCard")}
                               className={`payment-item relative bg-[#F8F8F8] text-center w-full h-[50px] text-sm text-qgreen flex justify-center items-center px-3 uppercase cursor-pointer
@@ -2348,9 +2354,9 @@ function CheakoutPage() {
                                 </span>
                               )}
                             </div>
-                          }
+                          )}
 
-                          {checkDeliverable.pre_paid && 
+                          {checkDeliverable.pre_paid && (
                             <div
                               onClick={() => setPaymentMethod("creditCard")}
                               className={`payment-item relative bg-[#F8F8F8] text-center w-full h-[50px] text-sm text-qgreen flex justify-center items-center px-3 uppercase cursor-pointer
@@ -2386,9 +2392,9 @@ function CheakoutPage() {
                                 </span>
                               )}
                             </div>
-                          }
+                          )}
 
-                          {checkDeliverable.pre_paid && 
+                          {checkDeliverable.pre_paid && (
                             <div
                               onClick={() => setPaymentMethod("netBanking")}
                               className={`payment-item relative bg-[#F8F8F8] text-center w-full h-[50px] text-sm text-qgreen flex justify-center items-center px-3 uppercase cursor-pointer
@@ -2424,8 +2430,8 @@ function CheakoutPage() {
                                 </span>
                               )}
                             </div>
-                          }
-                          {checkDeliverable.pre_paid && 
+                          )}
+                          {checkDeliverable.pre_paid && (
                             <div
                               onClick={() => setPaymentMethod("wallet")}
                               className={`payment-item relative bg-[#F8F8F8] text-center w-full h-[50px] text-sm text-qgreen flex justify-center items-center px-3 uppercase cursor-pointer
@@ -2461,7 +2467,7 @@ function CheakoutPage() {
                                 </span>
                               )}
                             </div>
-                          }
+                          )}
                           {stripeStatus && (
                             <div
                               onClick={() => setPaymentMethod("stripe")}
@@ -3174,9 +3180,17 @@ function CheakoutPage() {
                       type="button"
                       onClick={placeOrderHandler}
                       className="w-full"
-                      disabled={!checkDeliverable.cod && !checkDeliverable.pre_paid}
+                      disabled={
+                        !checkDeliverable.cod && !checkDeliverable.pre_paid
+                      }
                     >
-                      <div className={`w-full h-[50px] flex justify-center items-center ${!checkDeliverable.cod && !checkDeliverable.pre_paid ? 'bg-gray-400' : 'bg-orange-600'}`}>
+                      <div
+                        className={`w-full h-[50px] flex justify-center items-center ${
+                          !checkDeliverable.cod && !checkDeliverable.pre_paid
+                            ? "bg-gray-400"
+                            : "bg-orange-600"
+                        }`}
+                      >
                         <span className="text-sm font-semibold">
                           {ServeLangItem()?.Place_Order_Now}
                         </span>

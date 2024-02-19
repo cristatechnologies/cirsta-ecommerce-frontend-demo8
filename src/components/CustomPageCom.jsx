@@ -17,25 +17,27 @@ function CustomPageCom({ slug }) {
   const router = useRouter();
   useEffect(() => {
     if (websiteSetup) {
-        const checkPageIsExist = websiteSetup.payload.customPages.find((item) => {
-            return item.slug === slug;
-        });
+      const checkPageIsExist = websiteSetup.payload.customPages.find((item) => {
+        return item.slug === slug;
+      });
 
-        const checkSellerPageExist = websiteSetup.payload.customPages.find((item) => {
-          if(item.seller_id!==null){
-            return item.slug===slug.split('/')[1];
+      const checkSellerPageExist = websiteSetup.payload.customPages.find(
+        (item) => {
+          if (item.seller_id !== null) {
+            return item.slug === slug.split("/")[1];
           }
-        });
-
-        if (checkPageIsExist) {
-            setPageData(checkPageIsExist);
-        } else if (checkSellerPageExist) {
-            setPageData(checkSellerPageExist);
-        } else {
-            router.push("/404");
         }
+      );
+
+      if (checkPageIsExist) {
+        setPageData(checkPageIsExist);
+      } else if (checkSellerPageExist) {
+        setPageData(checkSellerPageExist);
+      } else {
+        router.push("/404");
+      }
     }
-}, [slug, websiteSetup]);
+  }, [slug, websiteSetup]);
 
   return (
     <>
@@ -47,7 +49,6 @@ function CustomPageCom({ slug }) {
               <PageTitle
                 breadcrumb={[
                   { name: ServeLangItem()?.home, path: "/" },
-                  { name: "store", path: "/store" },
                   {
                     name: pageData.page_name,
                     path: `${pageData.slug}`,
@@ -65,7 +66,7 @@ function CustomPageCom({ slug }) {
                   dangerouslySetInnerHTML={{
                     __html: pageData.description,
                   }}
-                  style={{color:"black !important"}}
+                  style={{ color: "black !important" }}
                   className="p-10"
                 ></div>
               )}

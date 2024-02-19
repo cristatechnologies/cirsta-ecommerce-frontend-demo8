@@ -2,8 +2,8 @@ import BreadcrumbCom from "../BreadcrumbCom";
 import Layout from "../Partials/Layout";
 import ErrorThumb from "./ErrorThumb";
 import Link from "next/link";
-import {useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import ServeLangItem from "../Helpers/ServeLangItem";
 export default function FourZeroFour() {
@@ -12,7 +12,9 @@ export default function FourZeroFour() {
   useEffect(() => {
     if (!siteDate) {
       if (websiteSetup) {
-        setSiteDate(websiteSetup && websiteSetup?.payload.image_content.error_page);
+        setSiteDate(
+          websiteSetup && websiteSetup?.payload.image_content.error_page
+        );
       }
     }
   }, [siteDate, websiteSetup]);
@@ -26,25 +28,25 @@ export default function FourZeroFour() {
               <div>
                 <div className="sm:mb-10 mb-0 transform sm:scale-100 scale-50">
                   {siteDate && (
-                      <div className="w-[338px] h-[475px] relative">
-                        <Image
-                            layout="fill"
-                            objectFit="scale-down"
-                            src={process.env.NEXT_PUBLIC_BASE_URL + siteDate}
-                            alt="404"
-                        />
-                      </div>
+                    <div className="w-[338px] h-[475px] relative">
+                      <Image
+                        layout="fill"
+                        objectFit="scale-down"
+                        src={process.env.NEXT_PUBLIC_BASE_URL + siteDate}
+                        alt="404"
+                      />
+                    </div>
                   )}
                 </div>
                 <div data-aos="fade-up" className="empty-content w-full">
                   <h1 className="sm:text-xl text-base font-semibold text-center mb-5 text-white">
                     {ServeLangItem()?.Sorry_We_cantt_Find_that_page}
                   </h1>
-                  <Link href="/store">
+                  <Link href="/">
                     <div className="flex justify-center w-full ">
                       <div className="w-[180px] h-[50px] ">
                         <span type="button" className="yellow-btn">
-                          {ServeLangItem()?.Back_to_Shop}
+                          {ServeLangItem()?.home}
                         </span>
                       </div>
                     </div>

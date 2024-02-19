@@ -8,7 +8,12 @@ import PageTitle from "../../Helpers/PageTitle";
 import Layout from "../../Partials/Layout";
 import CommentBlog from "./CommentBlog";
 import { useRouter } from "next/router";
-import { FacebookShareButton, TwitterShareButton, WhatsappIcon, WhatsappShareButton } from "react-share";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappIcon,
+  WhatsappShareButton,
+} from "react-share";
 import ServeLangItem from "../../Helpers/ServeLangItem";
 export default function Blog({ details }) {
   const router = useRouter();
@@ -94,7 +99,6 @@ export default function Blog({ details }) {
             title="Blog Details"
             breadcrumb={[
               { name: ServeLangItem()?.home, path: "/" },
-              { name: "Store", path: "/store" },
               { name: ServeLangItem()?.blogs, path: "/blogs" },
               {
                 name: details && details.blog.slug,
@@ -136,7 +140,7 @@ export default function Blog({ details }) {
                         </svg>
                       </span>
                       <span className="text-base text-white capitalize">
-                      By kalalay
+                        By kalalay
                       </span>
                     </div>
                     {/* <div className="flex space-x-1.5 rtl:space-x-reverse items-center">
@@ -397,7 +401,7 @@ export default function Blog({ details }) {
                             </span>
                           </FacebookShareButton>
                           <WhatsappShareButton
-                             url={`${
+                            url={`${
                               typeof window !== "undefined" &&
                               window.location.origin &&
                               window.location.origin +
@@ -405,61 +409,59 @@ export default function Blog({ details }) {
                                 details.blog.slug
                             }`}
                             quotes={details.blog.title}
-                            >
-                          <WhatsappIcon width={34} height={34} round/>
+                          >
+                            <WhatsappIcon width={34} height={34} round />
                           </WhatsappShareButton>
                         </div>
-                        
                       </div>
-                      
                     </div>
                     <div
-                  // data-aos="fade-up"
-                  className="w-full h-[358px]"
-                  style={{
-                    background: `url(/assets/images/new-letter.jpg) no-repeat`,
-                    backgroundSize: "cover",
-                  }}
-                >
-                  <div className="w-full h-full p-[30px] bg-black bg-opacity-75 flex flex-col justify-between">
-                    <div>
-                      <h1 className="text-[22px] text-white font-bold mb-5">
-                        {ServeLangItem()?.Our_Newsletter}
-                      </h1>
-                      <div className="w-full h-[1px] bg-[#615B9C] mb-5"></div>
-                      <p className="text-base text-white leading-[26px] line-clamp-2">
-                        {
-                          ServeLangItem()
-                            ?.Follow_our_newsletter_to_stay_updated_about_us
-                        }
-                        .
-                      </p>
-                    </div>
-                    <div>
-                      <div className="w-full mb-3.5">
-                        <input
-                          onChange={(e) => setEmail(e.target.value.trim())}
-                          value={email}
-                          type="text"
-                          className="w-full h-[60px] bg-[#ECEAEC] pl-5 rtl:pr-5 focus:outline-none focus:ring-0 placeholder:text-[#9A9A9A]"
-                          placeholder="Enter Your Email Address"
-                        />
+                      // data-aos="fade-up"
+                      className="w-full h-[358px]"
+                      style={{
+                        background: `url(/assets/images/new-letter.jpg) no-repeat`,
+                        backgroundSize: "cover",
+                      }}
+                    >
+                      <div className="w-full h-full p-[30px] bg-black bg-opacity-75 flex flex-col justify-between">
+                        <div>
+                          <h1 className="text-[22px] text-white font-bold mb-5">
+                            {ServeLangItem()?.Our_Newsletter}
+                          </h1>
+                          <div className="w-full h-[1px] bg-[#615B9C] mb-5"></div>
+                          <p className="text-base text-white leading-[26px] line-clamp-2">
+                            {
+                              ServeLangItem()
+                                ?.Follow_our_newsletter_to_stay_updated_about_us
+                            }
+                            .
+                          </p>
+                        </div>
+                        <div>
+                          <div className="w-full mb-3.5">
+                            <input
+                              onChange={(e) => setEmail(e.target.value.trim())}
+                              value={email}
+                              type="text"
+                              className="w-full h-[60px] bg-[#ECEAEC] pl-5 rtl:pr-5 focus:outline-none focus:ring-0 placeholder:text-[#9A9A9A]"
+                              placeholder="Enter Your Email Address"
+                            />
+                          </div>
+                          <button
+                            onClick={subscribehandler}
+                            type="button"
+                            className="w-full h-[60px]"
+                          >
+                            <span
+                              className="yellow-btn w-full h-full"
+                              style={{ fontSize: "18px" }}
+                            >
+                              {ServeLangItem()?.Subscribe}
+                            </span>
+                          </button>
+                        </div>
                       </div>
-                      <button
-                        onClick={subscribehandler}
-                        type="button"
-                        className="w-full h-[60px]"
-                      >
-                        <span
-                          className="yellow-btn w-full h-full"
-                          style={{ fontSize: "18px" }}
-                        >
-                          {ServeLangItem()?.Subscribe}
-                        </span>
-                      </button>
                     </div>
-                  </div>
-                </div>
                     {/* <div>
                       <CommentBlog
                         comments={rsComments}

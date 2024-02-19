@@ -29,11 +29,11 @@ function Wishlist() {
     }
     return false;
   };
-  
+
   useEffect(() => {
-      dispatch(fetchWishlist()); 
-  }, [])
-  
+    dispatch(fetchWishlist());
+  }, []);
+
   return (
     <>
       {wishlists && wishlists.data.length === 0 ? (
@@ -42,7 +42,6 @@ function Wishlist() {
             <BreadcrumbCom
               paths={[
                 { name: ServeLangItem()?.home, path: "/" },
-                { name: "Store", path: "/store" },
                 { name: ServeLangItem()?.Wishlist, path: "/wishlist" },
               ]}
             />
@@ -56,7 +55,6 @@ function Wishlist() {
               title="Wishlist"
               breadcrumb={[
                 { name: ServeLangItem()?.home, path: "/" },
-                { name: "Store", path: "/store" },
                 { name: ServeLangItem()?.Wishlist, path: "/wishlist" },
               ]}
               isBecomeSeller={true}
