@@ -106,7 +106,7 @@ export default function StorePage({ homepageData }) {
             />
           </ViewMoreTitle>
         )} */}
-        {homepage && isMultivendor === 1 && (
+        {/* {homepage && isMultivendor === 1 && (
           <ViewMoreTitle
             className="best-sallers-section md:mb-[60px] mb-[30px]"
             seeMoreUrl="/sellers"
@@ -116,7 +116,7 @@ export default function StorePage({ homepageData }) {
               sallers={homepage.sellers.length > 0 ? homepage.sellers.slice(0,7) : []}
             />
           </ViewMoreTitle>
-        )}
+        )} */}
 
         {/* {homepage && (
           <TwoColumnAds
