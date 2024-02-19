@@ -1,10 +1,10 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import Link from 'next/link';
-import Image from 'next/image';
-import FontAwesomeCom from '../Helpers/icons/FontAwesomeCom';
-import ServeLangItem from '../Helpers/ServeLangItem';
-import Arrow from '../Helpers/icons/Arrow';
+import React from "react";
+import { useSelector } from "react-redux";
+import Link from "next/link";
+import Image from "next/image";
+import FontAwesomeCom from "../Helpers/icons/FontAwesomeCom";
+import ServeLangItem from "../Helpers/ServeLangItem";
+import Arrow from "../Helpers/icons/Arrow";
 
 function CategorySection({ sectionTitle, categories }) {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
@@ -50,7 +50,7 @@ function CategorySection({ sectionTitle, categories }) {
               >
                 <Link
                   href={{
-                    pathname: '/products',
+                    pathname: "/products",
                     query: { category: item.slug },
                   }}
                   passHref
@@ -64,9 +64,7 @@ function CategorySection({ sectionTitle, categories }) {
                             icon={item.icon}
                           />
                         </span>
-                        <span className="text-xs font-400">
-                          {item.name}
-                        </span>
+                        <span className="text-xs font-400">{item.name}</span>
                       </div>
                       {item.active_sub_categories.length > 0 && (
                         <div>
@@ -102,7 +100,7 @@ function CategorySection({ sectionTitle, categories }) {
                 </Link>
 
                 {item.active_sub_categories.length > 0 && (
-                  <ul className="hidden group-hover/parent:block border border-black-800 z-10 absolute ltr:left-[260px] lg:ltr:left-[260px] sm:ltr:left-[200px] w-[270px] bg-slate-100 top-0 min-h-[576px] h-auto">
+                  <ul className="hidden group-hover/parent:block border border-black-800 z-10 absolute ltr:left-[260px] lg:ltr:left-[260px] sm:ltr:left-[200px] w-[270px] bg-slate-100 top-0 h-[612px] overflow-auto">
                     {item.active_sub_categories.map((subItems) => (
                       <li
                         key={subItems.id}
@@ -110,7 +108,7 @@ function CategorySection({ sectionTitle, categories }) {
                       >
                         <Link
                           href={{
-                            pathname: '/products',
+                            pathname: "/products",
                             query: { category: item.slug },
                           }}
                           passHref
@@ -164,7 +162,7 @@ function CategorySection({ sectionTitle, categories }) {
                                 >
                                   <Link
                                     href={{
-                                      pathname: '/products',
+                                      pathname: "/products",
                                       query: { category: item.slug },
                                     }}
                                     passHref
@@ -209,13 +207,13 @@ function CategorySection({ sectionTitle, categories }) {
                 .map((item, i) => (
                   <div
                     data-aos="fade-left"
-                    data-aos-delay={i + '00'}
+                    data-aos-delay={i + "00"}
                     key={i}
                     className="item w-full cursor-pointer group"
                   >
                     <Link
                       href={{
-                        pathname: '/products',
+                        pathname: "/products",
                         query: { category: item.slug },
                       }}
                       passhref
