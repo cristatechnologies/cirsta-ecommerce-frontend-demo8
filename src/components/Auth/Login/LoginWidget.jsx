@@ -12,6 +12,8 @@ import { fetchWishlist } from "../../../store/wishlistData";
 import ServeLangItem from "../../Helpers/ServeLangItem";
 import LoginContext from "../../Contexts/LoginContext";
 import axios from "axios";
+import { IcoCloseEye } from "../Profile/icons/IcoCloseEye";
+import { IcoOpenEye } from "../Profile/icons/IcoOpenEye";
 const SEND = ({ action }) => {
   return (
     <div>
@@ -40,6 +42,7 @@ function LoginWidget({ redirect = true, loginActionPopup, notVerifyHandler }) {
   const [errors, setErrors] = useState(null);
   const [googleUrl, setGoogleUrl] = useState(null);
   const [faceBookUrl, setFaceBookUrl] = useState(null);
+  const [isShowPassword, setIsShowPassword] = useState(false);
   const rememberMe = () => {
     setValue(!checked);
   };
@@ -125,6 +128,7 @@ function LoginWidget({ redirect = true, loginActionPopup, notVerifyHandler }) {
         console.log(er);
       });
   }, []);
+
   return (
     <div className="w-full">
       <div className="title-area flex flex-col justify-center items-center relative text-center mb-7">
@@ -159,17 +163,23 @@ function LoginWidget({ redirect = true, loginActionPopup, notVerifyHandler }) {
             value={email}
           />
         </div>
-        <div className="input-item mb-5">
+        <div className="input-item mb-5 relative">
           <InputCom
             placeholder="* * * * * *"
             label={ServeLangItem()?.Password}
             name="password"
             mandatory={true}
-            type="password"
-            inputClasses="h-[50px] py-3"
+            type={isShowPassword ? "text" : "password"}
+            inputClasses="h-[50px] py-3 relative"
             inputHandler={(e) => setPassword(e.target.value)}
             value={password}
           />
+          <div
+            className="absolute top-10 right-5"
+            onClick={() => setIsShowPassword(!isShowPassword)}
+          >
+            {isShowPassword ? <IcoOpenEye /> : <IcoCloseEye />}
+          </div>
         </div>
         <div className="forgot-password-area flex justify-between items-center mb-7">
           <div className="remember-checkbox flex items-center space-x-2.5 rtl:space-x-reverse">

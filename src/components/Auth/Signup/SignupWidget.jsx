@@ -10,6 +10,8 @@ import settings from "../../../../utils/settings";
 import Image from "next/image";
 import countries from "../../../data/CountryCodes.json";
 import axios from "axios";
+import { IcoOpenEye } from "../Profile/icons/IcoOpenEye";
+import { IcoCloseEye } from "../Profile/icons/IcoCloseEye";
 
 function SignupWidget({ redirect = true, signupActionPopup, changeContent }) {
   const router = useRouter();
@@ -30,6 +32,8 @@ function SignupWidget({ redirect = true, signupActionPopup, changeContent }) {
   const [faceBookUrl, setFaceBookUrl] = useState(null);
   const [twitterUrl, setTwitterUrl] = useState(null);
   const [isValidEmail, setIsValidEmail] = useState(true);
+  const [isShowPassword, setIsShowPassword] = useState(false);
+  const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false);
 
   const selectCountryhandler = (value) => {
     setSelectedCountry(value.code);
@@ -310,7 +314,7 @@ function SignupWidget({ redirect = true, signupActionPopup, changeContent }) {
               label={ServeLangItem()?.Password}
               name="password"
               mandatory={true}
-              type="password"
+              type={isShowPassword ? "text" : "password"}
               id="password"
               inputClasses="h-[50px] py-3"
               value={password}
@@ -320,6 +324,12 @@ function SignupWidget({ redirect = true, signupActionPopup, changeContent }) {
                 setErrors({ ...errors, password: [null] });
               }}
             />
+            <div
+              className="absolute top-10 right-5"
+              onClick={() => setIsShowPassword(!isShowPassword)}
+            >
+              {isShowPassword ? <IcoOpenEye /> : <IcoCloseEye />}
+            </div>
             {password && password.length < 8 ? (
               <span className="text-sm mt-1 text-qred absolute top-20 left-0">
                 Please enter password minimum 8 character
@@ -342,7 +352,7 @@ function SignupWidget({ redirect = true, signupActionPopup, changeContent }) {
               name="confirm_password"
               mandatory={true}
               id="confirm_password"
-              type="password"
+              type={isShowConfirmPassword ? "text" : "password"}
               inputClasses="h-[50px] py-3"
               value={confirmPassword}
               inputHandler={(e) => {
@@ -351,6 +361,12 @@ function SignupWidget({ redirect = true, signupActionPopup, changeContent }) {
                 setIsConfirmPassCorrect(password !== e.target.value);
               }}
             />
+            <div
+              className="absolute top-10 right-5"
+              onClick={() => setIsShowConfirmPassword(!isShowConfirmPassword)}
+            >
+              {isShowConfirmPassword ? <IcoOpenEye /> : <IcoCloseEye />}
+            </div>
             {confirmPassword && confirmPassword.length < 8 ? (
               <span className="text-sm mt-1 text-qred absolute top-20 left-0">
                 Please enter confirm password minimum 8 character
