@@ -64,13 +64,13 @@ export default function AddressesTab() {
   }, []);
   const getState = async (value) => {
     if (auth() && value) {
-      const countryId = value.id ? value.id : country
+      const countryId = value.id ? value.id : country;
       setCountry(countryId);
       await axios
         .get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}api/user/state-by-country/${
-            countryId
-          }?token=${auth().access_token}`
+          `${
+            process.env.NEXT_PUBLIC_BASE_URL
+          }api/user/state-by-country/${countryId}?token=${auth().access_token}`
         )
         .then((res) => {
           setCityDropdown(null);
@@ -228,6 +228,7 @@ export default function AddressesTab() {
     setAddress("");
     setHome(true);
     setOffice(false);
+    setPincode("");
     // setCountry(null);
     setState(null);
     setcity(null);
@@ -313,11 +314,11 @@ export default function AddressesTab() {
                     inputHandler={(e) => handleInputChange(e.target.value)}
                     error={!!(errors && Object.hasOwn(errors, "email"))}
                   />
-                    {!isValidEmail && (
-                      <p className="text-sm mt-1 text-qred">
-                        Please enter a valid email address
-                      </p>
-                    )}
+                  {!isValidEmail && (
+                    <p className="text-sm mt-1 text-qred">
+                      Please enter a valid email address
+                    </p>
+                  )}
                   {errors && Object.hasOwn(errors, "email") ? (
                     <span className="text-sm mt-1 text-qred">
                       {errors.email[0]}
@@ -327,23 +328,25 @@ export default function AddressesTab() {
                   )}
                 </div>
                 <div className="sm:w-1/2 w-full">
-                    <InputCom
-                      placeholder="0213 *********"
-                      label={ServeLangItem()?.phone}
-                      name="phone"
-                      type="number"
-                      inputClasses="!h-[50px] py-3"
-                      mandatory={true}
-                      value={phone}
-                      patternValidation={'[1-9]{1}[0-9]{9}'}
-                      inputHandler={(e) => {e.target.value.length <=10 && setPhone(e.target.value)}}
-                      error={!!(errors && Object.hasOwn(errors, "phone"))}
-                    />
-                    {phone&& phone.length < 10 &&
-                      (<span className="text-sm mt-1 text-qred">
-                        Please enter phone number 10 digit
-                      </span>)
-                    }
+                  <InputCom
+                    placeholder="0213 *********"
+                    label={ServeLangItem()?.phone}
+                    name="phone"
+                    type="number"
+                    inputClasses="!h-[50px] py-3"
+                    mandatory={true}
+                    value={phone}
+                    patternValidation={"[1-9]{1}[0-9]{9}"}
+                    inputHandler={(e) => {
+                      e.target.value.length <= 10 && setPhone(e.target.value);
+                    }}
+                    error={!!(errors && Object.hasOwn(errors, "phone"))}
+                  />
+                  {phone && phone.length < 10 && (
+                    <span className="text-sm mt-1 text-qred">
+                      Please enter phone number 10 digit
+                    </span>
+                  )}
                   {errors && Object.hasOwn(errors, "phone") ? (
                     <span className="text-sm mt-1 text-qred">
                       {errors.phone[0]}
@@ -355,7 +358,8 @@ export default function AddressesTab() {
               </div>
               <div className="mb-6">
                 <h1 className="input-label capitalize block  mb-2 text-qgray text-[13px] font-normal">
-                  {ServeLangItem()?.Country} <span className="text-red-600">*</span>
+                  {ServeLangItem()?.Country}{" "}
+                  <span className="text-red-600">*</span>
                 </h1>
                 <div
                   className={`w-full h-[50px] border px-5 flex justify-between items-center border-qgray-border mb-2 ${
@@ -419,7 +423,8 @@ export default function AddressesTab() {
               <div className="flex rtl:space-x-reverse space-x-5 items-center mb-6">
                 <div className="w-1/2">
                   <h1 className="input-label capitalize block  mb-2 text-qgray text-[13px] font-normal">
-                    {ServeLangItem()?.State} <span className="text-red-600">*</span>
+                    {ServeLangItem()?.State}{" "}
+                    <span className="text-red-600">*</span>
                   </h1>
                   <div
                     className={`w-full h-[50px] border px-5 flex justify-between items-center border-qgray-border mb-2 ${
@@ -480,7 +485,8 @@ export default function AddressesTab() {
                 </div>
                 <div className="w-1/2">
                   <h1 className="input-label capitalize block  mb-2 text-qgray text-[13px] font-normal">
-                    {ServeLangItem()?.City} <span className="text-red-600">*</span>
+                    {ServeLangItem()?.City}{" "}
+                    <span className="text-red-600">*</span>
                   </h1>
                   <div
                     className={`w-full h-[50px] border px-5 flex justify-between items-center border-qgray-border mb-2 ${
@@ -531,8 +537,8 @@ export default function AddressesTab() {
                       )}
                     </Selectbox>
                   </div>
-                   {/* <div className="input-item mb-2"> */}
-                      {/* <InputCom
+                  {/* <div className="input-item mb-2"> */}
+                  {/* <InputCom
                         placeholder={ServeLangItem()?.City}
                         label={ServeLangItem()?.City}
                         mandatory={true}
@@ -544,80 +550,75 @@ export default function AddressesTab() {
                         error={!!(errors && Object.hasOwn(errors, "city"))}
 
                       /> */}
-                    {/* </div> */}
-                    {errors && Object.hasOwn(errors, "city") ? (
-                      <span className="text-sm mt-1 text-qred">
-                        {errors.city[0]}
-                      </span>
-                    ) : (
-                      ""
-                    )}
+                  {/* </div> */}
+                  {errors && Object.hasOwn(errors, "city") ? (
+                    <span className="text-sm mt-1 text-qred">
+                      {errors.city[0]}
+                    </span>
+                  ) : (
+                    ""
+                  )}
                   {/* </div> */}
                 </div>
                 <div className="sm:w-1/2 w-full mb-2">
-                            <InputCom
-                              label={"Zip Code"}
-                              placeholder="123123"
-                              type={"number"}
-                              inputClasses="w-full !h-[50px] py-3"
-                              labelClasses={'text-qgray text-[13px]'}
-                              value={pincode}
-                              mandatory={true}
-                              inputHandler={(e) => {
-                                setPincode(e.target.value);
-                                // checkDeliveredAddress(e.target.value)
-                              }}
-                              error={
-                                !!(errors && Object.hasOwn(errors, "zip_code"))
-                              }
-                            />
-                            {errors && Object.hasOwn(errors, "zip_code") ? (
-                              <span className="text-sm mt-1 text-qred">
-                                {errors.zip_code[0]}
-                              </span>
-                            ) : (
-                              ""
-                            )}
-                          </div>
+                  <InputCom
+                    label={"Zip Code"}
+                    placeholder="123123"
+                    type={"number"}
+                    inputClasses="w-full !h-[50px] py-3"
+                    labelClasses={"text-qgray text-[13px]"}
+                    value={pincode}
+                    mandatory={true}
+                    inputHandler={(e) => {
+                      setPincode(e.target.value);
+                      // checkDeliveredAddress(e.target.value)
+                    }}
+                    error={!!(errors && Object.hasOwn(errors, "zip_code"))}
+                  />
+                  {errors && Object.hasOwn(errors, "zip_code") ? (
+                    <span className="text-sm mt-1 text-qred">
+                      {errors.zip_code[0]}
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
               <div className=" mb-6">
-              <label
-                      className={`text-gray-500 text-[13px]`}
-                      htmlFor={"shopAddress"}
-                    >
-                      {"Address"}{" "}
-                      <span
-                        className={"text-red-600"}
-                      >
-                        *
-                      </span>
-                    </label>
-                <div className={`w-full border mt-2 ${errors?.address ? "border-qred" : "border-qgray-border"}`}>
-                   <textarea
-                      placeholder={ServeLangItem()?.Your_address_Here}
-                      label={ServeLangItem()?.Address}
-                      name="address"
-                      type="text"
-                      className="h-[40px] py-3 input-field placeholder:text-sm text-sm px-6 text-dark-gray w-full font-normal bg-white focus:ring-0 focus:outline-none overflow-hidden "
-                      value={address}
-                      onChange={(e) => {
-                        setAddress(e.target.value)
-                        setErrors({
-                          ...errors,
-                          address: address
-                            ? ""
-                            : "Please enter your address",
-                        });
-                      }}
-                    />
+                <label
+                  className={`text-gray-500 text-[13px]`}
+                  htmlFor={"shopAddress"}
+                >
+                  {"Address"} <span className={"text-red-600"}>*</span>
+                </label>
+                <div
+                  className={`w-full border mt-2 ${
+                    errors?.address ? "border-qred" : "border-qgray-border"
+                  }`}
+                >
+                  <textarea
+                    placeholder={ServeLangItem()?.Your_address_Here}
+                    label={ServeLangItem()?.Address}
+                    name="address"
+                    type="text"
+                    className="h-[40px] py-3 input-field placeholder:text-sm text-sm px-6 text-dark-gray w-full font-normal bg-white focus:ring-0 focus:outline-none overflow-hidden "
+                    value={address}
+                    onChange={(e) => {
+                      setAddress(e.target.value);
+                      setErrors({
+                        ...errors,
+                        address: address ? "" : "Please enter your address",
+                      });
+                    }}
+                  />
                 </div>
                 {errors && Object.hasOwn(errors, "address") ? (
-                      <span className="text-sm mt-1 text-qred">
-                        {errors.address[0]}
-                      </span>
-                    ) : (
-                      ""
-                    )}
+                  <span className="text-sm mt-1 text-qred">
+                    {errors.address[0]}
+                  </span>
+                ) : (
+                  ""
+                )}
               </div>
 
               <div className="flex rtl:space-x-reverse space-x-5 items-center ">
@@ -667,9 +668,15 @@ export default function AddressesTab() {
                   onClick={() => updateAddress(editAdd)}
                   type="button"
                   className="w-full h-[50px]"
-                  disabled={phone&& phone.length < 10 || !isValidEmail}
+                  disabled={(phone && phone.length < 10) || !isValidEmail}
                 >
-                  <div className={`rounded ${(phone&& phone.length < 10 || !isValidEmail)?'bg-qgray p-5':'yellow-btn'}`}>
+                  <div
+                    className={`rounded ${
+                      (phone && phone.length < 10) || !isValidEmail
+                        ? "bg-qgray p-5"
+                        : "yellow-btn"
+                    }`}
+                  >
                     <span className="text-sm text-qblack">
                       {ServeLangItem()?.Update_address}
                     </span>
@@ -687,11 +694,16 @@ export default function AddressesTab() {
                 <button
                   onClick={saveAddress}
                   type="button"
-                  className={'w-full h-[50px] '}
-                  disabled={phone&& phone.length < 10 || !isValidEmail}
+                  className={"w-full h-[50px] "}
+                  disabled={(phone && phone.length < 10) || !isValidEmail}
                 >
-                  
-                  <div className={`rounded ${(phone&& phone.length < 10 || !isValidEmail)?'bg-qgray p-5':'yellow-btn'}`}>
+                  <div
+                    className={`rounded ${
+                      (phone && phone.length < 10) || !isValidEmail
+                        ? "bg-qgray p-5"
+                        : "yellow-btn"
+                    }`}
+                  >
                     <span className="text-sm text-qblack">
                       {ServeLangItem()?.Save_Address}
                     </span>
