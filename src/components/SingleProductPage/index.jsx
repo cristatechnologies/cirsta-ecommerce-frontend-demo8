@@ -153,7 +153,7 @@ export default function SingleProductPage({ details }) {
                         onClick={() => setTab("des")}
                         className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer text-[var(--text-color)] ${
                           tab === "des"
-                            ? "border-qyellow text-qblack "
+                            ? "border-[var(--primary-color)] text-qblack "
                             : "border-transparent text-qgray"
                         }`}
                       >
@@ -165,7 +165,7 @@ export default function SingleProductPage({ details }) {
                         onClick={() => setTab("review")}
                         className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer text-[var(--text-color)] ${
                           tab === "review"
-                            ? "border-qyellow text-qblack "
+                            ? "border-[var(--primary-color)] text-qblack "
                             : "border-transparent text-qgray"
                         }`}
                       >

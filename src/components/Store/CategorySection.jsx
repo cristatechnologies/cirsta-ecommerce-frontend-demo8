@@ -21,7 +21,7 @@ function CategorySection({ sectionTitle, categories }) {
             type="button"
             className="w-full h-full flex justify-between items-center cursor-default"
           >
-            <div className="flex rtl:space-x-reverse space-x-3 text-white items-center">
+            <div className="flex rtl:space-x-reverse space-x-3 text-[var(--text-color)] items-center">
               <span>
                 <svg
                   width="14"
