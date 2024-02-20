@@ -283,11 +283,11 @@ body {
   display: none !important;
 }
 #nprogress .bar {
-  background: #f0932b !important;
+  background: var(--primary-color) !important;
   height: 3px !important;
 }
 #nprogress .peg {
-  box-shadow: 0 0 10px #f0932b, 0 0 5px #f0932b !important;
+  box-shadow: 0 0 10px var(--primary-color), 0 0 5px var(--primary-color) !important;
 }
 #nprogress .spinner {
   display: none !important;

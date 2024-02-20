@@ -42,20 +42,19 @@ export default function Header({ drawerAction, settings, contact }) {
     setIsSubmenu(!isSubmenu);
   };
 
- 
   const RouterMapper = [
-    '/become-seller',
-    '/',
-    '/who-we-are',
-    '/why-kalalay',
-    '/why-are-we-different',
-    '/buyer-benefits',
-    '/cancellation-policy',
-    '/intellectual-property',
-    '/privacy-policy',
-    '/return-refund-policy',
-    '/terms-conditions',
-    '/shipping-delivery-policy'
+    "/become-seller",
+    "/",
+    "/who-we-are",
+    "/why-kalalay",
+    "/why-are-we-different",
+    "/buyer-benefits",
+    "/cancellation-policy",
+    "/intellectual-property",
+    "/privacy-policy",
+    "/return-refund-policy",
+    "/terms-conditions",
+    "/shipping-delivery-policy",
   ];
   const { asPath } = location;
   const isRouteInMapper = RouterMapper.includes(asPath);
@@ -130,20 +129,14 @@ export default function Header({ drawerAction, settings, contact }) {
                       </span>
                     </a>
                   </Link>
-                  <Link
-                    href="/why-kalalay"
-                    passHref
-                  >
+                  <Link href="/why-kalalay" passHref>
                     <a rel="noopener noreferrer">
                       <span className="text-sm sm:text-base lg:text-base leading-6 text-gray-500 font-regular cursor-pointer hover:text-orange-500">
                         Why Kalalay
                       </span>
                     </a>
                   </Link>
-                  <Link
-                    href="/why-are-we-different"
-                    passHref
-                  >
+                  <Link href="/why-are-we-different" passHref>
                     <a rel="noopener noreferrer">
                       <span className="text-sm sm:text-base lg:text-base leading-6 text-gray-500 font-regular cursor-pointer hover:text-orange-500">
                         We Are Different
@@ -157,7 +150,7 @@ export default function Header({ drawerAction, settings, contact }) {
                       </span>
                     </a>
                   </Link>
-                  <div >
+                  <div>
                     <span onClick={handleOnOpenSubmenu}>
                       <span className="text-sm sm:text-base lg:text-base leading-6 text-gray-500 font-regular cursor-pointer hover:text-orange-500">
                         More
@@ -166,10 +159,7 @@ export default function Header({ drawerAction, settings, contact }) {
                     {isSubmenu && (
                       <span className="flex-col flex gap-2 bg-white w-40 p-5 shadow-2xl rounded-md mb-5">
                         <span>
-                          <Link
-                            href="/buyer-benefits"
-                            passHref
-                          >
+                          <Link href="/buyer-benefits" passHref>
                             <a rel="noopener noreferrer">
                               <span className="text-sm sm:text-base lg:text-base leading-6 text-gray-500 font-regular cursor-pointer hover:text-orange-500">
                                 Buyer Benefits
@@ -205,20 +195,30 @@ export default function Header({ drawerAction, settings, contact }) {
                   </Link>
                   <div className="mt-5 ">
                     {auth ? (
-                      <span onClick={logout} className="flex items-center gap-3 border border-orange-600 rounded-xl p-2 w-28 cursor-pointer">
+                      <span
+                        onClick={logout}
+                        className="flex items-center gap-3 border border-[var(--primary-color)] rounded-xl p-2 w-28 cursor-pointer"
+                      >
                         <IcoLogout
-                          className={"fill-orange-600"}
-                          pathClassName={"fill-orange-600"}
+                          className={"fill-[var(--primary-color)]"}
+                          pathClassName={"fill-[var(--primary-color)]"}
                         />
-                        <span className="text-[14px] text-orange-600">Logout</span>
+                        <span className="text-[14px] text-[var(--text-color)]">
+                          Logout
+                        </span>
                       </span>
                     ) : (
-                      <div onClick={() => location.push("/login")} className="flex items-center gap-3 border border-orange-600 rounded-xl p-2 w-28 cursor-pointer">
+                      <div
+                        onClick={() => location.push("/login")}
+                        className="flex items-center gap-3 border border-[var(--primary-color)] rounded-xl p-2 w-28 cursor-pointer"
+                      >
                         <Login
-                          className={"fill-orange-600"}
-                          pathClassName={"fill-orange-600"}
+                          className={"fill-[var(--primary-color)]"}
+                          pathClassName={"fill-[var(--primary-color)]"}
                         />
-                        <span className="text-[14px] text-orange-600">Login</span>
+                        <span className="text-[14px] text-[var(--text-color)]">
+                          Login
+                        </span>
                       </div>
                     )}
                   </div>
@@ -278,21 +278,31 @@ export default function Header({ drawerAction, settings, contact }) {
               </div>
               <div className="ml-8">
                 {auth ? (
-                  <span onClick={logout} className="flex items-center gap-3 border border-orange-600 rounded-xl p-2 w-28 cursor-pointer">
-                  <IcoLogout
-                    className={"fill-orange-600"}
-                    pathClassName={"fill-orange-600"}
-                  />
-                  <span className="text-[14px] text-orange-600">Logout</span>
-                </span>
+                  <span
+                    onClick={logout}
+                    className="flex items-center gap-3 border border-[var(--primary-color)] rounded-xl p-2 w-28 cursor-pointer"
+                  >
+                    <IcoLogout
+                      className={"fill-[var(--primary-color)]"}
+                      pathClassName={"fill-[var(--primary-color)]"}
+                    />
+                    <span className="text-[14px] text-[var(--text-color)]">
+                      Logout
+                    </span>
+                  </span>
                 ) : (
-                  <div onClick={() => location.push("/login")} className="flex items-center gap-3 border border-orange-600 rounded-xl p-2 w-28 cursor-pointer">
-                  <Login
-                    className={"fill-orange-600"}
-                    pathClassName={"fill-orange-600"}
-                  />
-                  <span className="text-[14px] text-orange-600">Login</span>
-                </div>
+                  <div
+                    onClick={() => location.push("/login")}
+                    className="flex items-center gap-3 border border-[var(--primary-color)] rounded-xl p-2 w-28 cursor-pointer"
+                  >
+                    <Login
+                      className={"fill-[var(--primary-color)]"}
+                      pathClassName={"fill-[var(--primary-color)]"}
+                    />
+                    <span className="text-[14px]  text-[var(--text-color)]">
+                      Login
+                    </span>
+                  </div>
                 )}
               </div>
             </div>
