@@ -655,7 +655,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                   </div>
                 ) : (
                   <div className={"mt-5 flex justify-center"}>
-                    <h1 className="text-2xl font-medium text-white">
+                    <h1 className="text-2xl font-medium text-[var(--text-color)]">
                       Products not available
                     </h1>
                   </div>
