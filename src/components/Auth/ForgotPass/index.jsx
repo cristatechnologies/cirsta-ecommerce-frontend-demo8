@@ -133,7 +133,7 @@ export default function ForgotPass() {
                           onClick={doForgot}
                           type="button"
                           disabled={email ? false : true}
-                          className="black-btn disabled:bg-opacity-50 disabled:cursor-not-allowed  mb-6 text-sm text-white w-full h-[50px] font-semibold flex justify-center bg-purple items-center"
+                          className="bg-[var(--primary-color)] disabled:bg-opacity-50 disabled:cursor-not-allowed  mb-6 text-sm text-white w-full h-[50px] font-semibold flex justify-center bg-purple items-center"
                         >
                           <span>{ServeLangItem()?.Send}</span>
                           {loading && (
@@ -258,7 +258,7 @@ export default function ForgotPass() {
                           disabled={
                             otp && confirmPassword && newPass ? false : true
                           }
-                          className="black-btn disabled:bg-opacity-50 disabled:cursor-not-allowed  mb-6 text-sm text-white w-full h-[50px] font-semibold flex justify-center bg-purple items-center"
+                          className="bg-[var(--primary-color)] disabled:bg-opacity-50 disabled:cursor-not-allowed  mb-6 text-sm text-white w-full h-[50px] font-semibold flex justify-center bg-purple items-center"
                         >
                           <span>{ServeLangItem()?.Reset}</span>
                           {loading && (

@@ -95,7 +95,7 @@ function VerifyWidget({ redirect = true, verifyActionPopup }) {
               disabled={!otp}
               onClick={doVerify}
               type="button"
-              className="black-btn disabled:bg-opacity-50 disabled:cursor-not-allowed  w-full h-[50px] font-semibold flex justify-center bg-purple items-center"
+              className="bg-[var(--primary-color)] disabled:bg-opacity-50 disabled:cursor-not-allowed  w-full h-[50px] font-semibold flex justify-center bg-purple items-center"
             >
               <span className="text-sm text-white block">
                 {ServeLangItem()?.Verify}

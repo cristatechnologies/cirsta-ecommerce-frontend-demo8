@@ -361,7 +361,7 @@ body {
   display: none;
 }
 .product-detail-des :is(p, span) {
-  color: white !important;
+  color: var(--text-color) !important;
   font-size: 15px !important;
   line-height: 30px;
 }

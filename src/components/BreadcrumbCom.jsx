@@ -1,12 +1,16 @@
 export default function BreadcrumbCom({
   paths = [{ name: "home", path: "/" }],
-  isBecomeSeller
+  isBecomeSeller,
 }) {
   return (
     <>
       {paths && paths.length > 0 && (
         <div key={Math.random()}>
-          <div className={`"breadcrumb-wrapper font-400 text-[13px] ${isBecomeSeller?'text-black': 'text-white mb-5'}  pt-5 print:hidden"`}>
+          <div
+            className={`"breadcrumb-wrapper font-400 text-[13px] text-[var(--text-color)] ${
+              isBecomeSeller ? "" : "mb-5"
+            }  pt-5 print:hidden"`}
+          >
             {paths.map((path) => (
               <span key={Math.random()}>
                 <a href={path.path}>

@@ -20,11 +20,11 @@ export default function SingleProductPage({ details }) {
   const [tab, setTab] = useState("des");
   const reviewElement = useRef(null);
   const [report, setReport] = useState(false);
-  const ReportHandler =()=>{
-    if(auth()){
+  const ReportHandler = () => {
+    if (auth()) {
       setReport(!report);
-    }else{
-      router.push("/login")
+    } else {
+      router.push("/login");
     }
   };
   const [reportLoading, setReportLoading] = useState(false);
@@ -121,7 +121,10 @@ export default function SingleProductPage({ details }) {
                     paths={[
                       { name: ServeLangItem()?.home, path: "/" },
                       { name: "Store", path: "/store" },
-                      { name: details.product.slug, path:  `/single-product?slug=${details.product.slug}` },
+                      {
+                        name: details.product.slug,
+                        path: `/single-product?slug=${details.product.slug}`,
+                      },
                     ]}
                   />
                 </div>
@@ -133,7 +136,7 @@ export default function SingleProductPage({ details }) {
                     product={details.product}
                     images={details.gellery}
                     reportHandler={ReportHandler}
-                    seller={details.seller ? details.seller:false}
+                    seller={details.seller ? details.seller : false}
                   />
                 </div>
               </div>
@@ -149,7 +152,7 @@ export default function SingleProductPage({ details }) {
                     <li>
                       <span
                         onClick={() => setTab("des")}
-                        className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer text-white ${
+                        className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer text-[var(--text-color)] ${
                           tab === "des"
                             ? "border-qyellow text-qblack "
                             : "border-transparent text-qgray"
@@ -161,7 +164,7 @@ export default function SingleProductPage({ details }) {
                     <li>
                       <span
                         onClick={() => setTab("review")}
-                        className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer text-white ${
+                        className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer text-[var(--text-color)] ${
                           tab === "review"
                             ? "border-qyellow text-qblack "
                             : "border-transparent text-qgray"
@@ -192,52 +195,41 @@ export default function SingleProductPage({ details }) {
                 <div className="container-x mx-auto">
                   {tab === "des" && (
                     <>
-                      <h6 className="text-[20px] font-bold text-white mb-5">
+                      <h6 className="text-[20px] font-bold text-[var(--text-color)] mb-5">
                         {ServeLangItem()?.Introduction}
                       </h6>
                       <div
-                        className="product-detail-des mb-10 text-white"
+                        className="product-detail-des mb-10 text-[var(--text-color)]"
                         dangerouslySetInnerHTML={{
                           __html: details.product.long_description,
                         }}
                       ></div>
-                      {/*<div data-aos="fade-up" className="w-full tab-content-item">*/}
-                      {/*  <h6 className="text-[18px] font-medium text-qblack mb-2">*/}
-                      {/*    Introduction*/}
-                      {/*  </h6>*/}
-                      {/*  <p className="text-[15px] text-qgray text-normal mb-10">*/}
-                      {/*    Lorem Ipsum is simply dummy text of the printing and*/}
-                      {/*    typesetting industry. Lorem Ipsum has been the industrys*/}
-                      {/*    standard dummy text ever since the 1500s, when an unknown*/}
-                      {/*    printer took a galley of type and scrambled it to make a*/}
-                      {/*    type specimen book. It has survived not only five*/}
-                      {/*    centuries but also the on leap into electronic*/}
-                      {/*    typesetting, remaining essentially unchanged. It wasn’t*/}
-                      {/*    popularised in the 1960s with the release of Letraset*/}
-                      {/*    sheets containing Lorem Ipsum passages, andei more*/}
-                      {/*    recently with desktop publishing software like Aldus*/}
-                      {/*    PageMaker including versions of Lorem Ipsum to make a type*/}
-                      {/*    specimen book.*/}
-                      {/*  </p>*/}
+
                       {details.specifications &&
                         details.specifications.length > 0 && (
                           <div className="product-specifications">
-                            <h6 className="text-[20px] font-bold mb-4 text-white">
+                            <h6 className="text-[20px] font-bold mb-4 text-[var(--text-color)]">
                               {ServeLangItem()?.Features} :
                             </h6>
                             <ul className="">
-                              {details.specifications.map((item, i) => {{
-                                return(
-                                <li
-                                  key={i}
-                                  className=" leading-9 flex space-x-3 items-center"
-                                >
-                                  <span className="text-white font-medium capitalize"> {item.key?.key}:</span>
-                                  <span className="font-normal text-white">
-                                    {item.specification}
-                                  </span>
-                                </li>
-                              )}})}
+                              {details.specifications.map((item, i) => {
+                                {
+                                  return (
+                                    <li
+                                      key={i}
+                                      className=" leading-9 flex space-x-3 items-center"
+                                    >
+                                      <span className="text-[var(--text-color)] font-medium capitalize">
+                                        {" "}
+                                        {item.key?.key}:
+                                      </span>
+                                      <span className="font-normal text-[var(--text-color)]">
+                                        {item.specification}
+                                      </span>
+                                    </li>
+                                  );
+                                }
+                              })}
                             </ul>
                           </div>
                         )}
@@ -246,7 +238,7 @@ export default function SingleProductPage({ details }) {
                   )}
                   {tab === "review" && (
                     <div data-aos="fade-up" className="w-full tab-content-item">
-                      <h6 className="text-[20px] font-bold text-white mb-2">
+                      <h6 className="text-[20px] font-bold text-[var(--text-color)] mb-2">
                         {ServeLangItem()?.Reviews}
                       </h6>
                       {/* review-comments */}
@@ -282,7 +274,7 @@ export default function SingleProductPage({ details }) {
               <div className="related-product w-full">
                 <div className="container-x mx-auto">
                   <div className="w-full py-[60px]">
-                    <h1 className="sm:text-3xl text-xl font-600 text-white leading-none mb-[30px]">
+                    <h1 className="sm:text-3xl text-xl font-600 text-[var(--text-color)] leading-none mb-[30px]">
                       {ServeLangItem()?.Related_Product}
                     </h1>
                     <div
@@ -322,7 +314,9 @@ export default function SingleProductPage({ details }) {
                 style={{ zIndex: "999" }}
               >
                 <div className="title-bar flex items-center justify-between mb-3">
-                  <h6 className="text-2xl font-medium">{ServeLangItem()?.Report_Products}</h6>
+                  <h6 className="text-2xl font-medium">
+                    {ServeLangItem()?.Report_Products}
+                  </h6>
                   <span
                     className="cursor-pointer"
                     onClick={() => setReport(!report)}
@@ -356,13 +350,11 @@ export default function SingleProductPage({ details }) {
                       inputHandler={(e) => setSubject(e.target.value)}
                       error={
                         !!(
-                          reportErrors &&
-                          Object.hasOwn(reportErrors, "subject")
+                          reportErrors && Object.hasOwn(reportErrors, "subject")
                         )
                       }
                     />
-                    {reportErrors &&
-                    Object.hasOwn(reportErrors, "subject") ? (
+                    {reportErrors && Object.hasOwn(reportErrors, "subject") ? (
                       <span className="text-sm mt-1 text-qred">
                         {reportErrors.subject[0]}
                       </span>
@@ -386,7 +378,8 @@ export default function SingleProductPage({ details }) {
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
                     ></textarea>
-                    {reportErrors && Object.hasOwn(reportErrors, "description") ? (
+                    {reportErrors &&
+                    Object.hasOwn(reportErrors, "description") ? (
                       <span className="text-sm mt-1 text-qred">
                         {reportErrors.description[0]}
                       </span>
@@ -398,7 +391,7 @@ export default function SingleProductPage({ details }) {
                   <button
                     onClick={() => productReport(details.product.id)}
                     type="button"
-                    className="black-btn flex h-[50px] items-center justify-center w-full"
+                    className="bg-[var(--primary-color)] flex h-[50px] items-center justify-center w-full"
                   >
                     <span>{ServeLangItem()?.Submit_Report}</span>
                     {reportLoading && (

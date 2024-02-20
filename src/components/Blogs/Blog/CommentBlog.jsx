@@ -100,7 +100,7 @@ export default function CommentBlog({ comments, blog, fetchComments }) {
             <button
               onClick={reviewAction}
               type="button"
-              className="black-btn w-[300px] h-[50px]  flex justify-center"
+              className="bg-[var(--primary-color)] w-[300px] h-[50px]  flex justify-center"
             >
               <span className="flex space-x-1 items-center h-full">
                 <span className="text-sm font-semibold">

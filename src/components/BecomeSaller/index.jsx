@@ -160,10 +160,10 @@ function BecomeSaller() {
     //   toast.warn("Please Login First");
     // }
     const formData = new FormData();
-    if(uploadCoverImg){
+    if (uploadCoverImg) {
       formData.append("banner_image", uploadCoverImg);
     }
-    if(uploadLogo){
+    if (uploadLogo) {
       formData.append("logo", uploadLogo);
     }
     formData.append("shop_name", shopName);
@@ -178,10 +178,10 @@ function BecomeSaller() {
     formData.append("first_name", sellerFirstName);
     formData.append("last_name", sellerLastName);
     formData.append("artist_gov_reg_no", artistGovRegNo);
-    formData.append("city_id",city);
-    formData.append("state_id",state);
-    formData.append("country_id",country);
-    formData.append("zip_code",pincode);
+    formData.append("city_id", city);
+    formData.append("state_id", state);
+    formData.append("country_id", country);
+    formData.append("zip_code", pincode);
 
     const options = {
       onUploadProgress: (progressEvent) => {
@@ -225,34 +225,34 @@ function BecomeSaller() {
 
   useEffect(() => {
     if (auth()) {
-        axios
-            .get(
-                `${process.env.NEXT_PUBLIC_BASE_URL}api/user/address/create?token=${
-                    auth().access_token
-                }`
-            )
-            .then((res) => {
-              if (res.data) {
-                setCountryDropdown(res.data.countries);
-                getState(country);                     
-              }
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-      }
+      axios
+        .get(
+          `${process.env.NEXT_PUBLIC_BASE_URL}api/user/address/create?token=${
+            auth().access_token
+          }`
+        )
+        .then((res) => {
+          if (res.data) {
+            setCountryDropdown(res.data.countries);
+            getState(country);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }, []);
 
   const getState = (value) => {
     setState(null);
     if (auth() && value) {
-      const countryId = value.id ? value.id : country
+      const countryId = value.id ? value.id : country;
       setCountry(countryId);
       axios
         .get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}api/user/state-by-country/${
-            countryId
-          }?token=${auth().access_token}`
+          `${
+            process.env.NEXT_PUBLIC_BASE_URL
+          }api/user/state-by-country/${countryId}?token=${auth().access_token}`
         )
         .then((res) => {
           setCityDropdown(null);
@@ -266,11 +266,11 @@ function BecomeSaller() {
     }
   };
 
-  // useEffect(()=>{    
+  // useEffect(()=>{
   //   console.log('in useEffect');
   //   getState(country);
   // },[])
-  
+
   const getcity = (value) => {
     if (auth() && value) {
       setState(value.id);
@@ -306,9 +306,9 @@ function BecomeSaller() {
           breadcrumb={[
             {
               name: ServeLangItem()?.home,
-              path: '/',
+              path: "/",
             },
-            { name: ServeLangItem()?.Become_seller, path: '/become-seller' },
+            { name: ServeLangItem()?.Become_seller, path: "/become-seller" },
           ]}
         />
       </div>
@@ -349,42 +349,42 @@ function BecomeSaller() {
                   <div className="flex flex-col sm:flex-row lg:flex-row justify-between w-full mb-6">
                     <div className="mb-5 w-full h-[50px]">
                       <InputCom
-                        placeholder={'Enter your first name'}
+                        placeholder={"Enter your first name"}
                         label="First name"
                         name="firstName"
                         type="text"
                         mandatory={true}
                         inputClasses="h-[50px] py-3 w-1/2"
                         value={sellerFirstName}
-                        error={!!(errors && Object.hasOwn(errors, 'firstName'))}
+                        error={!!(errors && Object.hasOwn(errors, "firstName"))}
                         inputHandler={(e) => setSellerFirstName(e.target.value)}
                       />
-                      {errors && Object.hasOwn(errors, 'firstName') ? (
+                      {errors && Object.hasOwn(errors, "firstName") ? (
                         <span className="text-sm mt-1 text-qred">
                           {errors.firstName[0]}
                         </span>
                       ) : (
-                        ''
+                        ""
                       )}
                     </div>
                     <div className="mb-5 w-full ml-0 sm:ml-3 lg:ml-3 mt-5 sm:mt-0 lg:mt-0 h-[50px]">
                       <InputCom
-                        placeholder={'Enter your last name'}
+                        placeholder={"Enter your last name"}
                         label="Last name"
                         name="lastName"
                         type="text"
                         mandatory={true}
                         inputClasses="h-[50px] py-3 w-1/2"
                         value={sellerLastName}
-                        error={!!(errors && Object.hasOwn(errors, 'lastName'))}
+                        error={!!(errors && Object.hasOwn(errors, "lastName"))}
                         inputHandler={(e) => setSellerLastName(e.target.value)}
                       />
-                      {errors && Object.hasOwn(errors, 'lastName') ? (
+                      {errors && Object.hasOwn(errors, "lastName") ? (
                         <span className="text-sm mt-1 text-qred">
                           {errors.lastName[0]}
                         </span>
                       ) : (
-                        ''
+                        ""
                       )}
                     </div>
                   </div>
@@ -399,39 +399,39 @@ function BecomeSaller() {
                       inputClasses="h-[50px] py-3"
                       value={email}
                       inputHandler={(e) => handleInputChange(e.target.value)}
-                      error={!!(errors && Object.hasOwn(errors, 'email'))}
+                      error={!!(errors && Object.hasOwn(errors, "email"))}
                     />
                     {!isValidEmail && (
                       <p className="text-sm mt-1 text-qred">
                         Please enter a valid email address
                       </p>
                     )}
-                    {errors && Object.hasOwn(errors, 'email') ? (
+                    {errors && Object.hasOwn(errors, "email") ? (
                       <span className="text-sm mt-1 text-qred">
                         {errors.email[0]}
                       </span>
                     ) : (
-                      ''
+                      ""
                     )}
                   </div>
 
                   <div
                     className={`flex flex-col sm:flex-row lg:flex-row justify-between w-full  relative ${
-                      checkMinPassword ? 'mb-10' : 'mb-6'
+                      checkMinPassword ? "mb-10" : "mb-6"
                     }`}
                   >
                     <div className="mb-5 w-full mt-5 sm:mt-0 lg:mt-0 h-[50px] relative">
                       <InputCom
-                        placeholder={'Enter your password'}
+                        placeholder={"Enter your password"}
                         label="Password"
                         name="sellerPassword"
                         type="password"
                         mandatory={true}
                         inputClasses="h-[50px] py-3 w-1/2"
                         value={sellerPassword}
-                        min={'8'}
+                        min={"8"}
                         error={
-                          !!(errors && Object.hasOwn(errors, 'sellerPassword'))
+                          !!(errors && Object.hasOwn(errors, "sellerPassword"))
                         }
                         inputHandler={(e) => {
                           setSellerPassword(e.target.value);
@@ -443,28 +443,28 @@ function BecomeSaller() {
                           Please enter password minimum 8 character
                         </span>
                       ) : (
-                        ''
+                        ""
                       )}
-                      {errors && Object.hasOwn(errors, 'sellerPassword') ? (
+                      {errors && Object.hasOwn(errors, "sellerPassword") ? (
                         <span className="text-sm mt-1 text-qred">
                           {errors.sellerPassword[0]}
                         </span>
                       ) : (
-                        ''
+                        ""
                       )}
                     </div>
                     <div className="mb-5 w-full ml-0 sm:ml-3 lg:ml-3 mt-5 sm:mt-0 lg:mt-0 h-[50px] relative">
                       <InputCom
-                        placeholder={'Enter confirm password'}
+                        placeholder={"Enter confirm password"}
                         label="Confirm Password"
                         name="confirmPassword"
                         type="password"
                         mandatory={true}
-                        min={'8'}
+                        min={"8"}
                         inputClasses="h-[50px] py-3 w-1/2"
                         value={sellerConfirmPassword}
                         error={
-                          !!(errors && Object.hasOwn(errors, 'confirmPassword'))
+                          !!(errors && Object.hasOwn(errors, "confirmPassword"))
                         }
                         inputHandler={(e) => {
                           setSellerConfirmPassword(e.target.value);
@@ -478,20 +478,20 @@ function BecomeSaller() {
                           Please re-enter your password to confirm
                         </span>
                       ) : (
-                        ''
+                        ""
                       )}
-                      {errors && Object.hasOwn(errors, 'confirmPassword') ? (
+                      {errors && Object.hasOwn(errors, "confirmPassword") ? (
                         <span className="text-sm mt-1 text-qred">
                           {errors.confirmPassword[0]}
                         </span>
                       ) : (
-                        ''
+                        ""
                       )}
                     </div>
                   </div>
                   <div className="mb-5">
                     <InputCom
-                      placeholder={'Enter your Business name'}
+                      placeholder={"Enter your Business name"}
                       label={ServeLangItem()?.Shop_Name}
                       name="businessName"
                       type="text"
@@ -500,15 +500,15 @@ function BecomeSaller() {
                       mandatory={true}
                       inputHandler={(e) => setName(e.target.value)}
                       error={
-                        !!(errors && Object.hasOwn(errors, 'businessName'))
+                        !!(errors && Object.hasOwn(errors, "businessName"))
                       }
                     />
-                    {errors && Object.hasOwn(errors, 'businessName') ? (
+                    {errors && Object.hasOwn(errors, "businessName") ? (
                       <span className="text-sm mt-1 text-qred">
                         {errors.businessName[0]}
                       </span>
                     ) : (
-                      ''
+                      ""
                     )}
                   </div>
 
@@ -521,21 +521,21 @@ function BecomeSaller() {
                       inputClasses="h-[50px] py-3"
                       mandatory={true}
                       value={phone}
-                      patternValidation={'[1-9]{1}[0-9]{9}'}
+                      patternValidation={"[1-9]{1}[0-9]{9}"}
                       inputHandler={(e) => setPhone(e.target.value)}
-                      error={!!(errors && Object.hasOwn(errors, 'phone'))}
+                      error={!!(errors && Object.hasOwn(errors, "phone"))}
                     />
                     {phone && phone.length < 10 && (
                       <span className="text-sm mt-1 text-qred">
                         Please enter phone number 10 digit
                       </span>
                     )}
-                    {errors && Object.hasOwn(errors, 'phone') ? (
+                    {errors && Object.hasOwn(errors, "phone") ? (
                       <span className="text-sm mt-1 text-qred">
                         {errors.phone[0]}
                       </span>
                     ) : (
-                      ''
+                      ""
                     )}
                   </div>
 
@@ -589,167 +589,171 @@ function BecomeSaller() {
                 </div>
                 <div className="md:flex md:space-x-5 rtl:space-x-reverse items-center mb-6">
                   <div className="md:w-1/2 mb-8 md:mb-0">
-                  <h1 className="input-label capitalize block  mb-2 text-qgray text-[13px] font-normal">
-                  {ServeLangItem()?.Country}<span className={"text-red-600 ml-1"}>*</span>
-                </h1>
+                    <h1 className="input-label capitalize block  mb-2 text-qgray text-[13px] font-normal">
+                      {ServeLangItem()?.Country}
+                      <span className={"text-red-600 ml-1"}>*</span>
+                    </h1>
 
-                <div
-                  className={`w-full h-[50px] border border-qgray-border px-5 flex justify-between items-center mb-2 ${
-                    !!(errors && Object.hasOwn(errors, "country"))
-                      ? "border-qred"
-                      : "border-qgray-border"
-                  }`}
-                >
-                  <Selectbox
-                    action={getState}
-                    className="w-full"
-                    defaultValue={
-                      countryDropdown &&
-                      countryDropdown.length > 0 &&
-                      (function () {
-                        let item =
+                    <div
+                      className={`w-full h-[50px] border border-qgray-border px-5 flex justify-between items-center mb-2 ${
+                        !!(errors && Object.hasOwn(errors, "country"))
+                          ? "border-qred"
+                          : "border-qgray-border"
+                      }`}
+                    >
+                      <Selectbox
+                        action={getState}
+                        className="w-full"
+                        defaultValue={
+                          countryDropdown &&
                           countryDropdown.length > 0 &&
-                          countryDropdown.find(
-                            (item) => parseInt(item.id) === parseInt(country)
-                          );
-                        return item ? item.name : "Select";
-                      })()
-                    }
-                    datas={countryDropdown && countryDropdown}
-                  >
-                    {({ item }) => (
-                      <>
-                        <div className="flex justify-between items-center w-full">
-                          <div>
-                            <span className="text-[13px] text-qblack">
-                              {item}
-                            </span>
-                          </div>
-                          <span>
-                            <svg
-                              width="11"
-                              height="7"
-                              viewBox="0 0 11 7"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M5.4 6.8L0 1.4L1.4 0L5.4 4L9.4 0L10.8 1.4L5.4 6.8Z"
-                                fill="#222222"
-                              />
-                            </svg>
-                          </span>
-                        </div>
-                      </>
-                    )}
-                  </Selectbox>
-                </div>
-                {errors && Object.hasOwn(errors, "country") ? (
-                  <span className="text-sm mt-1 text-qred">
-                    {errors.country[0]}
-                  </span>
-                ) : (
-                  ""
-                )}
-                  </div>
-               
-                  <div className="md:w-1/2 w-full">
-                          <h1 className="input-label capitalize block  mb-2 text-qgray text-[13px] font-normal">
-                    {ServeLangItem()?.State} <span className={"text-red-600 ml-1"}>*</span>
-                  </h1>
-                  <div
-                    className={`w-full h-[50px] border border-qgray-border px-5 flex justify-between items-center mb-2 ${
-                      !!(errors && Object.hasOwn(errors, "state"))
-                        ? "border-qred"
-                        : "border-qgray-border"
-                    }`}
-                  >
-                    <Selectbox
-                      action={getcity}
-                      className="w-full"
-                      datas={stateDropdown && stateDropdown}
-                    >
-                      {({ item }) => (
-                        <>
-                          <div className="flex justify-between items-center w-full">
-                            <div>
-                              <span className="text-[13px] text-qblack">
-                                {item}
+                          (function () {
+                            let item =
+                              countryDropdown.length > 0 &&
+                              countryDropdown.find(
+                                (item) =>
+                                  parseInt(item.id) === parseInt(country)
+                              );
+                            return item ? item.name : "Select";
+                          })()
+                        }
+                        datas={countryDropdown && countryDropdown}
+                      >
+                        {({ item }) => (
+                          <>
+                            <div className="flex justify-between items-center w-full">
+                              <div>
+                                <span className="text-[13px] text-qblack">
+                                  {item}
+                                </span>
+                              </div>
+                              <span>
+                                <svg
+                                  width="11"
+                                  height="7"
+                                  viewBox="0 0 11 7"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M5.4 6.8L0 1.4L1.4 0L5.4 4L9.4 0L10.8 1.4L5.4 6.8Z"
+                                    fill="#222222"
+                                  />
+                                </svg>
                               </span>
                             </div>
-                            <span>
-                              <svg
-                                width="11"
-                                height="7"
-                                viewBox="0 0 11 7"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M5.4 6.8L0 1.4L1.4 0L5.4 4L9.4 0L10.8 1.4L5.4 6.8Z"
-                                  fill="#222222"
-                                />
-                              </svg>
-                            </span>
-                          </div>
-                        </>
-                      )}
-                    </Selectbox>
+                          </>
+                        )}
+                      </Selectbox>
+                    </div>
+                    {errors && Object.hasOwn(errors, "country") ? (
+                      <span className="text-sm mt-1 text-qred">
+                        {errors.country[0]}
+                      </span>
+                    ) : (
+                      ""
+                    )}
                   </div>
-                  {errors && Object.hasOwn(errors, "state") ? (
-                    <span className="text-sm mt-1 text-qred">
-                      {errors.state[0]}
-                    </span>
-                  ) : (
-                    ""
-                  )}
-                  </div>          
+
+                  <div className="md:w-1/2 w-full">
+                    <h1 className="input-label capitalize block  mb-2 text-qgray text-[13px] font-normal">
+                      {ServeLangItem()?.State}{" "}
+                      <span className={"text-red-600 ml-1"}>*</span>
+                    </h1>
+                    <div
+                      className={`w-full h-[50px] border border-qgray-border px-5 flex justify-between items-center mb-2 ${
+                        !!(errors && Object.hasOwn(errors, "state"))
+                          ? "border-qred"
+                          : "border-qgray-border"
+                      }`}
+                    >
+                      <Selectbox
+                        action={getcity}
+                        className="w-full"
+                        datas={stateDropdown && stateDropdown}
+                      >
+                        {({ item }) => (
+                          <>
+                            <div className="flex justify-between items-center w-full">
+                              <div>
+                                <span className="text-[13px] text-qblack">
+                                  {item}
+                                </span>
+                              </div>
+                              <span>
+                                <svg
+                                  width="11"
+                                  height="7"
+                                  viewBox="0 0 11 7"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M5.4 6.8L0 1.4L1.4 0L5.4 4L9.4 0L10.8 1.4L5.4 6.8Z"
+                                    fill="#222222"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                          </>
+                        )}
+                      </Selectbox>
+                    </div>
+                    {errors && Object.hasOwn(errors, "state") ? (
+                      <span className="text-sm mt-1 text-qred">
+                        {errors.state[0]}
+                      </span>
+                    ) : (
+                      ""
+                    )}
+                  </div>
                 </div>
 
-              <div className="md:flex md:space-x-5 rtl:space-x-reverse items-center mb-6">             
-                <div className="md:w-1/2 mb-8 md:mb-0">
-                  <h1 className="input-label capitalize block  mb-2 text-qgray text-[13px] font-normal">
-                    {ServeLangItem()?.City}<span className={"text-red-600 ml-1"}>*</span>
-                  </h1>
-                  <div
-                    className={`w-full h-[50px] border border-qgray-border px-5 flex justify-between items-center ${
-                      !!(errors && Object.hasOwn(errors, "city"))
-                        ? "border-qred"
-                        : "border-qgray-border"
-                    }`}
-                  >
-                    <Selectbox
-                      action={selectCity}
-                      className="w-full"
-                      datas={cityDropdown && cityDropdown}
+                <div className="md:flex md:space-x-5 rtl:space-x-reverse items-center mb-6">
+                  <div className="md:w-1/2 mb-8 md:mb-0">
+                    <h1 className="input-label capitalize block  mb-2 text-qgray text-[13px] font-normal">
+                      {ServeLangItem()?.City}
+                      <span className={"text-red-600 ml-1"}>*</span>
+                    </h1>
+                    <div
+                      className={`w-full h-[50px] border border-qgray-border px-5 flex justify-between items-center ${
+                        !!(errors && Object.hasOwn(errors, "city"))
+                          ? "border-qred"
+                          : "border-qgray-border"
+                      }`}
                     >
-                      {({ item }) => (
-                        <>
-                          <div className="flex justify-between items-center w-full">
-                            <div>
-                              <span className="text-[13px] text-qblack">
-                                {item}
+                      <Selectbox
+                        action={selectCity}
+                        className="w-full"
+                        datas={cityDropdown && cityDropdown}
+                      >
+                        {({ item }) => (
+                          <>
+                            <div className="flex justify-between items-center w-full">
+                              <div>
+                                <span className="text-[13px] text-qblack">
+                                  {item}
+                                </span>
+                              </div>
+                              <span>
+                                <svg
+                                  width="11"
+                                  height="7"
+                                  viewBox="0 0 11 7"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M5.4 6.8L0 1.4L1.4 0L5.4 4L9.4 0L10.8 1.4L5.4 6.8Z"
+                                    fill="#222222"
+                                  />
+                                </svg>
                               </span>
                             </div>
-                            <span>
-                              <svg
-                                width="11"
-                                height="7"
-                                viewBox="0 0 11 7"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M5.4 6.8L0 1.4L1.4 0L5.4 4L9.4 0L10.8 1.4L5.4 6.8Z"
-                                  fill="#222222"
-                                />
-                              </svg>
-                            </span>
-                          </div>
-                        </>
-                      )}
-                    </Selectbox>
-                {/* <div className="input-item mb-2"> */}
+                          </>
+                        )}
+                      </Selectbox>
+                      {/* <div className="input-item mb-2"> */}
                       {/* <InputCom
                         placeholder={ServeLangItem()?.City}
                         label={ServeLangItem()?.City}
@@ -769,43 +773,43 @@ function BecomeSaller() {
                     ) : (
                       ""
                     )}
-                  {/* </div> */}
+                    {/* </div> */}
+                  </div>
+                  <div className="md:w-1/2 w-full">
+                    <InputCom
+                      label={"Zip Code"}
+                      placeholder="123123"
+                      type={"number"}
+                      inputClasses="w-full !h-[50px] py-3"
+                      labelClasses={"text-qgray text-[13px]"}
+                      value={pincode}
+                      mandatory={true}
+                      patternValidation={"[1-6]{1}[0-6]{6}"}
+                      inputHandler={(e) => setPincode(e.target.value)}
+                      error={!!(errors && Object.hasOwn(errors, "zip_code"))}
+                    />
+                    {errors && Object.hasOwn(errors, "zip_code") ? (
+                      <span className="text-sm mt-1 text-qred">
+                        {errors.zip_code[0]}
+                      </span>
+                    ) : (
+                      ""
+                    )}
+                    {pincode && (pincode.length < 6 || pincode.length > 6) && (
+                      <span className="text-sm mt-1 text-qred">
+                        Please enter zip code number 6 digit
+                      </span>
+                    )}
+                  </div>
                 </div>
-                <div className="md:w-1/2 w-full">
-                 <InputCom
-                        label={"Zip Code"}
-                        placeholder="123123"
-                        type={"number"}
-                        inputClasses="w-full !h-[50px] py-3"
-                        labelClasses={'text-qgray text-[13px]'}
-                        value={pincode}
-                        mandatory={true}
-                        patternValidation={"[1-6]{1}[0-6]{6}"}
-                        inputHandler={(e) => setPincode(e.target.value)}
-                        error={!!(errors && Object.hasOwn(errors, "zip_code"))}
-                      />
-                      {errors && Object.hasOwn(errors, "zip_code") ? (
-                        <span className="text-sm mt-1 text-qred">
-                          {errors.zip_code[0]}
-                        </span>
-                          ) : (
-                              ""
-                      )}
-                      {pincode && (pincode.length < 6 || pincode.length > 6) &&(
-                        <span className="text-sm mt-1 text-qred">
-                          Please enter zip code number 6 digit
-                        </span>
-                      )}
-                </div>
-              </div>
 
                 <div className="input-area">
                   <label
                     className={`text-gray-500 text-[13px]`}
-                    htmlFor={'shopAddress'}
+                    htmlFor={"shopAddress"}
                   >
-                    {'Shipping Warehouse address'}
-                    <span className={'text-red-600'}>*</span>
+                    {"Shipping Warehouse address"}
+                    <span className={"text-red-600"}>*</span>
                   </label>
                   <div className="mb-5 border mt-2">
                     <textarea
@@ -820,22 +824,22 @@ function BecomeSaller() {
                         setErrors({
                           ...errors,
                           address: shopAddress
-                            ? ''
-                            : 'Please enter your address',
+                            ? ""
+                            : "Please enter your address",
                         });
                       }}
                     />
-                    {errors && Object.hasOwn(errors, 'address') ? (
+                    {errors && Object.hasOwn(errors, "address") ? (
                       <span className="text-sm mt-1 text-qred">
                         {errors.address[0]}
                       </span>
                     ) : (
-                      ''
+                      ""
                     )}
                   </div>
                   <div className="mb-5">
                     <InputCom
-                      placeholder={'Artist Government Registration Number'}
+                      placeholder={"Artist Government Registration Number"}
                       label="Artist Government Registration Number"
                       name="artistRegNumber"
                       type="text"
@@ -844,15 +848,15 @@ function BecomeSaller() {
                       mandatory={true}
                       inputHandler={(e) => setArtistGovRegNo(e.target.value)}
                       error={
-                        !!(errors && Object.hasOwn(errors, 'artistRegNumber'))
+                        !!(errors && Object.hasOwn(errors, "artistRegNumber"))
                       }
                     />
-                    {errors && Object.hasOwn(errors, 'artistRegNumber') ? (
+                    {errors && Object.hasOwn(errors, "artistRegNumber") ? (
                       <span className="text-sm mt-1 text-qred">
                         {errors.artistRegNumber[0]}
                       </span>
                     ) : (
-                      ''
+                      ""
                     )}
                   </div>
                   {/*<div className="flex sm:flex-row flex-col space-y-5 sm:space-y-0 sm:space-x-5 mb-[30px]">*/}
@@ -921,9 +925,12 @@ function BecomeSaller() {
                           shopName &&
                           shopAddress &&
                           sellerFirstName &&
-                          pincode && pincode.length === 6 &&
+                          pincode &&
+                          pincode.length === 6 &&
                           sellerLastName &&
-                          state && country && city && 
+                          state &&
+                          country &&
+                          city &&
                           artistGovRegNo &&
                           !checkMinPassword &&
                           isValidEmail
@@ -931,7 +938,7 @@ function BecomeSaller() {
                             : true
                         }
                         type="button"
-                        className="black-btn disabled:bg-opacity-50 disabled:cursor-not-allowed  text-sm text-white w-[490px] h-[50px] font-semibold flex justify-center bg-purple items-center"
+                        className="bg-[var(--primary-color)] disabled:bg-opacity-50 disabled:cursor-not-allowed  text-sm text-white w-[490px] h-[50px] font-semibold flex justify-center bg-purple items-center"
                       >
                         <span>{ServeLangItem()?.Create_Seller_Account}</span>
                       </button>
@@ -1020,7 +1027,7 @@ function BecomeSaller() {
                   </h1>
                   <p className="text-sm text-qgraytwo mb-5">
                     {ServeLangItem()?.Profile_of_at_least_Size}
-                    <span className="ml-1 text-qblack">300x300</span>.{' '}
+                    <span className="ml-1 text-qblack">300x300</span>.{" "}
                     {ServeLangItem()?.Gifs_work_too}.
                     <span className="ml-1 text-qblack">
                       {ServeLangItem()?.Max_5mb}
@@ -1135,7 +1142,7 @@ function BecomeSaller() {
           </div>
           <div
             className="primary-bg"
-            style={{ width: `${uploadProgress}%`, height: '2px' }}
+            style={{ width: `${uploadProgress}%`, height: "2px" }}
           ></div>
         </div>
       </div>

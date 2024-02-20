@@ -267,39 +267,44 @@ function OrderCom() {
                         </span>
                       </li>
                       <div className="flex gap-3 items-center !mt-5">
-                      <li className="text-[22px]n text-[#4F5562] flex flex-col border border-[#EDEDED] p-2 rounded-md min-w-[250px] w-auto min-h-[100px] h-auto">
-                        {ServeLangItem()?.Billing_Address}:{" "}
-                        <span className="text-[#27AE60] border-t-2 border-[#EDEDED]">
-                          {`${
-                          resData.order_address &&
-                          resData.order_address.billing_address
-                        }`}<br/>
-                        {`${
-                          resData.order_address &&
-                          resData.order_address.billing_city
-                        },`}<br/>
-                        {`${
-                          resData.order_address &&
-                          resData.order_address.billing_state
-                        }`}</span>
-                      </li>
-                      <li className="text-[22px]n text-[#4F5562] flex flex-col border border-[#EDEDED] p-2 rounded-md min-w-[250px] w-auto min-h-[100px] h-auto">
-                        {ServeLangItem()?.Shipping_Address}:{" "}
-                        <span className="text-[#27AE60] border-t-2 border-[#EDEDED]">
-                          {`${
-                          resData.order_address &&
-                          resData.order_address.shipping_address 
-                        }`}<br/>
-                        {`${
-                          resData.order_address &&
-                          resData.order_address.shipping_city
-                        },`}<br/>
-                        {`${
-                          resData.order_address &&
-                          resData.order_address.shipping_state
-                        }`}</span>
-
-                      {/* <li className="text-[22px]n text-[#4F5562] mt-3">
+                        <li className="text-[22px]n text-[#4F5562] flex flex-col border border-[#EDEDED] p-2 rounded-md min-w-[250px] w-auto min-h-[100px] h-auto">
+                          {ServeLangItem()?.Billing_Address}:{" "}
+                          <span className="text-[#27AE60] border-t-2 border-[#EDEDED]">
+                            {`${
+                              resData.order_address &&
+                              resData.order_address.billing_address
+                            }`}
+                            <br />
+                            {`${
+                              resData.order_address &&
+                              resData.order_address.billing_city
+                            },`}
+                            <br />
+                            {`${
+                              resData.order_address &&
+                              resData.order_address.billing_state
+                            }`}
+                          </span>
+                        </li>
+                        <li className="text-[22px]n text-[#4F5562] flex flex-col border border-[#EDEDED] p-2 rounded-md min-w-[250px] w-auto min-h-[100px] h-auto">
+                          {ServeLangItem()?.Shipping_Address}:{" "}
+                          <span className="text-[#27AE60] border-t-2 border-[#EDEDED]">
+                            {`${
+                              resData.order_address &&
+                              resData.order_address.shipping_address
+                            }`}
+                            <br />
+                            {`${
+                              resData.order_address &&
+                              resData.order_address.shipping_city
+                            },`}
+                            <br />
+                            {`${
+                              resData.order_address &&
+                              resData.order_address.shipping_state
+                            }`}
+                          </span>
+                          {/* <li className="text-[22px]n text-[#4F5562] mt-3">
                         {ServeLangItem()?.Type}:{" "}
                         <span className="text-[#27AE60]">
                           {resData.order_address &&
@@ -310,9 +315,8 @@ function OrderCom() {
                             : "Home"}
                         </span>
                       </li> */}
-                      </li>
+                        </li>
                       </div>
-
                     </ul>
                   </div>
                   <div>
@@ -556,7 +560,7 @@ function OrderCom() {
                   <button
                     onClick={reviewAction}
                     type="button"
-                    className="black-btn w-[300px] h-[50px]  flex justify-center"
+                    className="bg-[var(--primary-color)] w-[300px] h-[50px]  flex justify-center"
                   >
                     <span className="flex space-x-1 items-center h-full">
                       <span className="text-sm font-semibold">

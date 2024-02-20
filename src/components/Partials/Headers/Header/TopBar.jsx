@@ -74,7 +74,7 @@ export default function TopBar({ className, contact, settings }) {
             <>
               <div className="topbar-nav">
                 <ul className="flex space-x-6 items-center">
-                  <li className="rtl:ml-6 ltr:ml-0">
+                  <li className="rtl:ml-6 ltr:ml-0 mt-4">
                     <Link href="/" passHref>
                       <a rel="noopener noreferrer">
                         {settings && (

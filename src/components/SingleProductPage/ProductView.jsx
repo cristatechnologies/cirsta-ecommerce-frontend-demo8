@@ -386,7 +386,7 @@ export default function ProductView({
               <span
                 data-aos="fade-up"
                 className={`${
-                  quickViewData ? "text-black" : "text-white"
+                  quickViewData ? "text-black" : "text-[var(--primary-color)]"
                 } text-xs font-normal uppercase tracking-wider mb-2 inline-block`}
               >
                 {product.brand.name}
@@ -396,7 +396,7 @@ export default function ProductView({
             <p
               data-aos="fade-up"
               className={`text-xl font-medium mb-4 ${
-                quickViewData ? "text-black" : "text-white"
+                quickViewData ? "text-black" : "text-[var(--primary-color)]"
               } `}
             >
               {product.name}
@@ -424,7 +424,7 @@ export default function ProductView({
                             key={
                               parseInt(product.averageRating) + Math.random()
                             }
-                            className="text-white"
+                            className="text-[var(--text-color)]"
                           >
                             <Star defaultValue={false} />
                           </span>
@@ -436,7 +436,7 @@ export default function ProductView({
               )}
               <span
                 className={`text-[13px] font-normal ${
-                  quickViewData ? "text-qblack" : "text-white"
+                  quickViewData ? "text-qblack" : "text-[var(--text-color)]"
                 }`}
               >
                 {parseInt(product.averageRating) > 0
@@ -454,7 +454,7 @@ export default function ProductView({
                 className={`main-price  font-600  ${
                   offerPrice
                     ? "line-through text-qgray text-[15px]"
-                    : "text-white text-[24px]"
+                    : "text-[var(--text-color)] text-[24px]"
                 }`}
               >
                 {offerPrice ? (
@@ -482,7 +482,7 @@ export default function ProductView({
             <div data-aos="fade-up" className="mb-[30px]">
               <div
                 className={`text-sm text-normal  leading-7 ${
-                  quickViewData ? "text-black" : "text-white"
+                  quickViewData ? "text-black" : "text-[var(--text-color)]"
                 } ${more ? "" : "line-clamp-2"}`}
               >
                 {product.short_description}
@@ -564,7 +564,9 @@ export default function ProductView({
                               <div>
                                 <span
                                   className={`text-[13px] ${
-                                    quickViewData ? "text-black" : "text-white"
+                                    quickViewData
+                                      ? "text-black"
+                                      : "text-[var(--primary-color)]"
                                   }`}
                                 >
                                   {item}
@@ -609,13 +611,19 @@ export default function ProductView({
                     onClick={decrement}
                     type="button"
                     className={`${
-                      quickViewData ? "text-black" : "text-white"
+                      quickViewData
+                        ? "text-black"
+                        : "text-[var(--primary-color)]"
                     } text-base`}
                   >
                     -
                   </button>
                   <span
-                    className={`${quickViewData ? "text-black" : "text-white"}`}
+                    className={`${
+                      quickViewData
+                        ? "text-black"
+                        : "text-[var(--primary-color)]"
+                    }`}
                   >
                     {quantity}
                   </span>
@@ -623,7 +631,9 @@ export default function ProductView({
                     onClick={increment}
                     type="button"
                     className={`${
-                      quickViewData ? "text-black" : "text-white"
+                      quickViewData
+                        ? "text-black"
+                        : "text-[var(--primary-color)]"
                     } text-base`}
                   >
                     +
@@ -658,7 +668,9 @@ export default function ProductView({
                     <span className="w-10 h-10 flex justify-center items-center">
                       <ThinLove
                         className={`${
-                          quickViewData ? "fill-black" : "fill-white"
+                          quickViewData
+                            ? "fill-black"
+                            : "fill-[var(--primary-color)]"
                         }`}
                       />
                     </span>
@@ -682,7 +694,7 @@ export default function ProductView({
                   <button
                     onClick={addToCard}
                     type="button"
-                    className="bg-orange-600 text-sm font-semibold w-full h-full"
+                    className="bg-[var(--primary-color)] text-sm font-semibold w-full h-full"
                   >
                     {ServeLangItem()?.Add_To_Cart}
                   </button>
@@ -693,11 +705,13 @@ export default function ProductView({
             <div data-aos="fade-up" className="mb-[20px]">
               <p
                 className={`text-[13px] ${
-                  quickViewData ? "text-black" : "text-white"
+                  quickViewData ? "text-black" : "text-[var(--text-color)]"
                 } leading-7`}
               >
                 <span
-                  className={`${quickViewData ? "text-black" : "text-white"}`}
+                  className={`${
+                    quickViewData ? "text-black" : "text-[var(--text-color)]"
+                  }`}
                 >
                   Category :
                 </span>{" "}
@@ -706,10 +720,10 @@ export default function ProductView({
               {tags && (
                 <p
                   className={`text-[13px] ${
-                    quickViewData ? "text-black" : "text-white"
+                    quickViewData ? "text-black" : "text-[var(--text-color)]"
                   } leading-7`}
                 >
-                  <span className="text-white">Tags:</span>{" "}
+                  <span className="text-[var(--text-color)]">Tags:</span>{" "}
                   {tags.length > 0 &&
                     tags.map((item, i) => (
                       <span key={i}>{item.value + ", "}</span>
@@ -719,12 +733,12 @@ export default function ProductView({
               {product.sku && (
                 <p
                   className={`text-[13px] ${
-                    quickViewData ? "text-black" : "text-white"
+                    quickViewData ? "text-black" : "text-[var(--text-color)]"
                   } leading-7`}
                 >
                   <span
                     className={`${
-                      quickViewData ? "text-black" : "text-white"
+                      quickViewData ? "text-black" : "text-[var(--text-color)]"
                     } uppercase`}
                   >
                     {ServeLangItem()?.SKU}:
@@ -768,7 +782,7 @@ export default function ProductView({
             >
               <span
                 className={`${
-                  quickViewData ? "text-black" : "text-white"
+                  quickViewData ? "text-black" : "text-[var(--text-color)]"
                 } text-[13px] mr-[17px] inline-block"`}
               >
                 {ServeLangItem()?.Share_This}

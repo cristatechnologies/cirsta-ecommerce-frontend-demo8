@@ -47,19 +47,22 @@ function TrackingOrder() {
             {ServeLangItem()?.Track_Your_Order}
           </h1>
           <p className="text-[15px] text-qgraytwo leading-8 mb-5">
-            {ServeLangItem()?.Enter_your_order_tracking_number_and_your_secret_id}.
+            {
+              ServeLangItem()
+                ?.Enter_your_order_tracking_number_and_your_secret_id
+            }
+            .
           </p>
           <div className="w-full bg-white lg:px-[30px] px-5 py-[23px] lg:flex items-center">
             <div className="lg:w-[642px] w-full">
               <div className="mb-3">
-
                 <InputCom
-                    value={orderNumber}
-                    inputHandler={(e) => setOrderNumber(e.target.value)}
-                    placeholder="Order Number"
-                    label="Order Tracking Number"
-                    mandatory={true}
-                    inputClasses="w-full h-[50px] py-3"
+                  value={orderNumber}
+                  inputHandler={(e) => setOrderNumber(e.target.value)}
+                  placeholder="Order Number"
+                  label="Order Tracking Number"
+                  mandatory={true}
+                  inputClasses="w-full h-[50px] py-3"
                 />
               </div>
               <div className="mb-[30px]">
@@ -73,7 +76,7 @@ function TrackingOrder() {
               </div>
 
               <button onClick={trackOrder} type="button">
-                <div className="w-[142px] h-[50px] black-btn flex justify-center items-center">
+                <div className="w-[142px] h-[50px] bg-[var(--primary-color)] flex justify-center items-center">
                   <span>{ServeLangItem()?.Track_Now}</span>
                 </div>
               </button>

@@ -156,7 +156,7 @@ function CardPage() {
                     </div>
                   </Link>
                   <Link href="/checkout">
-                    <div className="w-[300px] h-[50px] bg-orange-600 flex justify-center items-center cursor-pointer">
+                    <div className="w-[300px] h-[50px] bg-[var(--primary-color)] flex justify-center items-center cursor-pointer">
                       <span className="text-sm font-semibold">
                         {ServeLangItem()?.Proceed_to_Checkout}
                       </span>

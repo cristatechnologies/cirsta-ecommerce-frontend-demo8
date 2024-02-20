@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import ServeLangItem from "../../Helpers/ServeLangItem";
 import InputCom from "../../Helpers/InputCom";
 import apiRequest from "../../../../utils/apiRequest";
@@ -8,10 +8,10 @@ import Link from "next/link";
 import LoaderStyleOne from "../../Helpers/Loaders/LoaderStyleOne";
 import settings from "../../../../utils/settings";
 import Image from "next/image";
-import countries from "../../../data/CountryCodes.json"
+import countries from "../../../data/CountryCodes.json";
 import axios from "axios";
 
-function SignupWidget({ redirect = true, signupActionPopup,changeContent }) {
+function SignupWidget({ redirect = true, signupActionPopup, changeContent }) {
   const router = useRouter();
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
@@ -25,19 +25,19 @@ function SignupWidget({ redirect = true, signupActionPopup,changeContent }) {
   const [getCountries, setGetCountries] = useState(null);
   const [countryDropToggle, setCountryDropToggle] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState("BD");
-  const [googleUrl,setGoogleUrl]=useState(null);
+  const [googleUrl, setGoogleUrl] = useState(null);
   const [isConfirmPassCorrect, setIsConfirmPassCorrect] = useState(false);
-  const [faceBookUrl,setFaceBookUrl]=useState(null);
-  const [twitterUrl,setTwitterUrl]=useState(null);
+  const [faceBookUrl, setFaceBookUrl] = useState(null);
+  const [twitterUrl, setTwitterUrl] = useState(null);
   const [isValidEmail, setIsValidEmail] = useState(true);
 
-  const selectCountryhandler=(value)=>{
+  const selectCountryhandler = (value) => {
     setSelectedCountry(value.code);
     setPhone(value.dial_code);
     setCountryDropToggle(false);
   };
   useEffect(() => {
-    if(!getCountries){
+    if (!getCountries) {
       setGetCountries(countries && countries.countries);
     }
   }, [getCountries]);
@@ -48,68 +48,80 @@ function SignupWidget({ redirect = true, signupActionPopup,changeContent }) {
   const doSignup = async () => {
     setLoading(true);
     await apiRequest
-        .signup({
-          name: fname + " " + lname,
-          email: email,
-          password: password,
-          password_confirmation: confirmPassword,
-          agree: checked ? 1 : "",
-          phone:phone?phone:''
-        })
-        .then((res) => {
-          setLoading(false);
-          toast.success(res.data.notification);
-          if (redirect) {
-            router.push(`/verify-you?email=${email}`);
-          }else{
-            changeContent()
-          }
-          setFname("");
-          setLname("");
-          setEmail("");
-          setPassword("");
-          setConfirmPassword("");
-          setCheck(false);
-        })
-        .catch((err) => {
-          setLoading(false);
-          setErrors(err.response && err.response.data.errors);
-        });
+      .signup({
+        name: fname + " " + lname,
+        email: email,
+        password: password,
+        password_confirmation: confirmPassword,
+        agree: checked ? 1 : "",
+        phone: phone ? phone : "",
+      })
+      .then((res) => {
+        setLoading(false);
+        toast.success(res.data.notification);
+        if (redirect) {
+          router.push(`/verify-you?email=${email}`);
+        } else {
+          changeContent();
+        }
+        setFname("");
+        setLname("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+        setCheck(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        setErrors(err.response && err.response.data.errors);
+      });
   };
-  const {phone_number_required,default_phone_code}=settings();
-  useEffect(()=>{
-    if(default_phone_code){
-      let defaultCountry=getCountries && getCountries.length>0 && getCountries.find((item)=>item.code===default_phone_code);
-      if(defaultCountry){
+  const { phone_number_required, default_phone_code } = settings();
+  useEffect(() => {
+    if (default_phone_code) {
+      let defaultCountry =
+        getCountries &&
+        getCountries.length > 0 &&
+        getCountries.find((item) => item.code === default_phone_code);
+      if (defaultCountry) {
         setPhone(defaultCountry.dial_code);
         setSelectedCountry(defaultCountry.code);
       }
     }
   }, [default_phone_code, getCountries]);
-  useEffect(()=>{
-    axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}api/login/google`).then((res)=>{
-      if(res.data){
-        setGoogleUrl(res.data.url);
-      }
-    }).catch((er)=>{
-      console.log(er)
-    })
-    axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}api/login/facebook`).then((res)=>{
-      if(res.data){
-        setFaceBookUrl(res.data.url);
-      }
-    }).catch((er)=>{
-      console.log(er)
-    })
-    axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}api/login/twitter`).then((res)=>{
-      console.log(res);
-      if(res.data){
-        setTwitterUrl(res.data.url);
-      }
-    }).catch((er)=>{
-      console.log(er)
-    })
-  },[])
+  useEffect(() => {
+    axios
+      .get(`${process.env.NEXT_PUBLIC_BASE_URL}api/login/google`)
+      .then((res) => {
+        if (res.data) {
+          setGoogleUrl(res.data.url);
+        }
+      })
+      .catch((er) => {
+        console.log(er);
+      });
+    axios
+      .get(`${process.env.NEXT_PUBLIC_BASE_URL}api/login/facebook`)
+      .then((res) => {
+        if (res.data) {
+          setFaceBookUrl(res.data.url);
+        }
+      })
+      .catch((er) => {
+        console.log(er);
+      });
+    axios
+      .get(`${process.env.NEXT_PUBLIC_BASE_URL}api/login/twitter`)
+      .then((res) => {
+        console.log(res);
+        if (res.data) {
+          setTwitterUrl(res.data.url);
+        }
+      })
+      .catch((er) => {
+        console.log(er);
+      });
+  }, []);
 
   const handleInputChange = (emailValue) => {
     const inputEmail = emailValue;
@@ -117,270 +129,329 @@ function SignupWidget({ redirect = true, signupActionPopup,changeContent }) {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const isValid = emailPattern.test(inputEmail);
     setIsValidEmail(isValid);
-    setErrors({...errors,email:[null]})
+    setErrors({ ...errors, email: [null] });
   };
 
   return (
-      <div className="w-full">
-        <div className="title-area flex flex-col justify-center items-center relative text-center mb-7">
-          <h1 className="text-[34px] font-bold leading-[74px] text-qblack">
-            {ServeLangItem()?.Create_Account}
-          </h1>
-          <div className="shape -mt-6">
-            <svg
-                width="354"
-                height="30"
-                viewBox="0 0 354 30"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                  d="M1 28.8027C17.6508 20.3626 63.9476 8.17089 113.509 17.8802C166.729 28.3062 341.329 42.704 353 1"
-                  stroke="#FCBF49"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-              />
-            </svg>
-          </div>
-        </div>
-        <div className="input-area">
-          <div className="flex sm:flex-row flex-col space-y-5 sm:space-y-0 sm:space-x-5 rtl:space-x-reverse mb-5">
-            <div className="h-full">
-              <InputCom
-                  placeholder={ServeLangItem()?.Name}
-                  label={ServeLangItem()?.First_Name}
-                  mandatory={true}
-                  name="fname"
-                  type="text"
-                  inputClasses="h-[50px] py-3"
-                  value={fname}
-                  inputHandler={(e) => {setFname(e.target.value);setErrors({...errors,name:[null]})}}
-              />
-              {errors && Object.hasOwn(errors, "name") ? (
-                  <span className="text-sm mt-1 text-qred">{errors.name[0]}</span>
-              ) : (
-                  ""
-              )}
-            </div>
-            <div className="h-full">
-              <InputCom
-                  placeholder={ServeLangItem()?.Name}
-                  label={ServeLangItem()?.Last_Name}
-                  name="lname"
-                  mandatory={true}
-                  type="text"
-                  inputClasses="h-[50px] py-3"
-                  value={lname}
-                  inputHandler={(e) => setLname(e.target.value)}
-              />
-              {errors && Object.hasOwn(errors, "name") ? (
-                  <span className="text-sm mt-1 text-qred">{errors.name[0]}</span>
-              ) : (
-                  ""
-              )}
-            </div>
-          </div>
-          <div className="input-item mb-5">
-            <InputCom
-                placeholder={ServeLangItem()?.Email}
-                label={ServeLangItem()?.Email_Address}
-                name="email"
-                mandatory={true}
-                type="email"
-                inputClasses="h-[50px] py-3"
-                value={email}
-                inputHandler={(e) => handleInputChange(e.target.value)}
+    <div className="w-full">
+      <div className="title-area flex flex-col justify-center items-center relative text-center mb-7">
+        <h1 className="text-[34px] font-bold leading-[74px] text-qblack">
+          {ServeLangItem()?.Create_Account}
+        </h1>
+        <div className="shape -mt-6">
+          <svg
+            width="354"
+            height="30"
+            viewBox="0 0 354 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1 28.8027C17.6508 20.3626 63.9476 8.17089 113.509 17.8802C166.729 28.3062 341.329 42.704 353 1"
+              stroke="#FCBF49"
+              strokeWidth="2"
+              strokeLinecap="round"
             />
-             {!isValidEmail && (
-                      <p className="text-sm mt-1 text-qred">
-                        Please enter a valid email address
-                      </p>
-                    )}
-            {errors && Object.hasOwn(errors, "email") ? (
-                <span className="text-sm mt-1 text-qred">{errors.email[0]}</span>
+          </svg>
+        </div>
+      </div>
+      <div className="input-area">
+        <div className="flex sm:flex-row flex-col space-y-5 sm:space-y-0 sm:space-x-5 rtl:space-x-reverse mb-5">
+          <div className="h-full">
+            <InputCom
+              placeholder={ServeLangItem()?.Name}
+              label={ServeLangItem()?.First_Name}
+              mandatory={true}
+              name="fname"
+              type="text"
+              inputClasses="h-[50px] py-3"
+              value={fname}
+              inputHandler={(e) => {
+                setFname(e.target.value);
+                setErrors({ ...errors, name: [null] });
+              }}
+            />
+            {errors && Object.hasOwn(errors, "name") ? (
+              <span className="text-sm mt-1 text-qred">{errors.name[0]}</span>
             ) : (
-                ""
+              ""
             )}
           </div>
-          {phone_number_required==='1'&&(
-              <div className="input-item mb-5 relative">
-                <InputCom
-                    placeholder={ServeLangItem()?.Phone_Number}
-                    label={ServeLangItem()?.phone}
-                    name="phone"
-                    mandatory={true}
-                    type="text"
-                    inputClasses="h-[50px] placeholder:capitalize pl-20 py-3"
-                    value={phone}
-                    error={!!(errors && Object.hasOwn(errors, "phone"))}
-                    patternValidation={'[1-9]{1}[0-9]{9}'}
-                    inputHandler={(e) => {e.target.value.length <=10 && setPhone(e.target.value)}}
-                />
-                {phone&& phone.length < 10 &&
-                      (<span className="text-sm mt-1 text-qred">
-                        Please enter phone number 10 digit
-                      </span>)
-                }
-                {errors && Object.hasOwn(errors, "phone") ? (
-                    <span className="text-sm mt-1 text-qred">{errors.phone[0]}</span>
-                ) : (
-                    ""
-                )}
-                <button onClick={()=>setCountryDropToggle(!countryDropToggle)} type="button" className="w-[70px] h-[50px] bg-qgray-border absolute left-0 top-[29px] flex justify-center items-center">
-                  <div className="flex items-center">
-                  <span>
-                    <Image width="30" height="20" src={`/assets/images/countries/${selectedCountry}.svg`} alt="country"/>
-                  </span>
-                    <span className="text-qgray">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 14l-4-4h8z"/></svg>
-                  </span>
-                  </div>
-                </button>
-                <div style={{boxShadow: "rgb(0 0 0 / 14%) 0px 15px 50px 0px",display:countryDropToggle?'block':'none'}} className="country-dropdown-list w-[250px] h-[250px] bg-white absolute left-0 top-[80px] z-20 overflow-y-scroll">
-                  <ul>
-                    {getCountries && getCountries.length>0&&getCountries.map((item,i)=>(
-                        <li onClick={()=>selectCountryhandler(item)} key={i} className="flex space-x-1.5 items-center px-3 py-1 cursor-pointer">
-                        <span className="w-[25px]">
-                           <Image width="25" height="15" src={`/assets/images/countries/${item.code}.svg`} alt="country"/>
-                        </span>
-                          <span className="text-sm text-qgray capitalize flex-1">
-                          {item.name}
-                        </span>
-                        </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+          <div className="h-full">
+            <InputCom
+              placeholder={ServeLangItem()?.Name}
+              label={ServeLangItem()?.Last_Name}
+              name="lname"
+              mandatory={true}
+              type="text"
+              inputClasses="h-[50px] py-3"
+              value={lname}
+              inputHandler={(e) => setLname(e.target.value)}
+            />
+            {errors && Object.hasOwn(errors, "name") ? (
+              <span className="text-sm mt-1 text-qred">{errors.name[0]}</span>
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+        <div className="input-item mb-5">
+          <InputCom
+            placeholder={ServeLangItem()?.Email}
+            label={ServeLangItem()?.Email_Address}
+            name="email"
+            mandatory={true}
+            type="email"
+            inputClasses="h-[50px] py-3"
+            value={email}
+            inputHandler={(e) => handleInputChange(e.target.value)}
+          />
+          {!isValidEmail && (
+            <p className="text-sm mt-1 text-qred">
+              Please enter a valid email address
+            </p>
           )}
-          <div className="flex sm:flex-row flex-col space-y-5 sm:space-y-0 sm:space-x-5 rtl:space-x-reverse mb-5">
-            <div className={"h-full relative"}>
-              <InputCom
-                  placeholder="* * * * * *"
-                  label={ServeLangItem()?.Password}
-                  name="password"
-                  mandatory={true}
-                  type="password"
-                  id="password"
-                  inputClasses="h-[50px] py-3"
-                  value={password}
-                  min={"8"}
-                  inputHandler={(e) => {setPassword(e.target.value.trim());setErrors({...errors,password:[null]}) }}
-              />
-               {password && password.length < 8 ? (
-                        <span className="text-sm mt-1 text-qred absolute top-20 left-0">
-                          Please enter password minimum 8 character
-                        </span>
-                      ) : (
-                        ""
-                )}
-              {errors && Object.hasOwn(errors, "password") ? (
-                  <span className="text-sm mt-1 text-qred">
-                {errors.password[0]}
+          {errors && Object.hasOwn(errors, "email") ? (
+            <span className="text-sm mt-1 text-qred">{errors.email[0]}</span>
+          ) : (
+            ""
+          )}
+        </div>
+        {phone_number_required === "1" && (
+          <div className="input-item mb-5 relative">
+            <InputCom
+              placeholder={ServeLangItem()?.Phone_Number}
+              label={ServeLangItem()?.phone}
+              name="phone"
+              mandatory={true}
+              type="text"
+              inputClasses="h-[50px] placeholder:capitalize pl-20 py-3"
+              value={phone}
+              error={!!(errors && Object.hasOwn(errors, "phone"))}
+              patternValidation={"[1-9]{1}[0-9]{9}"}
+              inputHandler={(e) => {
+                e.target.value.length <= 10 && setPhone(e.target.value);
+              }}
+            />
+            {phone && phone.length < 10 && (
+              <span className="text-sm mt-1 text-qred">
+                Please enter phone number 10 digit
               </span>
-              ) : (
-                  ""
-              )}
-            </div>
-            <div className="h-full relative">
-              <InputCom
-                  placeholder="* * * * * *"
-                  label={ServeLangItem()?.Confirm_Password}
-                  name="confirm_password"
-                  mandatory={true}
-                  id="confirm_password"
-                  type="password"
-                  inputClasses="h-[50px] py-3"
-                  value={confirmPassword}
-                  inputHandler={(e) => {setConfirmPassword(e.target.value);setErrors({...errors,password:[null]});setIsConfirmPassCorrect(
-                    password !== e.target.value
-                  );}}
-              />
-               {confirmPassword && confirmPassword.length < 8 ? (
-                        <span className="text-sm mt-1 text-qred absolute top-20 left-0">
-                          Please enter confirm password minimum 8 character
-                        </span>
-                      ) : ("")
-                }
-                {confirmPassword.length > 8 && isConfirmPassCorrect ? (
-                        <span className="text-sm mt-1 text-qred absolute top-20 left-0">
-                          Please re-enter your password to confirm
-                        </span>
-                      ) : ("")
-                }
-              {errors && Object.hasOwn(errors, "password") ? (
-                  <span className="text-sm mt-1 text-qred">
-                {errors.password[0]}
-              </span>
-              ) : (
-                  ""
-              )}
-            </div>
-          </div>
-          <div className="forgot-password-area mb-7">
-            <div className={`remember-checkbox flex items-center space-x-2.5 rtl:space-x-reverse  ${((password && password.length < 8) || ( confirmPassword && confirmPassword.length < 8)) ||(confirmPassword&& password!==confirmPassword) ? "pt-16":"pt-0"}`}>
-              <button
-                  onClick={rememberMe}
-                  type="button"
-                  className="w-5 h-5 text-qblack flex justify-center items-center border border-light-gray"
-              >
-                {checked && (
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
+            )}
+            {errors && Object.hasOwn(errors, "phone") ? (
+              <span className="text-sm mt-1 text-qred">{errors.phone[0]}</span>
+            ) : (
+              ""
+            )}
+            <button
+              onClick={() => setCountryDropToggle(!countryDropToggle)}
+              type="button"
+              className="w-[70px] h-[50px] bg-qgray-border absolute left-0 top-[29px] flex justify-center items-center"
+            >
+              <div className="flex items-center">
+                <span>
+                  <Image
+                    width="30"
+                    height="20"
+                    src={`/assets/images/countries/${selectedCountry}.svg`}
+                    alt="country"
+                  />
+                </span>
+                <span className="text-qgray">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    height="24"
+                  >
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path d="M12 14l-4-4h8z" />
+                  </svg>
+                </span>
+              </div>
+            </button>
+            <div
+              style={{
+                boxShadow: "rgb(0 0 0 / 14%) 0px 15px 50px 0px",
+                display: countryDropToggle ? "block" : "none",
+              }}
+              className="country-dropdown-list w-[250px] h-[250px] bg-white absolute left-0 top-[80px] z-20 overflow-y-scroll"
+            >
+              <ul>
+                {getCountries &&
+                  getCountries.length > 0 &&
+                  getCountries.map((item, i) => (
+                    <li
+                      onClick={() => selectCountryhandler(item)}
+                      key={i}
+                      className="flex space-x-1.5 items-center px-3 py-1 cursor-pointer"
                     >
-                      <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                      />
-                    </svg>
-                )}
-              </button>
-              {redirect ? (
-                  <Link href="/seller-terms-condition">
-                <span className="text-base text-black cursor-pointer">
-                  {ServeLangItem()?.I_agree_all_terms_and_condition_in_ecoShop}
-                </span>
-                  </Link>
-              ) : (
-                  <button type="button">
-                <span className="text-base text-black cursor-pointer">
-                  {ServeLangItem()?.I_agree_all_terms_and_condition_in_ecoShop}
-                </span>
-                  </button>
-              )}
+                      <span className="w-[25px]">
+                        <Image
+                          width="25"
+                          height="15"
+                          src={`/assets/images/countries/${item.code}.svg`}
+                          alt="country"
+                        />
+                      </span>
+                      <span className="text-sm text-qgray capitalize flex-1">
+                        {item.name}
+                      </span>
+                    </li>
+                  ))}
+              </ul>
             </div>
           </div>
-          <div className="signin-area mb-5">
-            <div className="flex justify-center">
-              <button
-                  onClick={doSignup}
-                  type="button"
-                  disabled={email &&
-                    password &&
-                    confirmPassword &&
-                    password == confirmPassword &&
-                    checked &&
-                    isValidEmail&&fname&&lname&&!isConfirmPassCorrect
-                      ? false
-                      : true}
-                  className="black-btn disabled:bg-opacity-50 disabled:cursor-not-allowed  w-full h-[50px] font-semibold flex justify-center bg-purple items-center"
-              >
+        )}
+        <div className="flex sm:flex-row flex-col space-y-5 sm:space-y-0 sm:space-x-5 rtl:space-x-reverse mb-5">
+          <div className={"h-full relative"}>
+            <InputCom
+              placeholder="* * * * * *"
+              label={ServeLangItem()?.Password}
+              name="password"
+              mandatory={true}
+              type="password"
+              id="password"
+              inputClasses="h-[50px] py-3"
+              value={password}
+              min={"8"}
+              inputHandler={(e) => {
+                setPassword(e.target.value.trim());
+                setErrors({ ...errors, password: [null] });
+              }}
+            />
+            {password && password.length < 8 ? (
+              <span className="text-sm mt-1 text-qred absolute top-20 left-0">
+                Please enter password minimum 8 character
+              </span>
+            ) : (
+              ""
+            )}
+            {errors && Object.hasOwn(errors, "password") ? (
+              <span className="text-sm mt-1 text-qred">
+                {errors.password[0]}
+              </span>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="h-full relative">
+            <InputCom
+              placeholder="* * * * * *"
+              label={ServeLangItem()?.Confirm_Password}
+              name="confirm_password"
+              mandatory={true}
+              id="confirm_password"
+              type="password"
+              inputClasses="h-[50px] py-3"
+              value={confirmPassword}
+              inputHandler={(e) => {
+                setConfirmPassword(e.target.value);
+                setErrors({ ...errors, password: [null] });
+                setIsConfirmPassCorrect(password !== e.target.value);
+              }}
+            />
+            {confirmPassword && confirmPassword.length < 8 ? (
+              <span className="text-sm mt-1 text-qred absolute top-20 left-0">
+                Please enter confirm password minimum 8 character
+              </span>
+            ) : (
+              ""
+            )}
+            {confirmPassword.length > 8 && isConfirmPassCorrect ? (
+              <span className="text-sm mt-1 text-qred absolute top-20 left-0">
+                Please re-enter your password to confirm
+              </span>
+            ) : (
+              ""
+            )}
+            {errors && Object.hasOwn(errors, "password") ? (
+              <span className="text-sm mt-1 text-qred">
+                {errors.password[0]}
+              </span>
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+        <div className="forgot-password-area mb-7">
+          <div
+            className={`remember-checkbox flex items-center space-x-2.5 rtl:space-x-reverse  ${
+              (password && password.length < 8) ||
+              (confirmPassword && confirmPassword.length < 8) ||
+              (confirmPassword && password !== confirmPassword)
+                ? "pt-16"
+                : "pt-0"
+            }`}
+          >
+            <button
+              onClick={rememberMe}
+              type="button"
+              className="w-5 h-5 text-qblack flex justify-center items-center border border-light-gray"
+            >
+              {checked && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              )}
+            </button>
+            {redirect ? (
+              <Link href="/seller-terms-condition">
+                <span className="text-base text-black cursor-pointer">
+                  {ServeLangItem()?.I_agree_all_terms_and_condition_in_ecoShop}
+                </span>
+              </Link>
+            ) : (
+              <button type="button">
+                <span className="text-base text-black cursor-pointer">
+                  {ServeLangItem()?.I_agree_all_terms_and_condition_in_ecoShop}
+                </span>
+              </button>
+            )}
+          </div>
+        </div>
+        <div className="signin-area mb-5">
+          <div className="flex justify-center">
+            <button
+              onClick={doSignup}
+              type="button"
+              disabled={
+                email &&
+                password &&
+                confirmPassword &&
+                password == confirmPassword &&
+                checked &&
+                isValidEmail &&
+                fname &&
+                lname &&
+                !isConfirmPassCorrect
+                  ? false
+                  : true
+              }
+              className="bg-[var(--primary-color)] disabled:bg-opacity-50 disabled:cursor-not-allowed  w-full h-[50px] font-semibold flex justify-center bg-purple items-center"
+            >
               <span className="text-sm text-white block">
                 {ServeLangItem()?.Create_Account}
               </span>
-                {loading && (
-                    <span className="w-5 " style={{ transform: "scale(0.3)" }}>
+              {loading && (
+                <span className="w-5 " style={{ transform: "scale(0.3)" }}>
                   <LoaderStyleOne />
                 </span>
-                )}
-              </button>
-            </div>
+              )}
+            </button>
           </div>
-          {/*test buttton*/}
-          {/* {
+        </div>
+        {/*test buttton*/}
+        {/* {
               googleUrl && (
                   <>
                     <a
@@ -471,26 +542,26 @@ function SignupWidget({ redirect = true, signupActionPopup,changeContent }) {
               )
           } */}
 
-          <div className="signup-area flex justify-center">
-            <p className="text-base text-qgraytwo font-normal">
-              {ServeLangItem()?.Already_have_an_Account}?
-              {redirect ? (
-                  <Link href="/login">
+        <div className="signup-area flex justify-center">
+          <p className="text-base text-qgraytwo font-normal">
+            {ServeLangItem()?.Already_have_an_Account}?
+            {redirect ? (
+              <Link href="/login">
                 <span className="ml-2 text-qblack cursor-pointer ml-1">
                   {ServeLangItem()?.Log_In}
                 </span>
-                  </Link>
-              ) : (
-                  <button onClick={signupActionPopup} type="button">
+              </Link>
+            ) : (
+              <button onClick={signupActionPopup} type="button">
                 <span className="ml-2 text-qblack cursor-pointer ml-1">
                   {ServeLangItem()?.Log_In}
                 </span>
-                  </button>
-              )}
-            </p>
-          </div>
+              </button>
+            )}
+          </p>
         </div>
-        {/* {
+      </div>
+      {/* {
           googleUrl && (
                 <>
                   <a
@@ -566,7 +637,7 @@ function SignupWidget({ redirect = true, signupActionPopup,changeContent }) {
             )
         } */}
 
-        {/* <div className="signup-area flex justify-center">
+      {/* <div className="signup-area flex justify-center">
           <p className="text-base text-qgraytwo font-normal">
             {ServeLangItem()?.Already_have_an_Account}?
             {redirect ? (
@@ -584,7 +655,7 @@ function SignupWidget({ redirect = true, signupActionPopup,changeContent }) {
             )}
           </p>
         </div> */}
-      </div>
+    </div>
   );
 }
 
