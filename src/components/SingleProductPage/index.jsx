@@ -120,7 +120,6 @@ export default function SingleProductPage({ details }) {
                   <BreadcrumbCom
                     paths={[
                       { name: ServeLangItem()?.home, path: "/" },
-                      { name: "Store", path: "/store" },
                       {
                         name: details.product.slug,
                         path: `/single-product?slug=${details.product.slug}`,
