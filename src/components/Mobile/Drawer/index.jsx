@@ -130,7 +130,7 @@ export default function Drawer({ className, open, action }) {
           <div className="w-full mt-5 px-5 flex items-center space-x-3">
             <span
               onClick={() => setTab("category")}
-              className={`text-base font-semibold  ${
+              className={`text-base font-semibold cursor-pointer ${
                 tab === "category" ? "text-qblack" : "text-qgray"
               }`}
             >
@@ -139,7 +139,7 @@ export default function Drawer({ className, open, action }) {
             <span className="w-[1px] h-[14px] bg-qgray"></span>
             <span
               onClick={() => setTab("menu")}
-              className={`text-base font-semibold ${
+              className={`text-base font-semibold cursor-pointer ${
                 tab === "menu" ? "text-qblack" : "text-qgray "
               }`}
             >
@@ -521,7 +521,7 @@ export default function Drawer({ className, open, action }) {
                     <div className=" flex justify-between items-center px-5 h-12 bg-white hover-primary-bg transition-all duration-300 ease-in-out cursor-pointer">
                       <div className="flex items-center space-x-6">
                         <span className="text-sm font-400 capitalize">
-                          Blog
+                          {ServeLangItem()?.blogs}
                         </span>
                       </div>
                       <div>

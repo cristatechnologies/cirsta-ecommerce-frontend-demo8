@@ -139,7 +139,7 @@ export default function Blog({ details }) {
                           />
                         </svg>
                       </span>
-                      <span className="text-base text-white capitalize">
+                      <span className="text-base text-[var(--text-color)] capitalize">
                         By Frenzy Mart
                       </span>
                     </div>
@@ -173,44 +173,11 @@ export default function Blog({ details }) {
                     </div> */}
                   </div>
                   <div className="details">
-                    <h1 className="text-[22px] text-white font-semibold line-clamp-2 mb-1 capitalize">
+                    <h1 className="text-[22px] text-[var(--text-color)] font-semibold line-clamp-2 mb-1 capitalize">
                       {details.blog.title}
                     </h1>
-                    {/*<p className="text-qgraytwo text-[15px] leading-[30px] mb-10">*/}
-                    {/*  ten occasional saw everything but conviction. Daughter*/}
-                    {/*  returned quitting few are day advanced branched. Do*/}
-                    {/*  enjoyment defective objection or we if favourite. At*/}
-                    {/*  wonder afford so danger cannot former seeing. Power visit*/}
-                    {/*  charm money add heard new other put. Attended no indulged*/}
-                    {/*  marriage is to judgment offering landlord. Was drawing*/}
-                    {/*  natural fat respect husband. An as noisy an offer drawn*/}
-                    {/*  blush place. These tried for way joy wrote witty. In mr*/}
-                    {/*  began music weeks after at begin. Education no dejection*/}
-                    {/*  so direction pretended household do to. Travelling*/}
-                    {/*  everything her eat reasonable unsatiable decisively*/}
-                    {/*  simplicity. Morning request be lasting it fortune demands*/}
-                    {/*  highest of. Whether article spirits new her covered*/}
-                    {/*  hastily sitting her. Money witty books nor son add.*/}
-                    {/*  Chicken age had evening believe but proceed pretend mrs.*/}
-                    {/*  At missed advice my it no sister. Miss told ham dull knew*/}
-                    {/*  see she spot near can.Spirither entire her called.*/}
-                    {/*  Acceptance middletons me if discretion boisterous*/}
-                    {/*  travelling an. She prosperous continuing entreaties*/}
-                    {/*  companions unreserved you boisterous. Middleton sportsmen*/}
-                    {/*  sir now cordially ask additions for. You ten occasional*/}
-                    {/*  saw everything but conviction. Daughter returned quitting*/}
-                    {/*  few are day advanced branched. Do enjoyment defective*/}
-                    {/*  objection or we if favourite. At wonder afford so danger*/}
-                    {/*  cannot former seeing. Power visit charm money add heard*/}
-                    {/*  new other put. Attended no indulged marriage is to*/}
-                    {/*  judgment offering landlord. Was drawing natural fat*/}
-                    {/*  respect husband. An as noisy an offer drawn blush place.*/}
-                    {/*  These tried for way joy wrote witty. In mr began music*/}
-                    {/*  weeks after at begin. Education no dejection so direction*/}
-                    {/*  pretended household do to.*/}
-                    {/*</p>*/}
                     <div
-                      className="mb-10 text-white"
+                      className="mb-10 text-[var(--text-color)] "
                       dangerouslySetInnerHTML={{
                         __html: details.blog.description,
                       }}
@@ -369,7 +336,9 @@ export default function Blog({ details }) {
                       {/*  </span>*/}
                       {/*</div>*/}
                       <div className="tags flex space-x-5 rtl:space-x-reverse items-center">
-                        <span className="text-2xl text-white">Share:</span>
+                        <span className="text-2xl text-[var(--text-color)]">
+                          Share:
+                        </span>
                         <div className="flex space-x-2.5 rtl:space-x-reverse items-center">
                           <FacebookShareButton
                             url={`${
@@ -500,7 +469,7 @@ export default function Blog({ details }) {
                       >
                         <path
                           d="M0 9.59954C0.0526938 9.17184 0.105388 8.74414 0.184428 8.34317C0.526938 6.44524 1.34369 4.81463 2.60834 3.39787C4.08377 1.74052 5.92805 0.644534 8.0885 0.216832C10.6178 -0.291064 13.0154 0.0831754 15.2549 1.44648C17.7842 2.99689 19.3913 5.24233 19.9973 8.15605C20.5242 10.6421 20.129 13.0212 18.9171 15.2666C18.68 15.6943 18.68 15.6943 19.0225 16.0418C20.7877 17.8328 22.553 19.6238 24.3182 21.4148C24.8978 22.0029 25.1349 22.6712 24.9242 23.4731C24.529 24.9968 22.6583 25.5582 21.4727 24.3285C20.4715 23.286 19.4704 22.2969 18.4428 21.2544C17.6261 20.4257 16.8357 19.6238 16.0189 18.7951C15.9662 18.7417 15.9135 18.6882 15.8872 18.6615C15.2549 18.9823 14.6752 19.3565 14.0429 19.6238C11.3292 20.7733 8.58909 20.7465 5.90171 19.5169C3.873 18.5813 2.34487 17.1111 1.26465 15.1597C0.579632 13.9033 0.158081 12.5667 0.0526938 11.1232C0.0526938 11.043 0.0263469 10.9628 0 10.8826C0 10.4817 0 10.0272 0 9.59954ZM3.26702 10.2678C3.26702 14.0904 6.34961 17.1913 10.1172 17.1913C13.8848 17.1645 16.9147 14.0904 16.9411 10.2678C16.9411 6.47197 13.8585 3.3444 10.1172 3.3444C6.32326 3.3444 3.26702 6.44524 3.26702 10.2678Z"
-                          fill="#d95422"
+                          fill="var(--primary-color)"
                         />
                       </svg>
                     </span>

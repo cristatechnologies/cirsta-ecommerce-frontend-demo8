@@ -182,7 +182,7 @@ export default function Header({ drawerAction, settings, contact }) {
                   <Link href="/blogs" passHref>
                     <a rel="noopener noreferrer" className="mb-5">
                       <span className="text-sm sm:text-base lg:text-base leading-6 text-gray-500 font-regular cursor-pointer hover:text-orange-500 mb-5">
-                        Blog
+                        {ServeLangItem()?.blogs}
                       </span>
                     </a>
                   </Link>

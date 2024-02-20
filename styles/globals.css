@@ -115,19 +115,19 @@ body {
   background: var(--primary-color);
 }
 .blog .details :is(p, span) {
-  color: white !important;
+  color: var(--text-color) !important;
   font-size: 15px !important;
   line-height: 30px !important;
   text-align: start !important;
 }
 .blog .details :is(h1, h2, h3, h4, h5, h6, table, ul, li) {
-  color: white !important;
+  color: var(--text-color) !important;
 }
 .blog .details :is(a) {
-  color: #d95422 !important;
+  color: var(--primary-color) !important;
 }
 .product-detail-des :is(p, span, ul, li, table) {
-  color: #ffffff !important;
+  color: var(--text-color) !important;
   background-color: inherit !important;
 }
 .about-content :is(h1, h2, h3) {
@@ -718,7 +718,7 @@ body {
 .blog-card-wrapper
   .article-area
   :is(p, h1, h2, h3, h5, h6, h4, span, table, ul, li) {
-  color: white !important;
+  color: var(--text-color) !important;
 }
 
 /* TODO: ===============RESPONSIVE */
