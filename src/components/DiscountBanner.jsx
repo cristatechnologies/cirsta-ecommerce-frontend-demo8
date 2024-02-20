@@ -2,18 +2,9 @@ import SubscribeInputWidget from "./Helpers/SubscribeInputWidget";
 export default function DiscountBanner({ className, datas }) {
   return (
     <div
-      className={`w-full h-[320px] bg-cover flex justify-center items-end print:hidden ${
-        className || ''
+      className={`w-full h-[320px]  flex justify-center items-end print:hidden  bg-[var(--primary-color)]${
+        className || ""
       }`}
-      style={{
-        backgroundImage: `url(${
-          // process.env.NEXT_PUBLIC_BASE_URL + datas.image
-          '/assets/images/bannerFooter.png'
-        })`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundPosition: '10% 15%',
-      }}
     >
       <div className="mb-[70px]">
         <div data-aos="fade-up">

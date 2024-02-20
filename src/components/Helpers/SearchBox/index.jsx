@@ -50,7 +50,7 @@ export default function SearchBox({ className }) {
   const searchHandler = () => {
     if (auth()) {
       if (searchKey !== "") {
-         if (selectedCat) {
+        if (selectedCat) {
           router.push({
             pathname: "/search",
             query: { search: searchKey, category: selectedCat.slug },
@@ -61,7 +61,7 @@ export default function SearchBox({ className }) {
             query: { search: searchKey },
           });
         }
-      }  else if (searchKey === "" && selectedCat) {
+      } else if (searchKey === "" && selectedCat) {
         router.push({
           pathname: "/products",
           query: { category: selectedCat.slug },
@@ -144,7 +144,7 @@ export default function SearchBox({ className }) {
                   {categories &&
                     categories.map((item, i) => (
                       <li onClick={() => categoryHandler(item)} key={i}>
-                        <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:primary-text cursor-pointer">
+                        <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-[var(--primary-color)] hover:primary-text cursor-pointer">
                           {item.name}
                         </span>
                       </li>
@@ -153,7 +153,7 @@ export default function SearchBox({ className }) {
               </div>
             </>
           )}
-        </div>       
+        </div>
         <button
           onClick={searchHandler}
           className="bg-[var(--primary-color)] w-[93px] h-full text-sm font-600 text-[var(--text-color)] "

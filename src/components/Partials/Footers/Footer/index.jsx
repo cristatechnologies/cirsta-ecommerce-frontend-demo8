@@ -61,25 +61,27 @@ export default function Footer({ settings }) {
   });
 
   return (
-    <footer className="footer-section-wrapper bg-[#023020] print:hidden">
+    <footer className="footer-section-wrapper print:hidden">
       <div className="pt-[56px]">
         <div className="flex flex-col lg:flex-row items-center lg:justify-between mb-[50px] w-full sm:w-full lg:max-w-4xl mx-auto">
           <div className="lg:w-52 mr-10 w-full mb-10 lg:mb-0">
-          <div className="mb-[40px] text-center lg:text-inherit">
-            <Link href="/" passHref>
-              <a>
-                {settings && (
-                  <Image
-                    width="200"
-                    height="100"
-                    objectFit="scale-down"
-                    src={`${process.env.NEXT_PUBLIC_BASE_URL + settings.logo}`}
-                    alt="logo"
-                  />
-                )}
-              </a>
-            </Link>
-          </div>
+            <div className="mb-[40px] text-center lg:text-inherit">
+              <Link href="/" passHref>
+                <a>
+                  {settings && (
+                    <Image
+                      width="200"
+                      height="100"
+                      objectFit="scale-down"
+                      src={`${
+                        process.env.NEXT_PUBLIC_BASE_URL + settings.logo
+                      }`}
+                      alt="logo"
+                    />
+                  )}
+                </a>
+              </Link>
+            </div>
             {/*<p className="text-[#9A9A9A] text-[15px] w-[247px] leading-[28px]">*/}
             {/*  {footerContent && footerContent.email ? footerContent.email : ""}*/}
             {/*</p>*/}
@@ -113,7 +115,7 @@ export default function Footer({ settings }) {
               {firstCol && (
                 <>
                   <div className="mb-5">
-                    <h6 className="text-xl font-bold text-orange-600">
+                    <h6 className="text-xl font-bold text-[var(--primary-color)]">
                       {firstCol.columnTitle}
                     </h6>
                   </div>
@@ -124,7 +126,7 @@ export default function Footer({ settings }) {
                           <li key={i} className="w-fit">
                             <Link href={`${item.link}`}>
                               <a rel="noopener noreferrer">
-                                <span className="text-white text-[15px] hover:text-white border-b border-transparent hover:border-qblack cursor-pointer capitalize">
+                                <span className="text-[var(--text-color)] text-[15px] hover:text-[var(--primary-color)] border-b border-transparent hover:border-qblack cursor-pointer capitalize">
                                   {item.title}
                                 </span>
                               </a>
@@ -141,11 +143,15 @@ export default function Footer({ settings }) {
                 {secondCol && (
                   <>
                     <div className="mb-5">
-                      {secondCol.columnTitle?<h6 className="text-xl font-bold text-orange-600">
-                        {secondCol.columnTitle}
-                      </h6>:<h6 className="text-xl font-bold text-orange-600">
-                        &#160;
-                      </h6>}
+                      {secondCol.columnTitle ? (
+                        <h6 className="text-xl font-bold text-[var(--primary-color)]">
+                          {secondCol.columnTitle}
+                        </h6>
+                      ) : (
+                        <h6 className="text-xl font-bold text-[var(--primary-color)]">
+                          &#160;
+                        </h6>
+                      )}
                     </div>
                     <div>
                       <ul className="flex flex-col space-y-2 ">
@@ -154,7 +160,7 @@ export default function Footer({ settings }) {
                             <li key={i}>
                               <Link href={`${item.link}`} passHref>
                                 <a rel="noopener noreferrer">
-                                  <span className="text-white text-[15px] hover:text-white border-b border-transparent hover:border-qblack cursor-pointer capitalize">
+                                  <span className="text-[var(--text-color)] text-[15px] hover:text-[var(--primary-color)] border-b border-transparent hover:border-qblack cursor-pointer capitalize">
                                     {item.title}
                                   </span>
                                 </a>
@@ -172,7 +178,7 @@ export default function Footer({ settings }) {
                 {thirdCol && (
                   <>
                     <div className="mb-5">
-                      <h6 className="text-xl font-bold text-orange-600 ">
+                      <h6 className="text-xl font-bold text-[var(--primary-color)] ">
                         {thirdCol.columnTitle}
                       </h6>
                     </div>
@@ -180,17 +186,18 @@ export default function Footer({ settings }) {
                       <ul className="flex flex-col space-y-2 ">
                         {thirdCol.col_links.length > 0 &&
                           thirdCol.col_links.map((item, i) => {
-                            return(
-                            <li key={i} className="flex items-center gap-2">
-                              <FontAwesomeCom
-                              className={"w-4 h-4 text-white"}
-                              icon={item.link}
-                              />
-                                  <span className="text-white text-[15px] hover:text-white border-b border-transparent hover:border-qblack">
-                                    {item.title}
-                                  </span>  
-                            </li>
-                          )})}
+                            return (
+                              <li key={i} className="flex items-center gap-2">
+                                <FontAwesomeCom
+                                  className={"w-4 h-4 text-[var(--text-color)]"}
+                                  icon={item.link}
+                                />
+                                <span className="text-[var(--text-color)] text-[15px] hover:text-[var(--primary-color)] border-b border-transparent hover:border-qblack">
+                                  {item.title}
+                                </span>
+                              </li>
+                            );
+                          })}
                       </ul>
                     </div>
                   </>
@@ -204,7 +211,7 @@ export default function Footer({ settings }) {
          justify-between items-center w-full  "
         >
           <div className="flex px-20 flex-wrap sm:flex-nowrap lg:flex-nowrap sm:px-32 lg:px-40 justify-evenly sm:justify-between lg:justify-between items-center mb-3 w-full lg:max-w-6xl lg:mx-auto">
-            <span className="sm:text-base text-xs text-white font-300 py-5">
+            <span className="sm:text-base text-xs text-[var(--text-color)] font-300 py-5">
               {footerContent && footerContent.copyright
                 ? footerContent.copyright
                 : ""}
@@ -215,7 +222,7 @@ export default function Footer({ settings }) {
                 socialLink.map((item, i) => (
                   <a key={i} href={item.link} target="_blank" rel="noreferrer">
                     <FontAwesomeCom
-                      className="w-4 h-4 text-white"
+                      className="w-4 h-4 text-[var(--text-color)]"
                       icon={item.icon}
                     />
                   </a>

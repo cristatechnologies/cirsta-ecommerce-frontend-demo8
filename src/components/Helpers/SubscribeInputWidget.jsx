@@ -58,8 +58,7 @@ function SubscribeInputWidget(props) {
       <button
         onClick={subscribehandler}
         type="button"
-
-        className="sm:w-[158px] w-[80px]  h-full primary-bg text-sm font-600"
+        className="sm:w-[158px] w-[80px]  h-full border-2 border-[var(--secondary-color)] text-sm font-600 hover:text-white"
       >
         {ServeLangItem()?.Get_the_Coupon}
       </button>
