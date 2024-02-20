@@ -1028,7 +1028,7 @@ function CheakoutPage() {
                   {!newAddress && (
                     <div className="addresses-widget w-full">
                       <div className="sm:flex justify-between items-center w-full mb-5">
-                        <div className="bg-[#FFFAEF] border border-qyellow rounded p-2">
+                        <div className=" border border-[#409BD1] rounded p-2">
                           {/* <button
                             onClick={() => setActiveAddress("billing")}
                             type="button"
@@ -1056,7 +1056,7 @@ function CheakoutPage() {
                         <button
                           onClick={() => setNewAddress(!newAddress)}
                           type="button"
-                          className="w-[100px] h-[40px] mt-2 sm:mt-0 border border-white hover:bg-orange-600 hover:text-white transition-all duration-300 ease-in-out text-white"
+                          className="w-[100px] h-[40px] mt-2 sm:mt-0 border border-[var(--primary-color)] hover:bg-[var(--primary-color)] hover:text-white transition-all duration-300 ease-in-out text-[var(--text-color)]"
                         >
                           <span className="text-sm font-semibold">
                             {ServeLangItem()?.Add_New}
@@ -1079,7 +1079,7 @@ function CheakoutPage() {
                                 key={i}
                                 className={`w-full p-5 border cursor-pointer relative ${
                                   address.id === selectedBilling
-                                    ? "border-qyellow bg-[#FFFAEF]"
+                                    ? "border-[#409BD1]"
                                     : "border-transparent bg-primarygray"
                                 }`}
                               >
@@ -1299,7 +1299,7 @@ function CheakoutPage() {
                   {newAddress && (
                     <div data-aos="zoom-in" className="w-full">
                       <div className="flex justify-between items-center">
-                        <h1 className="sm:text-2xl text-xl text-white font-medium mb-5">
+                        <h1 className="sm:text-2xl text-xl text-[var(--text-color)] font-medium mb-5">
                           {ServeLangItem()?.Add_new_address}
                         </h1>
                         <span
@@ -1328,7 +1328,9 @@ function CheakoutPage() {
                                 <InputCom
                                   label={ServeLangItem()?.First_Name}
                                   placeholder={ServeLangItem()?.Name}
-                                  labelClasses={"text-white text-[13px]"}
+                                  labelClasses={
+                                    "text-[var(--text-color)] text-[13px]"
+                                  }
                                   inputClasses="w-full h-[50px] py-3"
                                   value={fName}
                                   mandatory={true}
@@ -1353,7 +1355,9 @@ function CheakoutPage() {
                                 <InputCom
                                   label={ServeLangItem()?.Last_Name}
                                   placeholder={ServeLangItem()?.Name}
-                                  labelClasses={"text-white text-[13px]"}
+                                  labelClasses={
+                                    "text-[var(--text-color)] text-[13px]"
+                                  }
                                   inputClasses="w-full h-[50px] py-3"
                                   value={lName}
                                   mandatory={true}
@@ -1382,7 +1386,9 @@ function CheakoutPage() {
                                 label={ServeLangItem()?.Email_Address}
                                 placeholder={ServeLangItem()?.Email}
                                 inputClasses="w-full h-[50px] py-3"
-                                labelClasses={"text-white text-[13px]"}
+                                labelClasses={
+                                  "text-[var(--text-color)] text-[13px]"
+                                }
                                 value={email}
                                 mandatory={true}
                                 inputHandler={(e) =>
@@ -1405,7 +1411,9 @@ function CheakoutPage() {
                                 placeholder="012 3  *******"
                                 inputClasses="w-full h-[50px] py-3"
                                 value={phone}
-                                labelClasses={"text-white text-[13px]"}
+                                labelClasses={
+                                  "text-[var(--text-color)] text-[13px]"
+                                }
                                 mandatory={true}
                                 patternValidation={"[1-9]{1}[0-9]{9}"}
                                 inputHandler={(e) => setPhone(e.target.value)}
@@ -1432,7 +1440,7 @@ function CheakoutPage() {
                           </div>
                           <div className="sm:space-x-5 items-center mb-6 flex sm:flex-nowrap flex-wrap">
                             <div className="sm:w-1/2 w-full sm:mb-0 mb-5">
-                              <h1 className="input-label capitalize mb-2 text-white text-[13px] font-normal flex">
+                              <h1 className="input-label capitalize mb-2 text-[var(--text-color)] text-[13px] font-normal flex">
                                 {ServeLangItem()?.Country}{" "}
                                 <span className={"text-red-600 ml-1"}>*</span>
                               </h1>
@@ -1499,7 +1507,7 @@ function CheakoutPage() {
                               )}
                             </div>
                             <div className="sm:w-1/2 w-full">
-                              <h1 className="input-label capitalize block  mb-2 text-white text-[13px] font-normal">
+                              <h1 className="input-label capitalize block  mb-2 text-[var(--text-color)] text-[13px] font-normal">
                                 {ServeLangItem()?.State}
                                 <span className={"text-red-600 ml-1"}>*</span>
                               </h1>
@@ -1555,7 +1563,7 @@ function CheakoutPage() {
                           <div className="flex sm:space-x-5 items-center mb-6 sm:flex-nowrap flex-wrap">
                             <div className="sm:w-1/2 w-full sm:mb-0 mb-5">
                               <div className="input-item">
-                                <h1 className="input-label capitalize block  mb-2 text-white text-[13px] font-normal">
+                                <h1 className="input-label capitalize block  mb-2 text-[var(--text-color)] text-[13px] font-normal">
                                   {ServeLangItem()?.City}{" "}
                                   <span className={"text-red-600 ml-1"}>*</span>
                                 </h1>
@@ -1633,7 +1641,9 @@ function CheakoutPage() {
                                 placeholder="123123"
                                 type={"number"}
                                 inputClasses="w-full h-[50px] py-3"
-                                labelClasses={"text-white text-[13px]"}
+                                labelClasses={
+                                  "text-[var(--text-color)] text-[13px]"
+                                }
                                 value={pincode}
                                 mandatory={true}
                                 patternValidation={"[1-6]{1}[0-6]{6}"}
@@ -1662,7 +1672,7 @@ function CheakoutPage() {
                           <div className=" mb-6">
                             <div className="w-full py-3">
                               <label
-                                className={`input-label capitalize block mb-2 text-white text-[13px] font-normal`}
+                                className={`input-label capitalize block mb-2 text-[var(--text-color)] text-[13px] font-normal`}
                               >
                                 {ServeLangItem()?.Address}{" "}
                                 <span className={"text-red-600 ml-1"}>*</span>
@@ -1675,8 +1685,10 @@ function CheakoutPage() {
                                   placeholder={
                                     ServeLangItem()?.your_address_here
                                   }
-                                  className={`w-full h-[50px] py-3 px-6 ${
-                                    errors?.address ? "border border-qred" : ""
+                                  className={`w-full h-[50px] py-3 px-6 border ${
+                                    errors?.address
+                                      ? " border-qred"
+                                      : "border-[#EDEDED]"
                                   }`}
                                   name="address"
                                 />
@@ -1706,7 +1718,7 @@ function CheakoutPage() {
                               </div>
                               <label
                                 htmlFor="home"
-                                className="text-white text-[15px] select-none capitalize"
+                                className="text-[var(--text-color)] text-[15px] select-none capitalize"
                               >
                                 {ServeLangItem()?.home}
                               </label>
@@ -1726,7 +1738,7 @@ function CheakoutPage() {
                               </div>
                               <label
                                 htmlFor="office"
-                                className="text-white text-[15px] select-none"
+                                className="text-[var(--text-color)] text-[15px] select-none"
                               >
                                 {ServeLangItem()?.Office}
                               </label>
@@ -1782,7 +1794,7 @@ function CheakoutPage() {
                       <button
                         onClick={submitCoupon}
                         type="button"
-                        className="w-[90px] h-[50px] bg-orange-600"
+                        className="w-[90px] h-[50px] bg-[var(--primary-color)]"
                       >
                         <span className="text-sm font-semibold">
                           {ServeLangItem()?.Apply}
@@ -1797,10 +1809,10 @@ function CheakoutPage() {
                   <div className="w-full px-10 py-[30px] border border-[#EDEDED]">
                     <div className="sub-total mb-6">
                       <div className=" flex justify-between mb-5">
-                        <p className="text-[13px] font-medium text-white uppercase">
+                        <p className="text-[13px] font-medium text-[var(--text-color)] uppercase">
                           {ServeLangItem()?.Product}
                         </p>
-                        <p className="text-[13px] font-medium text-white uppercase">
+                        <p className="text-[13px] font-medium text-[var(--text-color)] uppercase">
                           {ServeLangItem()?.total}
                         </p>
                       </div>
@@ -1816,10 +1828,10 @@ function CheakoutPage() {
                                 <div>
                                   <h4
                                     title={item.product.name}
-                                    className="text-[15px] text-white line-clamp-1 mb-2.5"
+                                    className="text-[15px] text-[var(--text-color)] line-clamp-1 mb-2.5"
                                   >
                                     {wordCount(`${item.product.name}`)}
-                                    <sup className="text-[13px] text-white ml-2 mt-2">
+                                    <sup className="text-[13px] text-[var(--text-color)] ml-2 mt-2">
                                       x{parseInt(item.qty)}
                                     </sup>
                                   </h4>
@@ -1837,7 +1849,7 @@ function CheakoutPage() {
                                 <div>
                                   <span
                                     suppressHydrationWarning
-                                    className="text-[15px] text-white font-medium"
+                                    className="text-[15px] text-[var(--text-color)] font-medium"
                                   >
                                     <CheckProductIsExistsInFlashSale
                                       id={item.product_id}
@@ -1853,12 +1865,12 @@ function CheakoutPage() {
                     <div className="w-full h-[1px] bg-[#EDEDED]"></div>
                     <div className="mt-[20px]">
                       <div className=" flex justify-between mb-5">
-                        <p className="text-[13px] text-white uppercase font-bold">
+                        <p className="text-[13px] text-[var(--text-color)] uppercase font-bold">
                           {ServeLangItem()?.SUBTOTAL}
                         </p>
                         <p
                           suppressHydrationWarning
-                          className="text-[15px] font-bold text-white uppercase"
+                          className="text-[15px] font-bold text-[var(--text-color)] uppercase"
                         >
                           {currency_icon
                             ? currency_icon + parseFloat(totalPrice).toFixed(2)
@@ -1866,12 +1878,12 @@ function CheakoutPage() {
                         </p>
                       </div>
                       <div className=" flex justify-between mb-5">
-                        <p className="text-[13px] text-white uppercase font-bold">
+                        <p className="text-[13px] text-[var(--text-color)] uppercase font-bold">
                           {ServeLangItem()?.Discount_coupon} (-)
                         </p>
                         <p
                           suppressHydrationWarning
-                          className="text-[15px] font-bold text-white uppercase"
+                          className="text-[15px] font-bold text-[var(--text-color)] uppercase"
                         >
                           {currency_icon
                             ? currency_icon +
@@ -1881,7 +1893,7 @@ function CheakoutPage() {
                       </div>
                     </div>
                     <div className="shipping mb-6 mt-6">
-                      <span className="text-[15px] font-medium text-white mb-[18px] block">
+                      <span className="text-[15px] font-medium text-[var(--text-color)] mb-[18px] block">
                         {ServeLangItem()?.Shipping} (+)
                       </span>
                       <div className="flex flex-col space-y-2.5">
@@ -2242,7 +2254,7 @@ function CheakoutPage() {
                                 />
                               </svg>
                             </div>
-                            <span className="text-[15px] text-normal text-white">
+                            <span className="text-[15px] text-normal text-[var(--text-color)]">
                               Free Shipping
                             </span>
                           </div>
@@ -2260,7 +2272,7 @@ function CheakoutPage() {
                     </div>
                     <div className="mt-[30px]">
                       <div className=" flex justify-between mb-5">
-                        <p className="text-2xl font-medium text-white capitalize">
+                        <p className="text-2xl font-medium text-[var(--text-color)] capitalize">
                           {ServeLangItem()?.total}
                         </p>
                         <p
@@ -2273,7 +2285,7 @@ function CheakoutPage() {
                             : (mainTotalPrice - discountCoupon).toFixed(2)}
                         </p>
                       </div>
-                      <p className="text-base font-bold text-white">
+                      <p className="text-base font-bold text-[var(--text-color)]">
                         Please select your payment option
                       </p>
                     </div>
@@ -2287,7 +2299,7 @@ function CheakoutPage() {
                               className={`payment-item relative bg-[#F8F8F8] text-center w-full h-[50px] text-sm text-qgreen flex justify-center items-center px-3 uppercase cursor-pointer
                               ${
                                 selectPayment === "cashOnDelivery"
-                                  ? "border-2 border-qyellow"
+                                  ? "border-2 border-[var(--primary-color)]"
                                   : "border border-gray-200"
                               }
                               `}
@@ -2324,7 +2336,7 @@ function CheakoutPage() {
                               className={`payment-item relative bg-[#F8F8F8] text-center w-full h-[50px] text-sm text-qgreen flex justify-center items-center px-3 uppercase cursor-pointer
                               ${
                                 selectPayment === "debitCard"
-                                  ? "border-2 border-qyellow"
+                                  ? "border-2 border-[var(--primary-color)]"
                                   : "border border-gray-200"
                               }
                               `}
@@ -2362,7 +2374,7 @@ function CheakoutPage() {
                               className={`payment-item relative bg-[#F8F8F8] text-center w-full h-[50px] text-sm text-qgreen flex justify-center items-center px-3 uppercase cursor-pointer
                               ${
                                 selectPayment === "creditCard"
-                                  ? "border-2 border-qyellow"
+                                  ? "border-2 border-[var(--primary-color)]"
                                   : "border border-gray-200"
                               }
                               `}
@@ -2400,7 +2412,7 @@ function CheakoutPage() {
                               className={`payment-item relative bg-[#F8F8F8] text-center w-full h-[50px] text-sm text-qgreen flex justify-center items-center px-3 uppercase cursor-pointer
                               ${
                                 selectPayment === "netBanking"
-                                  ? "border-2 border-qyellow"
+                                  ? "border-2 border-[var(--primary-color)]"
                                   : "border border-gray-200"
                               }
                               `}
@@ -2437,7 +2449,7 @@ function CheakoutPage() {
                               className={`payment-item relative bg-[#F8F8F8] text-center w-full h-[50px] text-sm text-qgreen flex justify-center items-center px-3 uppercase cursor-pointer
                               ${
                                 selectPayment === "wallet"
-                                  ? "border-2 border-qyellow"
+                                  ? "border-2 border-[var(--primary-color)]"
                                   : "border border-gray-200"
                               }
                               `}
@@ -2473,7 +2485,7 @@ function CheakoutPage() {
                               onClick={() => setPaymentMethod("stripe")}
                               className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white primary-text  flex justify-center items-center px-3 uppercase cursor-pointer ${
                                 selectPayment === "stripe"
-                                  ? "border-2 border-qyellow"
+                                  ? "border-2 border-[var(--primary-color)]"
                                   : "border border-gray-200"
                               }`}
                             >
@@ -2521,7 +2533,7 @@ function CheakoutPage() {
                               onClick={() => setPaymentMethod("razorpay")}
                               className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white primary-text  flex justify-center items-center px-3 uppercase cursor-pointer ${
                                 selectPayment === "razorpay"
-                                  ? "border-2 border-qyellow"
+                                  ? "border-2 border-[var(--primary-color)]"
                                   : "border border-gray-200"
                               }`}
                             >
@@ -2568,7 +2580,7 @@ function CheakoutPage() {
                               onClick={() => setPaymentMethod("flutterWave")}
                               className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white primary-text  flex justify-center items-center px-3 uppercase cursor-pointer ${
                                 selectPayment === "flutterWave"
-                                  ? "border-2 border-qyellow"
+                                  ? "border-2 border-[var(--primary-color)]"
                                   : "border border-gray-200"
                               }`}
                             >
@@ -2625,7 +2637,7 @@ function CheakoutPage() {
                               onClick={() => setPaymentMethod("mollie")}
                               className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white primary-text  flex justify-center items-center px-3 uppercase cursor-pointer ${
                                 selectPayment === "mollie"
-                                  ? "border-2 border-qyellow"
+                                  ? "border-2 border-[var(--primary-color)]"
                                   : "border border-gray-200"
                               }`}
                             >
@@ -2672,7 +2684,7 @@ function CheakoutPage() {
                               onClick={() => setPaymentMethod("myfatoorah")}
                               className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white primary-text  flex justify-center items-center px-3 uppercase cursor-pointer ${
                                 selectPayment === "myfatoorah"
-                                  ? "border-2 border-qyellow"
+                                  ? "border-2 border-[var(--primary-color)]"
                                   : "border border-gray-200"
                               }`}
                             >
@@ -2763,7 +2775,7 @@ function CheakoutPage() {
                               {selectPayment === "myfatoorah" && (
                                 <span
                                   data-aos="zoom-in"
-                                  className="absolute text-white z-10 w-6 h-6 rounded-full primary-bg -right-2.5 -top-2.5"
+                                  className="absolute text-[var(--text-color)] z-10 w-6 h-6 rounded-full primary-bg -right-2.5 -top-2.5"
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -2786,7 +2798,7 @@ function CheakoutPage() {
                               onClick={() => setPaymentMethod("instamojo")}
                               className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white primary-text  flex justify-center items-center px-3 uppercase cursor-pointer ${
                                 selectPayment === "instamojo"
-                                  ? "border-2 border-qyellow"
+                                  ? "border-2 border-[var(--primary-color)]"
                                   : "border border-gray-200"
                               }`}
                             >
@@ -2845,7 +2857,7 @@ function CheakoutPage() {
                               onClick={() => setPaymentMethod("paystack")}
                               className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white primary-text  flex justify-center items-center px-3 uppercase cursor-pointer ${
                                 selectPayment === "paystack"
-                                  ? "border-2 border-qyellow"
+                                  ? "border-2 border-[var(--primary-color)]"
                                   : "border border-gray-200"
                               }`}
                             >
@@ -2894,7 +2906,7 @@ function CheakoutPage() {
                               onClick={() => setPaymentMethod("paypal")}
                               className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white primary-text  flex justify-center items-center px-3 uppercase cursor-pointer ${
                                 selectPayment === "paypal"
-                                  ? "border-2 border-qyellow"
+                                  ? "border-2 border-[var(--primary-color)]"
                                   : "border border-gray-200"
                               }`}
                             >
@@ -2935,7 +2947,7 @@ function CheakoutPage() {
                               {selectPayment === "paypal" && (
                                 <span
                                   data-aos="zoom-in"
-                                  className="absolute text-white z-10 w-6 h-6 rounded-full primary-bg -right-2.5 -top-2.5"
+                                  className="absolute text-[var(--primary-color)] z-10 w-6 h-6 rounded-full primary-bg -right-2.5 -top-2.5"
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -2958,7 +2970,7 @@ function CheakoutPage() {
                               onClick={() => setPaymentMethod("bankpayment")}
                               className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white primary-text  flex justify-center items-center px-3 uppercase cursor-pointer ${
                                 selectPayment === "bankpayment"
-                                  ? "border-2 border-qyellow"
+                                  ? "border-2 border-[var(--primary-color)]"
                                   : "border border-gray-200"
                               }`}
                             >
@@ -2993,7 +3005,7 @@ function CheakoutPage() {
                               onClick={() => setPaymentMethod("sslcommerce")}
                               className={`payment-item text-center bg-[#F8F8F8] relative w-full h-[50px] font-bold text-sm text-white primary-text  flex justify-center items-center px-3 uppercase cursor-pointer ${
                                 selectPayment === "sslcommerce"
-                                  ? "border-2 border-qyellow"
+                                  ? "border-2 border-[var(--primary-color)]"
                                   : "border border-gray-200"
                               }`}
                             >
@@ -3188,7 +3200,7 @@ function CheakoutPage() {
                         className={`w-full h-[50px] flex justify-center items-center ${
                           !checkDeliverable.cod && !checkDeliverable.pre_paid
                             ? "bg-gray-400"
-                            : "bg-orange-600"
+                            : "bg-[var(--primary-color)]"
                         }`}
                       >
                         <span className="text-sm font-semibold">
