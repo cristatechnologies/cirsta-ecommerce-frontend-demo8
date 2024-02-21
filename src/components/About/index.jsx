@@ -122,7 +122,7 @@ export default function About({ aboutData }) {
 
         <div className="customer-feedback w-full bg-white py-[60px]">
           <div className="title flex justify-center mb-5">
-            <h1 className="text-[30px] font-semibold text-qblack">
+            <h1 className="text-[30px] font-semibold text-[var(--text-color)]">
               {ServeLangItem()?.Customers_Feedback}
             </h1>
           </div>
@@ -157,7 +157,7 @@ export default function About({ aboutData }) {
                           </>
                         )}
                         <div>
-                          <span className="text-[13px] text-qblack">
+                          <span className="text-[13px] text-[var(--text-color)]">
                             ({parseInt(item.rating)})
                           </span>
                         </div>
@@ -176,7 +176,7 @@ export default function About({ aboutData }) {
                           />
                         </div>
                         <div>
-                          <p className="text-[18px] text-qblack font-medium">
+                          <p className="text-[18px] text-[var(--text-color)] font-medium">
                             {item.name}
                           </p>
                           <p className="text-qgraytwo text-[13px]">
@@ -246,14 +246,17 @@ export default function About({ aboutData }) {
                   <div className="flex space-x-5 rtl:space-x-reverse items-center">
                     <div>
                       <div>
-                        <FontAwesomeCom className="w-8 h-8 text-qblack" icon={item.icon} />
+                        <FontAwesomeCom
+                          className="w-8 h-8 text-[var(--text-color)]"
+                          icon={item.icon}
+                        />
                       </div>
                     </div>
                     <div>
-                      <p className="text-qblack text-[15px] font-700 tracking-wide mb-1 uppercase">
+                      <p className="text-[var(--text-color)] text-[15px] font-700 tracking-wide mb-1 uppercase">
                         {item.title}
                       </p>
-                      <p className="text-sm text-qblack line-clamp-1">
+                      <p className="text-sm text-[var(--text-color)] line-clamp-1">
                         {item.description}
                       </p>
                     </div>
@@ -266,7 +269,7 @@ export default function About({ aboutData }) {
         <div className="blog-post-wrapper w-full mb-[100px]">
           <div className="container-x mx-auto">
             <div className="blog-post-title flex justify-center items-cente mb-[30px]">
-              <h1 className="text-3xl font-semibold text-qblack">
+              <h1 className="text-3xl font-semibold text-[var(--text-color)]">
                 {ServeLangItem()?.My_Latest_News}
               </h1>
             </div>
