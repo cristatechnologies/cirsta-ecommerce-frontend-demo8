@@ -193,19 +193,19 @@ export default function ProductsFilter({
         </div>
       ) : (
         <div className="min-h-[576px] h-auto w-[280px] border border-black-800 relative hidden lg:block sm:block bg-white">
-          <div className="w-[220px] hidden h-[41px] px-5 rounded-[5px] bg-[var(--primary-color)] lg:w-[280px] sm:w-[220px] lg:block sm:block">
+          <div className="hidden h-[41px] px-5 rounded-[5px] bg-[var(--primary-color)] lg:block sm:block">
             <button
               type="button"
               className="w-full h-full flex justify-between items-center cursor-default"
             >
-              <div className="flex rtl:space-x-reverse space-x-3 text-white items-center">
+              <div className="flex rtl:space-x-reverse space-x-3 items-center">
                 <span>
                   <svg
                     width="14"
                     height="9"
                     color="#ffff"
                     viewBox="0 0 14 9"
-                    className="fill-current text-white"
+                    className="fill-current text-[var(--text-color)]"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <rect width="14" height="1" />
@@ -223,7 +223,7 @@ export default function ProductsFilter({
             {categoryList &&
               categoryList.map((item) => (
                 <li
-                  className="hover:bg-[var(--primary-color)] hover:text-white group/parent"
+                  className="hover:bg-[var(--primary-color)] text-[var(--text-color)] hover:text-white group/parent"
                   key={item.id}
                 >
                   <Link
@@ -242,7 +242,9 @@ export default function ProductsFilter({
                               icon={item.icon}
                             />
                           </span>
-                          <span className="text-xs font-400">{item.name}</span>
+                          <span className="text-xs font-400 text-[var(--text-color)]">
+                            {item.name}
+                          </span>
                         </div>
                         {item.active_sub_categories.length > 0 && (
                           <div>
@@ -252,7 +254,7 @@ export default function ProductsFilter({
                                 width="6"
                                 height="9"
                                 viewBox="0 0 6 9"
-                                fill="none"
+                                fill="text-[var(--text-color)]"
                                 xmlns="http://www.w3.org/2000/svg"
                               >
                                 <rect
@@ -282,7 +284,7 @@ export default function ProductsFilter({
                       {item.active_sub_categories.map((subItems) => (
                         <li
                           key={subItems.id}
-                          className="group/child text-black hover:bg-[var(--primary-color)] hover:text-white"
+                          className="group/child text-[var(--text-color)] hover:bg-[var(--primary-color)] hover:text-white"
                         >
                           <Link
                             href={{
@@ -294,7 +296,7 @@ export default function ProductsFilter({
                             <a rel="noopener noreferrer">
                               <div className=" flex justify-between items-center px-5 h-10 transition-all duration-300 ease-in-out cursor-pointer">
                                 <div className="flex items-center rtl:space-x-reverse space-x-6">
-                                  <span className="text-xs font-400">
+                                  <span className="text-xs font-400 text-[var(--text-color)]">
                                     {subItems.name}
                                   </span>
                                 </div>
@@ -307,7 +309,7 @@ export default function ProductsFilter({
                                         width="6"
                                         height="9"
                                         viewBox="0 0 6 9"
-                                        fill="none"
+                                        fill="text-[var(--text-color)]"
                                         xmlns="http://www.w3.org/2000/svg"
                                       >
                                         <rect
@@ -337,7 +339,7 @@ export default function ProductsFilter({
                                 (subItemChild) => (
                                   <li
                                     key={subItemChild.id}
-                                    className="hover:bg-[var(--primary-color)] hover:text-white"
+                                    className="hover:bg-[var(--primary-color)] text-[var(--text-color)] hover:text-white"
                                   >
                                     <Link
                                       href={{
@@ -349,7 +351,7 @@ export default function ProductsFilter({
                                       <a rel="noopener noreferrer">
                                         <div className=" flex justify-between items-center px-5 h-10 transition-all duration-300 ease-in-out cursor-pointer">
                                           <div className="flex items-center rtl:space-x-reverse space-x-6">
-                                            <span className="text-xs font-400">
+                                            <span className="text-xs font-400 text-[var(--text-color)]">
                                               {subItemChild.name}
                                             </span>
                                           </div>
@@ -371,7 +373,7 @@ export default function ProductsFilter({
           {products && (
             <div className="filter-subject-item pb-10 border-b border-qgray-border mt-10 p-5">
               <div className="subject-title mb-[30px]">
-                <h1 className="text-black text-base font-500">
+                <h1 className="text-[var(--text-color)] text-base font-500">
                   {ServeLangItem()?.Price_Range}
                 </h1>
               </div>
@@ -385,7 +387,7 @@ export default function ProductsFilter({
                       onChange={volumeHandler}
                     />
                   </div>
-                  <p className="text-xs text-qblack font-400">
+                  <p className="text-xs text-[var(--text-color)] font-400">
                     {ServeLangItem()?.Price}: ₹{volume.min} - ₹{volume.max}
                   </p>
                 </>

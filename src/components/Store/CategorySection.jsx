@@ -61,11 +61,13 @@ function CategorySection({ sectionTitle, categories }) {
                       <div className="flex items-center rtl:space-x-reverse space-x-6">
                         <span>
                           <FontAwesomeCom
-                            className="w-4 h-4"
+                            className="w-4 h-4 text-[var(--text-color)]"
                             icon={item.icon}
                           />
                         </span>
-                        <span className="text-xs font-400">{item.name}</span>
+                        <span className="text-xs font-400 text-[var(--text-color)]">
+                          {item.name}
+                        </span>
                       </div>
                       {item.active_sub_categories.length > 0 && (
                         <div>
@@ -75,7 +77,7 @@ function CategorySection({ sectionTitle, categories }) {
                               width="6"
                               height="9"
                               viewBox="0 0 6 9"
-                              fill="black"
+                              fill="text-[var(--text-color)]"
                               xmlns="http://www.w3.org/2000/svg"
                             >
                               <rect
@@ -105,7 +107,7 @@ function CategorySection({ sectionTitle, categories }) {
                     {item.active_sub_categories.map((subItems) => (
                       <li
                         key={subItems.id}
-                        className="group/child text-black hover:bg-[var(--primary-color)] hover:text-white"
+                        className="group/child text-[var(--text-color)] hover:bg-[var(--primary-color)] hover:text-white"
                       >
                         <Link
                           href={{
@@ -171,7 +173,7 @@ function CategorySection({ sectionTitle, categories }) {
                                     <a rel="noopener noreferrer">
                                       <div className=" flex justify-between items-center px-5 h-10 transition-all duration-300 ease-in-out cursor-pointer">
                                         <div className="flex items-center rtl:space-x-reverse space-x-6">
-                                          <span className="text-xs font-400">
+                                          <span className="text-xs font-400 text-[var(--text-color)]">
                                             {subItemChild.name}
                                           </span>
                                         </div>
