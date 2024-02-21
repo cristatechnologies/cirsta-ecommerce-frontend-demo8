@@ -7,7 +7,6 @@ export default function Accodion({ init, title, des }) {
   };
   return (
     <div
-
       className={`accordion-item w-full bg-white overflow-hidden ${
         collaps ? "primary-bg" : "bg-white"
       }`}
@@ -15,9 +14,11 @@ export default function Accodion({ init, title, des }) {
       <button
         onClick={handler}
         type="button"
-        className={`w-full h-[60px]  flex justify-between items-center px-5 ${collaps ?'text-white':'text-qblack'}`}
+        className={`w-full h-[60px]  flex justify-between items-center px-5 ${
+          collaps ? "text-white" : "text-[var(--text-color)]"
+        }`}
       >
-        <span className="sm:text-base text-sm font-semibold text-start capitalize">
+        <span className="sm:text-base text-sm font-semibold text-start capitalize text-[var(--text-color)]">
           {title}
         </span>
         <span className="text-[#9A9A9A]">
@@ -52,7 +53,9 @@ export default function Accodion({ init, title, des }) {
         <div className="faq-body p-5 border-t border-[#E5A832]">
           <div data-aos="fade-up">
             <div
-              className={`sm:text-[15px] text-xs ${collaps ? 'text-white':''}`}
+              className={`sm:text-[15px] text-xs ${
+                collaps ? "text-white" : ""
+              }`}
               dangerouslySetInnerHTML={{
                 __html: des,
               }}

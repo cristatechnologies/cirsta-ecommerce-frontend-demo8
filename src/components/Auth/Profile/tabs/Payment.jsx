@@ -16,7 +16,7 @@ export default function Payment() {
                 />
               </div>
               <div className="flex flex-col space-y-2">
-                <p className="sm:text-xl text-lg tracking-wide text-qblack font-bold">
+                <p className="sm:text-xl text-lg tracking-wide text-[var(--text-color)] font-bold">
                   Datch Bangla Bank Ltd
                 </p>
                 <p className="text-thin-light-gray sm:text-18 text-sm tracking-wide">
@@ -30,7 +30,7 @@ export default function Payment() {
             <div>
               <button
                 type="button"
-                className="w-[116px] sm:h-[46px] h-[40px]  primary-bg text-qblack font-medium sm:text-18 text-sm tracking-wide"
+                className="w-[116px] sm:h-[46px] h-[40px]  primary-bg text-[var(--text-color)] font-medium sm:text-18 text-sm tracking-wide"
               >
                 <span>Manage</span>
               </button>
@@ -46,7 +46,7 @@ export default function Payment() {
                 />
               </div>
               <div className="flex flex-col space-y-2">
-                <p className="sm:text-xl text-lg tracking-wide text-qblack font-bold">
+                <p className="sm:text-xl text-lg tracking-wide text-[var(--text-color)] font-bold">
                   Datch Bangla Bank Ltd
                 </p>
                 <p className="text-thin-light-gray sm:text-18 text-sm tracking-wide">
@@ -60,7 +60,7 @@ export default function Payment() {
             <div>
               <button
                 type="button"
-                className="w-[116px] sm:h-[46px] h-[40px]  primary-bg text-qblack font-medium sm:text-18 text-sm tracking-wide"
+                className="w-[116px] sm:h-[46px] h-[40px]  primary-bg text-[var(--text-color)] font-medium sm:text-18 text-sm tracking-wide"
               >
                 <span>Manage</span>
               </button>
@@ -76,7 +76,7 @@ export default function Payment() {
                 />
               </div>
               <div className="flex flex-col space-y-2">
-                <p className="sm:text-xl text-lg tracking-wide text-qblack font-bold">
+                <p className="sm:text-xl text-lg tracking-wide text-[var(--text-color)] font-bold">
                   Datch Bangla Bank Ltd
                 </p>
                 <p className="text-thin-light-gray sm:text-18 text-sm tracking-wide">
@@ -90,7 +90,7 @@ export default function Payment() {
             <div>
               <button
                 type="button"
-                className="w-[116px] sm:h-[46px] h-[40px]  primary-bg text-qblack font-medium sm:text-18 text-sm tracking-wide"
+                className="w-[116px] sm:h-[46px] h-[40px]  primary-bg text-[var(--text-color)] font-medium sm:text-18 text-sm tracking-wide"
               >
                 <span>Manage</span>
               </button>
@@ -106,7 +106,7 @@ export default function Payment() {
                 />
               </div>
               <div className="flex flex-col space-y-2">
-                <p className="sm:text-xl text-lg tracking-wide text-qblack font-bold">
+                <p className="sm:text-xl text-lg tracking-wide text-[var(--text-color)] font-bold">
                   Datch Bangla Bank Ltd
                 </p>
                 <p className="text-thin-light-gray sm:text-18 text-sm tracking-wide">
@@ -120,7 +120,7 @@ export default function Payment() {
             <div>
               <button
                 type="button"
-                className="w-[116px] sm:h-[46px] h-[40px]  primary-bg text-qblack font-medium sm:text-18 text-sm tracking-wide"
+                className="w-[116px] sm:h-[46px] h-[40px]  primary-bg text-[var(--text-color)] font-medium sm:text-18 text-sm tracking-wide"
               >
                 <span>Manage</span>
               </button>
@@ -136,7 +136,7 @@ export default function Payment() {
           </button>
           <button
             type="button"
-            className="text-qblack  w-[126px] h-[50px] text-sm font-semibold border border-qblack"
+            className="text-[var(--text-color)]  w-[126px] h-[50px] text-sm font-semibold border border-qblack"
           >
             Add Bank
           </button>

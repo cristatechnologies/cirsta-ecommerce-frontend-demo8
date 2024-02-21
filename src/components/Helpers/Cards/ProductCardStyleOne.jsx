@@ -127,15 +127,15 @@ export default function ProductCardStyleOne({ datas }) {
       token: auth() && auth().access_token,
       quantity: 1,
       variants:
-          getFirstVarients &&
-          getFirstVarients.length > 0 &&
-          getFirstVarients.map((v) =>
-              v ? parseInt(v.product_variant_id) : null
-          ),
+        getFirstVarients &&
+        getFirstVarients.length > 0 &&
+        getFirstVarients.map((v) =>
+          v ? parseInt(v.product_variant_id) : null
+        ),
       variantItems:
-          getFirstVarients &&
-          getFirstVarients.length > 0 &&
-          getFirstVarients.map((v) => (v ? v.id : null)),
+        getFirstVarients &&
+        getFirstVarients.length > 0 &&
+        getFirstVarients.map((v) => (v ? v.id : null)),
     };
     if (auth()) {
       if (varients) {
@@ -186,7 +186,10 @@ export default function ProductCardStyleOne({ datas }) {
         dispatch(fetchCart());
       }
     } else {
-      localStorage.setItem("data-hold", JSON.stringify({type:"add-to-cart",...data}));
+      localStorage.setItem(
+        "data-hold",
+        JSON.stringify({ type: "add-to-cart", ...data })
+      );
       loginPopupBoard.handlerPopup(true);
     }
   };
@@ -253,7 +256,7 @@ export default function ProductCardStyleOne({ datas }) {
     <div className="main-wrapper-card relative">
       <div
         className="product-card-one w-full h-[445px] bg-white relative group overflow-hidden"
-        style={{ boxShadow: '0px 15px 64px 0px rgba(0, 0, 0, 0.05)' }}
+        style={{ boxShadow: "0px 15px 64px 0px rgba(0, 0, 0, 0.05)" }}
       >
         <div className="product-card-img w-full h-[300px] -mt-2">
           <div
@@ -265,7 +268,7 @@ export default function ProductCardStyleOne({ datas }) {
           >
             <Link
               href={{
-                pathname: '/single-product',
+                pathname: "/single-product",
                 query: { slug: datas.slug },
               }}
               passHref
@@ -274,7 +277,7 @@ export default function ProductCardStyleOne({ datas }) {
                 <Image
                   layout="fill"
                   objectFit="scale-down"
-                  src={`${imgSrc ? imgSrc : '/assets/images/spinner.gif'}`}
+                  src={`${imgSrc ? imgSrc : "/assets/images/spinner.gif"}`}
                   alt=""
                   onLoadingComplete={() => loadImg(datas.image)}
                   className="w-full h-full object-contain hover:cursor-pointer"
@@ -286,10 +289,10 @@ export default function ProductCardStyleOne({ datas }) {
             {/*  <>*/}
             {/*    <div className="px-[30px] absolute left-0 top-3 w-full">*/}
             {/*      <div className="progress-title flex justify-between ">*/}
-            {/*        <p className="text-xs text-qblack font-400 leading-6">*/}
+            {/*        <p className="text-xs text-[var(--text-color)] font-400 leading-6">*/}
             {/*          Prodcuts Available*/}
             {/*        </p>*/}
-            {/*        <span className="text-sm text-qblack font-600 leading-6">*/}
+            {/*        <span className="text-sm text-[var(--text-color)] font-600 leading-6">*/}
             {/*          {datas.cam_product_available}*/}
             {/*        </span>*/}
             {/*      </div>*/}
@@ -370,11 +373,11 @@ export default function ProductCardStyleOne({ datas }) {
           </div>
 
           <Link
-            href={{ pathname: '/single-product', query: { slug: datas.slug } }}
+            href={{ pathname: "/single-product", query: { slug: datas.slug } }}
             passHref
           >
             <a rel="noopener noreferrer">
-              <p className="title mb-2 text-[15px] font-600 text-qblack leading-[24px] line-clamp-2 hover:text-blue-600 cursor-pointer">
+              <p className="title mb-2 text-[15px] font-600 text-[var(--text-color)] leading-[24px] line-clamp-2 hover:text-blue-600 cursor-pointer">
                 {datas.title}
               </p>
             </a>
@@ -383,7 +386,7 @@ export default function ProductCardStyleOne({ datas }) {
             <span
               suppressHydrationWarning
               className={`main-price  font-600 text-[18px] ${
-                offerPrice ? 'line-through text-qgray' : 'text-qred'
+                offerPrice ? "line-through text-qgray" : "text-qred"
               }`}
             >
               {offerPrice ? (
@@ -470,7 +473,7 @@ export default function ProductCardStyleOne({ datas }) {
             <div
               data-aos="fade-up"
               className=" md:mx-10 xl:mt-[100px] rounded w-full bg-white relative lg:py-[40px] pt-[80px] pb-[40px] sm:px-[38px] px-3 md:mt-12 h-full overflow-y-scroll xl:overflow-hidden xl:mt-0 "
-              style={{ zIndex: '999' }}
+              style={{ zIndex: "999" }}
             >
               <div className="w-full h-full overflow-y-scroll overflow-style-none">
                 <ProductView

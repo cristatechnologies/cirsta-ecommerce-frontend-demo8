@@ -17,7 +17,7 @@ import { IcoOpenEye } from "../Profile/icons/IcoOpenEye";
 const SEND = ({ action }) => {
   return (
     <div>
-      <p className="text-xs text-qblack">
+      <p className="text-xs text-[var(--text-color)]">
         Please verify your acount. If you didnt get OTP, please resend your OTP
         and verify
       </p>
@@ -132,7 +132,7 @@ function LoginWidget({ redirect = true, loginActionPopup, notVerifyHandler }) {
   return (
     <div className="w-full">
       <div className="title-area flex flex-col justify-center items-center relative text-center mb-7">
-        <h1 className="text-[34px] font-bold leading-[74px] text-qblack">
+        <h1 className="text-[34px] font-bold leading-[74px] text-[var(--text-color)]">
           {ServeLangItem()?.Log_In}
         </h1>
         <div className="shape -mt-6">
@@ -186,7 +186,7 @@ function LoginWidget({ redirect = true, loginActionPopup, notVerifyHandler }) {
             <button
               onClick={rememberMe}
               type="button"
-              className="w-5 h-5 text-qblack flex justify-center items-center border border-light-gray"
+              className="w-5 h-5 text-[var(--text-color)] flex justify-center items-center border border-light-gray"
             >
               {checked && (
                 <svg
@@ -364,13 +364,13 @@ function LoginWidget({ redirect = true, loginActionPopup, notVerifyHandler }) {
             {ServeLangItem()?.Dontt_have_an_account} ?
             {redirect ? (
               <Link href="/signup">
-                <span className="ml-2 text-qblack cursor-pointer capitalize">
+                <span className="ml-2 text-[var(--text-color)] cursor-pointer capitalize">
                   {ServeLangItem()?.sign_up_free}
                 </span>
               </Link>
             ) : (
               <button onClick={loginActionPopup} type="button">
-                <span className="ml-2 text-qblack cursor-pointer capitalize">
+                <span className="ml-2 text-[var(--text-color)] cursor-pointer capitalize">
                   {ServeLangItem()?.sign_up_free}
                 </span>
               </button>

@@ -139,7 +139,7 @@ function Profile() {
           />
           <div className="w-full bg-white xl:p-10 p-5">
             <div className="title-area w-full flex justify-between items-center">
-              <h1 className="text-[22px] font-bold text-qblack">
+              <h1 className="text-[22px] font-bold text-[var(--text-color)]">
                 {ServeLangItem()?.Your_Dashboard}
               </h1>
               {/* {checkSellerAndVendor && (
@@ -166,7 +166,7 @@ function Profile() {
                 <div className="flex xl:flex-col flex-row xl:space-y-10 rtl:space-x-reverse flex-wrap gap-3 xl:gap-0">
                   <div className="item group">
                     <Link href="/profile#dashboard">
-                      <div className="flex space-x-3 rtl:space-x-reverse items-center text-qgray hover:text-qblack capitalize">
+                      <div className="flex space-x-3 rtl:space-x-reverse items-center text-qgray hover:text-[var(--text-color)] capitalize">
                         <span>
                           <IcoDashboard />
                         </span>
@@ -178,7 +178,7 @@ function Profile() {
                   </div>
                   <div className="item group">
                     <Link href="/profile#profile">
-                      <div className="flex space-x-3 rtl:space-x-reverse items-center text-qgray hover:text-qblack capitalize">
+                      <div className="flex space-x-3 rtl:space-x-reverse items-center text-qgray hover:text-[var(--text-color)] capitalize">
                         <span>
                           <IcoPeople />
                         </span>
@@ -191,7 +191,7 @@ function Profile() {
 
                   {/*<div className="item group">*/}
                   {/*  <Link href="/profile#payment">*/}
-                  {/*    <div className="flex space-x-3 rtl:space-x-reverse items-center text-qgray hover:text-qblack capitalize">*/}
+                  {/*    <div className="flex space-x-3 rtl:space-x-reverse items-center text-qgray hover:text-[var(--text-color)] capitalize">*/}
                   {/*      <span>*/}
                   {/*        <IcoPayment />*/}
                   {/*      </span>*/}
@@ -203,7 +203,7 @@ function Profile() {
                   {/*</div>*/}
                   <div className="item group">
                     <Link href="/profile#order">
-                      <div className="flex space-x-3 rtl:space-x-reverse items-center text-qgray hover:text-qblack capitalize">
+                      <div className="flex space-x-3 rtl:space-x-reverse items-center text-qgray hover:text-[var(--text-color)] capitalize">
                         <span>
                           <IcoCart />
                         </span>
@@ -215,7 +215,7 @@ function Profile() {
                   </div>
                   <div className="item group">
                     <Link href="/profile#wishlist">
-                      <div className="flex space-x-3 rtl:space-x-reverse items-center text-qgray hover:text-qblack capitalize">
+                      <div className="flex space-x-3 rtl:space-x-reverse items-center text-qgray hover:text-[var(--text-color)]-text-color)] capitalize">
                         <span>
                           <IcoLove />
                         </span>
@@ -227,7 +227,7 @@ function Profile() {
                   </div>
                   <div className="item group">
                     <Link href="/profile#address">
-                      <div className="flex space-x-3 rtl:space-x-reverse items-center text-qgray hover:text-qblack capitalize">
+                      <div className="flex space-x-3 rtl:space-x-reverse items-center text-qgray hover:text-[var(--text-color)] capitalize">
                         <span>
                           <IcoAdress />
                         </span>
@@ -239,7 +239,7 @@ function Profile() {
                   </div>
                   <div className="item group">
                     <Link href="/profile#review">
-                      <div className="flex space-x-3 rtl:space-x-reverse items-center text-qgray hover:text-qblack capitalize">
+                      <div className="flex space-x-3 rtl:space-x-reverse items-center text-qgray hover:text-[var(--text-color)] capitalize">
                         <span>
                           <IcoReviewHand />
                         </span>
@@ -251,7 +251,7 @@ function Profile() {
                   </div>
                   <div className="item group">
                     <Link href="/profile#password">
-                      <div className="flex space-x-3 rtl:space-x-reverse items-center text-qgray hover:text-qblack capitalize">
+                      <div className="flex space-x-3 rtl:space-x-reverse items-center text-qgray hover:text-[var(--text-color)] capitalize">
                         <span>
                           <IcoPassword />
                         </span>
@@ -263,7 +263,7 @@ function Profile() {
                   </div>
                   {/*<div className="item group">*/}
                   {/*  <Link href="/profile#support">*/}
-                  {/*    <div className="flex space-x-3 rtl:space-x-reverse items-center text-qgray hover:text-qblack capitalize">*/}
+                  {/*    <div className="flex space-x-3 rtl:space-x-reverse items-center text-qgray hover:text-[var(--text-color)] capitalize">*/}
                   {/*      <span>*/}
                   {/*        <IcoSupport />*/}
                   {/*      </span>*/}
@@ -276,7 +276,7 @@ function Profile() {
                   <div className="item group">
                     <div
                       onClick={logout}
-                      className="flex space-x-3 rtl:space-x-reverse items-center text-qgray hover:text-qblack capitalize"
+                      className="flex space-x-3 rtl:space-x-reverse items-center text-qgray hover:text-[var(--text-color)] capitalize"
                     >
                       <span>
                         <IcoLogout />

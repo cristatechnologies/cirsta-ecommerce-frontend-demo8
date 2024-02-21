@@ -153,7 +153,7 @@ export default function SingleProductPage({ details }) {
                         onClick={() => setTab("des")}
                         className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer text-[var(--text-color)] ${
                           tab === "des"
-                            ? "border-[var(--primary-color)] text-qblack "
+                            ? "border-[var(--primary-color)] text-[var(--text-color)] "
                             : "border-transparent text-qgray"
                         }`}
                       >
@@ -165,7 +165,7 @@ export default function SingleProductPage({ details }) {
                         onClick={() => setTab("review")}
                         className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer text-[var(--text-color)] ${
                           tab === "review"
-                            ? "border-[var(--primary-color)] text-qblack "
+                            ? "border-[var(--primary-color)] text-[var(--text-color)] "
                             : "border-transparent text-qgray"
                         }`}
                       >
@@ -178,7 +178,7 @@ export default function SingleProductPage({ details }) {
                     {/*      onClick={() => setTab("info")}*/}
                     {/*      className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer ${*/}
                     {/*        tab === "info"*/}
-                    {/*          ? "border-qyellow text-qblack "*/}
+                    {/*          ? "border-qyellow text-[var(--text-color)] "*/}
                     {/*          : "border-transparent text-qgray"*/}
                     {/*      }`}*/}
                     {/*    >*/}
@@ -344,7 +344,7 @@ export default function SingleProductPage({ details }) {
                       name="name"
                       mandatory={true}
                       inputClasses="h-[50px] py-3"
-                      labelClasses="text-[13px] font-600 leading-[24px] text-qblack"
+                      labelClasses="text-[13px] font-600 leading-[24px] text-[var(--text-color)]"
                       value={subject}
                       inputHandler={(e) => setSubject(e.target.value)}
                       error={
@@ -362,7 +362,7 @@ export default function SingleProductPage({ details }) {
                     )}
                   </div>
                   <div className="w-full mb-[40px]">
-                    <h6 className="input-label  capitalize text-[13px] font-600 leading-[24px] text-qblack block mb-2 ">
+                    <h6 className="input-label  capitalize text-[13px] font-600 leading-[24px] text-[var(--text-color)] block mb-2 ">
                       {ServeLangItem()?.Enter_Report_Note}*
                     </h6>
                     <textarea

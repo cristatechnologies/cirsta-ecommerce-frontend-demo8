@@ -6,14 +6,16 @@ export default function SupportTab() {
       <div className="support-tab w-full">
         <div className="w-[180px] h-[50px] mb-4">
           <button type="button" className="yellow-btn">
-            <div className="w-full text-sm font-semibold">Add New Support</div>
+            <div className="w-full text-sm font-semibold text-[var(--text-color)]">
+              Add New Support
+            </div>
           </button>
         </div>
         <div className="relative w-full overflow-x-auto sm:rounded-lg">
           <table className="w-full text-sm text-left text-gray-500">
             <tbody>
               {/* table heading */}
-              <tr className="text-base text-qblack font-semibold bg-[#F6F6F6] whitespace-nowrap px-2 border-b default-border-bottom ">
+              <tr className="text-base text-[var(--text-color)] font-semibold bg-[#F6F6F6] whitespace-nowrap px-2 border-b default-border-bottom ">
                 <td className="py-6 block whitespace-nowrap text-center">No</td>
                 <td className="py-6 whitespace-nowrap text-center">Time</td>
                 <td className="py-6 whitespace-nowrap w-[285px] text-center">
@@ -24,7 +26,9 @@ export default function SupportTab() {
               {/* table heading end */}
               <tr className="bg-white hover:bg-gray-50">
                 <td className="text-center py-4">
-                  <span className="text-lg text-qblack font-medium">#354</span>
+                  <span className="text-lg text-[var(--text-color)] font-medium">
+                    #354
+                  </span>
                 </td>
                 <td className="text-center py-4 px-2">
                   <span className="text-base text-qgray  whitespace-nowrap">
@@ -80,7 +84,9 @@ export default function SupportTab() {
               </tr>
               <tr className="bg-white hover:bg-gray-50">
                 <td className="text-center py-4">
-                  <span className="text-lg text-qblack font-medium">#354</span>
+                  <span className="text-lg text-[var(--text-color)] font-medium">
+                    #354
+                  </span>
                 </td>
                 <td className="text-center py-4 px-2">
                   <span className="text-base text-qgray  whitespace-nowrap">
@@ -136,7 +142,9 @@ export default function SupportTab() {
               </tr>
               <tr className="bg-white hover:bg-gray-50">
                 <td className="text-center py-4">
-                  <span className="text-lg text-qblack font-medium">#354</span>
+                  <span className="text-lg text-[var(--text-color)] font-medium">
+                    #354
+                  </span>
                 </td>
                 <td className="text-center py-4 px-2">
                   <span className="text-base text-qgray  whitespace-nowrap">
@@ -192,7 +200,9 @@ export default function SupportTab() {
               </tr>
               <tr className="bg-white hover:bg-gray-50">
                 <td className="text-center py-4">
-                  <span className="text-lg text-qblack font-medium">#354</span>
+                  <span className="text-lg text-[var(--text-color)] font-medium">
+                    #354
+                  </span>
                 </td>
                 <td className="text-center py-4 px-2">
                   <span className="text-base text-qgray  whitespace-nowrap">
@@ -248,7 +258,9 @@ export default function SupportTab() {
               </tr>
               <tr className="bg-white hover:bg-gray-50">
                 <td className="text-center py-4">
-                  <span className="text-lg text-qblack font-medium">#354</span>
+                  <span className="text-lg text-[var(--text-color)] font-medium">
+                    #354
+                  </span>
                 </td>
                 <td className="text-center py-4 px-2">
                   <span className="text-base text-qgray  whitespace-nowrap">
@@ -304,7 +316,9 @@ export default function SupportTab() {
               </tr>
               <tr className="bg-white hover:bg-gray-50">
                 <td className="text-center py-4">
-                  <span className="text-lg text-qblack font-medium">#354</span>
+                  <span className="text-lg text-[var(--text-color)] font-medium">
+                    #354
+                  </span>
                 </td>
                 <td className="text-center py-4 px-2">
                   <span className="text-base text-qgray  whitespace-nowrap">

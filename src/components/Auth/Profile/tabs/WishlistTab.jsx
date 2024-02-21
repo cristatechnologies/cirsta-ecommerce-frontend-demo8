@@ -13,7 +13,7 @@ export default function WishlistTab({ className }) {
   const dispatch = useDispatch();
   const { wishlistData } = useSelector((state) => state.wishlistData);
   const wishlists = wishlistData && wishlistData.wishlists;
-  
+
   const clearList = () => {
     if (auth()) {
       apiRequest
@@ -44,7 +44,7 @@ export default function WishlistTab({ className }) {
   // };
   useEffect(() => {
     if (wishlists) {
-      console.log('in');
+      console.log("in");
       setMainProducts(
         wishlists &&
           wishlists.data.map((item) => {
@@ -61,11 +61,14 @@ export default function WishlistTab({ className }) {
 
   const removeToWishlist = (id) => {
     if (auth()) {
-      apiRequest.removeToWishlist({ id: id, token: auth().access_token })
-      .then((res)=>{if(res){
-        dispatch(fetchWishlist());
-      }}).catch((error)=>console.error(error));
-  
+      apiRequest
+        .removeToWishlist({ id: id, token: auth().access_token })
+        .then((res) => {
+          if (res) {
+            dispatch(fetchWishlist());
+          }
+        })
+        .catch((error) => console.error(error));
     } else {
       return false;
     }
@@ -112,7 +115,7 @@ export default function WishlistTab({ className }) {
                           />
                         </div>
                         <div className="flex-1 flex flex-col">
-                          <p className="font-medium text-[15px] text-qblack">
+                          <p className="font-medium text-[15px] text-[var(--text-color)]">
                             {item.product.name}
                           </p>
                         </div>
@@ -161,14 +164,14 @@ export default function WishlistTab({ className }) {
       <div className="w-full mt-[30px] flex sm:justify-end justify-start">
         <div className="sm:flex sm:space-x-[30px] rtl:space-x-reverse items-center">
           <button onClick={clearList} type="button">
-            <div className="w-full text-sm font-semibold text-qred mb-5 sm:mb-0">
+            <div className="w-full text-sm font-semibold text-qred mb-5 sm:mb-0 text-[var(--text-color)]">
               {ServeLangItem()?.Clean_Wishlist}
             </div>
           </button>
           <Link href="/cart">
             <div className="w-[180px] h-[50px]">
               <div className="yellow-btn flex justify-center">
-                <span className="w-full text-sm font-semibold text-center">
+                <span className="w-full text-sm font-semibold text-center text-[var(--text-color)]">
                   {ServeLangItem()?.View_Cards}
                 </span>
               </div>

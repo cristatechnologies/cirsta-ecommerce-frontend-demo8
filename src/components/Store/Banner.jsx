@@ -54,15 +54,15 @@ export default function Banner({
                           >
                             <div>
                               <div className="inline-block md:w-[112px] w-[100px] shadow md:h-[25px] h-[18px] flex items-center justify-center  bg-white rounded-full md:mb-[30px] mb-[15px]">
-                                <span className="text-qblack uppercase md:text-xs text-[10px] font-semibold">
+                                <span className="text-[var(--text-color)] uppercase md:text-xs text-[10px] font-semibold">
                                   {item.badge}
                                 </span>
                               </div>
                               <div className="md:mb-[30px] mb-[15px]">
-                                <p className="md:text-[50px] text-[20px] leading-none text-qblack md:mb-3">
+                                <p className="md:text-[50px] text-[20px] leading-none text-[var(--text-color)] md:mb-3">
                                   {item.title_one}
                                 </p>
-                                <h1 className="md:text-[50px] text-[20px] md:w-[400px] md:leading-[66px] text-qblack font-bold">
+                                <h1 className="md:text-[50px] text-[20px] md:w-[400px] md:leading-[66px] text-[var(--text-color)] font-bold">
                                   {item.title_two}
                                 </h1>
                               </div>
@@ -103,15 +103,15 @@ export default function Banner({
                   <div className="flex flex-col justify-between">
                     <div>
                       <div className="inline-block md:w-[112px] w-[100px] shadow md:h-[25px] h-[18px] flex items-center justify-center  bg-white rounded-full md:mb-[22px] mb-[15px]">
-                        <span className="text-qblack uppercase md:text-xs text-[10px] font-semibold">
+                        <span className="text-[var(--text-color)] uppercase md:text-xs text-[10px] font-semibold">
                           {sidebarImgOne.badge}
                         </span>
                       </div>
                       <div className="md:mb-[30px] mb-2.5">
-                        <p className="md:text-[30px] leading-none text-qblack font-semibold md:mb-3">
+                        <p className="md:text-[30px] leading-none text-[var(--text-color)] font-semibold md:mb-3">
                           {sidebarImgOne.title_one}
                         </p>
-                        <h1 className="md:text-[30px] md:leading-[40px] text-qblack font-semibold">
+                        <h1 className="md:text-[30px] md:leading-[40px] text-[var(--text-color)] font-semibold">
                           {sidebarImgOne.title_two}
                         </h1>
                       </div>
@@ -127,7 +127,7 @@ export default function Banner({
                         <a rel="noopener noreferrer">
                           <div className="cursor-pointer w-full relative  ">
                             <div className="inline-flex rtl:space-x-reverse  space-x-1.5 items-center relative z-20">
-                              <span className="text-sm text-qblack font-medium leading-[30px]">
+                              <span className="text-sm text-[var(--text-color)] font-medium leading-[30px]">
                                 {ServeLangItem()?.Shop_Now}
                               </span>
                               <span className="leading-[30px]">
@@ -178,15 +178,15 @@ export default function Banner({
                   <div className="flex flex-col justify-between">
                     <div>
                       <div className="inline-block md:w-[112px] w-[100px] shadow md:h-[25px] h-[18px] flex items-center justify-center  bg-white rounded-full md:mb-[22px] mb-[15px]">
-                        <span className="text-qblack uppercase md:text-xs text-[10px] font-semibold">
+                        <span className="text-[var(--text-color)] uppercase md:text-xs text-[10px] font-semibold">
                           {sidebarImgTwo.badge}
                         </span>
                       </div>
                       <div className="md:mb-[30px] mb-2.5">
-                        <p className="md:text-[30px] leading-none text-qblack font-semibold md:mb-3">
+                        <p className="md:text-[30px] leading-none text-[var(--text-color)] font-semibold md:mb-3">
                           {sidebarImgTwo.title_one}
                         </p>
-                        <h1 className="md:text-[30px] md:leading-[40px] text-qblack font-semibold">
+                        <h1 className="md:text-[30px] md:leading-[40px] text-[var(--text-color)] font-semibold">
                           {sidebarImgTwo.title_two}
                         </h1>
                       </div>
@@ -202,7 +202,7 @@ export default function Banner({
                         <a rel="noopener noreferrer">
                           <div className="cursor-pointer w-full relative  ">
                             <div className="inline-flex rtl:space-x-reverse  space-x-1.5 items-center relative z-20">
-                              <span className="text-sm text-qblack font-medium leading-[30px]">
+                              <span className="text-sm text-[var(--text-color)] font-medium leading-[30px]">
                                 {ServeLangItem()?.Shop_Now}
                               </span>
                               <span className="leading-[30px]">

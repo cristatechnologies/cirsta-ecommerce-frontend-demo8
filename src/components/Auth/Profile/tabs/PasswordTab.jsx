@@ -474,13 +474,13 @@ export default function PasswordTab() {
                     nPass !== conPass
                   }
                 >
-                  <div className="w-full text-sm font-semibold ">
+                  <div className="w-full text-sm font-semibold text-[var(--text-color)]">
                     {ServeLangItem()?.Update_Password}
                   </div>
                 </button>
               </div>
               <button onClick={cancelHandler} type="button">
-                <div className="w-full text-sm font-semibold text-qblack mb-5 sm:mb-0">
+                <div className="w-full text-sm font-semibold text-[var(--text-color)] mb-5 sm:mb-0">
                   {ServeLangItem()?.Cancel}
                 </div>
               </button>

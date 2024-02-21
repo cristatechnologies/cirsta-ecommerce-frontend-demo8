@@ -53,7 +53,7 @@ export default function CommentBlog({ comments, blog, fetchComments }) {
   return (
     <>
       <div className="write-review w-full mb-[30px]">
-        <h1 className="text-2xl font-bold text-qblack mb-5">
+        <h1 className="text-2xl font-bold text-[var(--text-color)] mb-5">
           {ServeLangItem()?.leave_a_comment}
         </h1>
         <div className="w-full review-form ">
@@ -103,7 +103,7 @@ export default function CommentBlog({ comments, blog, fetchComments }) {
               className="bg-[var(--primary-color)] w-[300px] h-[50px]  flex justify-center"
             >
               <span className="flex space-x-1 items-center h-full">
-                <span className="text-sm font-semibold">
+                <span className="text-sm font-semibold text-[var(--text-color)]">
                   {ServeLangItem()?.Submit_Review}
                 </span>
                 {reviewLoading && (
@@ -119,7 +119,7 @@ export default function CommentBlog({ comments, blog, fetchComments }) {
       {commnets.length > 0 && (
         <div className="w-full comments">
           <div className="w-full h-[1px] bg-[#DCDCDC]"></div>
-          <h1 className="text-2xl font-medium text-qblack my-5">
+          <h1 className="text-2xl font-medium text-[var(--text-color)] my-5">
             {ServeLangItem()?.Comments}
           </h1>
           {commnets &&
@@ -141,7 +141,7 @@ export default function CommentBlog({ comments, blog, fetchComments }) {
                         />
                       </div>
                       <div>
-                        <p className="text-[18px] font-medium text-qblack">
+                        <p className="text-[18px] font-medium text-[var(--text-color)]">
                           {comment.author}
                         </p>
                       </div>
@@ -170,7 +170,7 @@ export default function CommentBlog({ comments, blog, fetchComments }) {
                               />
                             </div>
                             <div>
-                              <p className="text-[18px] font-medium text-qblack">
+                              <p className="text-[18px] font-medium text-[var(--text-color)]">
                                 {reply.author}
                               </p>
                               {/*<p className="text-[13px] font-normal text-qgray">*/}

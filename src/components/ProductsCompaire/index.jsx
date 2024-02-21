@@ -153,7 +153,7 @@ function ProductsCompaire() {
                     }}
                   >
                     <div className="">
-                      <h1 className="text-[18px] font-medium text-qblack mb-4">
+                      <h1 className="text-[18px] font-medium text-[var(--text-color)] mb-4">
                         {ServeLangItem()?.Product_Comparison}
                       </h1>
                       <p className="text-[13px] text-qgraytwo">
@@ -220,7 +220,7 @@ function ProductsCompaire() {
                             />
                           </div>
                         </div>
-                        <p className="text-center text-[15px] font-medium text-qblack leading-[24px] mb-2">
+                        <p className="text-center text-[15px] font-medium text-[var(--text-color)] leading-[24px] mb-2">
                           {item.name}
                         </p>
                         <p className="text-center text-[15px] font-medium text-qred leading-[24px]">
@@ -272,7 +272,7 @@ function ProductsCompaire() {
                     }}
                   >
                     <div className="">
-                      <h1 className="text-[15px] font-medium text-qblack ">
+                      <h1 className="text-[15px] font-medium text-[var(--text-color)] ">
                         {ServeLangItem()?.Star_Rating}
                       </h1>
                     </div>
@@ -324,7 +324,7 @@ function ProductsCompaire() {
                     }}
                   >
                     <div className="">
-                      <h1 className="text-[15px] font-medium text-qblack ">
+                      <h1 className="text-[15px] font-medium text-[var(--text-color)] ">
                         {ServeLangItem()?.Availability}
                       </h1>
                     </div>
@@ -367,7 +367,7 @@ function ProductsCompaire() {
                     }}
                   >
                     <div className="">
-                      <h1 className="text-[15px] font-medium text-qblack ">
+                      <h1 className="text-[15px] font-medium text-[var(--text-color)] ">
                         {ServeLangItem()?.Specification}
                       </h1>
                     </div>
@@ -393,7 +393,7 @@ function ProductsCompaire() {
                           item.specifications.map((sp, i) => (
                             <ul key={i}>
                               <li className="mb-2">
-                                <p className="text-qblack text-sm font-semibold">
+                                <p className="text-[var(--text-color)] text-sm font-semibold">
                                   {sp.key.key}
                                 </p>
                                 <span className="text-[13px] font-normal text-qgraytwo">
@@ -416,7 +416,7 @@ function ProductsCompaire() {
         ) : (
           <div className="w-full h-96 flex justify-center items-center border border-qgray-border">
             <div>
-              <p className="text-xl text-qblack ">
+              <p className="text-xl text-[var(--text-color)] ">
                 {ServeLangItem()?.Your_Compare_List_Is_Empty}
               </p>
               <Link href="/">

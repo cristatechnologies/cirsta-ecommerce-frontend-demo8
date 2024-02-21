@@ -387,12 +387,12 @@ export default function AllProductPage({ response, sellerInfo }) {
                     <div className="flex flex-col justify-between w-full h-full">
                       <div>
                         <div className="mb-[10px]">
-                          <span className="text-qblack uppercase text-xs font-semibold">
+                          <span className="text-[var(--text-color)] uppercase text-xs font-semibold">
                             {response.data.shopPageSidebarBanner.title_one}
                           </span>
                         </div>
                         <div className="mb-[30px]">
-                          <h1 className="w-[162px] text-[24px] leading-[40px] text-qblack font-semibold">
+                          <h1 className="w-[162px] text-[24px] leading-[40px] text-[var(--text-color)] font-semibold">
                             {response.data.shopPageSidebarBanner.title_two}
                           </h1>
                         </div>
@@ -412,7 +412,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                           <a rel="noopener noreferrer">
                             <div className="cursor-pointer w-full relative">
                               <div className="inline-flex  space-x-1.5 rtl:space-x-reverse items-center relative z-20">
-                                <span className="text-sm text-qblack font-medium leading-[30px]">
+                                <span className="text-sm text-[var(--text-color)] font-medium leading-[30px]">
                                   {ServeLangItem()?.Shop_Now}
                                 </span>
                                 <span className="leading-[30px]">
@@ -475,7 +475,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                         </p>
                       </div>
                       <div className="flex space-x-3 items-center">
-                        <span className="font-bold  text-qblack text-[13px]">
+                        <span className="font-bold  text-[var(--text-color)] text-[13px]">
                           {ServeLangItem()?.View_by} :
                         </span>
                         <button
@@ -575,7 +575,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                       </div>
                     )} */}
 
-                    {/* <div className="w-full relative text-qblack mb-[40px]">
+                    {/* <div className="w-full relative text-[var(--text-color)] mb-[40px]">
                       {response.data && response.data.shopPageCenterBanner && (
                         <OneColumnAdsTwo
                           data={response.data.shopPageCenterBanner}

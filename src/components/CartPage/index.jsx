@@ -150,14 +150,14 @@ function CardPage() {
                   </button>
                   <Link href="/cart">
                     <div className="w-[140px] h-[50px] bg-[#F6F6F6] flex justify-center items-center cursor-pointer">
-                      <span className="text-sm font-semibold">
+                      <span className="text-sm font-semibold text-[var(--text-color)]">
                         {ServeLangItem()?.Update_Cart}
                       </span>
                     </div>
                   </Link>
                   <Link href="/checkout">
                     <div className="w-[300px] h-[50px] bg-[var(--primary-color)] flex justify-center items-center cursor-pointer">
-                      <span className="text-sm font-semibold">
+                      <span className="text-sm font-semibold text-[var(--text-color)]">
                         {ServeLangItem()?.Proceed_to_Checkout}
                       </span>
                     </div>

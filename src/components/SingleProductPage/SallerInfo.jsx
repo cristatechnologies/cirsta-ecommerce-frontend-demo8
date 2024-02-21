@@ -79,19 +79,19 @@ export default function SallerInfo({ products, sellerInfo }) {
           <div className="w-full mb-5 sm:mb-0">
             <ul>
               <li className="text-qgray leading-[30px]">
-                <span className="text-[15px] text-qblack font-medium capitalize">
+                <span className="text-[15px] text-[var(--text-color)] font-medium capitalize">
                   {ServeLangItem()?.products}
                 </span>
                 : {seller.sellerTotalProducts}
               </li>
               <li className="text-qgray leading-[30px]">
-                <span className="text-[15px] text-qblack font-medium capitalize">
+                <span className="text-[15px] text-[var(--text-color)] font-medium capitalize">
                   {ServeLangItem()?.Shop_Name}
                 </span>
                 : {seller.shop_name}
               </li>
               <li className="text-qgray leading-[30px]">
-                <span className="text-[15px] text-qblack font-medium capitalize">
+                <span className="text-[15px] text-[var(--text-color)] font-medium capitalize">
                   {ServeLangItem()?.phone}
                 </span>
                 : {seller.phone}
@@ -101,19 +101,19 @@ export default function SallerInfo({ products, sellerInfo }) {
           <div className="w-full ">
             {/*<ul>*/}
             {/*  <li className="text-qgray leading-[30px]">*/}
-            {/*    <span className="text-[15px] font-normal text-qblack">*/}
+            {/*    <span className="text-[15px] font-normal text-[var(--text-color)]">*/}
             {/*      Products*/}
             {/*    </span>*/}
             {/*    : 120*/}
             {/*  </li>*/}
             {/*  <li className="text-qgray leading-[30px]">*/}
-            {/*    <span className="text-[15px] font-normal text-qblack">*/}
+            {/*    <span className="text-[15px] font-normal text-[var(--text-color)]">*/}
             {/*      Category*/}
             {/*    </span>*/}
             {/*    : Mobile Phone, Sports, Gaming, Electronics*/}
             {/*  </li>*/}
             {/*  <li className="text-qgray leading-[30px]">*/}
-            {/*    <span className="text-[15px] font-normal text-qblack">*/}
+            {/*    <span className="text-[15px] font-normal text-[var(--text-color)]">*/}
             {/*      Tags*/}
             {/*    </span>*/}
             {/*    : Beer, Foamer*/}
@@ -123,7 +123,9 @@ export default function SallerInfo({ products, sellerInfo }) {
         </div>
       </div>
       <div className="saller-product w-full mt-[30px]">
-        <h1 className="text-[18px] font-medium mb-5">{ServeLangItem()?.Product_from_Shop}</h1>
+        <h1 className="text-[18px] font-medium mb-5">
+          {ServeLangItem()?.Product_from_Shop}
+        </h1>
         <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-[30px] gap-5">
           <DataIteration
             datas={rs}
@@ -149,7 +151,7 @@ export default function SallerInfo({ products, sellerInfo }) {
           <a rel="noopener noreferrer">
             <div className="lg:w-[300px] w-full h-[50px]">
               <div
-                className="w-full h-full yellow-btn text-qblack font-semibold"
+                className="w-full h-full yellow-btn text-[var(--text-color)] font-semibold"
                 style={{ fontSize: "16px" }}
               >
                 {ServeLangItem()?.View_Shop}

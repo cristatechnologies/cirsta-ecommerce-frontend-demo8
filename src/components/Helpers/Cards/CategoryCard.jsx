@@ -33,7 +33,7 @@ export default function CategoryCard({
               <li key={category.id}>
                 <span
                   onClick={() => changeIdHandler(category.category_id)}
-                  className="text-sm text-qgray hober:text-qBlack border-b border-transparent hover:border-qblack hover:text-qblack capitalize cursor-pointer"
+                  className="text-sm text-qgray hober:text-qBlack border-b border-transparent hover:border-qblack hover:text-[var(--text-color)] capitalize cursor-pointer"
                 >
                   {category && category.category.name}
                 </span>
@@ -43,7 +43,7 @@ export default function CategoryCard({
         </div>
         <Link href={`${moreUrl}`}>
           <div className="flex space-x-2 rtl:space-x-reverse items-center cursor-pointer">
-            <span className="text-qblack font-600 text-sm">
+            <span className="text-[var(--text-color)] font-600 text-sm">
               {ServeLangItem()?.Shop_Now}
             </span>
             <span>

@@ -21,7 +21,7 @@ function SubscribeInputWidget(props) {
       data-aos="fade-right"
       className="sm:w-[543px] w-[300px] h-[54px] flex mt-8"
     >
-      <div className="flex-1 bg-white ltr:pl-4 rtl:pr-4 flex rtl:space-x-reverse space-x-2 items-center h-full focus-within:primary-text text-qblack">
+      <div className="flex-1 bg-white ltr:pl-4 rtl:pr-4 flex rtl:space-x-reverse space-x-2 items-center h-full focus-within:primary-text text-[var(--text-color)]">
         <span>
           <svg
             width="17"
@@ -49,7 +49,7 @@ function SubscribeInputWidget(props) {
         <input
           type="email"
           name="email"
-          className="w-full h-full focus:outline-none text-sm placeholder:text-xs placeholder:text-qblack text-qblack font-400 tracking-wider"
+          className="w-full h-full focus:outline-none text-sm placeholder:text-xs placeholder:text-[var(--text-color)] text-[var(--text-color)] font-400 tracking-wider"
           placeholder="EMAIL ADDRESS"
           onChange={(e) => setEmail(e.target.value.trim())}
           value={email}

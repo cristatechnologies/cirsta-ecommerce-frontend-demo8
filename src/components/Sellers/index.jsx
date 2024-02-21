@@ -6,7 +6,9 @@ import PageTitle from "../Helpers/PageTitle";
 import ServeLangItem from "../Helpers/ServeLangItem";
 function Sallers({ sellersData }) {
   const { sellers } = sellersData;
-  let tempSallerFilter = sellers.data.filter(shop => shop.shop_name !== 'Devam Art');
+  let tempSallerFilter = sellers.data.filter(
+    (shop) => shop.shop_name !== "Devam Art"
+  );
 
   return (
     <>
@@ -39,7 +41,7 @@ function Sallers({ sellersData }) {
                     <div className="flex sm:flex-row flex-col-reverse sm:items-center justify-between w-full h-full">
                       <div className="flex flex-col">
                         <div className="">
-                          <h1 className="text-[30px] font-semibold text-qblack">
+                          <h1 className="text-[30px] font-semibold text-[var(--text-color)]">
                             {seller.shop_name}
                           </h1>
                           <div className="flex space-x-2 items-center mb-[30px]">
@@ -77,7 +79,7 @@ function Sallers({ sellersData }) {
                               )}
                             </div>
 
-                            <span className="text-[15px] font-bold text-qblack ">
+                            <span className="text-[15px] font-bold text-[var(--text-color)] ">
                               ({parseInt(seller.averageRating)})
                             </span>
                           </div>
@@ -170,7 +172,6 @@ function Sallers({ sellersData }) {
                                           width="6.94219"
                                           height="1.54271"
                                           transform="rotate(45 1.0918 0.636719)"
-
                                         />
                                         <rect
                                           x="6.00195"
@@ -178,7 +179,6 @@ function Sallers({ sellersData }) {
                                           width="6.94219"
                                           height="1.54271"
                                           transform="rotate(135 6.00195 5.54492)"
-
                                         />
                                       </svg>
                                     </span>
@@ -204,7 +204,7 @@ function Sallers({ sellersData }) {
                           </div>
                         </div>
 
-                        <h1 className="sm:block hidden text-[30px] font-semibold  text-qblack text-center leading-none">
+                        <h1 className="sm:block hidden text-[30px] font-semibold  text-[var(--text-color)] text-center leading-none">
                           {seller.shop_name}
                         </h1>
                       </div>

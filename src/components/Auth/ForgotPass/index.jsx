@@ -93,7 +93,7 @@ export default function ForgotPass() {
               {forgotUser ? (
                 <div className="w-full">
                   <div className="title-area flex flex-col justify-center items-center relative text-center mb-7">
-                    <h1 className="text-[34px] font-bold leading-[74px] text-qblack capitalize">
+                    <h1 className="text-[34px] font-bold leading-[74px] text-[var(--text-color)] capitalize">
                       {ServeLangItem()?.Forgot_password}
                     </h1>
                     <div className="shape -mt-6">
@@ -152,7 +152,7 @@ export default function ForgotPass() {
               ) : resetPass ? (
                 <div className="w-full">
                   <div className="title-area flex flex-col justify-center items-center relative text-center mb-7">
-                    <h1 className="text-[34px] font-bold leading-[74px] text-qblack">
+                    <h1 className="text-[34px] font-bold leading-[74px] text-[var(--text-color)]">
                       {ServeLangItem()?.Reset_Password}
                     </h1>
                     <div className="shape -mt-6">

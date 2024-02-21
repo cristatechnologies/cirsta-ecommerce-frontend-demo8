@@ -251,7 +251,7 @@ export default function AddressesTab() {
           type="button"
           className="yellow-btn rounded"
         >
-          <div className="w-full text-sm font-semibold">
+          <div className="w-full text-sm font-semibold text-[var(--text-color)]">
             {ServeLangItem()?.Add_New_Address}
           </div>
         </button>
@@ -259,7 +259,7 @@ export default function AddressesTab() {
       {newAddress && (
         <div data-aos="zoom-in" className="w-full">
           <div className="flex justify-between items-center">
-            <h1 className="sm:text-2xl text-xl text-qblack font-medium mb-5">
+            <h1 className="sm:text-2xl text-xl text-[var(--text-color)]-text-color)] font-medium mb-5">
               {ServeLangItem()?.Add_New_Address}
             </h1>
             <span
@@ -389,7 +389,7 @@ export default function AddressesTab() {
                       <>
                         <div className="flex justify-between items-center w-full">
                           <div>
-                            <span className="text-[13px] text-qblack">
+                            <span className="text-[13px] text-[var(--text-color)]">
                               {item}
                             </span>
                           </div>
@@ -452,7 +452,7 @@ export default function AddressesTab() {
                         <>
                           <div className="flex justify-between items-center w-full">
                             <div>
-                              <span className="text-[13px] text-qblack">
+                              <span className="text-[13px] text-[var(--text-color)]">
                                 {item}
                               </span>
                             </div>
@@ -514,7 +514,7 @@ export default function AddressesTab() {
                         <>
                           <div className="flex justify-between items-center w-full">
                             <div>
-                              <span className="text-[13px] text-qblack">
+                              <span className="text-[13px] text-[var(--text-color)]">
                                 {item}
                               </span>
                             </div>
@@ -637,7 +637,7 @@ export default function AddressesTab() {
                   </div>
                   <label
                     htmlFor="home"
-                    className="text-qblack text-[15px] select-none capitalize"
+                    className="text-[var(--text-color)] text-[15px] select-none capitalize"
                   >
                     {ServeLangItem()?.home}
                   </label>
@@ -657,7 +657,7 @@ export default function AddressesTab() {
                   </div>
                   <label
                     htmlFor="office"
-                    className="text-qblack text-[15px] select-none"
+                    className="text-[var(--text-color)] text-[15px] select-none"
                   >
                     {ServeLangItem()?.Office}
                   </label>
@@ -677,7 +677,7 @@ export default function AddressesTab() {
                         : "yellow-btn"
                     }`}
                   >
-                    <span className="text-sm text-qblack">
+                    <span className="text-sm text-[var(--text-color)]-text-color)]">
                       {ServeLangItem()?.Update_address}
                     </span>
                     {loading && (
@@ -704,7 +704,7 @@ export default function AddressesTab() {
                         : "yellow-btn"
                     }`}
                   >
-                    <span className="text-sm text-qblack">
+                    <span className="text-sm text-[var(--text-color)]-text-color)]">
                       {ServeLangItem()?.Save_Address}
                     </span>
                     {loading && (
@@ -786,7 +786,7 @@ export default function AddressesTab() {
                         <td className="text-base text-qgraytwo w-[70px] block line-clamp-1 capitalize">
                           <p>{ServeLangItem()?.Name}:</p>
                         </td>
-                        <td className="text-base text-qblack line-clamp-1 font-medium">
+                        <td className="text-base text-[var(--text-color)] line-clamp-1 font-medium">
                           {item.name}
                         </td>
                       </tr>
@@ -794,7 +794,7 @@ export default function AddressesTab() {
                         <td className="text-base text-qgraytwo w-[70px] block line-clamp-1 capitalize">
                           <p>{ServeLangItem()?.Email}:</p>
                         </td>
-                        <td className="text-base text-qblack line-clamp-1 font-medium">
+                        <td className="text-base text-[var(--text-color)] line-clamp-1 font-medium">
                           {item.email}
                         </td>
                       </tr>
@@ -802,7 +802,7 @@ export default function AddressesTab() {
                         <td className="text-base text-qgraytwo w-[70px] block line-clamp-1 capitalize">
                           <p>{ServeLangItem()?.phone}:</p>
                         </td>
-                        <td className="text-base text-qblack line-clamp-1 font-medium">
+                        <td className="text-base text-[var(--text-color)] line-clamp-1 font-medium">
                           {item.phone}
                         </td>
                       </tr>
@@ -810,7 +810,7 @@ export default function AddressesTab() {
                         <td className="text-base text-qgraytwo w-[70px] block line-clamp-1 capitalize">
                           <p>{ServeLangItem()?.Country}:</p>
                         </td>
-                        <td className="text-base text-qblack line-clamp-1 font-medium">
+                        <td className="text-base text-[var(--text-color)] line-clamp-1 font-medium">
                           {item.country.name}
                         </td>
                       </tr>
@@ -818,7 +818,7 @@ export default function AddressesTab() {
                         <td className="text-base text-qgraytwo w-[70px] block line-clamp-1 capitalize">
                           <p>{ServeLangItem()?.State}:</p>
                         </td>
-                        <td className="text-base text-qblack line-clamp-1 font-medium">
+                        <td className="text-base text-[var(--text-color)] line-clamp-1 font-medium">
                           {item.country_state.name}
                         </td>
                       </tr>
@@ -826,7 +826,7 @@ export default function AddressesTab() {
                         <td className="text-base text-qgraytwo w-[70px] block line-clamp-1 capitalize">
                           <p>{ServeLangItem()?.City}:</p>
                         </td>
-                        <td className="text-base text-qblack line-clamp-1 font-medium">
+                        <td className="text-base text-[var(--text-color)]-text-color)] line-clamp-1 font-medium">
                           {item.city.name}
                         </td>
                       </tr>
@@ -834,7 +834,7 @@ export default function AddressesTab() {
                         <td className="text-base text-qgraytwo w-[70px] block line-clamp-1 capitalize">
                           <p>{ServeLangItem()?.ZipCode}:</p>
                         </td>
-                        <td className="text-base text-qblack line-clamp-1 font-medium">
+                        <td className="text-base text-[var(--text-color)] line-clamp-1 font-medium">
                           {item.zip_code}
                         </td>
                       </tr>

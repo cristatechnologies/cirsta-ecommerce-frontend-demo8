@@ -131,7 +131,7 @@ export default function Drawer({ className, open, action }) {
             <span
               onClick={() => setTab("category")}
               className={`text-base font-semibold cursor-pointer ${
-                tab === "category" ? "text-qblack" : "text-qgray"
+                tab === "category" ? "text-[var(--text-color)]" : "text-qgray"
               }`}
             >
               {ServeLangItem()?.Categories}
@@ -140,7 +140,7 @@ export default function Drawer({ className, open, action }) {
             <span
               onClick={() => setTab("menu")}
               className={`text-base font-semibold cursor-pointer ${
-                tab === "menu" ? "text-qblack" : "text-qgray "
+                tab === "menu" ? "text-[var(--text-color)]" : "text-qgray "
               }`}
             >
               {ServeLangItem()?.Main_Menu}

@@ -27,7 +27,7 @@ export default function TermsCondition({ datas }) {
             }}
           >
             {/* <div className="content-item w-full mb-10">
-              <h2 className="text-[18px] font-medium text-qblack mb-5">
+              <h2 className="text-[18px] font-medium text-[var(--text-color)] mb-5">
                 1. What Are Terms and Conditions?
               </h2>
               <p className="text-[15px] text-qgraytwo leading-7">
@@ -44,7 +44,7 @@ export default function TermsCondition({ datas }) {
               </p>
             </div>
             <div className="content-item w-full mb-10">
-              <h2 className="text-[18px] font-medium text-qblack mb-5">
+              <h2 className="text-[18px] font-medium text-[var(--text-color)] mb-5">
                 2. Does My Online Shop Need Terms and Conditions?
               </h2>
               <p className="text-[15px] text-qgraytwo leading-7 mb-10">
@@ -63,7 +63,7 @@ export default function TermsCondition({ datas }) {
                 desktop.
               </p>
               <div>
-                <h2 className="text-[18px] font-medium text-qblack mb-5">
+                <h2 className="text-[18px] font-medium text-[var(--text-color)] mb-5">
                   2. Does My Online Shop Need Terms and Conditions?
                 </h2>
 
@@ -86,7 +86,7 @@ export default function TermsCondition({ datas }) {
             </div>
 
             <div className="content-item w-full mb-10">
-              <h2 className="text-[18px] font-medium text-qblack mb-5">
+              <h2 className="text-[18px] font-medium text-[var(--text-color)] mb-5">
                 3. Protect Your Property
               </h2>
               <p className="text-[15px] text-qgraytwo leading-7">
@@ -109,7 +109,7 @@ export default function TermsCondition({ datas }) {
               </p>
             </div>
             <div className="content-item w-full mb-10">
-              <h2 className="text-[18px] font-medium text-qblack mb-5">
+              <h2 className="text-[18px] font-medium text-[var(--text-color)] mb-5">
                 4. What to Include in Terms and Conditions for Online Stores
               </h2>
               <p className="text-[15px] text-qgraytwo leading-7">
@@ -138,7 +138,7 @@ export default function TermsCondition({ datas }) {
               </p>
             </div>
             <div className="content-item w-full mb-10">
-              <h2 className="text-[18px] font-medium text-qblack mb-5">
+              <h2 className="text-[18px] font-medium text-[var(--text-color)] mb-5">
                 05.Pricing and Payment Terms
               </h2>
               <p className="text-[15px] text-qgraytwo leading-7">

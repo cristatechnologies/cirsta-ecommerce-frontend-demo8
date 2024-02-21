@@ -30,7 +30,7 @@ export default function InputQuantityCom({
         >
           -
         </button>
-        <span className="text-qblack">{quantity}</span>
+        <span className="text-[var(--text-color)]">{quantity}</span>
         <button
           onClick={increment}
           type="button"

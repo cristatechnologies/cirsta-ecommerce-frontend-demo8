@@ -32,11 +32,10 @@ export default function Navbar({ className }) {
         <div className="w-full h-full relative">
           <div className="w-full h-full flex justify-between items-center">
             <div className="category-and-nav flex xl:rtl:space-x-reverse  rtl:space-x-reverse space-x-3 items-center">
-             
               <div className="nav ml-10">
                 <ul className="nav-wrapper flex xl:space-x-10 rtl:space-x-reverse space-x-5">
                   <li>
-                    <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                    <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                       <span>{ServeLangItem()?.Shop}</span>
                       <span className="ml-1.5 ">
                         <Arrow className="fill-current" />
@@ -55,7 +54,7 @@ export default function Navbar({ className }) {
                             mageMenuList.slice(0, 3).map((megaItem) => (
                               <div key={megaItem.id}>
                                 <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                  <h1 className="text-[13px] font-700 text-[var(--text-color)] uppercase mb-[13px]">
                                     {megaItem.category.name}
                                   </h1>
                                 </div>
@@ -104,12 +103,12 @@ export default function Navbar({ className }) {
                             <div className="flex flex-col justify-between">
                               <div>
                                 <div className=" mb-[10px]">
-                                  <span className="text-qblack uppercase text-xs font-semibold">
+                                  <span className="text-[var(--text-color)] uppercase text-xs font-semibold">
                                     {megaMenuBanner.title_one}
                                   </span>
                                 </div>
                                 <div className="mb-[30px]">
-                                  <h1 className="w-[160px] text-[24px] leading-[32px] text-qblack font-semibold">
+                                  <h1 className="w-[160px] text-[24px] leading-[32px] text-[var(--text-color)] font-semibold">
                                     {megaMenuBanner.title_two}
                                   </h1>
                                 </div>
@@ -127,7 +126,7 @@ export default function Navbar({ className }) {
                                   <a rel="noopener noreferrer">
                                     <div className="cursor-pointer w-full relative  ">
                                       <div className="inline-flex  rtl:space-x-reverse space-x-1.5 items-center relative z-20">
-                                        <span className="text-sm text-qblack font-medium leading-[30px]">
+                                        <span className="text-sm text-[var(--text-color)] font-medium leading-[30px]">
                                           {ServeLangItem()?.Shop_Now}
                                         </span>
                                         <span className="leading-[30px]">
@@ -145,7 +144,6 @@ export default function Navbar({ className }) {
                                               width="6.94219"
                                               height="1.54271"
                                               transform="rotate(45 2.08984 0.636719)"
-
                                             />
                                             <rect
                                               x="7"
@@ -153,7 +151,6 @@ export default function Navbar({ className }) {
                                               width="6.94219"
                                               height="1.54271"
                                               transform="rotate(135 7 5.54492)"
-
                                             />
                                           </svg>
                                         </span>
@@ -173,7 +170,7 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/sellers" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                           <span>{ServeLangItem()?.Sellers}</span>
                         </span>
                       </a>
@@ -182,7 +179,7 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/blogs" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                           <span className="capitalize">
                             {ServeLangItem()?.blogs}
                           </span>
@@ -193,7 +190,7 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/about" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                           <span>{ServeLangItem()?.About}</span>
                         </span>
                       </a>
@@ -202,14 +199,14 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/contact" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                           <span>{ServeLangItem()?.Contact}</span>
                         </span>
                       </a>
                     </Link>
                   </li>
                   {/* <li className="relative">
-                    <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                    <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                       <span>{ServeLangItem()?.Pages}</span>
                       <span className="ml-1.5 ">
                         <Arrow className="fill-current" />
@@ -299,11 +296,9 @@ export default function Navbar({ className }) {
                   </li> */}
                 </ul>
               </div>
-
-           
             </div>
             <div className="flex row-auto">
-               <div className="category w-[200px] h-[40px] bg-white px-5 rounded-md  border-orange-700 border-2 relative">
+              <div className="category w-[200px] h-[40px] bg-white px-5 rounded-md  border-orange-700 border-2 relative">
                 <button
                   onClick={handler}
                   type="button"
@@ -318,12 +313,12 @@ export default function Navbar({ className }) {
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <rect width="14" height="1"  />
-                        <rect y="8" width="14" height="1"  />
-                        <rect y="4" width="10" height="1"  />
+                        <rect width="14" height="1" />
+                        <rect y="8" width="14" height="1" />
+                        <rect y="4" width="10" height="1" />
                       </svg>
                     </span>
-                    <span className="text-sm font-600 text-qblacktext">
+                    <span className="text-sm font-600 text-[var(--text-color)]text">
                       {ServeLangItem()?.All_Categories}
                     </span>
                   </div>
@@ -331,7 +326,7 @@ export default function Navbar({ className }) {
                     <Arrow
                       width="5.78538"
                       height="1.28564"
-                      className="fill-current text-qblacktext"
+                      className="fill-current text-[var(--text-color)]text"
                     />
                   </div>
                 </button>
@@ -391,7 +386,6 @@ export default function Navbar({ className }) {
                                         width="5.78538"
                                         height="1.28564"
                                         transform="rotate(45 1.49805 0.818359)"
-
                                       />
                                       <rect
                                         x="5.58984"
@@ -399,7 +393,6 @@ export default function Navbar({ className }) {
                                         width="5.78538"
                                         height="1.28564"
                                         transform="rotate(135 5.58984 4.90918)"
-
                                       />
                                     </svg>
                                   </span>
@@ -452,7 +445,6 @@ export default function Navbar({ className }) {
                                                   width="5.78538"
                                                   height="1.28564"
                                                   transform="rotate(45 1.49805 0.818359)"
-
                                                 />
                                                 <rect
                                                   x="5.58984"
@@ -460,7 +452,6 @@ export default function Navbar({ className }) {
                                                   width="5.78538"
                                                   height="1.28564"
                                                   transform="rotate(135 5.58984 4.90918)"
-
                                                 />
                                               </svg>
                                             </span>
@@ -520,46 +511,46 @@ export default function Navbar({ className }) {
                   </ul>
                 </div>
               </div>
-            {Multivendor() === 1 && (
-              <div className="become-seller-btn ml-5">
-                <Link href="/become-seller" passHref>
-                  <a rel="noopener noreferrer">
-                    <div className=" w-[161px] h-[40px] flex justify-center items-center cursor-pointer">
-                      <div className="flex rtl:space-x-reverse space-x-2 items-center">
-                        <span className="text-sm font-600">
-                          {ServeLangItem()?.Become_seller}
-                        </span>
-                        <span className="transform rtl:rotate-180 fill-current ">
-                          <svg
-                            width="6"
-                            height="10"
-                            viewBox="0 0 6 10"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="fill-current"
-                          >
-                            <rect
-                              x="1.08984"
-                              width="6.94106"
-                              height="1.54246"
-                              transform="rotate(45 1.08984 0)"
-                            />
-                            <rect
-                              x="6"
-                              y="4.9082"
-                              width="6.94106"
-                              height="1.54246"
-                              transform="rotate(135 6 4.9082)"
-                            />
-                          </svg>
-                        </span>
+              {Multivendor() === 1 && (
+                <div className="become-seller-btn ml-5">
+                  <Link href="/become-seller" passHref>
+                    <a rel="noopener noreferrer">
+                      <div className=" w-[161px] h-[40px] flex justify-center items-center cursor-pointer">
+                        <div className="flex rtl:space-x-reverse space-x-2 items-center">
+                          <span className="text-sm font-600">
+                            {ServeLangItem()?.Become_seller}
+                          </span>
+                          <span className="transform rtl:rotate-180 fill-current ">
+                            <svg
+                              width="6"
+                              height="10"
+                              viewBox="0 0 6 10"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="fill-current"
+                            >
+                              <rect
+                                x="1.08984"
+                                width="6.94106"
+                                height="1.54246"
+                                transform="rotate(45 1.08984 0)"
+                              />
+                              <rect
+                                x="6"
+                                y="4.9082"
+                                width="6.94106"
+                                height="1.54246"
+                                transform="rotate(135 6 4.9082)"
+                              />
+                            </svg>
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                </Link>
-              </div>
-              ) }
-              </div>
+                    </a>
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

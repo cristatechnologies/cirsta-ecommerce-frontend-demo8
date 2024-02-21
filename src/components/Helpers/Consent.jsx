@@ -68,14 +68,14 @@ function Consent() {
                   acceptCookie();
                 }}
                 type="button"
-                className="w-1/2 h-full rounded text-base font-bold primary-bg text-qblack antialiased tracking-wide"
+                className="w-1/2 h-full rounded text-base font-bold primary-bg text-[var(--text-color)] antialiased tracking-wide"
               >
                 {ServeLangItem()?.Accept_All}
               </button>
               <button
                 onClick={(e) => denyCookie()}
                 type="button"
-                className="w-1/2 h-full rounded text-base font-bold primary-bglow text-qblack antialiased tracking-wide"
+                className="w-1/2 h-full rounded text-base font-bold primary-bglow text-[var(--text-color)] antialiased tracking-wide"
               >
                 {ServeLangItem()?.Deny}
               </button>

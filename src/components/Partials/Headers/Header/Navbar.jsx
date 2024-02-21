@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState,useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useSelector } from "react-redux";
 import Arrow from "../../../Helpers/icons/Arrow";
 import FontAwesomeCom from "../../../Helpers/icons/FontAwesomeCom";
@@ -17,9 +17,8 @@ export default function Navbar({ className }) {
   const [categoryToggle, setToggle] = useState(false);
   const [subCatHeight, setHeight] = useState(null);
 
-
   const getLoginContexts = useContext(LoginContext);
-  const [ auth, setAuth ] = useState( null );
+  const [auth, setAuth] = useState(null);
 
   useEffect(() => {
     if (getLoginContexts.loginPopup === false) {
@@ -271,7 +270,7 @@ export default function Navbar({ className }) {
                 <ul className="nav-wrapper flex xl:space-x-7 rtl:space-x-reverse space-x-5">
                   {/*<li className="relative">*/}
                   {/*  <Link href="/">*/}
-                  {/*    <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">*/}
+                  {/*    <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">*/}
                   {/*      <span>Homepage</span>*/}
                   {/*      <span className="ml-1.5 ">*/}
                   {/*        <Arrow className="fill-current" />*/}
@@ -304,7 +303,7 @@ export default function Navbar({ className }) {
                   {/*  </div>*/}
                   {/*</li>*/}
                   {/* <li>
-                    <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                    <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                       <span>
                         { ServeLangItem()?.Shop }
                       </span>
@@ -325,7 +324,7 @@ export default function Navbar({ className }) {
                             mageMenuList.slice(0, 3).map((megaItem) => (
                               <div key={megaItem.id}>
                                 <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                  <h1 className="text-[13px] font-700 text-[var(--text-color)] uppercase mb-[13px]">
                                     {megaItem.category.name}
                                   </h1>
                                 </div>
@@ -374,12 +373,12 @@ export default function Navbar({ className }) {
                             <div className="flex flex-col justify-between">
                               <div>
                                 <div className=" mb-[10px]">
-                                  <span className="text-qblack uppercase text-xs font-semibold">
+                                  <span className="text-[var(--text-color)] uppercase text-xs font-semibold">
                                     {megaMenuBanner.title_one}
                                   </span>
                                 </div>
                                 <div className="mb-[30px]">
-                                  <h1 className="w-[160px] text-[24px] leading-[32px] text-qblack font-semibold">
+                                  <h1 className="w-[160px] text-[24px] leading-[32px] text-[var(--text-color)] font-semibold">
                                     {megaMenuBanner.title_two}
                                   </h1>
                                 </div>
@@ -397,7 +396,7 @@ export default function Navbar({ className }) {
                                   <a rel="noopener noreferrer">
                                     <div className="cursor-pointer w-full relative  ">
                                       <div className="inline-flex  rtl:space-x-reverse space-x-1.5 items-center relative z-20">
-                                        <span className="text-sm text-qblack font-medium leading-[30px]">
+                                        <span className="text-sm text-[var(--text-color)] font-medium leading-[30px]">
                                           {ServeLangItem()?.Shop_Now}
                                         </span>
                                         <span className="leading-[30px]">
@@ -443,7 +442,7 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/sellers" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                           <span>
                             {/* { ServeLangItem()?.Sellers } */}
                             Who We Are
@@ -455,7 +454,7 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/blogs" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                           <span className="capitalize">
                             {/* {ServeLangItem()?.blogs} */}
                             Why Kalalay
@@ -467,7 +466,7 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/about" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                           {/* <span>{ServeLangItem()?.About}</span> */}
                           We Are Different
                         </span>
@@ -477,14 +476,14 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/contact" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                           <span>{ServeLangItem()?.Contact}</span>
                         </span>
                       </a>
                     </Link>
                   </li>
                   {/* <li className="relative">
-                    <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                    <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                       <span>{ServeLangItem()?.Pages}</span>
                       <span className="ml-1.5 ">
                         <Arrow className="fill-current" />
@@ -616,7 +615,7 @@ export default function Navbar({ className }) {
                 </div>
 
                 <div className="text-white font-bold bg-[var(--primary-color)] rounded-md ml-2">
-                  <Link href={auth ? "/profile#dashboard":"/login"} passHref>
+                  <Link href={auth ? "/profile#dashboard" : "/login"} passHref>
                     <a rel="noopener noreferrer">
                       <div className=" w-[161px] h-[40px] flex justify-center items-center cursor-pointer">
                         <div className="flex rtl:space-x-reverse space-x-2 items-center">

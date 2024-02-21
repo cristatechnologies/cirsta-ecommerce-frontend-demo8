@@ -318,7 +318,7 @@ function BecomeSaller() {
             <div className="flex xl:flex-row flex-col-reverse xl:space-x-11">
               <div className="xl:w-[824px]">
                 <div className="title w-full mb-4">
-                  <h1 className="text-[22px] font-semibold text-qblack mb-1">
+                  <h1 className="text-[22px] font-semibold text-[var(--text-color)] mb-1">
                     {ServeLangItem()?.Seller_Information}
                   </h1>
                   <p className="text-[15px] text-qgraytwo">
@@ -577,7 +577,7 @@ function BecomeSaller() {
 
                 {/* ============================================================== */}
                 <div className="title w-full mt-10 mb-4">
-                  <h1 className="text-[22px] font-semibold text-qblack mb-1">
+                  <h1 className="text-[22px] font-semibold text-[var(--text-color)] mb-1">
                     {ServeLangItem()?.Shop_Information}
                   </h1>
                   <p className="text-[15px] text-qgraytwo">
@@ -623,7 +623,7 @@ function BecomeSaller() {
                           <>
                             <div className="flex justify-between items-center w-full">
                               <div>
-                                <span className="text-[13px] text-qblack">
+                                <span className="text-[13px] text-[var(--text-color)]">
                                   {item}
                                 </span>
                               </div>
@@ -676,7 +676,7 @@ function BecomeSaller() {
                           <>
                             <div className="flex justify-between items-center w-full">
                               <div>
-                                <span className="text-[13px] text-qblack">
+                                <span className="text-[13px] text-[var(--text-color)]">
                                   {item}
                                 </span>
                               </div>
@@ -731,7 +731,7 @@ function BecomeSaller() {
                           <>
                             <div className="flex justify-between items-center w-full">
                               <div>
-                                <span className="text-[13px] text-qblack">
+                                <span className="text-[13px] text-[var(--text-color)]">
                                   {item}
                                 </span>
                               </div>
@@ -880,7 +880,7 @@ function BecomeSaller() {
                     <button
                       onClick={rememberMe}
                       type="button"
-                      className="w-5 h-5 text-qblack flex justify-center items-center border border-light-gray"
+                      className="w-5 h-5 text-[var(--text-color)] flex justify-center items-center border border-light-gray"
                     >
                       {checked && (
                         <svg
@@ -948,7 +948,10 @@ function BecomeSaller() {
                   <div className="signup-area flex justify-center">
                     <p className="text-sm text-qgraytwo font-normal">
                       {ServeLangItem()?.Already_have_an_Account}?
-                      <Link href="/login" className="ml-2 text-qblack">
+                      <Link
+                        href="/login"
+                        className="ml-2 text-[var(--text-color)]"
+                      >
                         {ServeLangItem()?.Log_In}
                       </Link>
                     </p>
@@ -957,7 +960,7 @@ function BecomeSaller() {
               </div>
               <div className="flex-1 mb-10 xl:mb-0">
                 {/*<div className="update-profile w-full mb-9">*/}
-                {/*  <h1 className="text-xl tracking-wide font-bold text-qblack flex items-center mb-2">*/}
+                {/*  <h1 className="text-xl tracking-wide font-bold text-[var(--text-color)] flex items-center mb-2">*/}
                 {/*    Update Profile*/}
                 {/*    <span className="ml-1">*/}
                 {/*      <svg*/}
@@ -977,9 +980,9 @@ function BecomeSaller() {
                 {/*  </h1>*/}
                 {/*  <p className="text-sm text-qgraytwo mb-5">*/}
                 {/*    Profile of at least Size*/}
-                {/*    <span className="ml-1 text-qblack">300x300</span>. Gifs*/}
+                {/*    <span className="ml-1 text-[var(--text-color)]">300x300</span>. Gifs*/}
                 {/*    work too.*/}
-                {/*    <span className="ml-1 text-qblack">Max 5mb</span>.*/}
+                {/*    <span className="ml-1 text-[var(--text-color)]">Max 5mb</span>.*/}
                 {/*  </p>*/}
                 {/*  <div className="flex xl:justify-center justify-start">*/}
                 {/*    <div className="relative">*/}
@@ -1022,14 +1025,16 @@ function BecomeSaller() {
                 {/*  </div>*/}
                 {/*</div>*/}
                 <div className="update-logo w-full mb-9">
-                  <h1 className="text-xl tracking-wide font-bold text-qblack mb-2">
+                  <h1 className="text-xl tracking-wide font-bold text-[var(--text-color)]-text-color)] mb-2">
                     {ServeLangItem()?.Update_Logo}
                   </h1>
                   <p className="text-sm text-qgraytwo mb-5">
                     {ServeLangItem()?.Profile_of_at_least_Size}
-                    <span className="ml-1 text-qblack">300x300</span>.{" "}
-                    {ServeLangItem()?.Gifs_work_too}.
-                    <span className="ml-1 text-qblack">
+                    <span className="ml-1 text-[var(--text-color)]">
+                      300x300
+                    </span>
+                    . {ServeLangItem()?.Gifs_work_too}.
+                    <span className="ml-1 text-[var(--text-color)]">
                       {ServeLangItem()?.Max_5mb}
                     </span>
                     .
@@ -1082,12 +1087,12 @@ function BecomeSaller() {
                   </div>
                 </div>
                 {/* <div className="update-cover w-full">
-                  <h1 className="text-xl tracking-wide font-bold text-qblack mb-2">
+                  <h1 className="text-xl tracking-wide font-bold text-[var(--text-color)] mb-2">
                     {ServeLangItem()?.Update_Cover}
                   </h1>
                   <p className="text-sm text-qgraytwo mb-5">
                     {ServeLangItem()?.Cover_of_at_least_Size}
-                    <span className="ml-1 text-qblack">1170x920</span>.
+                    <span className="ml-1 text-[var(--text-color)]">1170x920</span>.
                   </p>
                   <div className="flex justify-center">
                     <div className="w-full relative">

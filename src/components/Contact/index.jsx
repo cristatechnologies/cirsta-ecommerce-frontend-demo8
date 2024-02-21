@@ -54,7 +54,7 @@ export default function Contact({ datas }) {
             <div className="lg:w-1/2 w-full">
               {datas.contact && (
                 <div>
-                  <h1 className="text-[22px] font-semibold text-qblack leading-[30px] mb-1">
+                  <h1 className="text-[22px] font-semibold text-[var(--text-color)] leading-[30px] mb-1">
                     {datas.contact.title}
                   </h1>
                   <p className="text-[15px] text-qgraytwo leading-[30px] mb-5">
@@ -160,10 +160,10 @@ export default function Contact({ datas }) {
                         </svg>
                       </span>
                       <div>
-                        <h1 className="text-[22px] font-semibold text-qblack leading-[30px] mb-2">
+                        <h1 className="text-[22px] font-semibold text-[var(--text-color)] leading-[30px] mb-2">
                           {ServeLangItem()?.Address}
                         </h1>
-                        <p className="text-[15px] text-qblack leading-[30px]">
+                        <p className="text-[15px] text-[var(--text-color)] leading-[30px]">
                           {datas.contact.address}
                         </p>
                       </div>
@@ -183,7 +183,7 @@ export default function Contact({ datas }) {
             </div>
             <div className="flex-1 bg-white sm:p-10 p-3">
               <div className="title flex flex-col items-center">
-                <h1 className="text-[34px] font-bold text-qblack">
+                <h1 className="text-[34px] font-bold text-[var(--text-color)]">
                   {ServeLangItem()?.Get_In_Touch}
                 </h1>
                 <span className="-mt-5 block">
@@ -263,7 +263,8 @@ export default function Contact({ datas }) {
                 </div>
                 <div className="mb-5">
                   <h6 className="input-label text-qgray capitalize text-[13px] font-normal block mb-2 ">
-                    {ServeLangItem()?.Message} <span className={"text-red-600 ml-1"}>*</span>
+                    {ServeLangItem()?.Message}{" "}
+                    <span className={"text-red-600 ml-1"}>*</span>
                   </h6>
                   <textarea
                     value={message}

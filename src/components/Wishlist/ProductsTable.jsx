@@ -89,10 +89,15 @@ export default function ProductsTable({ className, products }) {
 
   const removeToWishlist = (id) => {
     if (auth()) {
-      apiRequest.removeToWishlist({ id: id, token: auth().access_token })
-      .then((res)=>{if(res){
-        dispatch(fetchWishlist());
-      }}).catch((error)=>console.error(error));1
+      apiRequest
+        .removeToWishlist({ id: id, token: auth().access_token })
+        .then((res) => {
+          if (res) {
+            dispatch(fetchWishlist());
+          }
+        })
+        .catch((error) => console.error(error));
+      1;
     } else {
       router.push("/login");
     }
@@ -144,7 +149,7 @@ export default function ProductsTable({ className, products }) {
                             query: { slug: item.product.slug },
                           }}
                         >
-                          <p className="font-medium text-[15px] text-qblack hover:text-blue-500 cursor-pointer">
+                          <p className="font-medium text-[15px] text-[var(--text-color)] hover:text-blue-500 cursor-pointer">
                             {item.product.name}
                           </p>
                         </Link>

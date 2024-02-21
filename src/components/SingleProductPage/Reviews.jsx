@@ -31,7 +31,7 @@ export default function Reviews({ comments }) {
                       />
                     </div>
                     <div>
-                      <p className="text-[18px] font-medium text-qblack">
+                      <p className="text-[18px] font-medium text-[var(--text-color)]">
                         {comment.author}
                       </p>
                       {/*<p className="text-[13px] font-normal text-qgray">*/}
@@ -59,7 +59,7 @@ export default function Reviews({ comments }) {
                         </>
                       )}
                     </div>
-                    <span className="text-[13px] font-normal text-qblack mt-1 inline-block">
+                    <span className="text-[13px] font-normal text-[var(--text-color)] mt-1 inline-block">
                       ({comment.review}.0)
                     </span>
                   </div>
@@ -87,7 +87,7 @@ export default function Reviews({ comments }) {
                             />
                           </div>
                           <div>
-                            <p className="text-[18px] font-medium text-qblack">
+                            <p className="text-[18px] font-medium text-[var(--text-color)]">
                               {reply.author}
                             </p>
                             {/*<p className="text-[13px] font-normal text-qgray">*/}

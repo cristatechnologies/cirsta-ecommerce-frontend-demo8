@@ -92,7 +92,7 @@ export default function Ads({ handler }) {
                     </a>
                   </Link>
                 </div>
-                <h1 className="md:text-[30px] text-xl font-bold text-qblack mb-1">
+                <h1 className="md:text-[30px] text-xl font-bold text-[var(--text-color)] mb-1">
                   {announcment.title}
                 </h1>
                 <p className="text-qgray md:w-[480px] w-full md:text-base text-sm">
@@ -101,7 +101,7 @@ export default function Ads({ handler }) {
               </div>
 
               <div className="md:w-[415px] w-full h-[54px] sm:flex mt-8">
-                <div className="flex-1 bg-white ltr:pl-4 rtl:pr-4 mb-2 md:mb-0 flex space-x-2 rtl:space-x-reverse items-center h-full focus-within:text-qgreen text-qblack overflow-hidden">
+                <div className="flex-1 bg-white ltr:pl-4 rtl:pr-4 mb-2 md:mb-0 flex space-x-2 rtl:space-x-reverse items-center h-full focus-within:text-qgreen text-[var(--text-color)] overflow-hidden">
                   <span>
                     <svg
                       width="17"
@@ -129,7 +129,7 @@ export default function Ads({ handler }) {
                   <input
                     type="email"
                     name="email"
-                    className="w-full h-full focus:outline-none text-sm placeholder:uppercase placeholder:text-xs placeholder:text-qblack text-qblack font-400 tracking-wider"
+                    className="w-full h-full focus:outline-none text-sm placeholder:uppercase placeholder:text-xs placeholder:text-[var(--text-color)] text-[var(--text-color)] font-400 tracking-wider"
                     placeholder="Email Address"
                     onChange={(e) => setEmail(e.target.value.trim())}
                     value={email}
@@ -138,7 +138,7 @@ export default function Ads({ handler }) {
                 <button
                   onClick={subscribehandler}
                   type="button"
-                  className="w-[120px] h-full primary-bg text-qblack text-sm font-600"
+                  className="w-[120px] h-full primary-bg text-[var(--text-color)] text-sm font-600"
                 >
                   {ServeLangItem()?.Subscribe}
                 </button>

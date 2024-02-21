@@ -139,7 +139,7 @@ function SignupWidget({ redirect = true, signupActionPopup, changeContent }) {
   return (
     <div className="w-full">
       <div className="title-area flex flex-col justify-center items-center relative text-center mb-7">
-        <h1 className="text-[34px] font-bold leading-[74px] text-qblack">
+        <h1 className="text-[34px] font-bold leading-[74px] text-[var(--text-color)]">
           {ServeLangItem()?.Create_Account}
         </h1>
         <div className="shape -mt-6">
@@ -403,7 +403,7 @@ function SignupWidget({ redirect = true, signupActionPopup, changeContent }) {
             <button
               onClick={rememberMe}
               type="button"
-              className="w-5 h-5 text-qblack flex justify-center items-center border border-light-gray"
+              className="w-5 h-5 text-[var(--text-color)] flex justify-center items-center border border-light-gray"
             >
               {checked && (
                 <svg
@@ -563,13 +563,13 @@ function SignupWidget({ redirect = true, signupActionPopup, changeContent }) {
             {ServeLangItem()?.Already_have_an_Account}?
             {redirect ? (
               <Link href="/login">
-                <span className="ml-2 text-qblack cursor-pointer ml-1">
+                <span className="ml-2 text-[var(--text-color)] cursor-pointer ml-1">
                   {ServeLangItem()?.Log_In}
                 </span>
               </Link>
             ) : (
               <button onClick={signupActionPopup} type="button">
-                <span className="ml-2 text-qblack cursor-pointer ml-1">
+                <span className="ml-2 text-[var(--text-color)] cursor-pointer ml-1">
                   {ServeLangItem()?.Log_In}
                 </span>
               </button>
@@ -658,13 +658,13 @@ function SignupWidget({ redirect = true, signupActionPopup, changeContent }) {
             {ServeLangItem()?.Already_have_an_Account}?
             {redirect ? (
               <Link href="/login">
-                <span className="ml-2 text-qblack cursor-pointer ml-1">
+                <span className="ml-2 text-[var(--text-color)] cursor-pointer ml-1">
                   {ServeLangItem()?.Log_In}
                 </span>
               </Link>
             ) : (
               <button onClick={signupActionPopup} type="button">
-                <span className="ml-2 text-qblack cursor-pointer ml-1">
+                <span className="ml-2 text-[var(--text-color)] cursor-pointer ml-1">
                   {ServeLangItem()?.Log_In}
                 </span>
               </button>

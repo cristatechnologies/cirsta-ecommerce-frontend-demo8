@@ -204,7 +204,7 @@ export default function Blog({ details }) {
                   {/*  </div>*/}
                   {/*</div>*/}
                   {/*<div className="pl-[24px] mb-10">*/}
-                  {/*  <h1 className="text-[22px] font-semibold text-qblack mb-2">*/}
+                  {/*  <h1 className="text-[22px] font-semibold text-[var(--text-color)] mb-2">*/}
                   {/*    Selling fight into the find to a index.js and services?*/}
                   {/*  </h1>*/}
                   {/*  <p className="text-[15px] text-qgraytwo mb-7">*/}
@@ -324,7 +324,7 @@ export default function Blog({ details }) {
                   <div className="comment-area w-full mt-8">
                     <div className="w-full sm:flex justify-between items-center mb-8">
                       {/*<div className="tags flex space-x-5 items-center mb-5 sm:mb-0">*/}
-                      {/*  <span className="text-2xl text-qblack">Tags:</span>*/}
+                      {/*  <span className="text-2xl text-[var(--text-color)]">Tags:</span>*/}
                       {/*  <span className="text-base text-qgraytwo hover:primary-text">*/}
                       {/*    #Technology*/}
                       {/*  </span>*/}
@@ -446,7 +446,7 @@ export default function Blog({ details }) {
                   data-aos="fade-up"
                   className="search-widget w-full p-[30px] bg-white mb-[30px]"
                 >
-                  <h1 className="text-[22px] text-qblack font-bold mb-5">
+                  <h1 className="text-[22px] text-[var(--text-color)] font-bold mb-5">
                     {ServeLangItem()?.Search}
                   </h1>
                   <div className="w-full h-[1px] bg-[#DCDCDC] mb-5"></div>
@@ -479,7 +479,7 @@ export default function Blog({ details }) {
                   data-aos="fade-up"
                   className="latest-post-widget w-full bg-white p-[30px] mb-[30px]"
                 >
-                  <h1 className="text-[22px] text-qblack font-bold mb-5">
+                  <h1 className="text-[22px] text-[var(--text-color)] font-bold mb-5">
                     {ServeLangItem()?.Latest_Post}
                   </h1>
                   <div className="w-full h-[1px] bg-[#DCDCDC] mb-5"></div>
@@ -507,7 +507,7 @@ export default function Blog({ details }) {
                               passHref
                             >
                               <a rel="noopener noreferrer">
-                                <p className="text-[18px] text-qblack leading-7 cursor-pointer mb-3">
+                                <p className="text-[18px] text-[var(--text-color)] leading-7 cursor-pointer mb-3">
                                   {post.blog.title}
                                 </p>
                               </a>
@@ -580,7 +580,7 @@ export default function Blog({ details }) {
                   data-aos="fade-up"
                   className="categories-widget w-full bg-white p-[30px] mb-[30px]"
                 >
-                  <h1 className="text-[22px] text-qblack font-bold mb-5">
+                  <h1 className="text-[22px] text-[var(--text-color)] font-bold mb-5">
                     {ServeLangItem()?.Categories}
                   </h1>
                   <div className="w-full h-[1px] bg-[#DCDCDC] mb-5"></div>

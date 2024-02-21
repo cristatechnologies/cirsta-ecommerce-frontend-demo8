@@ -197,7 +197,7 @@ function CategorySection({ sectionTitle, categories }) {
         <div>
           {/*<div className="section-title flex justify-between items-center mb-5">*/}
           {/*    <div>*/}
-          {/*        <h1 className="sm:text-3xl text-xl font-600 text-qblacktext">*/}
+          {/*        <h1 className="sm:text-3xl text-xl font-600 text-[var(--text-color)]text">*/}
           {/*            {sectionTitle}*/}
           {/*        </h1>*/}
           {/*    </div>*/}

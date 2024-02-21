@@ -7,7 +7,7 @@ import Selectbox from "../../../Helpers/Selectbox";
 // import apiRequest from "../../../../../utils/apiRequest";
 import { toast } from "react-toastify";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
-import countries from "../../../../data/CountryCodes.json"
+import countries from "../../../../data/CountryCodes.json";
 import settings from "../../../../../utils/settings";
 export default function ProfileTab({ profileInfo, updatedProfile }) {
   const [name, setName] = useState(profileInfo.personInfo.name);
@@ -15,45 +15,54 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
   const [phone, setPhone] = useState(null);
   const [countryDropdown, setCountryDropdown] = useState(null);
   const [country, setCountry] = useState(null);
-  const[pincode ,setPincode] = useState(null);
+  const [pincode, setPincode] = useState(null);
 
-  useEffect(()=>{
-    if(profileInfo){
+  useEffect(() => {
+    if (profileInfo) {
       setPincode(profileInfo.personInfo.zip_code);
-      if(profileInfo.personInfo.country_id&& profileInfo.personInfo.country_id!==''){
+      if (
+        profileInfo.personInfo.country_id &&
+        profileInfo.personInfo.country_id !== ""
+      ) {
         setCountry(parseInt(profileInfo.personInfo.country_id));
-      }else{
+      } else {
         setCountry(null);
       }
     }
-  },[profileInfo])
+  }, [profileInfo]);
   const [stateDropdown, setStateDropdown] = useState(null);
   const [state, setState] = useState(null);
-  useEffect(()=>{
-    if(profileInfo){
-      if(profileInfo.personInfo.state_id&& profileInfo.personInfo.state_id!==''){
+  useEffect(() => {
+    if (profileInfo) {
+      if (
+        profileInfo.personInfo.state_id &&
+        profileInfo.personInfo.state_id !== ""
+      ) {
         setState(parseInt(profileInfo.personInfo.state_id));
         setStateDropdown(profileInfo.states);
-      }else{
+      } else {
         setState(null);
         setStateDropdown(profileInfo.states);
       }
     }
-  },[profileInfo])
+  }, [profileInfo]);
   const [cityDropdown, setCityDropdown] = useState(null);
   const [city, setcity] = useState(null);
 
-  useEffect(()=>{
-    if(profileInfo){
-      if(profileInfo.personInfo.city_id&& profileInfo.personInfo.city_id!==''){
+  useEffect(() => {
+    if (profileInfo) {
+      if (
+        profileInfo.personInfo.city_id &&
+        profileInfo.personInfo.city_id !== ""
+      ) {
         setcity(parseInt(profileInfo.personInfo.city_id));
         setCityDropdown(profileInfo.cities);
-      }else{
+      } else {
         setcity(null);
         setCityDropdown(profileInfo.cities);
       }
     }
-  },[profileInfo])
+  }, [profileInfo]);
 
   const [address, setAddress] = useState(profileInfo.personInfo.address);
   const [errors, setErrors] = useState(null);
@@ -61,17 +70,17 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
   const [getCountries, setGetCountries] = useState(null);
   const [countryDropToggle, setCountryDropToggle] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState("BD");
-  const selectCountryhandler=(value)=>{
+  const selectCountryhandler = (value) => {
     setSelectedCountry(value.code);
     setPhone(value.dial_code);
     setCountryDropToggle(false);
   };
   useEffect(() => {
-    if(!getCountries){
-      setGetCountries(countries&&countries.countries);
+    if (!getCountries) {
+      setGetCountries(countries && countries.countries);
     }
   }, [getCountries]);
-  
+
   const getState = (value) => {
     setState(null);
     if (auth() && value) {
@@ -120,23 +129,27 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
   };
   useEffect(() => {
     if (auth()) {
-      if(profileInfo&& profileInfo.countries&&profileInfo.countries.length>0){
-        setCountryDropdown(profileInfo.countries)
-      }else{
+      if (
+        profileInfo &&
+        profileInfo.countries &&
+        profileInfo.countries.length > 0
+      ) {
+        setCountryDropdown(profileInfo.countries);
+      } else {
         axios
-            .get(
-                `${process.env.NEXT_PUBLIC_BASE_URL}api/user/address/create?token=${
-                    auth().access_token
-                }`
-            )
-            .then((res) => {
-              if (res.data) {
-                setCountryDropdown(res.data.countries);
-              }
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+          .get(
+            `${process.env.NEXT_PUBLIC_BASE_URL}api/user/address/create?token=${
+              auth().access_token
+            }`
+          )
+          .then((res) => {
+            if (res.data) {
+              setCountryDropdown(res.data.countries);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     }
   }, [profileInfo]);
@@ -161,7 +174,7 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
     }
   };
   const updateProfile = async () => {
-    if (auth() && pincode.length=== 6 ) {
+    if (auth() && pincode.length === 6) {
       const formData = new FormData();
       formData.append("name", name);
       formData.append("email", email);
@@ -171,7 +184,7 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
       formData.append("image", formImg);
       formData.append("state", state);
       formData.append("city", city);
-      formData.append("zip_code",pincode);
+      formData.append("zip_code", pincode);
       await axios({
         method: "post",
         url: `${
@@ -191,22 +204,29 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
       return false;
     }
   };
-  const {default_phone_code}=settings();
-  useEffect(()=>{
-    if(default_phone_code){
-      let defaultCountry=getCountries && getCountries.length>0 && getCountries.find((item)=>item.code===default_phone_code);
-      if(defaultCountry){
-       setPhone(()=>{
-         if(profileInfo&& profileInfo.personInfo.phone && profileInfo.personInfo.phone !== "null"){
-           return profileInfo.personInfo.phone
-         }else{
-           return defaultCountry.dial_code
-         }
-       })
+  const { default_phone_code } = settings();
+  useEffect(() => {
+    if (default_phone_code) {
+      let defaultCountry =
+        getCountries &&
+        getCountries.length > 0 &&
+        getCountries.find((item) => item.code === default_phone_code);
+      if (defaultCountry) {
+        setPhone(() => {
+          if (
+            profileInfo &&
+            profileInfo.personInfo.phone &&
+            profileInfo.personInfo.phone !== "null"
+          ) {
+            return profileInfo.personInfo.phone;
+          } else {
+            return defaultCountry.dial_code;
+          }
+        });
         setSelectedCountry(defaultCountry.code);
       }
     }
-  }, [default_phone_code, getCountries])
+  }, [default_phone_code, getCountries]);
 
   return (
     <>
@@ -271,8 +291,8 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
                     value={phone ? phone : ""}
                     inputHandler={(e) => setPhone(e.target.value)}
                     error={!!(errors && Object.hasOwn(errors, "phone"))}
-                    min={'1'}
-                    max={'10'}
+                    min={"1"}
+                    max={"10"}
                   />
                   {errors && Object.hasOwn(errors, "phone") ? (
                     <span className="text-sm mt-1 text-qred">
@@ -281,103 +301,138 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
                   ) : (
                     ""
                   )}
-                  <button onClick={()=>setCountryDropToggle(!countryDropToggle)} type="button" className="w-[70px] h-[50px] bg-qgray-border absolute left-0 top-[29px] flex justify-center items-center">
+                  <button
+                    onClick={() => setCountryDropToggle(!countryDropToggle)}
+                    type="button"
+                    className="w-[70px] h-[50px] bg-qgray-border absolute left-0 top-[29px] flex justify-center items-center"
+                  >
                     <div className="flex items-center">
-                  <span>
-                    <Image width="30" height="20" src={`/assets/images/countries/${selectedCountry}.svg`} alt="country"/>
-                  </span>
+                      <span>
+                        <Image
+                          width="30"
+                          height="20"
+                          src={`/assets/images/countries/${selectedCountry}.svg`}
+                          alt="country"
+                        />
+                      </span>
                       <span className="text-qgray">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 14l-4-4h8z"/></svg>
-                  </span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          height="24"
+                        >
+                          <path fill="none" d="M0 0h24v24H0z" />
+                          <path d="M12 14l-4-4h8z" />
+                        </svg>
+                      </span>
                     </div>
                   </button>
-                  <div style={{boxShadow: "rgb(0 0 0 / 14%) 0px 15px 50px 0px",display:countryDropToggle?'block':'none'}} className="country-dropdown-list w-[250px] h-[250px] bg-white absolute left-0 top-[80px] z-20 overflow-y-scroll">
+                  <div
+                    style={{
+                      boxShadow: "rgb(0 0 0 / 14%) 0px 15px 50px 0px",
+                      display: countryDropToggle ? "block" : "none",
+                    }}
+                    className="country-dropdown-list w-[250px] h-[250px] bg-white absolute left-0 top-[80px] z-20 overflow-y-scroll"
+                  >
                     <ul>
-                      {getCountries && getCountries.length>0&&getCountries.map((item,i)=>(
-                          <li onClick={()=>selectCountryhandler(item)} key={i} className="flex space-x-1.5 items-center px-3 py-1 cursor-pointer">
-                        <span className="w-[25px]">
-                           <Image width="25" height="15" src={`/assets/images/countries/${item.code}.svg`} alt="country"/>
-                        </span>
+                      {getCountries &&
+                        getCountries.length > 0 &&
+                        getCountries.map((item, i) => (
+                          <li
+                            onClick={() => selectCountryhandler(item)}
+                            key={i}
+                            className="flex space-x-1.5 items-center px-3 py-1 cursor-pointer"
+                          >
+                            <span className="w-[25px]">
+                              <Image
+                                width="25"
+                                height="15"
+                                src={`/assets/images/countries/${item.code}.svg`}
+                                alt="country"
+                              />
+                            </span>
                             <span className="text-sm text-qgray capitalize flex-1">
-                          {item.name}
-                        </span>
+                              {item.name}
+                            </span>
                           </li>
-                      ))}
+                        ))}
                     </ul>
                   </div>
                 </div>
               </div>
 
               <div className="md:flex md:space-x-5 rtl:space-x-reverse items-center mb-6">
-              <div className="md:w-1/2 mb-8 md:mb-0">
-
-                <h1 className="input-label capitalize block  mb-2 text-qgray text-[13px] font-normal">
-                  {ServeLangItem()?.Country}<span className={"text-red-600 ml-1"}>*</span>
-                </h1>
-                <div
-                  className={`w-full h-[50px] border border-qgray-border px-5 flex justify-between items-center mb-2 ${
-                    !!(errors && Object.hasOwn(errors, "country"))
-                      ? "border-qred"
-                      : "border-qgray-border"
-                  }`}
-                >
-                  <Selectbox
-                    action={getState}
-                    className="w-full"
-                    defaultValue={
-                      countryDropdown &&
-                      countryDropdown.length > 0 &&
-                      (function () {
-                        let item =
-                          countryDropdown.length > 0 &&
-                          countryDropdown.find(
-                            (item) =>
-                              parseInt(item.id) ===
-                              parseInt(profileInfo.personInfo.country_id)
-                          );
-                        return item ? item.name : "Select";
-                      })()
-                    }
-                    datas={countryDropdown && countryDropdown}
+                <div className="md:w-1/2 mb-8 md:mb-0">
+                  <h1 className="input-label capitalize block  mb-2 text-qgray text-[13px] font-normal">
+                    {ServeLangItem()?.Country}
+                    <span className={"text-red-600 ml-1"}>*</span>
+                  </h1>
+                  <div
+                    className={`w-full h-[50px] border border-qgray-border px-5 flex justify-between items-center mb-2 ${
+                      !!(errors && Object.hasOwn(errors, "country"))
+                        ? "border-qred"
+                        : "border-qgray-border"
+                    }`}
                   >
-                    {({ item }) => (
-                      <>
-                        <div className="flex justify-between items-center w-full">
-                          <div>
-                            <span className="text-[13px] text-qblack">
-                              {item}
+                    <Selectbox
+                      action={getState}
+                      className="w-full"
+                      defaultValue={
+                        countryDropdown &&
+                        countryDropdown.length > 0 &&
+                        (function () {
+                          let item =
+                            countryDropdown.length > 0 &&
+                            countryDropdown.find(
+                              (item) =>
+                                parseInt(item.id) ===
+                                parseInt(profileInfo.personInfo.country_id)
+                            );
+                          return item ? item.name : "Select";
+                        })()
+                      }
+                      datas={countryDropdown && countryDropdown}
+                    >
+                      {({ item }) => (
+                        <>
+                          <div className="flex justify-between items-center w-full">
+                            <div>
+                              <span className="text-[13px] text-[var(--text-color)]">
+                                {item}
+                              </span>
+                            </div>
+                            <span>
+                              <svg
+                                width="11"
+                                height="7"
+                                viewBox="0 0 11 7"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M5.4 6.8L0 1.4L1.4 0L5.4 4L9.4 0L10.8 1.4L5.4 6.8Z"
+                                  fill="#222222"
+                                />
+                              </svg>
                             </span>
                           </div>
-                          <span>
-                            <svg
-                              width="11"
-                              height="7"
-                              viewBox="0 0 11 7"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M5.4 6.8L0 1.4L1.4 0L5.4 4L9.4 0L10.8 1.4L5.4 6.8Z"
-                                fill="#222222"
-                              />
-                            </svg>
-                          </span>
-                        </div>
-                      </>
-                    )}
-                  </Selectbox>
-                </div>
-                {errors && Object.hasOwn(errors, "country") ? (
-                  <span className="text-sm mt-1 text-qred">
-                    {errors.country[0]}
-                  </span>
-                ) : (
-                  ""
-                )}
+                        </>
+                      )}
+                    </Selectbox>
+                  </div>
+                  {errors && Object.hasOwn(errors, "country") ? (
+                    <span className="text-sm mt-1 text-qred">
+                      {errors.country[0]}
+                    </span>
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <div className="md:w-1/2 mb-8 md:mb-0">
                   <h1 className="input-label capitalize block  mb-2 text-qgray text-[13px] font-normal">
-                    {ServeLangItem()?.State} <span className={"text-red-600 ml-1"}>*</span>
+                    {ServeLangItem()?.State}{" "}
+                    <span className={"text-red-600 ml-1"}>*</span>
                   </h1>
                   <div
                     className={`w-full h-[50px] border border-qgray-border px-5 flex justify-between items-center mb-2 ${
@@ -407,7 +462,7 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
                         <>
                           <div className="flex justify-between items-center w-full">
                             <div>
-                              <span className="text-[13px] text-qblack">
+                              <span className="text-[13px] text-[var(--text-color)]">
                                 {item}
                               </span>
                             </div>
@@ -442,7 +497,8 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
               <div className="md:flex md:space-x-5 rtl:space-x-reverse items-center mb-6">
                 <div className="md:w-1/2 w-full">
                   <h1 className="input-label capitalize block  mb-2 text-qgray text-[13px] font-normal">
-                    {ServeLangItem()?.City}<span className={"text-red-600 ml-1"}>*</span>
+                    {ServeLangItem()?.City}
+                    <span className={"text-red-600 ml-1"}>*</span>
                   </h1>
                   <div
                     className={`w-full h-[50px] border border-qgray-border px-5 flex justify-between items-center ${
@@ -472,7 +528,7 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
                         <>
                           <div className="flex justify-between items-center w-full">
                             <div>
-                              <span className="text-[13px] text-qblack">
+                              <span className="text-[13px] text-[var(--text-color)]">
                                 {item}
                               </span>
                             </div>
@@ -494,8 +550,8 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
                         </>
                       )}
                     </Selectbox>
-                {/* <div className="input-item mb-2"> */}
-                      {/* <InputCom
+                    {/* <div className="input-item mb-2"> */}
+                    {/* <InputCom
                         placeholder={ServeLangItem()?.City}
                         label={ServeLangItem()?.City}
                         mandatory={true}
@@ -506,42 +562,42 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
                         inputHandler={(e) => setcity(e.target.value)}
                         error={!!(errors && Object.hasOwn(errors, "city"))}
                       /> */}
-                    </div>
-                    {errors && Object.hasOwn(errors, "city") ? (
-                      <span className="text-sm mt-1 text-qred">
-                        {errors.city[0]}
-                      </span>
-                    ) : (
-                      ""
-                    )}
+                  </div>
+                  {errors && Object.hasOwn(errors, "city") ? (
+                    <span className="text-sm mt-1 text-qred">
+                      {errors.city[0]}
+                    </span>
+                  ) : (
+                    ""
+                  )}
                   {/* </div> */}
                 </div>
                 <div className="md:w-1/2 mb-8 md:mb-0">
-                <InputCom
-                        label={"Zip Code"}
-                        placeholder="123123"
-                        type={"number"}
-                        inputClasses="w-full !h-[50px] py-3"
-                        labelClasses={'text-qgray text-[13px]'}
-                        value={pincode}
-                        mandatory={true}
-                        patternValidation={"[1-6]{1}[0-6]{6}"}
-                        inputHandler={(e) => setPincode(e.target.value)}
-                        error={!!(errors && Object.hasOwn(errors, "zip_code"))}
-                      />
-                      {console.log('errors', pincode)}
-                      {errors && Object.hasOwn(errors, "zip_code") ? (
-                        <span className="text-sm mt-1 text-qred">
-                          {errors.zip_code[0]}
-                        </span>
-                          ) : (
-                              ""
-                      )}
-                      {pincode && (pincode.length < 6 || pincode.length > 6) &&(
-                        <span className="text-sm mt-1 text-qred">
-                          Please enter zip code number 6 digit
-                        </span>
-                      )}
+                  <InputCom
+                    label={"Zip Code"}
+                    placeholder="123123"
+                    type={"number"}
+                    inputClasses="w-full !h-[50px] py-3"
+                    labelClasses={"text-qgray text-[13px]"}
+                    value={pincode}
+                    mandatory={true}
+                    patternValidation={"[1-6]{1}[0-6]{6}"}
+                    inputHandler={(e) => setPincode(e.target.value)}
+                    error={!!(errors && Object.hasOwn(errors, "zip_code"))}
+                  />
+                  {console.log("errors", pincode)}
+                  {errors && Object.hasOwn(errors, "zip_code") ? (
+                    <span className="text-sm mt-1 text-qred">
+                      {errors.zip_code[0]}
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                  {pincode && (pincode.length < 6 || pincode.length > 6) && (
+                    <span className="text-sm mt-1 text-qred">
+                      Please enter zip code number 6 digit
+                    </span>
+                  )}
                 </div>
               </div>
 
@@ -566,7 +622,7 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
             </div>
             <div className="flex-1">
               <div className="update-logo w-full mb-9">
-                <h1 className="text-xl tracking-wide font-bold text-qblack flex items-center mb-2">
+                <h1 className="text-xl tracking-wide font-bold text-[var(--text-color)] flex items-center mb-2">
                   {ServeLangItem()?.Update_Profile}
                   <span className="ml-1">
                     <svg
@@ -586,7 +642,7 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
                 </h1>
                 <p className="text-sm text-qgraytwo mb-5 ">
                   {ServeLangItem()?.Profile_of_at_least_Size}
-                  <span className="ml-1 text-qblack">300x300</span>
+                  <span className="ml-1 text-[var(--text-color)]">300x300</span>
                 </p>
                 <div className="flex xl:justify-center justify-start">
                   <div className="relative">
@@ -642,7 +698,7 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
             <button
               onClick={updateProfile}
               type="button"
-              className="w-[164px] h-[50px] primary-bg rounded text-qblack text-sm"
+              className="w-[164px] h-[50px] primary-bg rounded text-[var(--text-color)] text-sm"
             >
               {ServeLangItem()?.Update_Profile}
             </button>

@@ -56,7 +56,7 @@ export default function ReviewTab({ className, reviews }) {
                             query: { slug: datas.product.slug },
                           }}
                         >
-                          <p className="title mb-2 sm:text-[15px] text-[13px] font-600 text-qblack leading-[24px] line-clamp-1 hover:text-blue-600 cursor-pointer">
+                          <p className="title mb-2 sm:text-[15px] text-[13px] font-600 text-[var(--text-color)] leading-[24px] line-clamp-1 hover:text-blue-600 cursor-pointer">
                             {datas.product.name}
                           </p>
                         </Link>

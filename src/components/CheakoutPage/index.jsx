@@ -1034,7 +1034,7 @@ function CheakoutPage() {
                             type="button"
                             className={`px-4 py-3 text-md font-medium rounded-md  ${
                               activeAddress === "billing"
-                                ? "text-qblack primary-bg"
+                                ? "text-[var(--text-color)] primary-bg"
                                 : "primary-text"
                             } `}
                           >
@@ -1045,7 +1045,7 @@ function CheakoutPage() {
                             type="button"
                             className={`px-4 py-3 text-md font-medium rounded-md ml-1 ${
                               activeAddress === "shipping"
-                                ? "text-qblack primary-bg"
+                                ? "text-[var(--text-color)] primary-bg"
                                 : "primary-text"
                             } `}
                           >
@@ -1058,7 +1058,7 @@ function CheakoutPage() {
                           type="button"
                           className="w-[100px] h-[40px] mt-2 sm:mt-0 border border-[var(--primary-color)] hover:bg-[var(--primary-color)] hover:text-white transition-all duration-300 ease-in-out text-[var(--text-color)]"
                         >
-                          <span className="text-sm font-semibold">
+                          <span className="text-sm font-semibold text-[var(--text-color)]">
                             {ServeLangItem()?.Add_New}
                           </span>
                         </button>
@@ -1079,8 +1079,8 @@ function CheakoutPage() {
                                 key={i}
                                 className={`w-full p-5 border cursor-pointer relative ${
                                   address.id === selectedBilling
-                                    ? "border-[#409BD1]"
-                                    : "border-transparent bg-primarygray"
+                                    ? "border-[#409BD1] bg-primarygray"
+                                    : "border-transparent bg-[#DFDFDF]"
                                 }`}
                               >
                                 <div className="flex justify-between items-center">
@@ -1117,7 +1117,7 @@ function CheakoutPage() {
                                         <td className="text-base text-qgraytwo w-[70px] block line-clamp-1 capitalize">
                                           {ServeLangItem()?.Name}:
                                         </td>
-                                        <td className="text-base text-qblack line-clamp-1 font-medium">
+                                        <td className="text-base text-[var(--text-color)] line-clamp-1 font-medium">
                                           {address.name}
                                         </td>
                                       </tr>
@@ -1125,7 +1125,7 @@ function CheakoutPage() {
                                         <td className="text-base text-qgraytwo w-[70px] block line-clamp-1 capitalize">
                                           {ServeLangItem()?.Email}:
                                         </td>
-                                        <td className="text-base text-qblack line-clamp-1 font-medium">
+                                        <td className="text-base text-[var(--text-color)] line-clamp-1 font-medium">
                                           {address.email}
                                         </td>
                                       </tr>
@@ -1133,7 +1133,7 @@ function CheakoutPage() {
                                         <td className="text-base text-qgraytwo w-[70px] block line-clamp-1 capitalize">
                                           {ServeLangItem()?.phone}:
                                         </td>
-                                        <td className="text-base text-qblack line-clamp-1 font-medium">
+                                        <td className="text-base text-[var(--text-color)] line-clamp-1 font-medium">
                                           {address.phone}
                                         </td>
                                       </tr>
@@ -1141,7 +1141,7 @@ function CheakoutPage() {
                                         <td className="text-base text-qgraytwo w-[70px] block line-clamp-1 capitalize">
                                           {ServeLangItem()?.Country}:
                                         </td>
-                                        <td className="text-base text-qblack line-clamp-1 font-medium">
+                                        <td className="text-base text-[var(--text-color)] line-clamp-1 font-medium">
                                           {address.country.name}
                                         </td>
                                       </tr>
@@ -1149,7 +1149,7 @@ function CheakoutPage() {
                                         <td className="text-base text-qgraytwo w-[70px] block line-clamp-1 capitalize">
                                           {ServeLangItem()?.State}:
                                         </td>
-                                        <td className="text-base text-qblack line-clamp-1 font-medium">
+                                        <td className="text-base text-[var(--text-color)] line-clamp-1 font-medium">
                                           {address.country_state.name}
                                         </td>
                                       </tr>
@@ -1157,7 +1157,7 @@ function CheakoutPage() {
                                         <td className="text-base text-qgraytwo w-[70px] block line-clamp-1 capitalize">
                                           {ServeLangItem()?.City}:
                                         </td>
-                                        <td className="text-base text-qblack line-clamp-1 font-medium">
+                                        <td className="text-base text-[var(--text-color)] line-clamp-1 font-medium">
                                           {address.city.name}
                                         </td>
                                       </tr>
@@ -1166,7 +1166,7 @@ function CheakoutPage() {
                                           <td className="text-base text-qgraytwo block line-clamp-1 capitalize">
                                             Zip Code:
                                           </td>
-                                          <td className="text-base text-qblack line-clamp-1 font-medium ml-2">
+                                          <td className="text-base text-[var(--text-color)] line-clamp-1 font-medium ml-2">
                                             {address.zip_code}
                                           </td>
                                         </tr>
@@ -1175,7 +1175,7 @@ function CheakoutPage() {
                                   </table>
                                 </div>
                                 {address.id === selectedBilling && (
-                                  <span className="text-qblack primary-bg px-2 text-sm absolute right-2 -top-2 font-medium">
+                                  <span className="text-[var(--text-color)] primary-bg px-2 text-sm absolute right-2 -top-2 font-medium">
                                     {ServeLangItem()?.Selected}
                                   </span>
                                 )}
@@ -1238,7 +1238,7 @@ function CheakoutPage() {
                                         <td className="text-base text-qgraytwo w-[70px] block line-clamp-1 capitalize">
                                           {ServeLangItem()?.Name}:
                                         </td>
-                                        <td className="text-base text-qblack line-clamp-1 font-medium">
+                                        <td className="text-base text-[var(--text-color)] line-clamp-1 font-medium">
                                           {address.name}
                                         </td>
                                       </tr>
@@ -1246,7 +1246,7 @@ function CheakoutPage() {
                                         <td className="text-base text-qgraytwo w-[70px] block line-clamp-1 capitalize">
                                           {ServeLangItem()?.Email}:
                                         </td>
-                                        <td className="text-base text-qblack line-clamp-1 font-medium">
+                                        <td className="text-base text-[var(--text-color)] line-clamp-1 font-medium">
                                           {address.email}
                                         </td>
                                       </tr>
@@ -1254,7 +1254,7 @@ function CheakoutPage() {
                                         <td className="text-base text-qgraytwo w-[70px] block line-clamp-1 capitalize">
                                           {ServeLangItem()?.phone}:
                                         </td>
-                                        <td className="text-base text-qblack line-clamp-1 font-medium">
+                                        <td className="text-base text-[var(--text-color)] line-clamp-1 font-medium">
                                           {address.phone}
                                         </td>
                                       </tr>
@@ -1262,7 +1262,7 @@ function CheakoutPage() {
                                         <td className="text-base text-qgraytwo w-[70px] block line-clamp-1 capitalize">
                                           {ServeLangItem()?.Country}:
                                         </td>
-                                        <td className="text-base text-qblack line-clamp-1 font-medium">
+                                        <td className="text-base text-[var(--text-color)] line-clamp-1 font-medium">
                                           {address.country.name}
                                         </td>
                                       </tr>
@@ -1270,7 +1270,7 @@ function CheakoutPage() {
                                         <td className="text-base text-qgraytwo w-[70px] block line-clamp-1 capitalize">
                                           {ServeLangItem()?.State}:
                                         </td>
-                                        <td className="text-base text-qblack line-clamp-1 font-medium">
+                                        <td className="text-base text-[var(--text-color)] line-clamp-1 font-medium">
                                           {address.country_state.name}
                                         </td>
                                       </tr>
@@ -1278,7 +1278,7 @@ function CheakoutPage() {
                                         <td className="text-base text-qgraytwo w-[70px] block line-clamp-1 capitalize">
                                           {ServeLangItem()?.City}:
                                         </td>
-                                        <td className="text-base text-qblack line-clamp-1 font-medium">
+                                        <td className="text-base text-[var(--text-color)] line-clamp-1 font-medium">
                                           {address.city_id}
                                         </td>
                                       </tr>
@@ -1286,7 +1286,7 @@ function CheakoutPage() {
                                   </table>
                                 </div>
                                 {address.id === selectedShipping && (
-                                  <span className="text-qblack primary-bg px-2 text-sm absolute right-2 -top-2 font-medium">
+                                  <span className="text-[var(--text-color)] primary-bg px-2 text-sm absolute right-2 -top-2 font-medium">
                                     {ServeLangItem()?.Selected}
                                   </span>
                                 )}
@@ -1474,7 +1474,7 @@ function CheakoutPage() {
                                     <>
                                       <div className="flex justify-between items-center w-full">
                                         <div>
-                                          <span className="text-[13px] text-qblack">
+                                          <span className="text-[13px] text-[var(--text-color)]">
                                             {item}
                                           </span>
                                         </div>
@@ -1528,7 +1528,7 @@ function CheakoutPage() {
                                     <>
                                       <div className="flex justify-between items-center w-full">
                                         <div>
-                                          <span className="text-[13px] text-qblack">
+                                          <span className="text-[13px] text-[var(--text-color)]">
                                             {item}
                                           </span>
                                         </div>
@@ -1584,7 +1584,7 @@ function CheakoutPage() {
                                       <>
                                         <div className="flex justify-between items-center w-full">
                                           <div>
-                                            <span className="text-[13px] text-qblack">
+                                            <span className="text-[13px] text-[var(--text-color)]">
                                               {item}
                                             </span>
                                           </div>
@@ -1796,7 +1796,7 @@ function CheakoutPage() {
                         type="button"
                         className="w-[90px] h-[50px] bg-[var(--primary-color)]"
                       >
-                        <span className="text-sm font-semibold">
+                        <span className="text-sm font-semibold text-[var(--text-color)]">
                           {ServeLangItem()?.Apply}
                         </span>
                       </button>
@@ -2305,7 +2305,7 @@ function CheakoutPage() {
                               `}
                             >
                               <div className="w-full">
-                                <span className="text-qblack font-bold text-base">
+                                <span className="text-[var(--text-color)] font-bold text-base">
                                   {ServeLangItem()?.Cash_On_Delivery}
                                 </span>
                               </div>
@@ -2342,7 +2342,7 @@ function CheakoutPage() {
                               `}
                             >
                               <div className="w-full">
-                                <span className="text-qblack font-bold text-base">
+                                <span className="text-[var(--text-color)] font-bold text-base">
                                   Debit card
                                 </span>
                               </div>
@@ -2380,7 +2380,7 @@ function CheakoutPage() {
                               `}
                             >
                               <div className="w-full">
-                                <span className="text-qblack font-bold text-base">
+                                <span className="text-[var(--text-color)] font-bold text-base">
                                   Credit card
                                 </span>
                               </div>
@@ -2418,7 +2418,7 @@ function CheakoutPage() {
                               `}
                             >
                               <div className="w-full">
-                                <span className="text-qblack font-bold text-base">
+                                <span className="text-[var(--text-color)] font-bold text-base">
                                   Net-banking
                                 </span>
                               </div>
@@ -2455,7 +2455,7 @@ function CheakoutPage() {
                               `}
                             >
                               <div className="w-full">
-                                <span className="text-qblack font-bold text-base">
+                                <span className="text-[var(--text-color)] font-bold text-base">
                                   Wallet
                                 </span>
                               </div>
@@ -2975,7 +2975,7 @@ function CheakoutPage() {
                               }`}
                             >
                               <div className="w-full">
-                                <span className="text-qblack font-bold text-base">
+                                <span className="text-[var(--text-color)] font-bold text-base">
                                   {ServeLangItem()?.Bank_Payment}
                                 </span>
                               </div>
@@ -3010,7 +3010,7 @@ function CheakoutPage() {
                               }`}
                             >
                               <div className="w-full flex justify-center">
-                                <span className="text-qblack font-bold text-base">
+                                <span className="text-[var(--text-color)] font-bold text-base">
                                   <Sslcommerce />
                                 </span>
                               </div>
@@ -3146,7 +3146,7 @@ function CheakoutPage() {
                                 className="w-full"
                               >
                                 <div className="w-full h-[50px] flex justify-center items-center">
-                                  <span className="text-sm font-semibold text-white">
+                                  <span className="text-sm font-semibold text-[var(--text-color)]">
                                     {ServeLangItem()?.Place_Order_Now}
                                   </span>
                                   {strpLoad && (
@@ -3172,7 +3172,7 @@ function CheakoutPage() {
                               {bankInfo.account_info}
                             </pre>
                           </div>
-                          <h6 className="input-label  capitalize text-[13px] font-600 leading-[24px] text-qblack block mb-2 ">
+                          <h6 className="input-label  capitalize text-[13px] font-600 leading-[24px] text-[var(--text-color)] block mb-2 ">
                             {ServeLangItem()?.Transaction_Information}*
                           </h6>
                           <textarea
@@ -3203,7 +3203,7 @@ function CheakoutPage() {
                             : "bg-[var(--primary-color)]"
                         }`}
                       >
-                        <span className="text-sm font-semibold">
+                        <span className="text-sm font-semibold text-[var(--text-color)]">
                           {ServeLangItem()?.Place_Order_Now}
                         </span>
                       </div>

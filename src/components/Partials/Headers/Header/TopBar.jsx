@@ -65,7 +65,7 @@ export default function TopBar({ className, contact, settings }) {
   return (
     <>
       <div
-        className={`w-full bg-white text-slate-800 h-16 border-b border-qgray-border  hidden lg:block  ${
+        className={`w-full bg-white text-[var(--text-color)] h-16 border-b border-qgray-border  hidden lg:block  ${
           className || ""
         }`}
       >
@@ -105,7 +105,7 @@ export default function TopBar({ className, contact, settings }) {
                   <div className="flex space-x-6 rtl:space-x-reverse items-center relative">
                     <Link href="/blogs" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="text-xs leading-6 text-slate-800 font-500 cursor-pointer capitalize">
+                        <span className="text-xs leading-6 text-[var(--text-color)] font-500 cursor-pointer capitalize">
                           {ServeLangItem()?.blogs}
                         </span>
                       </a>
@@ -113,7 +113,7 @@ export default function TopBar({ className, contact, settings }) {
                     {auth && (
                       <Link href="/profile#dashboard" passHref>
                         <a rel="noopener noreferrer">
-                          <span className="text-xs leading-6 text-slate-800 font-500 cursor-pointer">
+                          <span className="text-xs leading-6 text-[var(--text-color)] font-500 cursor-pointer">
                             {ServeLangItem()?.Account}
                           </span>
                         </a>
@@ -200,7 +200,7 @@ export default function TopBar({ className, contact, settings }) {
                                   {auth && auth.user.name}{" "}
                                 </span>
                               </li>
-                              <li className="text-base text-qgraytwo cursor-pointer hover:text-qblack hover:font-semibold">
+                              <li className="text-base text-qgraytwo cursor-pointer hover:text-[var(--text-color)] hover:font-semibold">
                                 <Link href="/profile#dashboard" passHref>
                                   <a rel="noopener noreferrer">
                                     <span className="capitalize">
@@ -209,7 +209,7 @@ export default function TopBar({ className, contact, settings }) {
                                   </a>
                                 </Link>
                               </li>
-                              <li className="text-base text-qgraytwo cursor-pointer hover:text-qblack hover:font-semibold">
+                              <li className="text-base text-qgraytwo cursor-pointer hover:text-[var(--text-color)] hover:font-semibold">
                                 <Link href="/contact" passHref>
                                   <a rel="noopener noreferrer">
                                     <span className="capitalize">
@@ -218,7 +218,7 @@ export default function TopBar({ className, contact, settings }) {
                                   </a>
                                 </Link>
                               </li>
-                              <li className="text-base text-qgraytwo cursor-pointer hover:text-qblack hover:font-semibold">
+                              <li className="text-base text-qgraytwo cursor-pointer hover:text-[var(--text-color)] hover:font-semibold">
                                 <Link href="/faq" passHref>
                                   <a rel="noopener noreferrer">
                                     <span className="capitalize">
@@ -233,7 +233,7 @@ export default function TopBar({ className, contact, settings }) {
                             <button
                               onClick={logout}
                               type="button"
-                              className="text-qblack text-base font-semibold"
+                              className="text-[var(--text-color)] text-base font-semibold"
                             >
                               {ServeLangItem()?.Sign_Out}
                             </button>

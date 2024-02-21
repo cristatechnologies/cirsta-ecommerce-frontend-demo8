@@ -255,7 +255,7 @@ function OrderCom() {
               <div id="printSection">
                 <div className="sm:flex justify-between items-center mb-4">
                   <div>
-                    <h1 className="text-[26px] font-semibold text-qblack mb-2.5">
+                    <h1 className="text-[26px] font-semibold text-[var(--text-color)] mb-2.5">
                       {resData.order_address &&
                         resData.order_address.billing_name}
                     </h1>
@@ -339,7 +339,7 @@ function OrderCom() {
                           />
                         </svg>
                       </span>
-                      <span className="text-sm text-qblack">
+                      <span className="text-sm text-[var(--text-color)]">
                         {ServeLangItem()?.Print_PDF}
                       </span>
                     </button>
@@ -385,7 +385,7 @@ function OrderCom() {
                                 {/*  />*/}
                                 {/*</div>*/}
                                 <div className="flex-1 flex flex-col">
-                                  <p className="font-medium text-[15px] text-qblack rtl:text-right rtl:pr-10">
+                                  <p className="font-medium text-[15px] text-[var(--text-color)] rtl:text-right rtl:pr-10">
                                     {item.product_name}
                                   </p>
                                 </div>
@@ -435,10 +435,10 @@ function OrderCom() {
                 <div className="flex sm:justify-end print:justify-end justify-center sm:mr-10">
                   <div>
                     <div className="flex justify-between font-semibold w-[200px] mb-1">
-                      <p className="text-sm text-qblack capitalize">
+                      <p className="text-sm text-[var(--text-color)] capitalize">
                         {ServeLangItem()?.SUBTOTAL}
                       </p>
-                      <p className="text-sm text-qblack">
+                      <p className="text-sm text-[var(--text-color)]">
                         <span>{currency_icon}</span>
                         <span>
                           {parseFloat(resData.total_amount).toFixed(2) -
@@ -457,20 +457,20 @@ function OrderCom() {
                       </p>
                     </div>
                     <div className="flex justify-between font-semibold w-[200px]">
-                      <p className="text-sm text-qblack">
+                      <p className="text-sm text-[var(--text-color)]">
                         (+) {ServeLangItem()?.Shipping_Cost}
                       </p>
-                      <p className="text-sm text-qblack">
+                      <p className="text-sm text-[var(--text-color)]">
                         +<span>{currency_icon}</span>
                         <span>{resData.shipping_cost}</span>
                       </p>
                     </div>
                     <div className="w-full h-[1px] bg-qgray-border mt-4"></div>
                     <div className="flex justify-between font-semibold w-[200px] mt-4">
-                      <p className="text-lg text-qblack">
+                      <p className="text-lg text-[var(--text-color)]">
                         {ServeLangItem()?.Total_Paid}
                       </p>
-                      <p className="text-lg text-qblack">
+                      <p className="text-lg text-[var(--text-color)]">
                         <span>{currency_icon}</span>
                         <span>{parseInt(resData.total_amount)}</span>
                       </p>
@@ -494,7 +494,7 @@ function OrderCom() {
             style={{ zIndex: "999" }}
           >
             <div className="title-bar flex items-center justify-between mb-3">
-              <h1 className="text-2xl font-medium text-qblack mb-5">
+              <h1 className="text-2xl font-medium text-[var(--text-color)] mb-5">
                 {ServeLangItem()?.Write_Your_Reviews}
               </h1>
               <span
@@ -524,7 +524,7 @@ function OrderCom() {
                   rating={rating}
                   ratingHandler={setRating}
                 />
-                <span className="text-qblack text-[15px] font-normal mt-1">
+                <span className="text-[var(--text-color)] text-[15px] font-normal mt-1">
                   ({rating}.0)
                 </span>
               </div>
@@ -563,7 +563,7 @@ function OrderCom() {
                     className="bg-[var(--primary-color)] w-[300px] h-[50px]  flex justify-center"
                   >
                     <span className="flex space-x-1 items-center h-full">
-                      <span className="text-sm font-semibold">
+                      <span className="text-sm font-semibold text-[var(--text-color)]">
                         {ServeLangItem()?.Submit_Review}
                       </span>
                       {reviewLoading && (

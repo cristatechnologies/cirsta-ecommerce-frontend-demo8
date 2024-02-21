@@ -249,7 +249,7 @@ body {
 }
 
 .yellow-btn {
-  @apply w-full text-[13px] text-qblacktext font-semibold flex justify-center items-center h-full;
+  @apply w-full text-[13px] text-[var(--text-color)] font-semibold flex justify-center items-center h-full;
   background: var(--primary-color);
   line-height: 0;
 }
@@ -438,7 +438,7 @@ body {
   border-color: var(--primary-color);
 }
 .nav-widget-wrapper .nav .nav-wrapper li {
-  @apply text-qblacktext;
+  @apply text-[var(--text-color)];
 }
 .quomodo-shop-nav-bar.nav-widget-wrapper {
   /* background: var(--primary-color); */
@@ -450,7 +450,7 @@ body {
 }
 
 .nav-widget-wrapper .category-dropdown .categories-list .category-item {
-  @apply bg-white text-qblack;
+  @apply bg-white text-[var(--text-color)];
 }
 .nav-widget-wrapper .category-dropdown .categories-list .category-item:hover {
   background: var(--primary-color);
@@ -463,7 +463,7 @@ body {
   .sub-category-lvl-two
   ul
   li.category-item {
-  @apply bg-white text-qblack;
+  @apply bg-white text-[var(--text-color)];
 }
 .nav-widget-wrapper
   .category-dropdown
@@ -483,7 +483,7 @@ body {
   .sub-category-lvl-three
   ul
   li.category-item {
-  @apply bg-white  text-qblack;
+  @apply bg-white  text-[var(--text-color)];
 }
 .nav-widget-wrapper
   .category-dropdown
@@ -520,7 +520,7 @@ body {
   @apply text-white;
 }
 .home-two .nav-widget-wrapper .become-seller-btn {
-  @apply text-qblack;
+  @apply text-[var(--text-color)];
   background: var(--primary-color);
 }
 .home-two .quomodo-shop-middle-bar .cart-wrapper .cart-wrappwer {
@@ -618,7 +618,7 @@ body {
   .my-select-box
   .my-select-box-btn
   > span {
-  @apply text-xs font-500 text-qblack;
+  @apply text-xs font-500 text-[var(--text-color)];
   text-transform: capitalize;
 }
 

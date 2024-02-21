@@ -436,7 +436,9 @@ export default function ProductView({
               )}
               <span
                 className={`text-[13px] font-normal ${
-                  quickViewData ? "text-qblack" : "text-[var(--text-color)]"
+                  quickViewData
+                    ? "text-[var(--text-color)]"
+                    : "text-[var(--text-color)]"
                 }`}
               >
                 {parseInt(product.averageRating) > 0
@@ -694,7 +696,7 @@ export default function ProductView({
                   <button
                     onClick={addToCard}
                     type="button"
-                    className="bg-[var(--primary-color)] text-sm font-semibold w-full h-full"
+                    className="bg-[var(--primary-color)] text-sm font-semibold w-full h-full text-[var(--text-color)]"
                   >
                     {ServeLangItem()?.Add_To_Cart}
                   </button>

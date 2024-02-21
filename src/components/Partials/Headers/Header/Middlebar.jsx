@@ -51,9 +51,8 @@ export default function Middlebar({ className, settings }) {
     <div className={`w-full h-[86px] bg-white ${className} mt-2 mb-2 `}>
       <div className="container-x mx-auto h-full ">
         <div className="relative h-full">
-          {/* <div className="flex justify-between items-center h-full"> old*/ }
+          {/* <div className="flex justify-between items-center h-full"> old*/}
           <div className="flex  items-center h-full">
-
             <div className="relative">
               <Link href="/" passHref>
                 <a rel="noopener noreferrer">
@@ -73,10 +72,10 @@ export default function Middlebar({ className, settings }) {
               </Link>
             </div>
             {/* <div className="w-[517px] h-[44px]"> */}
-            {/* <SearchBox className="search-com" /> */ }
-                        <DrawerDefault></DrawerDefault>
+            {/* <SearchBox className="search-com" /> */}
+            <DrawerDefault></DrawerDefault>
 
-               <Navbar className="quomodo-shop-nav-bar lg:block hidden" />
+            <Navbar className="quomodo-shop-nav-bar lg:block hidden" />
             {/* </div> */}
             {/* <div className="flex space-x-6 rtl:space-x-reverse items-center relative">
               <div className="compaire relative">
@@ -133,7 +132,7 @@ export default function Middlebar({ className, settings }) {
               <div>
                 {auth ? (
                   <button onClick={profilehandler} type="button">
-                    <span className="text-qblack font-bold text-sm block">
+                    <span className="text-[var(--text-color)] font-bold text-sm block">
                       {auth && auth.user.name}
                     </span>
                     <span className="text-qgray font-medium text-sm block">
@@ -171,7 +170,7 @@ export default function Middlebar({ className, settings }) {
                             {ServeLangItem()?.Hi}, {auth && auth.user.name}{" "}
                           </span>
                         </li>
-                        <li className="text-base text-qgraytwo cursor-pointer hover:text-qblack hover:font-semibold">
+                        <li className="text-base text-qgraytwo cursor-pointer hover:text-[var(--text-color)] hover:font-semibold">
                           <Link href="/profile#dashboard" passHref>
                             <a rel="noopener noreferrer">
                               <span className="capitalize">
@@ -180,7 +179,7 @@ export default function Middlebar({ className, settings }) {
                             </a>
                           </Link>
                         </li>
-                        <li className="text-base text-qgraytwo cursor-pointer hover:text-qblack hover:font-semibold">
+                        <li className="text-base text-qgraytwo cursor-pointer hover:text-[var(--text-color)] hover:font-semibold">
                           <Link href="/contact" passHref>
                             <a rel="noopener noreferrer">
                               <span className="capitalize">
@@ -189,7 +188,7 @@ export default function Middlebar({ className, settings }) {
                             </a>
                           </Link>
                         </li>
-                        <li className="text-base text-qgraytwo cursor-pointer hover:text-qblack hover:font-semibold">
+                        <li className="text-base text-qgraytwo cursor-pointer hover:text-[var(--text-color)] hover:font-semibold">
                           <Link href="/faq" passHref>
                             <a rel="noopener noreferrer">
                               <span className="capitalize">
@@ -204,7 +203,7 @@ export default function Middlebar({ className, settings }) {
                       <button
                         onClick={logout}
                         type="button"
-                        className="text-qblack text-base font-semibold"
+                        className="text-[var(--text-color)] text-base font-semibold"
                       >
                         {ServeLangItem()?.Sign_Out}
                       </button>

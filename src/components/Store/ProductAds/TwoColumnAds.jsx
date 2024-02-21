@@ -26,15 +26,15 @@ function TwoColumnAds({ bannerOne, bannerTwo }) {
               >
                 <div>
                   <div className="lg:mb-[22px] mb-2.5">
-                    <span className="text-qblack uppercase text-xs font-semibold">
+                    <span className="text-[var(--text-color)] uppercase text-xs font-semibold">
                       {bannerOne.badge}
                     </span>
                   </div>
                   <div className="lg:mb-[30px] mb-2.5">
-                    <p className="lg:text-[30px] text-[20px] leading-none text-qblack font-semibold lg:mb-3">
+                    <p className="lg:text-[30px] text-[20px] leading-none text-[var(--text-color)] font-semibold lg:mb-3">
                       {bannerOne.title_one}
                     </p>
-                    <h1 className="lg:text-[30px] text-[20px] lg:leading-[40px] text-qblack font-semibold">
+                    <h1 className="lg:text-[30px] text-[20px] lg:leading-[40px] text-[var(--text-color)] font-semibold">
                       {bannerOne.title_two}
                     </h1>
                   </div>
@@ -71,15 +71,15 @@ function TwoColumnAds({ bannerOne, bannerTwo }) {
               >
                 <div>
                   <div className="lg:mb-[22px] mb-2.5">
-                    <span className="text-qblack uppercase text-xs font-semibold">
+                    <span className="text-[var(--text-color)] uppercase text-xs font-semibold">
                       {bannerTwo.badge}
                     </span>
                   </div>
                   <div className="lg:mb-[30px] mb-2.5">
-                    <p className="lg:text-[30px] leading-none text-qblack font-semibold lg:mb-3">
+                    <p className="lg:text-[30px] leading-none text-[var(--text-color)] font-semibold lg:mb-3">
                       {bannerTwo.title_one}
                     </p>
-                    <h1 className="lg:text-[30px] text-[20px] lg:leading-[40px] text-qblack font-semibold">
+                    <h1 className="lg:text-[30px] text-[20px] lg:leading-[40px] text-[var(--text-color)] font-semibold">
                       {bannerTwo.title_two}
                     </h1>
                   </div>
@@ -96,7 +96,7 @@ function TwoColumnAds({ bannerOne, bannerTwo }) {
                       <a rel="noopener noreferrer">
                         <div className="cursor-pointer w-full relative  ">
                           <div className="inline-flex  space-x-1.5 items-center relative z-20">
-                            <span className="text-sm text-qblack font-medium leading-[30px]">
+                            <span className="text-sm text-[var(--text-color)] font-medium leading-[30px]">
                               {ServeLangItem()?.Shop_Now}
                             </span>
                             <span className="leading-[30px]">

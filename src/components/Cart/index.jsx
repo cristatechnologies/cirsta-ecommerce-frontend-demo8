@@ -18,7 +18,10 @@ export default function Cart({ className }) {
   const [getAllPrice, setGetAllPrice] = useState(null);
   const [totalPrice, setTotalPrice] = useState(null);
   useEffect(() => {
-    setTotalPrice( getAllPrice && getAllPrice.reduce((prev, curr) => parseFloat(prev) + parseFloat(curr)))
+    setTotalPrice(
+      getAllPrice &&
+        getAllPrice.reduce((prev, curr) => parseFloat(prev) + parseFloat(curr))
+    );
   }, [getAllPrice]);
   useEffect(() => {
     cart && setGetCarts(cart.cartProducts);
@@ -74,7 +77,7 @@ export default function Cart({ className }) {
           }
         })
       );
-    }else{
+    } else {
       setGetAllPrice(null);
     }
   }, [getCarts]);
@@ -173,7 +176,7 @@ export default function Cart({ className }) {
                         />
                       </div>
                       <div className="flex-1 h-full flex flex-col justify-center ">
-                        <p className="title mb-2 text-[13px] font-600 text-qblack leading-4 line-clamp-2 hover:text-blue-600">
+                        <p className="title mb-2 text-[13px] font-600 text-[var(--text-color)] leading-4 line-clamp-2 hover:text-blue-600">
                           {item.product.name}
                         </p>
 
@@ -239,24 +242,31 @@ export default function Cart({ className }) {
           </div>
           <div className="product-actions px-4 mb-[30px]">
             <div className="total-equation flex justify-between items-center mb-[28px]">
-              <span className="text-[15px] font-500 text-qblack">Subtotal</span>
+              <span className="text-[15px] font-500 text-[var(--text-color)]">
+                Subtotal
+              </span>
               <span
                 suppressHydrationWarning
                 className="text-[15px] font-500 text-qred "
               >
-                {currency_icon + (totalPrice ? parseFloat(totalPrice).toFixed(2) : 0)}
+                {currency_icon +
+                  (totalPrice ? parseFloat(totalPrice).toFixed(2) : 0)}
               </span>
             </div>
             <div className="product-action-btn">
               <Link href="/cart">
                 <div className="gray-btn w-full h-[50px] mb-[10px] cursor-pointer ">
-                  <span className="text-qblack">{ServeLangItem()?.View_Cart}</span>
+                  <span className="text-[var(--text-color)]">
+                    {ServeLangItem()?.View_Cart}
+                  </span>
                 </div>
               </Link>
               <Link href="/checkout">
                 <div className="w-full h-[50px] cursor-pointer">
                   <div className="yellow-btn">
-                    <span className="text-sm">{ServeLangItem()?.Checkout_Now}</span>
+                    <span className="text-sm">
+                      {ServeLangItem()?.Checkout_Now}
+                    </span>
                   </div>
                 </div>
               </Link>

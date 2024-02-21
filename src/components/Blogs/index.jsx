@@ -128,7 +128,7 @@ export default function Blogs({ blogs, nextPageUrl }) {
                       className="w-[180px] h-[54px] primary-bg rounded mt-10"
                     >
                       <div className="flex justify-center w-full h-full items-center group rounded relative transition-all duration-300 ease-in-out overflow-hidden cursor-pointer">
-                        <div className="flex items-center transition-all duration-300 ease-in-out relative z-10  text-qblack">
+                        <div className="flex items-center transition-all duration-300 ease-in-out relative z-10  text-[var(--text-color)]">
                           <span className="text-sm font-600 tracking-wide leading-7 mr-2">
                             {ServeLangItem()?.Show_more}...
                           </span>

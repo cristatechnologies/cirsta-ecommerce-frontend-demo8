@@ -7,8 +7,10 @@ export default function BrandSection({ className, sectionTitle, brands = [] }) {
       <div className="container-x mx-auto">
         <div className=" section-title flex justify-between items-center mb-5">
           <div>
-            <h1 className="sm:text-3xl text-xl font-600 text-qblacktext">
-              {sectionTitle ==='Shop by Brand' ? 'Shop by Artist' : 'Shop by Brand'}
+            <h1 className="sm:text-3xl text-xl font-600 text-[var(--text-color)]text">
+              {sectionTitle === "Shop by Brand"
+                ? "Shop by Artist"
+                : "Shop by Brand"}
             </h1>
           </div>
         </div>

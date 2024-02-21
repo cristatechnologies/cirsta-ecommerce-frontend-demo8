@@ -22,12 +22,12 @@ function OneColumnAdsOne({ data }) {
           <div className="w-full h-full flex flex-col justify-between items-center">
             <div>
               <div className="md:mb-3 text-center">
-                <span className="text-qblack uppercase text-xs font-semibold">
+                <span className="text-[var(--text-color)] uppercase text-xs font-semibold">
                   {data.title_one}
                 </span>
               </div>
               <div className="flex justify-center">
-                <h1 className="w-[300px] md:text-[30px] text-[20px] md:leading-[40px] leading-1 text-qblack font-semibold text-center">
+                <h1 className="w-[300px] md:text-[30px] text-[20px] md:leading-[40px] leading-1 text-[var(--text-color)] font-semibold text-center">
                   {data.title_two}
                 </h1>
               </div>

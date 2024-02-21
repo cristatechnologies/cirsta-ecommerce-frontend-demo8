@@ -151,20 +151,22 @@ export default function ProductCardRowStyleTwo({ className, datas }) {
       <div className="w-full h-[105px] bg-white border border-primarygray px-5 ">
         <div className="w-full h-full flex space-x-5 justify-center items-center">
           <div className="w-[75px] h-full relative">
-            <Link href={{
+            <Link
+              href={{
                 pathname: "/single-product",
                 query: { slug: datas.slug },
               }}
-              passHref>
+              passHref
+            >
               <a rel="noopener noreferrer">
-                    <Image
-                      layout="fill"
-                      objectFit="scale-down"
-                      src={`${datas.image}`}
-                      alt=""
-                      className="w-full h-full object-contain hover:cursor-pointer"
-                    />
-                </a>
+                <Image
+                  layout="fill"
+                  objectFit="scale-down"
+                  src={`${datas.image}`}
+                  alt=""
+                  className="w-full h-full object-contain hover:cursor-pointer"
+                />
+              </a>
             </Link>
           </div>
           <div className="flex-1 h-full flex flex-col justify-center">
@@ -176,7 +178,7 @@ export default function ProductCardRowStyleTwo({ className, datas }) {
               passHref
             >
               <a rel="noopener noreferrer">
-                <p className="title mb-2 sm:text-[15px] text-[13px] font-600 text-qblack leading-[24px] line-clamp-1 hover:text-blue-600 cursor-pointer">
+                <p className="title mb-2 sm:text-[15px] text-[13px] font-600 text-[var(--text-color)] leading-[24px] line-clamp-1 hover:text-blue-600 cursor-pointer">
                   {datas.title}
                 </p>
               </a>

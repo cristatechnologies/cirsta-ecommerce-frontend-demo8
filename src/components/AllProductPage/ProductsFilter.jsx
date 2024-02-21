@@ -85,7 +85,7 @@ export default function ProductsFilter({
                       onChange={volumeHandler}
                     />
                   </div>
-                  <p className="text-xs text-qblack font-400">
+                  <p className="text-xs text-[var(--text-color)] font-400">
                     {ServeLangItem()?.Price}: ₹{volume.min} - ₹{volume.max}
                   </p>
                 </>
