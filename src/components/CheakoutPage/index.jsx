@@ -738,7 +738,7 @@ function CheakoutPage() {
                 : ""
             }&faild_url=${
               typeof window !== "undefined" && window.location.origin
-                ? window.location.origin + "/payment-faild"
+                ? window.location.origin + "/payment-fail"
                 : ""
             }`;
             router.push(url);
@@ -774,7 +774,7 @@ function CheakoutPage() {
                       : ""
                   }&frontend_faild_url=${
                     typeof window !== "undefined" && window.location.origin
-                      ? window.location.origin + "/payment-faild"
+                      ? window.location.origin + "/payment-fail"
                       : ""
                   }&request_from=react_web&amount=${amount}&order_id=${order_id}`;
                   router.push(provideUrl);
@@ -800,7 +800,7 @@ function CheakoutPage() {
                 : ""
             }&frontend_faild_url=${
               typeof window !== "undefined" && window.location.origin
-                ? window.location.origin + "/payment-faild"
+                ? window.location.origin + "/payment-fail"
                 : ""
             }`;
             router.push(url);
@@ -821,7 +821,7 @@ function CheakoutPage() {
                 : ""
             }&frontend_faild_url=${
               typeof window !== "undefined" && window.location.origin
-                ? window.location.origin + "/payment-faild"
+                ? window.location.origin + "/payment-fail"
                 : ""
             }`;
             router.push(url);
@@ -842,7 +842,7 @@ function CheakoutPage() {
                 : ""
             }&frontend_faild_url=${
               typeof window !== "undefined" && window.location.origin
-                ? window.location.origin + "/payment-faild"
+                ? window.location.origin + "/payment-fail"
                 : ""
             }`;
             router.push(url);
@@ -863,7 +863,7 @@ function CheakoutPage() {
                 : ""
             }&frontend_faild_url=${
               typeof window !== "undefined" && window.location.origin
-                ? window.location.origin + "/payment-faild"
+                ? window.location.origin + "/payment-fail"
                 : ""
             }`;
             router.push(url);
@@ -884,7 +884,7 @@ function CheakoutPage() {
                 : ""
             }&frontend_faild_url=${
               typeof window !== "undefined" && window.location.origin
-                ? window.location.origin + "/payment-faild"
+                ? window.location.origin + "/payment-fail"
                 : ""
             }`;
             router.push(url);
@@ -930,7 +930,7 @@ function CheakoutPage() {
                 : ""
             }&frontend_faild_url=${
               typeof window !== "undefined" && window.location.origin
-                ? window.location.origin + "/payment-faild"
+                ? window.location.origin + "/payment-fail"
                 : ""
             }`;
 

@@ -3,11 +3,11 @@ import ServeLangItem from "./Helpers/ServeLangItem";
 import Link from "next/link";
 import { Button } from "@material-tailwind/react";
 
-function PaymentFaild() {
+function PaymentFail() {
   return (
     <>
       <div className="flex justify-center sm:mt-[161px] mt-[60px]">
-        <div className="p-[18px] sm:h-[101px] h-auto bg-[#FFF1F1] border border-[#FA6978] sm:flex sm:space-x-[18px] items-center sm:mx-0 mx-5">
+        <div className="p-[18px] h-auto bg-[#FFF1F1] border border-[#FA6978] sm:flex sm:space-x-[18px] items-center sm:mx-0 mx-5">
           <span>
             <svg
               width="79"
@@ -50,26 +50,26 @@ function PaymentFaild() {
               />
             </svg>
           </span>
-          <div className="mt-[10px]">
+          <div className="mt-[10px] flex flex-col">
             <h2 className="text-[24px] text-[#222222] font-bold">
               {ServeLangItem()?.Payment_Declined}
             </h2>
             <p className="text-[18px] text-[#797979]">
               {ServeLangItem()?.Oh_snap_The_Payment_Information_was_declined}
             </p>
+            <Link href={"/store"}>
+              <Button
+                variant="filled"
+                className="bg-[var(--primary-color)] text-[var(--text-color)] mt-3 w-40"
+              >
+                Back to store
+              </Button>
+            </Link>
           </div>
-          <Link href={"/"}>
-            <Button
-              variant="filled"
-              className="bg-[var(--primary-color)] text-[var(--text-color)] mt-3"
-            >
-              Back to Home
-            </Button>
-          </Link>
         </div>
       </div>
     </>
   );
 }
 
-export default PaymentFaild;
+export default PaymentFail;
