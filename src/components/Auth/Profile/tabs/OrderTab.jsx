@@ -72,9 +72,8 @@ export default function OrderTab({ orders }) {
           // pdf.addImage(img2, 30, 12, 10, 10);
           var canvas = document.getElementById("myCanvas");
           var ctx = canvas.getContext("2d");
-          var img = new Image();
-
-          console.log("img", img);
+          var img = new Image();          
+          img.crossOrigin="anonymous"
           img.onload = function () {
             console.log("in");
             // Draw the image onto the canvas
@@ -104,6 +103,7 @@ export default function OrderTab({ orders }) {
             pdf.setDrawColor(...orangeColor);
             pdf.setLineWidth(0.5); // Set the line width
             pdf.line(dividerX, dividerY, dividerX + dividerWidth, dividerY); // Draw the divider line
+            
           };
           img.src = `${process.env.NEXT_PUBLIC_BASE_URL + logo}`;
         }
@@ -409,7 +409,7 @@ export default function OrderTab({ orders }) {
                           <span>{ServeLangItem()?.View_Details}</span>
                         </div>
                       </Link> */}
-                      <canvas id="myCanvas" className="hidden"></canvas>
+                      <canvas id="myCanvas" ></canvas>
                       <div
                         className="w-[116px] h-[46px] primary-bg text-[var(--text-color)] font-bold flex justify-center items-center cursor-pointer"
                         onClick={() => getOrderPdfDetails(item.order_id)}
