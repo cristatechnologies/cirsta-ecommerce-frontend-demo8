@@ -74,22 +74,25 @@ export default function OrderTab({ orders }) {
           var canvas = document.getElementById("myCanvas");
           var ctx = canvas.getContext("2d");
           var img = new Image();
+
           console.log("img", img);
           img.onload = function () {
             console.log("in");
             // Draw the image onto the canvas
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            canvas.width = 400;
+            canvas.height = 400;
+            console.log("ctx", ctx);
+            console.log("canvasDataURL", canvasDataURL);
+            ctx.drawImage(img, imgX, imgY, canvas.width, canvas.height);
 
             // Get the canvas content as a data URL
             var canvasDataURL = canvas.toDataURL("image/png");
             // Add the canvas image to the PDF
-            console.log("ctx", ctx);
-            console.log("canvasDataURL", canvasDataURL);
             pdf.addImage(
               canvasDataURL,
               "PNG",
-              0,
-              0,
+              imgY,
+              imgY,
               canvas.width,
               canvas.height
             );
