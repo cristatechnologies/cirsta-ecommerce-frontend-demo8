@@ -9,7 +9,7 @@ import auth from "../../../../../utils/auth";
 import { toast } from "react-toastify";
 
 export default function OrderTab({ orders }) {
-  const { currency_icon } = settings();
+  const { currency_icon, logo } = settings();
 
   const getOrderPdfDetails = async (order_id) => {
     if (auth()) {
@@ -27,7 +27,8 @@ export default function OrderTab({ orders }) {
   };
 
   const generatePDF = async (data) => {
-    const pdf = new jsPDF();
+    const pdf = new jsPDF("p", "mm", "a4");
+
     try {
       if (data) {
         const {
@@ -47,8 +48,6 @@ export default function OrderTab({ orders }) {
         pdf.setFont("Inter");
 
         if (settings) {
-          var img = new Image();
-          img.src = "assets/images/kalalaya-logo.png";
           // img.src = `${process.env.NEXT_PUBLIC_BASE_URL + settings.logo}`;
           // const imageUrl = `${process.env.NEXT_PUBLIC_BASE_URL}${settings.logo}`;
           const imgWidth = 30; // Set the width of the image
@@ -57,17 +56,52 @@ export default function OrderTab({ orders }) {
           const imgY = 10; // Set the Y coordinate
 
           // Add the image to the PDF
-          pdf.addImage(img, "png", imgX, imgY, imgWidth, imgHeight);
+          // pdf.addImage(img, "png", imgX, imgY, imgWidth, imgHeight);
+          // var img2 = new Image();
+          // img2.src =
+          //   "data:image/jpeg;base64," +
+          //   btoa(`${process.env.NEXT_PUBLIC_BASE_URL + logo}`);
+          console.log("logo", logo);
+          // const url =
+          //   "https://demo1.extremehost.in/uploads/website-images/logo-2024-02-22-02-47-44-9752.jpg";
+          // img2.src = url;
+          // img2.crossOrigin = "anonymous";
+          // img2.width = 30;
+          // img2.height = 12;
+          // console.log("img2", img2);
 
-          // Draw a divider line below the image
-          const dividerY = imgY + imgHeight + 5; // Set the Y coordinate for the divider
-          const dividerWidth = pdf.internal.pageSize.width - 20; // Set the width of the divider
-          const dividerX = 10; // Set the X coordinate for the divider
+          // pdf.addImage(img2, 30, 12, 10, 10);
+          var canvas = document.getElementById("myCanvas");
+          var ctx = canvas.getContext("2d");
+          var img = new Image();
+          console.log("img", img);
+          img.onload = function () {
+            console.log("in");
+            // Draw the image onto the canvas
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-          const orangeColor = [216, 85, 27];
-          pdf.setDrawColor(...orangeColor);
-          pdf.setLineWidth(0.5); // Set the line width
-          pdf.line(dividerX, dividerY, dividerX + dividerWidth, dividerY); // Draw the divider line
+            // Get the canvas content as a data URL
+            var canvasDataURL = canvas.toDataURL("image/png");
+            // Add the canvas image to the PDF
+            pdf.addImage(
+              canvasDataURL,
+              "PNG",
+              0,
+              0,
+              canvas.width,
+              canvas.height
+            );
+            // Draw a divider line below the image
+            const dividerY = imgY + imgHeight + 5; // Set the Y coordinate for the divider
+            const dividerWidth = pdf.internal.pageSize.width - 20; // Set the width of the divider
+            const dividerX = 10; // Set the X coordinate for the divider
+
+            const orangeColor = [216, 85, 27];
+            pdf.setDrawColor(...orangeColor);
+            pdf.setLineWidth(0.5); // Set the line width
+            pdf.line(dividerX, dividerY, dividerX + dividerWidth, dividerY); // Draw the divider line
+          };
+          img.src = `${process.env.NEXT_PUBLIC_BASE_URL + logo}`;
         }
 
         y += 20;
@@ -371,6 +405,7 @@ export default function OrderTab({ orders }) {
                           <span>{ServeLangItem()?.View_Details}</span>
                         </div>
                       </Link> */}
+                      <canvas id="myCanvas" className="hidden"></canvas>
                       <div
                         className="w-[116px] h-[46px] primary-bg text-[var(--text-color)] font-bold flex justify-center items-center cursor-pointer"
                         onClick={() => getOrderPdfDetails(item.order_id)}
