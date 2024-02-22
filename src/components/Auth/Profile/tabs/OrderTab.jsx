@@ -74,14 +74,14 @@ export default function OrderTab({ orders }) {
           var canvas = document.getElementById("myCanvas");
           var ctx = canvas.getContext("2d");
           var img = new Image();
-          img.src = "assets/images/kalalaya-logo.png";
+          console.log("img", img);
           img.onload = function () {
+            console.log("in");
             // Draw the image onto the canvas
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
             // Get the canvas content as a data URL
             var canvasDataURL = canvas.toDataURL("image/png");
-
             // Add the canvas image to the PDF
             pdf.addImage(
               canvasDataURL,
@@ -405,6 +405,7 @@ export default function OrderTab({ orders }) {
                           <span>{ServeLangItem()?.View_Details}</span>
                         </div>
                       </Link> */}
+                      <canvas id="myCanvas" className="hidden"></canvas>
                       <div
                         className="w-[116px] h-[46px] primary-bg text-[var(--text-color)] font-bold flex justify-center items-center cursor-pointer"
                         onClick={() => getOrderPdfDetails(item.order_id)}
