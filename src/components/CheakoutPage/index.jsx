@@ -955,13 +955,14 @@ function CheakoutPage() {
             });
 
             if (response) {
+              console.log("response", response);
               try {
                 const provideUrl = `${
                   process.env.NEXT_PUBLIC_BASE_URL
                 }user/checkout/phonepe-web-view?token=${
                   auth().access_token
-                }&amount=${mainTotalPrice}&master_order_id=${
-                  response.data.order[0].master_order_id
+                }&amount=${mainTotalPrice}&order_id=${
+                  response.data.order[0].order_id
                 }`;
                 router.push(provideUrl);
               } catch (error) {
