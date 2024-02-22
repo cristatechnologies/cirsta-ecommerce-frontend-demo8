@@ -73,8 +73,8 @@ export default function OrderTab({ orders }) {
           var canvas = document.getElementById("myCanvas");
           var ctx = canvas.getContext("2d");
           var img = new Image();          
-          img.crossOrigin="anonymous"
           img.onload = function () {
+            img.crossOrigin="anonymous";
             console.log("in");
             // Draw the image onto the canvas
             canvas.width = imgWidth;
