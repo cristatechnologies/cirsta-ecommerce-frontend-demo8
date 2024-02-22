@@ -82,8 +82,8 @@ export default function OrderTab({ orders }) {
             canvas.width = imgWidth;
             canvas.height = imgHeight;
             console.log("ctx", ctx);
-            console.log("canvasDataURL", canvasDataURL);
             ctx.drawImage(img, imgX, imgY, canvas.width, canvas.height);
+            console.log("canvasDataURL", canvasDataURL);
 
             // Get the canvas content as a data URL
             var canvasDataURL = canvas.toDataURL("image/png");
