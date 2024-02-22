@@ -60,8 +60,7 @@ export default function OrderTab({ orders }) {
           // var img2 = new Image();
           // img2.src =
           //   "data:image/jpeg;base64," +
-          //   btoa(`${process.env.NEXT_PUBLIC_BASE_URL + logo}`);
-          console.log("logo", logo);
+          //   btoa(`${process.env.NEXT_PUBLIC_BASE_URL + logo}`);      
           // const url =
           //   "https://demo1.extremehost.in/uploads/website-images/logo-2024-02-22-02-47-44-9752.jpg";
           // img2.src = url;
@@ -83,10 +82,10 @@ export default function OrderTab({ orders }) {
             canvas.height = imgHeight;
             console.log("ctx", ctx);
             ctx.drawImage(img, imgX, imgY, canvas.width, canvas.height);
-            console.log("canvasDataURL", canvasDataURL);
-
+            
             // Get the canvas content as a data URL
             var canvasDataURL = canvas.toDataURL("image/png");
+            console.log("canvasDataURL", canvasDataURL);
             // Add the canvas image to the PDF
             pdf.addImage(
               canvasDataURL,
