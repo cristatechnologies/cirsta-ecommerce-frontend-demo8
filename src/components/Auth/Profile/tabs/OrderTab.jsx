@@ -79,8 +79,8 @@ export default function OrderTab({ orders }) {
           img.onload = function () {
             console.log("in");
             // Draw the image onto the canvas
-            canvas.width = 400;
-            canvas.height = 400;
+            canvas.width = imgWidth;
+            canvas.height = imgHeight;
             console.log("ctx", ctx);
             console.log("canvasDataURL", canvasDataURL);
             ctx.drawImage(img, imgX, imgY, canvas.width, canvas.height);
