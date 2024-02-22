@@ -83,6 +83,7 @@ export default function OrderTab({ orders }) {
             // Get the canvas content as a data URL
             var canvasDataURL = canvas.toDataURL("image/png");
             // Add the canvas image to the PDF
+            console.log("ctx", ctx);
             console.log("canvasDataURL", canvasDataURL);
             pdf.addImage(
               canvasDataURL,
