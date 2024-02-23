@@ -1175,7 +1175,7 @@ function CheakoutPage() {
                                   </table>
                                 </div>
                                 {address.id === selectedBilling && (
-                                  <span className="text-[var(--text-color)] primary-bg px-2 text-sm absolute right-2 -top-2 font-medium">
+                                  <span className="text-[var(--secondary-color)] primary-bg px-2 text-sm absolute right-2 -top-2 font-medium">
                                     {ServeLangItem()?.Selected}
                                   </span>
                                 )}
@@ -1286,7 +1286,7 @@ function CheakoutPage() {
                                   </table>
                                 </div>
                                 {address.id === selectedShipping && (
-                                  <span className="text-[var(--text-color)] primary-bg px-2 text-sm absolute right-2 -top-2 font-medium">
+                                  <span className="text-[var(--secondary-color)] primary-bg px-2 text-sm absolute right-2 -top-2 font-medium">
                                     {ServeLangItem()?.Selected}
                                   </span>
                                 )}
