@@ -1045,7 +1045,7 @@ function CheakoutPage() {
                             type="button"
                             className={`px-4 py-3 text-md font-medium rounded-md ml-1 ${
                               activeAddress === "shipping"
-                                ? "text-[var(--text-color)] primary-bg"
+                                ? "text-[var(--secondary-color)] primary-bg"
                                 : "primary-text"
                             } `}
                           >
@@ -1056,9 +1056,9 @@ function CheakoutPage() {
                         <button
                           onClick={() => setNewAddress(!newAddress)}
                           type="button"
-                          className="w-[100px] h-[40px] mt-2 sm:mt-0 border border-[var(--primary-color)] hover:bg-[var(--primary-color)] hover:text-white transition-all duration-300 ease-in-out text-[var(--text-color)]"
+                          className="w-[100px] h-[40px] mt-2 sm:mt-0 border border-[var(--primary-color)] hover:bg-[var(--primary-color)] hover:text-[var(--secondary-color)] transition-all duration-300 ease-in-out text-[var(--text-color)] group"
                         >
-                          <span className="text-sm font-semibold text-[var(--text-color)]">
+                          <span className="text-sm font-semibold text-[var(--text-color)] group-hover:text-[var(--secondary-color)]">
                             {ServeLangItem()?.Add_New}
                           </span>
                         </button>
@@ -1796,7 +1796,7 @@ function CheakoutPage() {
                         type="button"
                         className="w-[90px] h-[50px] bg-[var(--primary-color)]"
                       >
-                        <span className="text-sm font-semibold text-[var(--text-color)]">
+                        <span className="text-sm font-semibold text-[var(--secondary-color)]">
                           {ServeLangItem()?.Apply}
                         </span>
                       </button>
@@ -3203,7 +3203,7 @@ function CheakoutPage() {
                             : "bg-[var(--primary-color)]"
                         }`}
                       >
-                        <span className="text-sm font-semibold text-[var(--text-color)]">
+                        <span className="text-sm font-semibold text-[var(--secondary-color)]">
                           {ServeLangItem()?.Place_Order_Now}
                         </span>
                       </div>

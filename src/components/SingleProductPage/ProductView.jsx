@@ -696,7 +696,7 @@ export default function ProductView({
                   <button
                     onClick={addToCard}
                     type="button"
-                    className="bg-[var(--primary-color)] text-sm font-semibold w-full h-full text-[var(--text-color)]"
+                    className="bg-[var(--primary-color)] text-sm font-semibold w-full h-full text-[var(--secondary-color)]"
                   >
                     {ServeLangItem()?.Add_To_Cart}
                   </button>

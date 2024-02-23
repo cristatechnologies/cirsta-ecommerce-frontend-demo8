@@ -11,7 +11,7 @@ export default function PageTitle({ title, breadcrumb = [], isBecomeSeller }) {
           />
         </div>
         <div className="flex justify-center">
-          <h1 className="text-3xl font-semibold text-[var(--text-color)]">
+          <h1 className="text-3xl font-semibold text-[var(--secondary-color)]">
             {title}
           </h1>
         </div>

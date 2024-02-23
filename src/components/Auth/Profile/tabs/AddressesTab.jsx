@@ -251,7 +251,7 @@ export default function AddressesTab() {
           type="button"
           className="yellow-btn rounded"
         >
-          <div className="w-full text-sm font-semibold text-[var(--text-color)]">
+          <div className="w-full text-sm font-semibold text-[var(--secondary-color)]">
             {ServeLangItem()?.Add_New_Address}
           </div>
         </button>

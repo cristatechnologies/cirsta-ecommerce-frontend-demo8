@@ -374,7 +374,7 @@ export default function PasswordTab() {
                 onChange={(e) => setConpass(e.target.value)}
               /> */}
             <div
-              className="absolute ltr:right-6 rtl:left-6 bottom-[17px] z-10 cursor-pointer"
+              className="absolute ltr:right-6 rtl:left-6 bottom-[17px] z-10 cursor-pointer top-8"
               onClick={() => showPassword("confirm_password")}
             >
               {confirmPass === "show-password" ? (
@@ -474,7 +474,7 @@ export default function PasswordTab() {
                     nPass !== conPass
                   }
                 >
-                  <div className="w-full text-sm font-semibold text-[var(--text-color)]">
+                  <div className="w-full text-sm font-semibold text-[var(--secondary-color)] p-3">
                     {ServeLangItem()?.Update_Password}
                   </div>
                 </button>

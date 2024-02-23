@@ -171,7 +171,7 @@ export default function WishlistTab({ className }) {
           <Link href="/cart">
             <div className="w-[180px] h-[50px]">
               <div className="yellow-btn flex justify-center">
-                <span className="w-full text-sm font-semibold text-center text-[var(--text-color)]">
+                <span className="w-full text-sm font-semibold text-center text-[var(--secondary-color)]">
                   {ServeLangItem()?.View_Cards}
                 </span>
               </div>

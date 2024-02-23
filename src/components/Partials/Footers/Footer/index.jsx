@@ -211,7 +211,7 @@ export default function Footer({ settings }) {
          justify-between items-center w-full  "
         >
           <div className="flex px-20 flex-wrap sm:flex-nowrap lg:flex-nowrap sm:px-32 lg:px-40 justify-evenly sm:justify-between lg:justify-between items-center mb-3 w-full lg:max-w-6xl lg:mx-auto">
-            <span className="sm:text-base text-xs text-[var(--text-color)] font-300 py-5">
+            <span className="sm:text-base text-xs text-[var(--secondary-color)] font-300 py-5">
               {footerContent && footerContent.copyright
                 ? footerContent.copyright
                 : ""}
@@ -222,7 +222,7 @@ export default function Footer({ settings }) {
                 socialLink.map((item, i) => (
                   <a key={i} href={item.link} target="_blank" rel="noreferrer">
                     <FontAwesomeCom
-                      className="w-4 h-4 text-[var(--text-color)]"
+                      className="w-4 h-4 text-[var(--secondary-color)]"
                       icon={item.icon}
                     />
                   </a>
