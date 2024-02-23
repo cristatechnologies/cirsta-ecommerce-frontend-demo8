@@ -60,8 +60,7 @@ export default function OrderTab({ orders }) {
           // var img2 = new Image();
           // img2.src =
           //   "data:image/jpeg;base64," +
-          //   btoa(`${process.env.NEXT_PUBLIC_BASE_URL + logo}`);
-          console.log("logo", logo);
+          //   btoa(`${process.env.NEXT_PUBLIC_BASE_URL + logo}`);      
           // const url =
           //   "https://demo1.extremehost.in/uploads/website-images/logo-2024-02-22-02-47-44-9752.jpg";
           // img2.src = url;
@@ -73,20 +72,19 @@ export default function OrderTab({ orders }) {
           // pdf.addImage(img2, 30, 12, 10, 10);
           var canvas = document.getElementById("myCanvas");
           var ctx = canvas.getContext("2d");
-          var img = new Image();
-
-          console.log("img", img);
+          var img = new Image();          
           img.onload = function () {
+            img.crossOrigin="anonymous";
             console.log("in");
             // Draw the image onto the canvas
             canvas.width = imgWidth;
             canvas.height = imgHeight;
             console.log("ctx", ctx);
             ctx.drawImage(img, imgX, imgY, canvas.width, canvas.height);
-            console.log("canvasDataURL", canvasDataURL);
-
+            
             // Get the canvas content as a data URL
             var canvasDataURL = canvas.toDataURL("image/png");
+            console.log("canvasDataURL", canvasDataURL);
             // Add the canvas image to the PDF
             pdf.addImage(
               canvasDataURL,
@@ -105,6 +103,7 @@ export default function OrderTab({ orders }) {
             pdf.setDrawColor(...orangeColor);
             pdf.setLineWidth(0.5); // Set the line width
             pdf.line(dividerX, dividerY, dividerX + dividerWidth, dividerY); // Draw the divider line
+            
           };
           img.src = `${process.env.NEXT_PUBLIC_BASE_URL + logo}`;
         }
@@ -410,7 +409,7 @@ export default function OrderTab({ orders }) {
                           <span>{ServeLangItem()?.View_Details}</span>
                         </div>
                       </Link> */}
-                      <canvas id="myCanvas" className="hidden"></canvas>
+                      <canvas id="myCanvas" ></canvas>
                       <div
                         className="w-[116px] h-[46px] primary-bg text-[var(--text-color)] font-bold flex justify-center items-center cursor-pointer"
                         onClick={() => getOrderPdfDetails(item.order_id)}
