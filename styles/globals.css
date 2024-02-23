@@ -249,7 +249,7 @@ body {
 }
 
 .yellow-btn {
-  @apply w-full text-[13px] text-[var(--text-color)] font-semibold flex justify-center items-center h-full;
+  @apply w-full text-[13px] font-semibold flex justify-center items-center h-full;
   background: var(--primary-color);
   line-height: 0;
 }

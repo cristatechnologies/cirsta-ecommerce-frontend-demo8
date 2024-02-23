@@ -698,7 +698,7 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
             <button
               onClick={updateProfile}
               type="button"
-              className="w-[164px] h-[50px] primary-bg rounded text-[var(--text-color)] text-sm"
+              className="w-[164px] h-[50px] primary-bg rounded text-[var(--secondary-color)] text-sm font-bold"
             >
               {ServeLangItem()?.Update_Profile}
             </button>

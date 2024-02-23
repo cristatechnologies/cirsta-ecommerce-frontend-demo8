@@ -422,7 +422,7 @@ export default function Blog({ details }) {
                             className="w-full h-[60px]"
                           >
                             <span
-                              className="yellow-btn w-full h-full"
+                              className="yellow-btn w-full h-full text-[var(--secondary-color)]"
                               style={{ fontSize: "18px" }}
                             >
                               {ServeLangItem()?.Subscribe}

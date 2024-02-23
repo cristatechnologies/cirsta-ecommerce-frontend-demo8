@@ -136,6 +136,7 @@ function Profile() {
               { name: ServeLangItem()?.home, path: "/" },
               { name: ServeLangItem()?.profile, path: "/profile" },
             ]}
+            isMyAccountBreadCrumps={true}
           />
           <div className="w-full bg-white xl:p-10 p-5">
             <div className="title-area w-full flex justify-between items-center">

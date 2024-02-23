@@ -332,7 +332,7 @@ export default function ProductCardStyleOne({ datas }) {
             <button
               onClick={() => addToCart(datas.id)}
               type="button"
-              className="yellow-btn group relative w-full h-full flex shadow  justify-center items-center overflow-hidden"
+              className="yellow-btn group relative w-full h-full flex shadow  justify-center items-center overflow-hidden text-[var(--secondary-color)]"
             >
               <div className="btn-content flex items-center space-x-3 rtl:space-x-reverse relative z-10">
                 <span>

@@ -109,7 +109,7 @@ export default function About({ aboutData }) {
                 <Link href="/contact" passHref>
                   <a rel="noopener noreferrer">
                     <div className="w-[121px] h-10 mt-5 cursor-pointer">
-                      <span className="yellow-btn">
+                      <span className="yellow-btn text-[var(--secondary-color)]">
                         {ServeLangItem()?.Contact_Us}
                       </span>
                     </div>
@@ -247,16 +247,16 @@ export default function About({ aboutData }) {
                     <div>
                       <div>
                         <FontAwesomeCom
-                          className="w-8 h-8 text-[var(--text-color)]"
+                          className="w-8 h-8 text-[var(--secondary-color)]"
                           icon={item.icon}
                         />
                       </div>
                     </div>
                     <div>
-                      <p className="text-[var(--text-color)] text-[15px] font-700 tracking-wide mb-1 uppercase">
+                      <p className="text-[var(--secondary-color)] text-[15px] font-700 tracking-wide mb-1 uppercase">
                         {item.title}
                       </p>
-                      <p className="text-sm text-[var(--text-color)] line-clamp-1">
+                      <p className="text-sm text-[var(--secondary-color)] line-clamp-1">
                         {item.description}
                       </p>
                     </div>

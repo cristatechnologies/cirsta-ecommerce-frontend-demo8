@@ -156,7 +156,7 @@ export default function SearchBox({ className }) {
         </div>
         <button
           onClick={searchHandler}
-          className="bg-[var(--primary-color)] w-[93px] h-full text-sm font-600 text-[var(--text-color)] "
+          className="bg-[var(--primary-color)] w-[93px] h-full text-sm font-600 text-[var(--secondary-color)] "
           type="button"
         >
           {ServeLangItem()?.Search}
