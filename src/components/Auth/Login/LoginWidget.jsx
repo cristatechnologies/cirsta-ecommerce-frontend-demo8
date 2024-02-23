@@ -172,6 +172,9 @@ function LoginWidget({ redirect = true, loginActionPopup, notVerifyHandler }) {
             type={isShowPassword ? "text" : "password"}
             inputClasses="h-[50px] py-3 relative"
             inputHandler={(e) => setPassword(e.target.value)}
+            inputHandlerOnKey={(e) => {
+              e.keyCode === 13 && doLogin();
+            }}
             value={password}
           />
           <div
