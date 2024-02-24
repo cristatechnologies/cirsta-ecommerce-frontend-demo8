@@ -28,9 +28,8 @@ export default function ProductsFilter({
     <>
       {searchProductFilter ? (
         <div
-          className={`filter-widget w-full fixed lg:relative left-0 top-0 h-screen z-10 lg:h-auto overflow-y-scroll lg:overflow-y-auto bg-white px-[30px] pt-[40px] ${
-            className || ""
-          }  ${filterToggle ? "block" : "hidden lg:block"}`}
+          className={`filter-widget w-full fixed lg:relative left-0 top-0 h-screen z-10 lg:h-auto overflow-y-scroll lg:overflow-y-auto bg-white px-[30px] pt-[40px] ${className || ""
+            }  ${filterToggle ? "block" : "hidden lg:block"}`}
         >
           <div className="filter-subject-item pb-10 border-b border-qgray-border">
             <div className="subject-title mb-[30px]">
@@ -205,7 +204,7 @@ export default function ProductsFilter({
                     height="9"
                     color="#ffff"
                     viewBox="0 0 14 9"
-                    className="fill-current text-[var(--text-color)]"
+                    className="fill-current text-[var(--secondary-color)]"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <rect width="14" height="1" />
@@ -302,34 +301,34 @@ export default function ProductsFilter({
                                 </div>
                                 {subItems.active_child_categories.length >
                                   0 && (
-                                  <div>
-                                    <span>
-                                      <svg
-                                        className={`transform rtl:rotate-180 fill-current`}
-                                        width="6"
-                                        height="9"
-                                        viewBox="0 0 6 9"
-                                        fill="text-[var(--text-color)]"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                      >
-                                        <rect
-                                          x="1.49805"
-                                          y="0.818359"
-                                          width="5.78538"
-                                          height="1.28564"
-                                          transform="rotate(45 1.49805 0.818359)"
-                                        />
-                                        <rect
-                                          x="5.58984"
-                                          y="4.90918"
-                                          width="5.78538"
-                                          height="1.28564"
-                                          transform="rotate(135 5.58984 4.90918)"
-                                        />
-                                      </svg>
-                                    </span>
-                                  </div>
-                                )}
+                                    <div>
+                                      <span>
+                                        <svg
+                                          className={`transform rtl:rotate-180 fill-current`}
+                                          width="6"
+                                          height="9"
+                                          viewBox="0 0 6 9"
+                                          fill="text-[var(--text-color)]"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                          <rect
+                                            x="1.49805"
+                                            y="0.818359"
+                                            width="5.78538"
+                                            height="1.28564"
+                                            transform="rotate(45 1.49805 0.818359)"
+                                          />
+                                          <rect
+                                            x="5.58984"
+                                            y="4.90918"
+                                            width="5.78538"
+                                            height="1.28564"
+                                            transform="rotate(135 5.58984 4.90918)"
+                                          />
+                                        </svg>
+                                      </span>
+                                    </div>
+                                  )}
                               </div>
                             </a>
                           </Link>
