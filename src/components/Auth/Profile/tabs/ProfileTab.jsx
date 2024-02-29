@@ -585,7 +585,6 @@ export default function ProfileTab({ profileInfo, updatedProfile }) {
                     inputHandler={(e) => setPincode(e.target.value)}
                     error={!!(errors && Object.hasOwn(errors, "zip_code"))}
                   />
-                  {console.log("errors", pincode)}
                   {errors && Object.hasOwn(errors, "zip_code") ? (
                     <span className="text-sm mt-1 text-qred">
                       {errors.zip_code[0]}

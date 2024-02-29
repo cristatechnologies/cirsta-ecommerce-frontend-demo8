@@ -125,6 +125,7 @@ export default function SingleProductPage({ details }) {
                         path: `/single-product?slug=${details.product.slug}`,
                       },
                     ]}
+                    isMyAccountBreadCrumps={true}
                   />
                 </div>
               </div>

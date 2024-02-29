@@ -53,9 +53,9 @@ export default function ProductView({
     product && product.active_variants.length > 0 && product.active_variants;
   const [getFirstVarients, setFirstVarients] = useState(
     varients &&
-      varients.map((v) =>
-        v.active_variant_items.length > 0 ? v.active_variant_items[0] : {}
-      )
+    varients.map((v) =>
+      v.active_variant_items.length > 0 ? v.active_variant_items[0] : {}
+    )
   );
   const [price, setPrice] = useState(null);
   const [offerPrice, setOffer] = useState(null);
@@ -103,13 +103,13 @@ export default function ProductView({
         getFirstVarients.map((v) => (v.price ? v.price : 0));
       const sumPrice = parseInt(
         prices.reduce((prev, curr) => parseInt(prev) + parseInt(curr), 0) +
-          parseInt(product.price)
+        parseInt(product.price)
       );
       setPrice(sumPrice);
       if (product.offer_price) {
         const sumOfferPrice = parseInt(
           prices.reduce((prev, curr) => parseInt(prev) + parseInt(curr), 0) +
-            parseInt(product.offer_price)
+          parseInt(product.offer_price)
         );
         setOffer(sumOfferPrice);
       }
@@ -206,16 +206,16 @@ export default function ProductView({
             });
             toast.error(
               res.response &&
-                res.response.data.message &&
-                res.response.data.message
+              res.response.data.message &&
+              res.response.data.message
             );
           })
           .catch((err) => {
             console.log(err);
             toast.error(
               err.response &&
-                err.response.data.message &&
-                err.response.data.message
+              err.response.data.message &&
+              err.response.data.message
             );
           });
         dispatch(fetchCart());
@@ -305,9 +305,8 @@ export default function ProductView({
   return (
     <>
       <div
-        className={`product-view w-full lg:flex justify-between ${
-          className || ""
-        }`}
+        className={`product-view w-full lg:flex justify-between ${className || ""
+          }`}
       >
         <div
           data-aos="fade-right"
@@ -321,9 +320,8 @@ export default function ProductView({
                 src={
                   src
                     ? `${process.env.NEXT_PUBLIC_BASE_URL + src}`
-                    : `${
-                        process.env.NEXT_PUBLIC_BASE_URL + product.thumb_image
-                      }`
+                    : `${process.env.NEXT_PUBLIC_BASE_URL + product.thumb_image
+                    }`
                 }
                 alt=""
                 className="object-contain  transform scale-110"
@@ -349,13 +347,11 @@ export default function ProductView({
                 <Image
                   layout="fill"
                   objectFit="scale-down"
-                  src={`${
-                    process.env.NEXT_PUBLIC_BASE_URL + product.thumb_image
-                  }`}
+                  src={`${process.env.NEXT_PUBLIC_BASE_URL + product.thumb_image
+                    }`}
                   alt=""
-                  className={`w-full h-full object-contain transform scale-110 ${
-                    src !== product.thumb_image ? "opacity-50" : ""
-                  } `}
+                  className={`w-full h-full object-contain transform scale-110 ${src !== product.thumb_image ? "opacity-50" : ""
+                    } `}
                 />
               </div>
               {productsImg &&
@@ -371,9 +367,8 @@ export default function ProductView({
                       objectFit="scale-down"
                       src={`${process.env.NEXT_PUBLIC_BASE_URL + img.image}`}
                       alt=""
-                      className={`w-full h-full object-contain ${
-                        src !== img.image ? "opacity-50" : ""
-                      } `}
+                      className={`w-full h-full object-contain ${src !== img.image ? "opacity-50" : ""
+                        } `}
                     />
                   </div>
                 ))}
@@ -385,9 +380,8 @@ export default function ProductView({
             {product.brand && (
               <span
                 data-aos="fade-up"
-                className={`${
-                  quickViewData ? "text-black" : "text-[var(--primary-color)]"
-                } text-xs font-normal uppercase tracking-wider mb-2 inline-block`}
+                className={`${quickViewData ? "text-black" : "text-[var(--primary-color)]"
+                  } text-xs font-normal uppercase tracking-wider mb-2 inline-block`}
               >
                 {product.brand.name}
               </span>
@@ -395,9 +389,8 @@ export default function ProductView({
 
             <p
               data-aos="fade-up"
-              className={`text-xl font-medium mb-4 ${
-                quickViewData ? "text-black" : "text-[var(--primary-color)]"
-              } `}
+              className={`text-xl font-medium mb-4 ${quickViewData ? "text-black" : "text-[var(--primary-color)]"
+                } `}
             >
               {product.name}
             </p>
@@ -435,11 +428,10 @@ export default function ProductView({
                 </div>
               )}
               <span
-                className={`text-[13px] font-normal ${
-                  quickViewData
-                    ? "text-[var(--text-color)]"
-                    : "text-[var(--text-color)]"
-                }`}
+                className={`text-[13px] font-normal ${quickViewData
+                  ? "text-[var(--text-color)]"
+                  : "text-[var(--text-color)]"
+                  }`}
               >
                 {parseInt(product.averageRating) > 0
                   ? parseInt(product.averageRating)
@@ -453,11 +445,10 @@ export default function ProductView({
             >
               <span
                 suppressHydrationWarning
-                className={`main-price  font-600  ${
-                  offerPrice
-                    ? "line-through text-qgray text-[15px]"
-                    : "text-[var(--text-color)] text-[24px]"
-                }`}
+                className={`main-price  font-600  ${offerPrice
+                  ? "line-through text-qgray text-[15px]"
+                  : "text-[var(--primary-color)] text-[24px]"
+                  }`}
               >
                 {offerPrice ? (
                   <span>{currency_icon + price}</span>
@@ -483,9 +474,8 @@ export default function ProductView({
 
             <div data-aos="fade-up" className="mb-[30px]">
               <div
-                className={`text-sm text-normal  leading-7 ${
-                  quickViewData ? "text-black" : "text-[var(--text-color)]"
-                } ${more ? "" : "line-clamp-2"}`}
+                className={`text-sm text-normal  leading-7 ${quickViewData ? "text-black" : "text-[var(--text-color)]"
+                  } ${more ? "" : "line-clamp-2"}`}
               >
                 {product.short_description}
               </div>
@@ -565,11 +555,10 @@ export default function ProductView({
                             <div className="flex justify-between items-center w-full">
                               <div>
                                 <span
-                                  className={`text-[13px] ${
-                                    quickViewData
-                                      ? "text-black"
-                                      : "text-[var(--primary-color)]"
-                                  }`}
+                                  className={`text-[13px] ${quickViewData
+                                    ? "text-black"
+                                    : "text-[var(--primary-color)]"
+                                    }`}
                                 >
                                   {item}
                                 </span>
@@ -612,31 +601,28 @@ export default function ProductView({
                   <button
                     onClick={decrement}
                     type="button"
-                    className={`${
-                      quickViewData
-                        ? "text-black"
-                        : "text-[var(--primary-color)]"
-                    } text-base`}
+                    className={`${quickViewData
+                      ? "text-black"
+                      : "text-[var(--primary-color)]"
+                      } text-base`}
                   >
                     -
                   </button>
                   <span
-                    className={`${
-                      quickViewData
-                        ? "text-black"
-                        : "text-[var(--primary-color)]"
-                    }`}
+                    className={`${quickViewData
+                      ? "text-black"
+                      : "text-[var(--primary-color)]"
+                      }`}
                   >
                     {quantity}
                   </span>
                   <button
                     onClick={increment}
                     type="button"
-                    className={`${
-                      quickViewData
-                        ? "text-black"
-                        : "text-[var(--primary-color)]"
-                    } text-base`}
+                    className={`${quickViewData
+                      ? "text-black"
+                      : "text-[var(--primary-color)]"
+                      } text-base`}
                   >
                     +
                   </button>
@@ -669,11 +655,10 @@ export default function ProductView({
                   >
                     <span className="w-10 h-10 flex justify-center items-center">
                       <ThinLove
-                        className={`${
-                          quickViewData
-                            ? "fill-black"
-                            : "fill-[var(--primary-color)]"
-                        }`}
+                        className={`${quickViewData
+                          ? "fill-black"
+                          : "fill-[var(--primary-color)]"
+                          }`}
                       />
                     </span>
                   </button>
@@ -706,14 +691,12 @@ export default function ProductView({
 
             <div data-aos="fade-up" className="mb-[20px]">
               <p
-                className={`text-[13px] ${
-                  quickViewData ? "text-black" : "text-[var(--text-color)]"
-                } leading-7`}
+                className={`text-[13px] ${quickViewData ? "text-black" : "text-[var(--text-color)]"
+                  } leading-7`}
               >
                 <span
-                  className={`${
-                    quickViewData ? "text-black" : "text-[var(--text-color)]"
-                  }`}
+                  className={`${quickViewData ? "text-black" : "text-[var(--text-color)]"
+                    }`}
                 >
                   Category :
                 </span>{" "}
@@ -721,9 +704,8 @@ export default function ProductView({
               </p>
               {tags && (
                 <p
-                  className={`text-[13px] ${
-                    quickViewData ? "text-black" : "text-[var(--text-color)]"
-                  } leading-7`}
+                  className={`text-[13px] ${quickViewData ? "text-black" : "text-[var(--text-color)]"
+                    } leading-7`}
                 >
                   <span className="text-[var(--text-color)]">Tags:</span>{" "}
                   {tags.length > 0 &&
@@ -734,14 +716,12 @@ export default function ProductView({
               )}
               {product.sku && (
                 <p
-                  className={`text-[13px] ${
-                    quickViewData ? "text-black" : "text-[var(--text-color)]"
-                  } leading-7`}
+                  className={`text-[13px] ${quickViewData ? "text-black" : "text-[var(--text-color)]"
+                    } leading-7`}
                 >
                   <span
-                    className={`${
-                      quickViewData ? "text-black" : "text-[var(--text-color)]"
-                    } uppercase`}
+                    className={`${quickViewData ? "text-black" : "text-[var(--text-color)]"
+                      } uppercase`}
                   >
                     {ServeLangItem()?.SKU}:
                   </span>{" "}
@@ -783,22 +763,20 @@ export default function ProductView({
               className="social-share flex  items-center w-full mb-[20px]"
             >
               <span
-                className={`${
-                  quickViewData ? "text-black" : "text-[var(--text-color)]"
-                } text-[13px] mr-[17px] inline-block"`}
+                className={`${quickViewData ? "text-black" : "text-[var(--text-color)]"
+                  } text-[13px] mr-[17px] inline-block"`}
               >
                 {ServeLangItem()?.Share_This}
               </span>
 
               <div className="flex space-x-5 items-center">
                 <FacebookShareButton
-                  url={`${
-                    typeof window !== "undefined" &&
+                  url={`${typeof window !== "undefined" &&
                     window.location.origin &&
                     window.location.origin +
-                      "/single-product?slug=" +
-                      product.slug
-                  }`}
+                    "/single-product?slug=" +
+                    product.slug
+                    }`}
                   quotes={product.name}
                 >
                   <span className="cursor-pointer">
@@ -817,13 +795,12 @@ export default function ProductView({
                   </span>
                 </FacebookShareButton>
                 <WhatsappShareButton
-                  url={`${
-                    typeof window !== "undefined" &&
+                  url={`${typeof window !== "undefined" &&
                     window.location.origin &&
                     window.location.origin +
-                      "/single-product?slug=" +
-                      product.slug
-                  }`}
+                    "/single-product?slug=" +
+                    product.slug
+                    }`}
                   quotes={product.name}
                 >
                   <WhatsappIcon width={20} height={20} />

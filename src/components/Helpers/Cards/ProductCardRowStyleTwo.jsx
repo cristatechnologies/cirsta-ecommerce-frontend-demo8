@@ -74,8 +74,8 @@ export default function ProductCardRowStyleTwo({ className, datas }) {
           .catch((err) => {
             toast.error(
               err.response &&
-                err.response.data.message &&
-                err.response.data.message
+              err.response.data.message &&
+              err.response.data.message
             );
           });
         dispatch(fetchCart());
@@ -91,8 +91,8 @@ export default function ProductCardRowStyleTwo({ className, datas }) {
           .catch((err) => {
             toast.error(
               err.response &&
-                err.response.data.message &&
-                err.response.data.message
+              err.response.data.message &&
+              err.response.data.message
             );
           });
         dispatch(fetchCart());
@@ -112,14 +112,14 @@ export default function ProductCardRowStyleTwo({ className, datas }) {
       if (datas.offer_price) {
         const sumOfferPrice = parseFloat(
           prices.reduce((prev, curr) => parseInt(prev) + parseInt(curr), 0) +
-            parseFloat(datas.offer_price)
+          parseFloat(datas.offer_price)
         );
         setPrice(datas.price);
         setOffer(sumOfferPrice);
       } else {
         const sumPrice = parseFloat(
           prices.reduce((prev, curr) => parseInt(prev) + parseInt(curr), 0) +
-            parseFloat(datas.price)
+          parseFloat(datas.price)
         );
         setPrice(sumPrice);
       }
@@ -148,7 +148,7 @@ export default function ProductCardRowStyleTwo({ className, datas }) {
       data-aos="fade-up"
       className={`product-card-row-two w-full  ${className || ""}`}
     >
-      <div className="w-full h-[105px] bg-white border border-primarygray px-5 ">
+      <div className="w-full h-[105px] bg-white border border-[var(--primary-color)] px-5 ">
         <div className="w-full h-full flex space-x-5 justify-center items-center">
           <div className="w-[75px] h-full relative">
             <Link
@@ -187,9 +187,8 @@ export default function ProductCardRowStyleTwo({ className, datas }) {
             <p className="price">
               <span
                 suppressHydrationWarning
-                className={`main-price  font-600 text-[18px] ${
-                  offerPrice ? "line-through text-qgray" : "text-qred"
-                }`}
+                className={`main-price  font-600 text-[18px] ${offerPrice ? "line-through text-qgray" : "text-[var(--primary-color)]"
+                  }`}
               >
                 {offerPrice ? (
                   <span>{currency_icon && currency_icon + price}</span>

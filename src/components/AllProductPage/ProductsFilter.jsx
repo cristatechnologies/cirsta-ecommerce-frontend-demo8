@@ -205,7 +205,7 @@ export default function ProductsFilter({
                     height="9"
                     color="#ffff"
                     viewBox="0 0 14 9"
-                    className="fill-current text-[var(--text-color)]"
+                    className="fill-current text-[var(--secondary-color)]"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <rect width="14" height="1" />
@@ -242,9 +242,7 @@ export default function ProductsFilter({
                               icon={item.icon}
                             />
                           </span>
-                          <span className="text-xs font-400 text-[var(--text-color)]">
-                            {item.name}
-                          </span>
+                          <span className="text-xs font-400">{item.name}</span>
                         </div>
                         {item.active_sub_categories.length > 0 && (
                           <div>
@@ -296,7 +294,7 @@ export default function ProductsFilter({
                             <a rel="noopener noreferrer">
                               <div className=" flex justify-between items-center px-5 h-10 transition-all duration-300 ease-in-out cursor-pointer">
                                 <div className="flex items-center rtl:space-x-reverse space-x-6">
-                                  <span className="text-xs font-400 text-[var(--text-color)]">
+                                  <span className="text-xs font-400">
                                     {subItems.name}
                                   </span>
                                 </div>
@@ -351,7 +349,7 @@ export default function ProductsFilter({
                                       <a rel="noopener noreferrer">
                                         <div className=" flex justify-between items-center px-5 h-10 transition-all duration-300 ease-in-out cursor-pointer">
                                           <div className="flex items-center rtl:space-x-reverse space-x-6">
-                                            <span className="text-xs font-400 text-[var(--text-color)]">
+                                            <span className="text-xs font-400">
                                               {subItemChild.name}
                                             </span>
                                           </div>
