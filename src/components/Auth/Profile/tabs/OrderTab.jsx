@@ -6,28 +6,38 @@ import Link from "next/link";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
 import settings from "../../../../../utils/settings";
 import auth from "../../../../../utils/auth";
+import apiRequest from "../../../../../utils/apiRequest";
 
 export default function OrderTab({ orders }) {
   const { currency_icon } = settings();
 
-  const generateOrderPdf = (orderId) => {
+  const generateOrderPdf = (productId, orderId) => {
     if (auth) {
-      axios.get(
-        `${process.env.NEXT_PUBLIC_BASE_URL
-        }api/user/order-pdf/${orderId}`,
-
-      ).then((res) => {
-        if (res) {
-          const blob = new Blob([res.data], { type: 'application/pdf' });
+      axios
+        .get(
+          `${
+            process.env.NEXT_PUBLIC_BASE_URL
+          }api/user/order-pdf-web/${productId}?token=${auth().access_token}`,
+          {
+            responseType: "blob",
+          }
+        )
+        .then((res) => {
+          const blob = new Blob([res.data], { type: "application/pdf" });
           const url = window.URL.createObjectURL(blob);
-          // Directly navigate to the PDF URL to trigger download
-          window.location.href = url;
-          // Revoke the object URL after triggering the download
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", `Order_${orderId}.pdf`);
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
           window.URL.revokeObjectURL(url);
-        }
-      }).catch((error) => console.error(error));
+        })
+        .catch((er) => {
+          console.log(er);
+        });
     }
-  }
+  };
 
   return (
     <div>
@@ -91,7 +101,7 @@ export default function OrderTab({ orders }) {
                       </Link> */}
                       <div
                         className="w-[116px] h-[46px] primary-bg text-[var(--secondary-color)] font-bold flex justify-center items-center cursor-pointer"
-                        onClick={() => generateOrderPdf(item.id)}
+                        onClick={() => generateOrderPdf(item.id, item.order_id)}
                       >
                         <span>Pdf bill</span>
                       </div>

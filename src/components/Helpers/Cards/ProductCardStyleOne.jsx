@@ -386,7 +386,9 @@ export default function ProductCardStyleOne({ datas }) {
             <span
               suppressHydrationWarning
               className={`main-price  font-600 text-[18px] ${
-                offerPrice ? "line-through text-qgray" : "text-qred"
+                offerPrice
+                  ? "line-through text-qgray"
+                  : "text-[var(--primary-color)]"
               }`}
             >
               {offerPrice ? (
