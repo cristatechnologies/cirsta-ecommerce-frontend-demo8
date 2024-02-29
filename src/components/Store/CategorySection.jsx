@@ -46,7 +46,7 @@ function CategorySection({ sectionTitle, categories }) {
           {categoryList &&
             categoryList.map((item) => (
               <li
-                className="hover:bg-[var(--primary-color)] hover:text-white group/parent"
+                className="hover:bg-[var(--primary-color)] text-[var(--text-color)] hover:text-white group/parent"
                 key={item.id}
               >
                 <Link
@@ -61,13 +61,11 @@ function CategorySection({ sectionTitle, categories }) {
                       <div className="flex items-center rtl:space-x-reverse space-x-6">
                         <span>
                           <FontAwesomeCom
-                            className="w-4 h-4 text-[var(--text-color)]"
+                            className="w-4 h-4 "
                             icon={item.icon}
                           />
                         </span>
-                        <span className="text-xs font-400 text-[var(--text-color)]">
-                          {item.name}
-                        </span>
+                        <span className="text-xs font-400">{item.name}</span>
                       </div>
                       {item.active_sub_categories.length > 0 && (
                         <div>
@@ -161,7 +159,7 @@ function CategorySection({ sectionTitle, categories }) {
                               (subItemChild) => (
                                 <li
                                   key={subItemChild.id}
-                                  className="hover:bg-[var(--primary-color)] hover:text-white"
+                                  className="hover:bg-[var(--primary-color)] text-[var(--text-color)] hover:text-white"
                                 >
                                   <Link
                                     href={{
@@ -173,7 +171,7 @@ function CategorySection({ sectionTitle, categories }) {
                                     <a rel="noopener noreferrer">
                                       <div className=" flex justify-between items-center px-5 h-10 transition-all duration-300 ease-in-out cursor-pointer">
                                         <div className="flex items-center rtl:space-x-reverse space-x-6">
-                                          <span className="text-xs font-400 text-[var(--text-color)]">
+                                          <span className="text-xs font-400 ">
                                             {subItemChild.name}
                                           </span>
                                         </div>

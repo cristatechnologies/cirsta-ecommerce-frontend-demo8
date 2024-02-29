@@ -28,8 +28,9 @@ export default function ProductsFilter({
     <>
       {searchProductFilter ? (
         <div
-          className={`filter-widget w-full fixed lg:relative left-0 top-0 h-screen z-10 lg:h-auto overflow-y-scroll lg:overflow-y-auto bg-white px-[30px] pt-[40px] ${className || ""
-            }  ${filterToggle ? "block" : "hidden lg:block"}`}
+          className={`filter-widget w-full fixed lg:relative left-0 top-0 h-screen z-10 lg:h-auto overflow-y-scroll lg:overflow-y-auto bg-white px-[30px] pt-[40px] ${
+            className || ""
+          }  ${filterToggle ? "block" : "hidden lg:block"}`}
         >
           <div className="filter-subject-item pb-10 border-b border-qgray-border">
             <div className="subject-title mb-[30px]">
@@ -241,9 +242,7 @@ export default function ProductsFilter({
                               icon={item.icon}
                             />
                           </span>
-                          <span className="text-xs font-400 text-[var(--text-color)]">
-                            {item.name}
-                          </span>
+                          <span className="text-xs font-400">{item.name}</span>
                         </div>
                         {item.active_sub_categories.length > 0 && (
                           <div>
@@ -295,40 +294,40 @@ export default function ProductsFilter({
                             <a rel="noopener noreferrer">
                               <div className=" flex justify-between items-center px-5 h-10 transition-all duration-300 ease-in-out cursor-pointer">
                                 <div className="flex items-center rtl:space-x-reverse space-x-6">
-                                  <span className="text-xs font-400 text-[var(--text-color)]">
+                                  <span className="text-xs font-400">
                                     {subItems.name}
                                   </span>
                                 </div>
                                 {subItems.active_child_categories.length >
                                   0 && (
-                                    <div>
-                                      <span>
-                                        <svg
-                                          className={`transform rtl:rotate-180 fill-current`}
-                                          width="6"
-                                          height="9"
-                                          viewBox="0 0 6 9"
-                                          fill="text-[var(--text-color)]"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                          <rect
-                                            x="1.49805"
-                                            y="0.818359"
-                                            width="5.78538"
-                                            height="1.28564"
-                                            transform="rotate(45 1.49805 0.818359)"
-                                          />
-                                          <rect
-                                            x="5.58984"
-                                            y="4.90918"
-                                            width="5.78538"
-                                            height="1.28564"
-                                            transform="rotate(135 5.58984 4.90918)"
-                                          />
-                                        </svg>
-                                      </span>
-                                    </div>
-                                  )}
+                                  <div>
+                                    <span>
+                                      <svg
+                                        className={`transform rtl:rotate-180 fill-current`}
+                                        width="6"
+                                        height="9"
+                                        viewBox="0 0 6 9"
+                                        fill="text-[var(--text-color)]"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <rect
+                                          x="1.49805"
+                                          y="0.818359"
+                                          width="5.78538"
+                                          height="1.28564"
+                                          transform="rotate(45 1.49805 0.818359)"
+                                        />
+                                        <rect
+                                          x="5.58984"
+                                          y="4.90918"
+                                          width="5.78538"
+                                          height="1.28564"
+                                          transform="rotate(135 5.58984 4.90918)"
+                                        />
+                                      </svg>
+                                    </span>
+                                  </div>
+                                )}
                               </div>
                             </a>
                           </Link>
@@ -350,7 +349,7 @@ export default function ProductsFilter({
                                       <a rel="noopener noreferrer">
                                         <div className=" flex justify-between items-center px-5 h-10 transition-all duration-300 ease-in-out cursor-pointer">
                                           <div className="flex items-center rtl:space-x-reverse space-x-6">
-                                            <span className="text-xs font-400 text-[var(--text-color)]">
+                                            <span className="text-xs font-400">
                                               {subItemChild.name}
                                             </span>
                                           </div>
