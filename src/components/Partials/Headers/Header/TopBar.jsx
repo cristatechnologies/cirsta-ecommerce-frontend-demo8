@@ -103,14 +103,14 @@ export default function TopBar({ className, contact, settings }) {
               <div className="topbar-dropdowns lg:block hidden">
                 <div className="flex ltr:space-x-6 rtl:-space-x-0 items-center">
                   <div className="flex space-x-6 rtl:space-x-reverse items-center relative">
-                    <Link href="/blogs" passHref>
+                    {/* <Link href="/blogs" passHref>
                       <a rel="noopener noreferrer">
                         <span className="text-xs leading-6 text-[var(--text-color)] font-500 cursor-pointer capitalize">
                           {ServeLangItem()?.blogs}
                         </span>
                       </a>
-                    </Link>
-                    {auth && (
+                    </Link> */}
+                    {/* {auth && (
                       <Link href="/profile#dashboard" passHref>
                         <a rel="noopener noreferrer">
                           <span className="text-xs leading-6 text-[var(--text-color)] font-500 cursor-pointer">
@@ -118,7 +118,7 @@ export default function TopBar({ className, contact, settings }) {
                           </span>
                         </a>
                       </Link>
-                    )}
+                    )} */}
 
                     <div className="favorite relative ">
                       <Link href="/wishlist" passHref>

@@ -48,32 +48,16 @@ export default function Middlebar({ className, settings }) {
     cart && setCartItem(cart.cartProducts);
   }, [cart]);
   return (
-    <div className={`w-full h-[86px] bg-white ${className} mt-2 mb-2 `}>
-      <div className="container-x mx-auto h-full ">
+    <div
+      className={`w-full h-[86px] bg-[var(--primary-color)] ${className} mb-2 `}
+    >
+      <div className="container-x mx-auto h-full  ">
         <div className="relative h-full">
           {/* <div className="flex justify-between items-center h-full"> old*/}
           <div className="flex  items-center h-full">
-            <div className="relative">
-              <Link href="/" passHref>
-                <a rel="noopener noreferrer">
-                  {settings && (
-                    <Image
-                      width="180"
-                      height="65"
-                      objectFit="scale-down"
-                      // src={`https://i.imgur.com/4LPB1nc.png`}
-                      src={`${
-                        process.env.NEXT_PUBLIC_BASE_URL + settings.logo
-                      }`}
-                      alt="logo"
-                    />
-                  )}
-                </a>
-              </Link>
-            </div>
             {/* <div className="w-[517px] h-[44px]"> */}
             {/* <SearchBox className="search-com" /> */}
-            <DrawerDefault></DrawerDefault>
+            {/* <DrawerDefault></DrawerDefault> */}
 
             <Navbar className="quomodo-shop-nav-bar lg:block hidden" />
             {/* </div> */}

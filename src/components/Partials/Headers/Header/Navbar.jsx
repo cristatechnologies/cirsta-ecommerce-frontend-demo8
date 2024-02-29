@@ -30,14 +30,14 @@ export default function Navbar({ className }) {
     setAuth(JSON.parse(localStorage.getItem("auth")));
   }, []);
 
-  // const handler = () => {
-  //   setToggle(!categoryToggle);
-  // };
+  const handler = () => {
+    setToggle(!categoryToggle);
+  };
 
-  // useEffect(() => {
-  //   let categorySelector = document.querySelector(".category-dropdown");
-  //   setHeight(categorySelector.offsetHeight);
-  // }, [categoryToggle]);
+  useEffect(() => {
+    let categorySelector = document.querySelector(".category-dropdown");
+    setHeight(categorySelector.offsetHeight);
+  }, [categoryToggle]);
   return (
     <div
       className={`nav-widget-wrapper w-full  h-[60px] relative z-30  ${
@@ -48,28 +48,28 @@ export default function Navbar({ className }) {
         <div className="w-full h-full relative">
           <div className="w-full h-full flex justify-between items-center">
             <div className="category-and-nav flex xl:rtl:space-x-reverse rtl:space-x-reverse space-x-7 items-center">
-              {/* <div  className="category ml-10 w-[270px] h-[41px] become-seller-btn px-5 rounded-[5px] relative">
+              <div className="category ml-10 w-[270px] h-[41px] bg-[var(--secondary-color)] px-5 rounded-[5px] relative">
                 <button
                   onClick={handler}
                   type="button"
                   className="w-full h-full flex justify-between items-center"
                 >
-                  <div className="flex rtl:space-x-reverse space-x-3 text-white items-center">
+                  <div className="flex rtl:space-x-reverse space-x-3 text-[var(--primary-color)] items-center">
                     <span>
                       <svg
                         width="14"
                         height="9"
                         color="#ffff"
                         viewBox="0 0 14 9"
-                        className="fill-current text-white"
+                        className="fill-current text-[var(--primary-color)]"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <rect width="14" height="1"  />
-                        <rect y="8" width="14" height="1"  />
-                        <rect y="4" width="10" height="1"  />
+                        <rect width="14" height="1" />
+                        <rect y="8" width="14" height="1" />
+                        <rect y="4" width="10" height="1" />
                       </svg>
                     </span>
-                    <span className="text-sm font-600 text-white">
+                    <span className="text-sm font-600 text-[var(--primary-color)]">
                       {ServeLangItem()?.All_Categories}
                     </span>
                   </div>
@@ -77,7 +77,7 @@ export default function Navbar({ className }) {
                     <Arrow
                       width="5.78538"
                       height="1.28564"
-                      className="fill-current text-white"
+                      className="fill-current text-[var(--primary-color)]"
                     />
                   </div>
                 </button>
@@ -137,7 +137,6 @@ export default function Navbar({ className }) {
                                         width="5.78538"
                                         height="1.28564"
                                         transform="rotate(45 1.49805 0.818359)"
-
                                       />
                                       <rect
                                         x="5.58984"
@@ -145,7 +144,6 @@ export default function Navbar({ className }) {
                                         width="5.78538"
                                         height="1.28564"
                                         transform="rotate(135 5.58984 4.90918)"
-
                                       />
                                     </svg>
                                   </span>
@@ -198,7 +196,6 @@ export default function Navbar({ className }) {
                                                   width="5.78538"
                                                   height="1.28564"
                                                   transform="rotate(45 1.49805 0.818359)"
-
                                                 />
                                                 <rect
                                                   x="5.58984"
@@ -206,7 +203,6 @@ export default function Navbar({ className }) {
                                                   width="5.78538"
                                                   height="1.28564"
                                                   transform="rotate(135 5.58984 4.90918)"
-
                                                 />
                                               </svg>
                                             </span>
@@ -265,48 +261,46 @@ export default function Navbar({ className }) {
                       ))}
                   </ul>
                 </div>
-              </div> */}
+              </div>
               <div className="nav">
                 <ul className="nav-wrapper flex xl:space-x-7 rtl:space-x-reverse space-x-5">
-                  {/*<li className="relative">*/}
-                  {/*  <Link href="/">*/}
-                  {/*    <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">*/}
-                  {/*      <span>Homepage</span>*/}
-                  {/*      <span className="ml-1.5 ">*/}
-                  {/*        <Arrow className="fill-current" />*/}
-                  {/*      </span>*/}
-                  {/*    </span>*/}
-                  {/*  </Link>*/}
-                  {/*  <div className="sub-menu w-[220px] absolute left-0 top-[60px]">*/}
-                  {/*    <div*/}
-                  {/*      className="w-full bg-white flex justify-between items-center "*/}
-                  {/*      style={{*/}
-                  {/*        boxShadow: "0px 15px 50px 0px rgba(0, 0, 0, 0.14)",*/}
-                  {/*      }}*/}
-                  {/*    >*/}
-                  {/*      <div className="categories-wrapper w-full h-full p-5">*/}
-                  {/*        <div>*/}
-                  {/*          <div className="category-items">*/}
-                  {/*            <ul className="flex flex-col space-y-2">*/}
-                  {/*              <li>*/}
-                  {/*                <Link href="/home-two">*/}
-                  {/*                  <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:primary-text cursor-pointer">*/}
-                  {/*                    Home two*/}
-                  {/*                  </span>*/}
-                  {/*                </Link>*/}
-                  {/*              </li>*/}
-                  {/*            </ul>*/}
-                  {/*          </div>*/}
-                  {/*        </div>*/}
-                  {/*      </div>*/}
-                  {/*    </div>*/}
-                  {/*  </div>*/}
-                  {/*</li>*/}
+                  {/* <li className="relative">
+                    <Link href="/">
+                      <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
+                        <span>Homepage</span>
+                        <span className="ml-1.5 ">
+                          <Arrow className="fill-current" />
+                        </span>
+                      </span>
+                    </Link>
+                    <div className="sub-menu w-[220px] absolute left-0 top-[60px]">
+                      <div
+                        className="w-full bg-white flex justify-between items-center "
+                        style={{
+                          boxShadow: "0px 15px 50px 0px rgba(0, 0, 0, 0.14)",
+                        }}
+                      >
+                        <div className="categories-wrapper w-full h-full p-5">
+                          <div>
+                            <div className="category-items">
+                              <ul className="flex flex-col space-y-2">
+                                <li>
+                                  <Link href="/home-two">
+                                    <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:primary-text cursor-pointer">
+                                      Home two
+                                    </span>
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li> */}
                   {/* <li>
                     <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
-                      <span>
-                        { ServeLangItem()?.Shop }
-                      </span>
+                      <span>{ServeLangItem()?.Shop}</span>
                       <span className="ml-1.5 ">
                         <Arrow className="fill-current" />
                       </span>
@@ -414,7 +408,6 @@ export default function Navbar({ className }) {
                                               width="6.94219"
                                               height="1.54271"
                                               transform="rotate(45 2.08984 0.636719)"
-
                                             />
                                             <rect
                                               x="7"
@@ -422,7 +415,6 @@ export default function Navbar({ className }) {
                                               width="6.94219"
                                               height="1.54271"
                                               transform="rotate(135 7 5.54492)"
-
                                             />
                                           </svg>
                                         </span>
@@ -440,12 +432,12 @@ export default function Navbar({ className }) {
                   </li> */}
 
                   <li>
-                    <Link href="/sellers" passHref>
+                    <Link href="/" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--secondary-color)] ">
                           <span>
                             {/* { ServeLangItem()?.Sellers } */}
-                            Who We Are
+                            {ServeLangItem()?.home}
                           </span>
                         </span>
                       </a>
@@ -454,10 +446,9 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/blogs" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--secondary-color)] ">
                           <span className="capitalize">
-                            {/* {ServeLangItem()?.blogs} */}
-                            Why Kalalay
+                            {ServeLangItem()?.blogs}
                           </span>
                         </span>
                       </a>
@@ -466,9 +457,8 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/about" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
-                          {/* <span>{ServeLangItem()?.About}</span> */}
-                          We Are Different
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--secondary-color)] ">
+                          <span>{ServeLangItem()?.About}</span>
                         </span>
                       </a>
                     </Link>
@@ -476,8 +466,8 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/contact" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
-                          <span>{ServeLangItem()?.Contact}</span>
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--secondary-color)] ">
+                          <span>{ServeLangItem()?.Contact_Us}</span>
                         </span>
                       </a>
                     </Link>
@@ -576,13 +566,13 @@ export default function Navbar({ className }) {
             </div>
             {Multivendor() === 1 && (
               <div className="flex">
-                <div className="become-seller-btn flex">
+                {/* <div className="become-seller-btn flex">
                   <Link href="/become-seller" passHref>
                     <a rel="noopener noreferrer">
                       <div className=" w-[161px] h-[40px] flex justify-center items-center cursor-pointer">
                         <div className="flex rtl:space-x-reverse space-x-2 items-center">
                           <span className="text-sm font-600">
-                            {ServeLangItem()?.Become_seller}
+                            // {ServeLangItem()?.Become_seller}
                           </span>
                           <span className="transform rtl:rotate-180 fill-current ">
                             <svg
@@ -612,9 +602,9 @@ export default function Navbar({ className }) {
                       </div>
                     </a>
                   </Link>
-                </div>
+                </div> */}
 
-                <div className="text-white font-bold bg-[var(--primary-color)] rounded-md ml-2">
+                <div className="text-[var(--primary-color)] font-bold bg-[var(--secondary-color)] rounded-md ml-2">
                   <Link href={auth ? "/profile#dashboard" : "/login"} passHref>
                     <a rel="noopener noreferrer">
                       <div className=" w-[161px] h-[40px] flex justify-center items-center cursor-pointer">

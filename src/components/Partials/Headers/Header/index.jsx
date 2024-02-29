@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import auth from "../../../../../utils/auth";
 import apiRequest from "../../../../../utils/apiRequest";
 import { fetchWishlist } from "../../../../store/wishlistData";
+import ServeLangItem from "../../../Helpers/ServeLangItem";
 
 export default function Header({ drawerAction, settings, contact }) {
   const { cart } = useSelector((state) => state.cart);
@@ -44,7 +45,6 @@ export default function Header({ drawerAction, settings, contact }) {
 
   const RouterMapper = [
     "/become-seller",
-    "/",
     "/who-we-are",
     "/why-kalalay",
     "/why-are-we-different",
@@ -66,10 +66,10 @@ export default function Header({ drawerAction, settings, contact }) {
         className="quomodo-shop-top-bar"
         settings={settings && settings}
       />
-      {/* <Middlebar
+      <Middlebar
         settings={settings && settings}
         className="quomodo-shop-middle-bar lg:block hidden"
-      /> */}
+      />
       {isRouteInMapper ? (
         <div className="quomodo-shop-drawer lg:hidden block w-full h-[60px] bg-white">
           <div className="w-full h-full flex justify-between items-center px-5">
