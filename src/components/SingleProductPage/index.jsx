@@ -391,7 +391,7 @@ export default function SingleProductPage({ details }) {
                   <button
                     onClick={() => productReport(details.product.id)}
                     type="button"
-                    className="bg-[var(--primary-color)] flex h-[50px] items-center justify-center w-full"
+                    className="bg-[var(--primary-color)] flex h-[50px] items-center justify-center w-full text-[var(--secondary-color)] font-semibold"
                   >
                     <span>{ServeLangItem()?.Submit_Report}</span>
                     {reportLoading && (
