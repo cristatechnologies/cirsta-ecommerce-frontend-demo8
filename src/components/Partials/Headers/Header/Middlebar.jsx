@@ -48,9 +48,7 @@ export default function Middlebar({ className, settings }) {
     cart && setCartItem(cart.cartProducts);
   }, [cart]);
   return (
-    <div
-      className={`w-full h-[86px] bg-[var(--primary-color)] ${className} mb-2 `}
-    >
+    <div className={`w-full h-[86px] ${className} mb-2 `}>
       <div className="container-x mx-auto h-full  ">
         <div className="relative h-full">
           {/* <div className="flex justify-between items-center h-full"> old*/}

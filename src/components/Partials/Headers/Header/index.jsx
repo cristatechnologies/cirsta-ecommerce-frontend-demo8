@@ -13,6 +13,7 @@ import auth from "../../../../../utils/auth";
 import apiRequest from "../../../../../utils/apiRequest";
 import { fetchWishlist } from "../../../../store/wishlistData";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Header({ drawerAction, settings, contact }) {
   const { cart } = useSelector((state) => state.cart);
@@ -61,6 +62,19 @@ export default function Header({ drawerAction, settings, contact }) {
 
   return (
     <header className="header-section-wrapper relative print:hidden">
+      <div className="bg-[var(--primary-color)] w-full h-10 flex ">
+        <div className="flex items-center">
+          <FontAwesomeIcon
+            icon={"fa-solid fa-truck"}
+            className="w-5 h-5 text-[var(--secondary-color)] -scale-x-100 ml-20 my-2"
+          />
+          <p className="text-xs text-[var(--secondary-color)] ml-2">
+            FREE SHIPPING ON ORDERS OVER{" "}
+            <span className="text-[var(--text-color)]">$100</span>
+          </p>
+        </div>
+      </div>
+
       <TopBar
         contact={contact && contact}
         className="quomodo-shop-top-bar"

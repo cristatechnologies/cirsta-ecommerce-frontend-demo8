@@ -65,41 +65,42 @@ export default function TopBar({ className, contact, settings }) {
   return (
     <>
       <div
-        className={`w-full bg-white text-[var(--text-color)] h-16 border-b border-qgray-border  hidden lg:block  ${
+        className={`w-full  text-[var(--text-color)] h-16 border-b border-qgray-border  hidden lg:block  ${
           className || ""
         }`}
       >
-        <div className="container-x mx-auto h-full">
-          <div className="flex justify-between items-center h-full">
+        <div className="container-x h-full">
+          <div className="flex justify-between items-center h-full w-full">
             <>
               <div className="topbar-nav">
-                <ul className="flex space-x-6 items-center">
-                  <li className="rtl:ml-6 ltr:ml-0 mt-4">
-                    <Link href="/" passHref>
-                      <a rel="noopener noreferrer">
-                        {settings && (
-                          <Image
-                            width="180"
-                            height="45"
-                            objectFit="scale-down"
-                            // src={`https://i.imgur.com/4LPB1nc.png`}
-                            src={`${
-                              process.env.NEXT_PUBLIC_BASE_URL + settings.logo
-                            }`}
-                            alt="logo"
-                          />
-                        )}
-                      </a>
-                    </Link>
-                  </li>
-
+                <ul className="flex space-x-6 items-center w-full">
                   <li className="rtl:ml-6 ltr:ml-0">
-                    <div className="w-[517px] h-[30px]">
+                    <div className="w-[370px] h-[30px]">
                       <SearchBox className="search-com" />
                     </div>
                   </li>
                 </ul>
               </div>
+              <ul>
+                <li className="rtl:ml-6 ltr:ml-0 mt-4">
+                  <Link href="/" passHref>
+                    <a rel="noopener noreferrer">
+                      {settings && (
+                        <Image
+                          width="180"
+                          height="45"
+                          objectFit="scale-down"
+                          // src={`https://i.imgur.com/4LPB1nc.png`}
+                          src={`${
+                            process.env.NEXT_PUBLIC_BASE_URL + settings.logo
+                          }`}
+                          alt="logo"
+                        />
+                      )}
+                    </a>
+                  </Link>
+                </li>
+              </ul>
               <div className="topbar-dropdowns lg:block hidden">
                 <div className="flex ltr:space-x-6 rtl:-space-x-0 items-center">
                   <div className="flex space-x-6 rtl:space-x-reverse items-center relative">

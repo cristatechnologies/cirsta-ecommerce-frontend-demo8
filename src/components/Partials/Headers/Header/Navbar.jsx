@@ -34,10 +34,10 @@ export default function Navbar({ className }) {
     setToggle(!categoryToggle);
   };
 
-  useEffect(() => {
-    let categorySelector = document.querySelector(".category-dropdown");
-    setHeight(categorySelector.offsetHeight);
-  }, [categoryToggle]);
+  // useEffect(() => {
+  //   let categorySelector = document.querySelector(".category-dropdown");
+  //   setHeight(categorySelector.offsetHeight);
+  // }, [categoryToggle]);
   return (
     <div
       className={`nav-widget-wrapper w-full  h-[60px] relative z-30  ${
@@ -48,7 +48,7 @@ export default function Navbar({ className }) {
         <div className="w-full h-full relative">
           <div className="w-full h-full flex justify-between items-center">
             <div className="category-and-nav flex xl:rtl:space-x-reverse rtl:space-x-reverse space-x-7 items-center">
-              <div className="category ml-10 w-[270px] h-[41px] bg-[var(--secondary-color)] px-5 rounded-[5px] relative">
+              {/* <div className="category ml-10 w-[270px] h-[41px] bg-[var(--secondary-color)] px-5 rounded-[5px] relative">
                 <button
                   onClick={handler}
                   type="button"
@@ -261,7 +261,7 @@ export default function Navbar({ className }) {
                       ))}
                   </ul>
                 </div>
-              </div>
+              </div> */}
               <div className="nav">
                 <ul className="nav-wrapper flex xl:space-x-7 rtl:space-x-reverse space-x-5">
                   {/* <li className="relative">
@@ -434,7 +434,7 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--secondary-color)] ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                           <span>
                             {/* { ServeLangItem()?.Sellers } */}
                             {ServeLangItem()?.home}
@@ -446,7 +446,7 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/blogs" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--secondary-color)] ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                           <span className="capitalize">
                             {ServeLangItem()?.blogs}
                           </span>
@@ -457,7 +457,7 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/about" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--secondary-color)] ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                           <span>{ServeLangItem()?.About}</span>
                         </span>
                       </a>
@@ -466,7 +466,7 @@ export default function Navbar({ className }) {
                   <li>
                     <Link href="/contact" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--secondary-color)] ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                           <span>{ServeLangItem()?.Contact_Us}</span>
                         </span>
                       </a>
@@ -604,7 +604,7 @@ export default function Navbar({ className }) {
                   </Link>
                 </div> */}
 
-                <div className="text-[var(--primary-color)] font-bold bg-[var(--secondary-color)] rounded-md ml-2">
+                <div className="text-[var(--text-color)] font-bold bg-[var(--secondary-color)] rounded-md ml-2">
                   <Link href={auth ? "/profile#dashboard" : "/login"} passHref>
                     <a rel="noopener noreferrer">
                       <div className=" w-[161px] h-[40px] flex justify-center items-center cursor-pointer">
