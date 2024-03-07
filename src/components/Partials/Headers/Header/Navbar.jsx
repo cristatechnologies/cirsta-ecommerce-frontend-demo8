@@ -7,6 +7,7 @@ import FontAwesomeCom from "../../../Helpers/icons/FontAwesomeCom";
 import Multivendor from "../../../Shared/Multivendor";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
 import LoginContext from "../../../Contexts/LoginContext";
+import { useRouter } from "next/router";
 
 export default function Navbar({ className }) {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
@@ -16,7 +17,7 @@ export default function Navbar({ className }) {
   const customPages = websiteSetup && websiteSetup.payload.customPages;
   const [categoryToggle, setToggle] = useState(false);
   const [subCatHeight, setHeight] = useState(null);
-
+  const router = useRouter();
   const getLoginContexts = useContext(LoginContext);
   const [auth, setAuth] = useState(null);
 
@@ -46,7 +47,7 @@ export default function Navbar({ className }) {
     >
       <div className="container-x mx-auto h-full">
         <div className="w-full h-full relative">
-          <div className="w-full h-full flex justify-between items-center">
+          <div className="w-full h-full flex justify-center items-center">
             <div className="category-and-nav flex xl:rtl:space-x-reverse rtl:space-x-reverse space-x-7 items-center">
               {/* <div className="category ml-10 w-[270px] h-[41px] bg-[var(--secondary-color)] px-5 rounded-[5px] relative">
                 <button
@@ -263,7 +264,7 @@ export default function Navbar({ className }) {
                 </div>
               </div> */}
               <div className="nav">
-                <ul className="nav-wrapper flex xl:space-x-7 rtl:space-x-reverse space-x-5">
+                <ul className="nav-wrapper flex  ">
                   {/* <li className="relative">
                     <Link href="/">
                       <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
@@ -431,10 +432,14 @@ export default function Navbar({ className }) {
                     </div>
                   </li> */}
 
-                  <li>
+                  <li
+                    className={`border border-l-black border-t-0 border-b-0 ${
+                      router.pathname === "/" ? "bg-gray-200" : ""
+                    }`}
+                  >
                     <Link href="/" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] px-3">
                           <span>
                             {/* { ServeLangItem()?.Sellers } */}
                             {ServeLangItem()?.home}
@@ -443,10 +448,14 @@ export default function Navbar({ className }) {
                       </a>
                     </Link>
                   </li>
-                  <li>
+                  <li
+                    className={`border border-l-black border-t-0 border-b-0 ${
+                      router.pathname === "/blogs" ? "bg-gray-200" : ""
+                    }`}
+                  >
                     <Link href="/blogs" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] px-3 ">
                           <span className="capitalize">
                             {ServeLangItem()?.blogs}
                           </span>
@@ -454,20 +463,44 @@ export default function Navbar({ className }) {
                       </a>
                     </Link>
                   </li>
-                  <li>
+                  <li
+                    className={`border border-l-black border-t-0 border-b-0 ${
+                      router.pathname === "/about" ? "bg-gray-200" : ""
+                    }`}
+                  >
                     <Link href="/about" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] px-3 ">
                           <span>{ServeLangItem()?.About}</span>
                         </span>
                       </a>
                     </Link>
                   </li>
-                  <li>
+                  <li
+                    className={`border border-l-black border-t-0 border-b-0 ${
+                      router.pathname === "/contact" ? "bg-gray-200" : ""
+                    }`}
+                  >
                     <Link href="/contact" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] px-3 ">
                           <span>{ServeLangItem()?.Contact_Us}</span>
+                        </span>
+                      </a>
+                    </Link>
+                  </li>
+                  <li
+                    className={`border border-l-black border-r-black border-t-0 border-b-0 ${
+                      router.pathname === "/profile" ? "bg-gray-200" : ""
+                    }`}
+                  >
+                    <Link
+                      href={auth ? "/profile#dashboard" : "/login"}
+                      passHref
+                    >
+                      <a rel="noopener noreferrer">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] px-3 ">
+                          <span>{ServeLangItem()?.Account}</span>
                         </span>
                       </a>
                     </Link>
@@ -564,85 +597,6 @@ export default function Navbar({ className }) {
                 </ul>
               </div>
             </div>
-            {Multivendor() === 1 && (
-              <div className="flex">
-                {/* <div className="become-seller-btn flex">
-                  <Link href="/become-seller" passHref>
-                    <a rel="noopener noreferrer">
-                      <div className=" w-[161px] h-[40px] flex justify-center items-center cursor-pointer">
-                        <div className="flex rtl:space-x-reverse space-x-2 items-center">
-                          <span className="text-sm font-600">
-                            // {ServeLangItem()?.Become_seller}
-                          </span>
-                          <span className="transform rtl:rotate-180 fill-current ">
-                            <svg
-                              width="6"
-                              height="10"
-                              viewBox="0 0 6 10"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="fill-current"
-                            >
-                              <rect
-                                x="1.08984"
-                                width="6.94106"
-                                height="1.54246"
-                                transform="rotate(45 1.08984 0)"
-                              />
-                              <rect
-                                x="6"
-                                y="4.9082"
-                                width="6.94106"
-                                height="1.54246"
-                                transform="rotate(135 6 4.9082)"
-                              />
-                            </svg>
-                          </span>
-                        </div>
-                      </div>
-                    </a>
-                  </Link>
-                </div> */}
-
-                <div className="text-[var(--text-color)] font-bold bg-[var(--secondary-color)] rounded-md ml-2">
-                  <Link href={auth ? "/profile#dashboard" : "/login"} passHref>
-                    <a rel="noopener noreferrer">
-                      <div className=" w-[161px] h-[40px] flex justify-center items-center cursor-pointer">
-                        <div className="flex rtl:space-x-reverse space-x-2 items-center">
-                          <span className="text-sm font-600">
-                            {ServeLangItem()?.Account}
-                          </span>
-                          <span className="transform rtl:rotate-180 fill-current ">
-                            <svg
-                              width="6"
-                              height="10"
-                              viewBox="0 0 6 10"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="fill-current"
-                            >
-                              <rect
-                                x="1.08984"
-                                width="6.94106"
-                                height="1.54246"
-                                transform="rotate(45 1.08984 0)"
-                              />
-                              <rect
-                                x="6"
-                                y="4.9082"
-                                width="6.94106"
-                                height="1.54246"
-                                transform="rotate(135 6 4.9082)"
-                              />
-                            </svg>
-                          </span>
-                        </div>
-                      </div>
-                    </a>
-                  </Link>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>

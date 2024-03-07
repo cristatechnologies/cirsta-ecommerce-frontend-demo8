@@ -65,7 +65,7 @@ export default function TopBar({ className, contact, settings }) {
   return (
     <>
       <div
-        className={`w-full  text-[var(--text-color)] h-16 border-b border-qgray-border  hidden lg:block  ${
+        className={`w-full  text-[var(--text-color)] h-28 border-b-4 border-gray-500  hidden lg:block  ${
           className || ""
         }`}
       >
