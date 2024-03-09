@@ -1,10 +1,10 @@
 export const slider_settings = {
   dots: true,
   infinite: true,
-  // arrows: true,
+  arrows: true,
   slidesToShow: 3,
   slidesToScroll: 1,
-  centerMode: true,
+  //   centerMode: true,
   centerPadding: "-40px",
   responsive: [
     {
@@ -44,9 +44,9 @@ export const slider_settings = {
       },
     },
   ],
+  //   speed: 8000,
+  //   cssEase: "linear",
   // autoplay: true,
-  // speed: 8000,
   // autoplaySpeed: 0,
   // pauseOnHover: false,
-  // cssEase: 'linear'
 };

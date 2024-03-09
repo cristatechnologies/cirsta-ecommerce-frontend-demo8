@@ -834,3 +834,10 @@ body {
     top: 80px;
   }
 }
+
+.slick-arrow,
+.slick-prev,
+.slick-next {
+  background: var(--primary-color) !important;
+  border-radius: 14px !important;
+}
