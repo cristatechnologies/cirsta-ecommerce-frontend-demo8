@@ -19,6 +19,7 @@ import ThinLove from "../icons/ThinLove";
 import Image from "next/image";
 import ServeLangItem from "../ServeLangItem";
 import LoginContext from "../../Contexts/LoginContext";
+import FontAwesomeCom from "../icons/FontAwesomeCom";
 
 const Redirect = () => {
   return (
@@ -253,9 +254,9 @@ export default function ProductCardStyleOne({ datas }) {
     setImgSrc(value);
   };
   return (
-    <div className="main-wrapper-card relative">
+    <div className="main-wrapper-card relative w-96">
       <div
-        className="product-card-one w-full h-[445px] bg-white relative group overflow-hidden"
+        className="product-card-one  h-[445px] bg-white relative group overflow-hidden"
         style={{ boxShadow: "0px 15px 64px 0px rgba(0, 0, 0, 0.05)" }}
       >
         <div className="product-card-img w-full h-[300px] -mt-2">
@@ -266,24 +267,31 @@ export default function ProductCardStyleOne({ datas }) {
             //   backgroundSize: "contain",
             // }}
           >
-            <Link
-              href={{
-                pathname: "/single-product",
-                query: { slug: datas.slug },
-              }}
-              passHref
-            >
-              <a rel="noopener noreferrer">
-                <Image
-                  layout="fill"
-                  objectFit="scale-down"
-                  src={`${imgSrc ? imgSrc : "/assets/images/spinner.gif"}`}
-                  alt=""
-                  onLoadingComplete={() => loadImg(datas.image)}
-                  className="w-full h-full object-contain hover:cursor-pointer"
-                />
-              </a>
-            </Link>
+            <Image
+              layout="fill"
+              objectFit="scale-down"
+              src={`${imgSrc ? imgSrc : "/assets/images/spinner.gif"}`}
+              alt=""
+              onLoadingComplete={() => loadImg(datas.image)}
+              className="w-full h-full object-contain hover:cursor-pointer group"
+            />
+
+            <div className="absolute bg-[var(--primary-color)] bg-opacity-10 hidden group-hover:flex w-full h-full items-center justify-center">
+              <Link
+                href={{
+                  pathname: "/single-product",
+                  query: { slug: datas.slug },
+                }}
+                passHref
+              >
+                <span>
+                  <FontAwesomeCom
+                    icon={"fa fa-link"}
+                    className={"w-9 h-9 text-white bg-[var(--primary-color)]"}
+                  />
+                </span>
+              </Link>
+            </div>
             {/* product available progress */}
             {/*{datas.campaingn_product && (*/}
             {/*  <>*/}
