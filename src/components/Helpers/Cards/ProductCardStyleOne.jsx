@@ -276,7 +276,7 @@ export default function ProductCardStyleOne({ datas }) {
               className="w-full h-full object-contain hover:cursor-pointer group"
             />
 
-            <div className="absolute bg-[var(--primary-color)] bg-opacity-10 hidden group-hover:flex w-full h-full items-center justify-center">
+            <div className="absolute bg-[var(--primary-color)] bg-opacity-10 hidden group-hover:flex group-hover:cursor-pointer w-full h-full items-center justify-center">
               <Link
                 href={{
                   pathname: "/single-product",

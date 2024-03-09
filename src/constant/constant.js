@@ -10,33 +10,35 @@ export const slider_settings = {
     {
       breakpoint: 880,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 1,
         slidesToScroll: 1,
-        initialSlide: 2,
+        initialSlide: 1,
       },
     },
     {
       breakpoint: 600,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 1,
         slidesToScroll: 1,
-        initialSlide: 2,
+        initialSlide: 1,
       },
     },
     {
       breakpoint: 500,
+      centerPadding: "0px",
       settings: {
         dots: false,
-        slidesToShow: 2,
+        slidesToShow: 1,
         slidesToScroll: 1,
         initialSlide: 1,
       },
     },
     {
       breakpoint: 320,
+      centerPadding: "0px",
       settings: {
         dots: false,
-        slidesToShow: 2,
+        slidesToShow: 1,
         slidesToScroll: 1,
         initialSlide: 1,
       },
