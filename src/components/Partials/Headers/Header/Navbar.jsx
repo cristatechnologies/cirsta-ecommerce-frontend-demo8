@@ -449,6 +449,19 @@ export default function Navbar({ className }) {
                     </Link>
                   </li>
                   <li
+                    className={`border  border-l-black border-t-0 border-b-0 ${
+                      router.pathname === "/products" ? "bg-gray-200" : ""
+                    }`}
+                  >
+                    <Link href="/products" passHref>
+                      <a rel="noopener noreferrer">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] px-3 ">
+                          <span>{ServeLangItem()?.Product}</span>
+                        </span>
+                      </a>
+                    </Link>
+                  </li>
+                  <li
                     className={`border border-l-black border-t-0 border-b-0 ${
                       router.pathname === "/blogs" ? "bg-gray-200" : ""
                     }`}
@@ -505,6 +518,7 @@ export default function Navbar({ className }) {
                       </a>
                     </Link>
                   </li>
+
                   {/* <li className="relative">
                     <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                       <span>{ServeLangItem()?.Pages}</span>
