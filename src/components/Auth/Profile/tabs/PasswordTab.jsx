@@ -102,15 +102,6 @@ export default function PasswordTab() {
     setConpass("");
   };
 
-  console.log(
-    "test",
-    currPass &&
-      nPass &&
-      conPass &&
-      nPass.length > 8 &&
-      conPass.length > 8 &&
-      nPass === conPass
-  );
   return (
     <div className="changePasswordTab w-full">
       <div className="w-full flex lg:flex-row space-x-5 rtl:space-x-reverse lg:items-center">
