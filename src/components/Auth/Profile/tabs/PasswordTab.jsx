@@ -62,8 +62,8 @@ export default function PasswordTab() {
       currPass &&
       nPass &&
       conPass &&
-      nPass.length > 8 &&
-      conPass.length > 8
+      nPass.length >= 8 &&
+      conPass.length >= 8
     ) {
       if (auth()) {
         apiRequest
@@ -101,6 +101,16 @@ export default function PasswordTab() {
     setNpass("");
     setConpass("");
   };
+
+  console.log(
+    "test",
+    currPass &&
+      nPass &&
+      conPass &&
+      nPass.length > 8 &&
+      conPass.length > 8 &&
+      nPass === conPass
+  );
   return (
     <div className="changePasswordTab w-full">
       <div className="w-full flex lg:flex-row space-x-5 rtl:space-x-reverse lg:items-center">
@@ -461,8 +471,8 @@ export default function PasswordTab() {
                     currPass &&
                     nPass &&
                     conPass &&
-                    nPass.length > 8 &&
-                    conPass.length > 8 &&
+                    nPass.length >= 8 &&
+                    conPass.length >= 8 &&
                     nPass === conPass
                       ? "bg-[var(--primary-color)] "
                       : "bg-qgray p-3"
