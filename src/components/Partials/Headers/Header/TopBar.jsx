@@ -65,11 +65,10 @@ export default function TopBar({ className, contact, settings }) {
   return (
     <>
       <div
-        className={`w-full  text-[var(--text-color)] h-28 border-b-4 border-gray-500  hidden lg:block  ${
-          className || ""
-        }`}
+        className={`w-full  text-[var(--text-color)] h-28 border-b-4 border-gray-500  hidden lg:block  ${className || ""
+          }`}
       >
-        <div className="container-x h-full">
+        <div className="container-x h-full mx-auto">
           <div className="flex justify-between items-center h-full w-full">
             <>
               <div className="topbar-nav">
@@ -91,9 +90,8 @@ export default function TopBar({ className, contact, settings }) {
                           height="45"
                           objectFit="scale-down"
                           // src={`https://i.imgur.com/4LPB1nc.png`}
-                          src={`${
-                            process.env.NEXT_PUBLIC_BASE_URL + settings.logo
-                          }`}
+                          src={`${process.env.NEXT_PUBLIC_BASE_URL + settings.logo
+                            }`}
                           alt="logo"
                         />
                       )}
