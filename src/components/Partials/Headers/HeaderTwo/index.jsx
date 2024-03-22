@@ -3,10 +3,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ThinBag from "../../../Helpers/icons/ThinBag";
-import Navbar from "../../Headers/Header/Navbar";
-import Middlebar from "../Header/Middlebar";
+import MiddlebarTwo from "../Header/MiddleBarTwo";
 import TopBarTwo from "../Header/TopBarTwo";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
 
 export default function HeaderTwo({ className, drawerAction, settings, contact }) {
@@ -19,7 +17,7 @@ export default function HeaderTwo({ className, drawerAction, settings, contact }
   return (
     <header className={` ${className || ""} header-section-wrapper relative`}>
       <div className="mt-5 border-b border-b-gray-200">
-        <div className="container-x !pl-0 h-full mx-auto pb-3">
+        <div className="container-x lg:!pl-0 h-full mx-auto pb-3">
           <Link href="/profile#dashboard" passHref>
             <a rel="noopener noreferrer">
               <span className="text-xs leading-6 text-[var(--text-color)] font-500 cursor-pointer capitalize">
@@ -46,7 +44,7 @@ export default function HeaderTwo({ className, drawerAction, settings, contact }
       <TopBarTwo contact={contact && contact}
         className="quomodo-shop-top-bar"
         settings={settings && settings} />
-      <Middlebar
+      <MiddlebarTwo
         settings={settings && settings}
         className="quomodo-shop-middle-bar lg:block hidden"
       />
@@ -88,13 +86,12 @@ export default function HeaderTwo({ className, drawerAction, settings, contact }
                 <ThinBag />
               </span>
             </Link>
-            <span className="w-[18px] h-[18px] rounded-full bg-qh2-green absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px]">
+            <span className="w-[18px] h-[18px] rounded-full absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px] bg-[var(--primary-color)]">
               {cartItems ? cartItems.length : 0}
             </span>
           </div>
         </div>
       </div>
-      <Navbar className="quomodo-shop-nav-bar lg:block hidden" />
     </header>
   );
-}
+}                   

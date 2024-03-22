@@ -5,15 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useContext, useEffect, useState } from "react";
 import { fetchWishlist } from "../../../../store/wishlistData";
 import LoginContext from "../../../Contexts/LoginContext";
-import IcoLogout from "../../../Auth/Profile/icons/IcoLogout";
-import SearchBox from "../../../Helpers/SearchBox";
 import ThinPeople from "../../../Helpers/icons/ThinPeople";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
 import Cart from "../../../Cart";
 import apiRequest from "../../../../../utils/apiRequest";
-import Login from "../../../Helpers/icons/Login";
 import ThinBag from "../../../Helpers/icons/ThinBag";
 import ThinLove from "../../../Helpers/icons/ThinLove";
+import SearchBoxTwo from "../../../Helpers/SearchBoxTwo";
 
 export default function TopBarTwo({ className, contact, settings }) {
     const getLoginContexts = useContext(LoginContext);
@@ -95,7 +93,7 @@ export default function TopBarTwo({ className, contact, settings }) {
                                 <ul className="flex space-x-6 items-center w-full">
                                     <li className="rtl:ml-6 ltr:ml-0">
                                         <div className="w-[470px]">
-                                            <SearchBox className="search-com" />
+                                            <SearchBoxTwo className="search-com" />
                                         </div>
                                     </li>
                                 </ul>
