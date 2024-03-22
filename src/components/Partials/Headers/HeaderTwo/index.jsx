@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ThinBag from "../../../Helpers/icons/ThinBag";
 import Navbar from "../../Headers/Header/Navbar";
-import TopBar from "../../Headers/Header/TopBar";
 import Middlebar from "../Header/Middlebar";
+import TopBarTwo from "../Header/TopBarTwo";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ServeLangItem from "../../../Helpers/ServeLangItem";
 
-export default function HeaderTwo({ className, drawerAction, settings }) {
+export default function HeaderTwo({ className, drawerAction, settings, contact }) {
   const { cart } = useSelector((state) => state.cart);
   const [cartItems, setCartItem] = useState(null);
   useEffect(() => {
@@ -16,7 +18,34 @@ export default function HeaderTwo({ className, drawerAction, settings }) {
 
   return (
     <header className={` ${className || ""} header-section-wrapper relative`}>
-      <TopBar className="quomodo-shop-top-bar" />
+      <div className="mt-5 border-b border-b-gray-200">
+        <div className="container-x !pl-0 h-full mx-auto pb-3">
+          <Link href="/profile#dashboard" passHref>
+            <a rel="noopener noreferrer">
+              <span className="text-xs leading-6 text-[var(--text-color)] font-500 cursor-pointer capitalize">
+                {ServeLangItem()?.Account}
+              </span>
+            </a>
+          </Link>
+          <Link href="/tracking-order" passHref>
+            <a rel="noopener noreferrer">
+              <span className="text-xs leading-6 text-[var(--text-color)] font-500 cursor-pointer capitalize ml-5">
+                {ServeLangItem()?.Track_Order}
+              </span>
+            </a>
+          </Link>
+          <Link href="/faq" passHref>
+            <a rel="noopener noreferrer">
+              <span className="text-xs leading-6 text-[var(--text-color)] font-500 cursor-pointer capitalize ml-5">
+                {ServeLangItem()?.Support}
+              </span>
+            </a>
+          </Link>
+        </div>
+      </div>
+      <TopBarTwo contact={contact && contact}
+        className="quomodo-shop-top-bar"
+        settings={settings && settings} />
       <Middlebar
         settings={settings && settings}
         className="quomodo-shop-middle-bar lg:block hidden"

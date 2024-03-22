@@ -22,6 +22,7 @@ export default function Header({ drawerAction, settings, contact }) {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmenu, setIsSubmenu] = useState(false);
+  console.log(settings);
   const logout = () => {
     if (auth) {
       apiRequest.logout(auth.access_token);
@@ -94,9 +95,8 @@ export default function Header({ drawerAction, settings, contact }) {
                     <Image
                       layout="fill"
                       objectFit="scale-down"
-                      src={`${
-                        process.env.NEXT_PUBLIC_BASE_URL + settings.logo
-                      }`}
+                      src={`${process.env.NEXT_PUBLIC_BASE_URL + settings.logo
+                        }`}
                       alt="logo"
                     />
                   )}
@@ -109,21 +109,18 @@ export default function Header({ drawerAction, settings, contact }) {
             >
               <span
                 className={`bg-steel-500 block transition-all duration-300 ease-out 
-                    h-0.5 w-6 rounded-sm border-2 border-black  ${
-                      isOpen ? "rotate-45 translate-y-2" : "-translate-y-0.5"
-                    } `}
+                    h-0.5 w-6 rounded-sm border-2 border-black  ${isOpen ? "rotate-45 translate-y-2" : "-translate-y-0.5"
+                  } `}
               ></span>
               <span
                 className={`bg-steel-500 block transition-all duration-300 ease-out 
-                    h-0.5 w-6 rounded-sm my-0.5 border-2 border-black ${
-                      isOpen ? "opacity-0" : "opacity-100"
-                    }`}
+                    h-0.5 w-6 rounded-sm my-0.5 border-2 border-black ${isOpen ? "opacity-0" : "opacity-100"
+                  }`}
               ></span>
               <span
                 className={`bg-steel-500 block transition-all duration-300 ease-out 
-                    h-0.5 w-6 rounded-sm border-2 border-black ${
-                      isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
-                    }`}
+                    h-0.5 w-6 rounded-sm border-2 border-black ${isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
+                  }`}
               ></span>
             </div>
             {isOpen && (
@@ -267,9 +264,8 @@ export default function Header({ drawerAction, settings, contact }) {
                     <Image
                       layout="fill"
                       objectFit="scale-down"
-                      src={`${
-                        process.env.NEXT_PUBLIC_BASE_URL + settings.logo
-                      }`}
+                      src={`${process.env.NEXT_PUBLIC_BASE_URL + settings.logo
+                        }`}
                       alt="logo"
                     />
                   )}

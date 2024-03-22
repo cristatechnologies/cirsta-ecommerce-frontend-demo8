@@ -77,12 +77,11 @@ export default function SearchBox({ className }) {
   return (
     <>
       <div
-        className={`w-full h-full flex items-center  border border-qgray-border bg-white  ${
-          className || ""
-        }`}
+        className={`w-full h-full flex items-center  border border-qgray-border bg-white  ${className || ""
+          }`}
       >
-        <div className="flex-1 bg-red-500 h-full">
-          <div className="h-full">
+        <div className="flex-1 h-full">
+          <div className="h-10">
             <input
               value={searchKey}
               onKeyDown={(e) => e.key === "Enter" && searchHandler()}
@@ -156,7 +155,7 @@ export default function SearchBox({ className }) {
         </div>
         <button
           onClick={searchHandler}
-          className="bg-[var(--primary-color)] w-[93px] h-full text-sm font-600 text-[var(--secondary-color)] "
+          className="bg-[var(--primary-color)] w-[93px] text-sm font-600 text-[var(--secondary-color)] h-10"
           type="button"
         >
           {ServeLangItem()?.Search}

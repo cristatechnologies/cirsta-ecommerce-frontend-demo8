@@ -6,9 +6,11 @@ import Drawer from "../Mobile/Drawer";
 import Footer from "./Footers/Footer";
 import Header from "./Headers/Header";
 import apiRequest from "../../../utils/apiRequest";
+import HeaderTwo from "./Headers/HeaderTwo";
 export default function Layout({ children, childrenClasses }) {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
   const [settings, setSettings] = useState(null);
+  const themeSetting = JSON.parse(localStorage.getItem("settings"));
   const [subscribeData, setSubScribeDAta] = useState(null);
   const [contact, setContact] = useState(null);
   useEffect(() => {
@@ -52,17 +54,25 @@ export default function Layout({ children, childrenClasses }) {
     <>
       <Drawer open={drawer} action={() => setDrawer(!drawer)} />
       <div className="w-full overflow-x-hidden">
-        <Header
-          contact={contact && contact}
-          settings={settings}
-          drawerAction={() => setDrawer(!drawer)}
-        />
-      
-        
+
+        {themeSetting && themeSetting.selected_theme === 'theme1' &&
+          <Header
+            contact={contact && contact}
+            settings={settings}
+            drawerAction={() => setDrawer(!drawer)}
+          />}
+
+        {themeSetting && themeSetting.selected_theme === 'theme2' &&
+          <HeaderTwo
+            contact={contact && contact}
+            settings={settings}
+            drawerAction={() => setDrawer(!drawer)}
+          />
+        }
+
         <div
-          className={`w-full min-h-screen  ${
-            childrenClasses || "pt-[30px] pb-[60px]"
-          }`}
+          className={`w-full min-h-screen  ${childrenClasses || "pt-[30px] pb-[60px]"
+            }`}
         >
           {children && children}
         </div>
