@@ -258,6 +258,17 @@ export default function Navbar({ className }) {
                     </Link>
                   </li>
                   <li>
+                    <Link href="/products" passHref>
+                      <a rel="noopener noreferrer">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
+                          <span className="capitalize">
+                            {ServeLangItem()?.products}
+                          </span>
+                        </span>
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
                     <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                       <span>{ServeLangItem()?.Shop}</span>
                       <span className="ml-1.5 ">
