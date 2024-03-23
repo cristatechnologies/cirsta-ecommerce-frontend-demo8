@@ -14,10 +14,10 @@ export default function HomePage({ data }) {
         metaDes={seoSetting.seo_description}
       />
       {/* < homepageData={data} /> */}
-      {/* {selected_theme === 'theme1' &&
-        <StorePage homepageData={data} />} */}
-
       {selected_theme === 'theme1' &&
+        <StorePage homepageData={data} />}
+
+      {selected_theme === 'theme2' &&
         <StorePageThemeTwo homepageData={data} />}
     </>
   );

@@ -55,12 +55,12 @@ export default function StorePageThemeTwo({ homepageData }) {
             className="banner-wrapper md:mb-[60px] mb-[30px]"
           />
         )}
-        {homepage && (
+        {/* {homepage && (
           <CategorySection
             categories={homepage.homepage_categories}
             sectionTitle={sectionTitles && sectionTitles.Trending_Category}
           />
-        )}
+        )} */}
         {/* {homepage && (
           <SectionStyleOne
             products={homepage.popularCategoryProducts}
@@ -92,39 +92,39 @@ export default function StorePageThemeTwo({ homepageData }) {
           />
         )} */}
 
-        {/* {homepage && (
+        {homepage && (
           <ViewMoreTitle
-            className="top-selling-product md:mb-[60px] mb-[30px]"
+            className="top-selling-product md:mb-[60px] mb-[30px] "
             seeMoreUrl={`/products?highlight=top_product`}
             categoryTitle={sectionTitles && sectionTitles.Top_Rated_Products}
           >
             <SectionStyleTwo
               products={
-                homepage.topRatedProducts.length&& homepage.topRatedProducts.length > 0
+                homepage.topRatedProducts.length && homepage.topRatedProducts.length > 0
                   ? homepage.topRatedProducts
                   : []
               }
             />
           </ViewMoreTitle>
-        )} */}
+        )}
         {/* {homepage && isMultivendor === 1 && (
           <ViewMoreTitle
             className="best-sallers-section md:mb-[60px] mb-[30px]"
             seeMoreUrl="/sellers"
-            categoryTitle={sectionTitles && sectionTitles.Shop_by_Brand ==='Shop by Brand' ? 'Shop by Artist' : 'Shop by Brand'}
+            categoryTitle={sectionTitles && sectionTitles.Shop_by_Brand === 'Shop by Brand' ? 'Shop by Artist' : 'Shop by Brand'}
           >
             <BestSellers
-              sallers={homepage.sellers.length > 0 ? homepage.sellers.slice(0,7) : []}
+              sallers={homepage.sellers.length > 0 ? homepage.sellers.slice(0, 7) : []}
             />
           </ViewMoreTitle>
         )} */}
 
-        {/* {homepage && (
+        {homepage && (
           <TwoColumnAds
             bannerOne={homepage.twoColumnBannerOne}
             bannerTwo={homepage.twoColumnBannerTwo}
           />
-        )} */}
+        )}
 
         {homepage && (
           <SectionStyleOne

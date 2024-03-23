@@ -127,8 +127,8 @@ export default function ProductCardRowStyleOne({ className, datas }) {
           .catch((err) => {
             toast.error(
               err.response &&
-                err.response.data.message &&
-                err.response.data.message
+              err.response.data.message &&
+              err.response.data.message
             );
           });
         dispatch(fetchCart());
@@ -144,8 +144,8 @@ export default function ProductCardRowStyleOne({ className, datas }) {
           .catch((err) => {
             toast.error(
               err.response &&
-                err.response.data.message &&
-                err.response.data.message
+              err.response.data.message &&
+              err.response.data.message
             );
           });
         dispatch(fetchCart());
@@ -169,14 +169,14 @@ export default function ProductCardRowStyleOne({ className, datas }) {
       if (datas.offer_price) {
         const sumOfferPrice = parseFloat(
           prices.reduce((prev, curr) => parseInt(prev) + parseInt(curr), 0) +
-            parseFloat(datas.offer_price)
+          parseFloat(datas.offer_price)
         );
         setPrice(datas.price);
         setOffer(sumOfferPrice);
       } else {
         const sumPrice = parseFloat(
           prices.reduce((prev, curr) => parseInt(prev) + parseInt(curr), 0) +
-            parseFloat(datas.price)
+          parseFloat(datas.price)
         );
         setPrice(sumPrice);
       }
@@ -237,11 +237,10 @@ export default function ProductCardRowStyleOne({ className, datas }) {
     <div className="main-wrapper-card relative">
       <div
         data-aos="fade-left"
-        className={`product-row-card-style-one  w-full lg:h-[250px] h-[200px] bg-white group relative overflow-hidden ${
-          className || ""
-        }`}
+        className={`product-row-card-style-one  w-full lg:h-[250px] h-[200px] bg-white group relative overflow-hidden ${className || ""
+          }`}
       >
-        <div className="flex space-x-5 items-center w-full h-full lg:p-[30px] sm:p-5 p-2">
+        <div className="flex space-x-5 items-center w-full h-full lg:p-[30px] sm:p-5 p-2 border border-[var(--primary-color)]">
           <div className="lg:w-1/2 w-1/3 h-full relative transform scale-100 group-hover:scale-110 transition duration-300 ease-in-ou">
             <Image
               layout="fill"
@@ -290,11 +289,10 @@ export default function ProductCardRowStyleOne({ className, datas }) {
               <p className="price mb-[26px]">
                 <span
                   suppressHydrationWarning
-                  className={`main-price  font-600 text-[18px] ${
-                    offerPrice
-                      ? "line-through text-qgray"
-                      : "text-[var(--primary-color)]"
-                  }`}
+                  className={`main-price  font-600 text-[18px] ${offerPrice
+                    ? "line-through text-qgray"
+                    : "text-[var(--primary-color)]"
+                    }`}
                 >
                   {offerPrice ? (
                     <span>{currency_icon && currency_icon + price}</span>
@@ -330,7 +328,7 @@ export default function ProductCardRowStyleOne({ className, datas }) {
               <button
                 onClick={() => addToCart(datas.id)}
                 type="button"
-                className="w-[110px] h-[30px]"
+                className="w-[110px] h-[30px] text-[var(--secondary-color)]"
               >
                 <span className="yellow-btn">
                   {ServeLangItem()?.Add_To_Cart}
