@@ -20,6 +20,7 @@ import CategorySection from "./CategorySection";
 export default function StorePageThemeTwo({ homepageData }) {
   const getsectionTitles = homepageData.section_title;
   const [sectionTitles, setSectionTitles] = useState(null);
+  console.log('homepageData :>> ', homepageData);
   useEffect(() => {
     if (!sectionTitles) {
       let tem =
@@ -43,9 +44,9 @@ export default function StorePageThemeTwo({ homepageData }) {
   }, [isMultivendor]);
   return (
     <>
-      <Layout childrenClasses="pt-[30px] pb-[60px]">
+      <Layout childrenClasses="pt-0 pb-[60px]">
         <Ads />
-        {/* {homepage && (
+        {homepage && (
           <Banner
             images={homepage.sliders}
             services={homepage.services}
@@ -53,7 +54,7 @@ export default function StorePageThemeTwo({ homepageData }) {
             sidebarImgTwo={homepage.sliderBannerTwo}
             className="banner-wrapper md:mb-[60px] mb-[30px]"
           />
-        )} */}
+        )}
         {homepage && (
           <CategorySection
             categories={homepage.homepage_categories}

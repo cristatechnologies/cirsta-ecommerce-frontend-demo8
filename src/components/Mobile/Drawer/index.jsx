@@ -2,15 +2,21 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Compair from "../../Helpers/icons/Compair";
 import ThinLove from "../../Helpers/icons/ThinLove";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import FontAwesomeCom from "../../Helpers/icons/FontAwesomeCom";
 import ServeLangItem from "../../Helpers/ServeLangItem";
 import DrawerCategory from "./DrawerCategory";
+import auth from "../../../../utils/auth";
+import IcoLogout from "../../Auth/Profile/icons/IcoLogout";
+import Login from "../../Helpers/icons/Login";
+import apiRequest from "../../../../utils/apiRequest";
+import { fetchWishlist } from "../../../store/wishlistData";
 
 export default function Drawer({ className, open, action }) {
   const router = useRouter();
   const [tab, setTab] = useState("category");
+  const dispatch = useDispatch();
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
   const categoryList = websiteSetup && websiteSetup.payload.productCategories;
   const customPages = websiteSetup && websiteSetup.payload.customPages;
@@ -28,12 +34,20 @@ export default function Drawer({ className, open, action }) {
     }
   };
 
+  const logout = () => {
+    if (auth) {
+      apiRequest.logout(auth.access_token);
+      localStorage.removeItem("auth");
+      dispatch(fetchWishlist());
+      router.push("/login");
+    }
+  };
+
   return (
     <>
       <div
-        className={`drawer-wrapper w-full block lg:hidden h-full relative  ${
-          className || ""
-        }`}
+        className={`drawer-wrapper w-full block lg:hidden h-full relative  ${className || ""
+          }`}
       >
         {open && (
           <div
@@ -42,9 +56,8 @@ export default function Drawer({ className, open, action }) {
           ></div>
         )}
         <div
-          className={`w-[280px] transition-all duration-300 ease-in-out h-screen overflow-y-auto overflow-x-hidden overflow-style-none bg-white fixed top-0 z-50 ${
-            open ? "left-0" : "-left-[280px]"
-          }`}
+          className={`w-[280px] transition-all duration-300 ease-in-out h-screen overflow-y-auto overflow-x-hidden overflow-style-none bg-white fixed top-0 z-50 ${open ? "left-0" : "-left-[280px]"
+            }`}
         >
           <div className="w-full px-5 mt-5 mb-4">
             <div className="flex justify-between items-center">
@@ -130,18 +143,16 @@ export default function Drawer({ className, open, action }) {
           <div className="w-full mt-5 px-5 flex items-center space-x-3">
             <span
               onClick={() => setTab("category")}
-              className={`text-base font-semibold cursor-pointer ${
-                tab === "category" ? "text-[var(--text-color)]" : "text-qgray"
-              }`}
+              className={`text-base font-semibold cursor-pointer ${tab === "category" ? "text-[var(--text-color)]" : "text-qgray"
+                }`}
             >
               {ServeLangItem()?.Categories}
             </span>
             <span className="w-[1px] h-[14px] bg-qgray"></span>
             <span
               onClick={() => setTab("menu")}
-              className={`text-base font-semibold cursor-pointer ${
-                tab === "menu" ? "text-[var(--text-color)]" : "text-qgray "
-              }`}
+              className={`text-base font-semibold cursor-pointer ${tab === "menu" ? "text-[var(--text-color)]" : "text-qgray "
+                }`}
             >
               {ServeLangItem()?.Main_Menu}
             </span>
@@ -671,6 +682,37 @@ export default function Drawer({ className, open, action }) {
                       </div>
                     </div>
                   </Link>
+                </li>
+                <li>
+                  <div className="ml-4 mt-2">
+                    {auth ? (
+                      <span
+                        onClick={logout}
+                        className="flex items-center gap-3 border border-[var(--primary-color)] rounded-xl p-2 w-28 cursor-pointer"
+                      >
+                        <IcoLogout
+                          className={"fill-[var(--primary-color)]"}
+                          pathClassName={"fill-[var(--primary-color)]"}
+                        />
+                        <span className="text-[14px] text-[var(--text-color)]">
+                          Logout
+                        </span>
+                      </span>
+                    ) : (
+                      <div
+                        onClick={() => router.push("/login")}
+                        className="flex items-center gap-3 border border-[var(--primary-color)] rounded-xl p-2 w-28 cursor-pointer"
+                      >
+                        <Login
+                          className={"fill-[var(--primary-color)]"}
+                          pathClassName={"fill-[var(--primary-color)]"}
+                        />
+                        <span className="text-[14px]  text-[var(--text-color)]">
+                          Login
+                        </span>
+                      </div>
+                    )}
+                  </div>
                 </li>
               </ul>
             </div>

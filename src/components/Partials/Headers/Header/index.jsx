@@ -22,7 +22,6 @@ export default function Header({ drawerAction, settings, contact }) {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmenu, setIsSubmenu] = useState(false);
-  console.log(settings);
   const logout = () => {
     if (auth) {
       apiRequest.logout(auth.access_token);
@@ -286,7 +285,7 @@ export default function Header({ drawerAction, settings, contact }) {
                   {cartItems ? cartItems.length : 0}
                 </span>
               </div>
-              <div className="ml-8">
+              <div className="ml-8 lg:block hidden">
                 {auth ? (
                   <span
                     onClick={logout}

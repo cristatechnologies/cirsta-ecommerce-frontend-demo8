@@ -134,15 +134,15 @@ export default function TopBarTwo({ className, contact, settings }) {
                                             <Cart className="absolute text-white ltr:-right-[45px] rtl:-left-[45px] top-11 z-50 hidden group-hover:block" />
                                         </div>
 
-                                        {auth && (
 
-                                            <button onClick={profilehandler} type="button">
-                                                <span className="cursor-pointer">
-                                                    <ThinPeople className={"w-6 h-6"} />
-                                                </span>
-                                            </button>
 
-                                        )}
+                                        <button onClick={profilehandler} type="button">
+                                            <span className="cursor-pointer">
+                                                <ThinPeople className={"w-6 h-6"} />
+                                            </span>
+                                        </button>
+
+
 
                                         {profile && (
                                             <>
@@ -159,12 +159,12 @@ export default function TopBarTwo({ className, contact, settings }) {
                                                 >
                                                     <div className="menu-item-area w-full  p-5">
                                                         <ul className="w-full  flex flex-col space-y-7">
-                                                            <li className="text-base text-qgraytwo">
+                                                            {auth && <li className="text-base text-qgraytwo">
                                                                 <span>
                                                                     {ServeLangItem()?.Hi},{" "}
                                                                     {auth && auth.user.name}{" "}
                                                                 </span>
-                                                            </li>
+                                                            </li>}
                                                             <li className="text-base text-qgraytwo cursor-pointer hover:text-[var(--text-color)] hover:font-semibold">
                                                                 <Link href="/profile#dashboard" passHref>
                                                                     <a rel="noopener noreferrer">
@@ -196,11 +196,11 @@ export default function TopBarTwo({ className, contact, settings }) {
                                                     </div>
                                                     <div className="w-full h-10 flex justify-center items-center border-t border-qgray-border">
                                                         <button
-                                                            onClick={logout}
+                                                            onClick={() => { auth ? logout() : location.push('/login') }}
                                                             type="button"
                                                             className="text-[var(--text-color)] text-base font-semibold"
                                                         >
-                                                            {ServeLangItem()?.Sign_Out}
+                                                            {auth ? ServeLangItem()?.Sign_Out : ServeLangItem()?.Login}
                                                         </button>
                                                     </div>
                                                 </div>
@@ -215,7 +215,7 @@ export default function TopBarTwo({ className, contact, settings }) {
                         </>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     );
 }
