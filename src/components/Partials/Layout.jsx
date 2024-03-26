@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import DiscountBanner from "../DiscountBanner";
 import Drawer from "../Mobile/Drawer";
-import Footer from "./Footers/Footer";
 import Header from "./Headers/Header";
+import Footer from "./Footers/Footer";
+import FooterTheme2 from "./Footers/FooterTwo";
 import apiRequest from "../../../utils/apiRequest";
 import HeaderTwo from "./Headers/HeaderTwo";
 export default function Layout({ children, childrenClasses }) {
@@ -54,31 +55,38 @@ export default function Layout({ children, childrenClasses }) {
     <>
       <Drawer open={drawer} action={() => setDrawer(!drawer)} />
       <div className="w-full overflow-x-hidden">
-
-        {themeSetting && themeSetting.selected_theme === 'theme1' &&
+        {themeSetting && themeSetting.selected_theme === "theme1" && (
           <Header
             contact={contact && contact}
             settings={settings}
             drawerAction={() => setDrawer(!drawer)}
-          />}
+          />
+        )}
 
-        {themeSetting && themeSetting.selected_theme === 'theme2' &&
+        {themeSetting && themeSetting.selected_theme === "theme2" && (
           <HeaderTwo
             contact={contact && contact}
             settings={settings}
             drawerAction={() => setDrawer(!drawer)}
           />
-        }
+        )}
 
         <div
-          className={`w-full min-h-screen  ${childrenClasses || "pt-[30px] pb-[60px]"
-            }`}
+          className={`w-full min-h-screen  ${
+            childrenClasses || "pt-[30px] pb-[60px]"
+          }`}
         >
           {children && children}
         </div>
         {subscribeData && <DiscountBanner datas={subscribeData} />}
 
-        <Footer settings={settings} />
+        {themeSetting && themeSetting.selected_theme === "theme1" && (
+          <Footer settings={settings} />
+        )}
+
+        {themeSetting && themeSetting.selected_theme === "theme2" && (
+          <FooterTheme2 settings={settings} />
+        )}
       </div>
     </>
   );

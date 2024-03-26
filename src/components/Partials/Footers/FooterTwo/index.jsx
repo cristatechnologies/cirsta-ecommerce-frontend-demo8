@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import Facebook from "../../../Helpers/icons/Facebook";
 import Instagram from "../../../Helpers/icons/Instagram";
 import Youtube from "../../../Helpers/icons/Youtube";
+import FontAwesomeCom from "../../../Helpers/icons/FontAwesomeCom";
 
 export default function Footer({ settings }) {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
@@ -42,25 +43,23 @@ export default function Footer({ settings }) {
   return (
     <footer className="footer-section-wrapper bg-white">
       <div className="container-x block mx-auto pt-[83px]">
+        <div className="mb-14 text-center border-b border-gray-200">
+          <Link href="/" passHref>
+            <a>
+              {settings && (
+                <Image
+                  width="250"
+                  height="70"
+                  src={`${process.env.NEXT_PUBLIC_BASE_URL + settings.logo}`}
+                  alt="logo"
+                />
+              )}
+            </a>
+          </Link>
+        </div>
         <div className="lg:flex justify-between mb-[95px]">
           <div className="lg:w-4/10 w-full mb-10 lg:mb-0">
             {/* logo area */}
-            <div className="mb-14">
-              <Link href="/" passHref>
-                <a>
-                  {settings && (
-                    <Image
-                      width="152"
-                      height="36"
-                      src={`${
-                        process.env.NEXT_PUBLIC_BASE_URL + settings.logo
-                      }`}
-                      alt="logo"
-                    />
-                  )}
-                </a>
-              </Link>
-            </div>
             <div>
               <ul className="flex flex-col space-y-5 ">
                 <li>
@@ -143,11 +142,15 @@ export default function Footer({ settings }) {
                     {thirdCol.col_links.length > 0 &&
                       thirdCol.col_links.map((item, i) => (
                         <li key={i}>
-                          <Link href={item.link}>
-                            <span className="text-[#9A9A9A] text-[15px] hover:text-[var(--text-color)] border-b border-transparent hover:border-qblack cursor-pointer">
+                          <li key={i} className="flex items-center gap-2">
+                            <FontAwesomeCom
+                              className={"w-4 h-4 text-[var(--text-color)]"}
+                              icon={item.link}
+                            />
+                            <span className="text-[var(--text-color)] text-[15px] hover:text-[var(--primary-color)] border-b border-transparent hover:border-qblack">
                               {item.title}
                             </span>
-                          </Link>
+                          </li>
                         </li>
                       ))}
                   </ul>
@@ -156,7 +159,7 @@ export default function Footer({ settings }) {
             )}
           </div>
         </div>
-        <div className="bottom-bar border-t border-qgray-border lg:h-[82px] lg:flex justify-between items-center">
+        <div className="bottom-bar border-t border-qgray-border lg:h-[82px] lg:flex justify-center items-center">
           <div className="flex lg:space-x-5 justify-between items-center mb-3">
             <div className="flex space-x-5 items-center">
               <a href="#">
@@ -165,24 +168,24 @@ export default function Footer({ settings }) {
               <a href="#">
                 <Facebook className="fill-current text-qgray hover:text-[var(--text-color)]" />
               </a>
-              <a href="#">
+              {/* <a href="#">
                 <Youtube className="fill-current text-qgray hover:text-[var(--text-color)]" />
-              </a>
+              </a> */}
             </div>
             <span className="sm:text-base text-[10px] text-qgray font-300">
-              ©2022
+              ©2024
               <Link
-                href="https://quomodosoft.com/"
+                href="https://cristatech-ecommerce-frontend.vercel.app/"
                 target="_blank"
                 rel="noreferrer"
                 className="font-500 text-[var(--text-color)] mx-1"
               >
-                Quomodosoft
+                Frenzy Mart
               </Link>
               All rights reserved
             </span>
           </div>
-          <div className="">
+          {/* <div className="">
             <Link href="#" passHref>
               <a>
                 <Image
@@ -193,7 +196,7 @@ export default function Footer({ settings }) {
                 />
               </a>
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
