@@ -254,9 +254,9 @@ export default function ProductCardStyleOne({ datas }) {
     setImgSrc(value);
   };
   return (
-    <div className="main-wrapper-card relative w-96">
+    <div className="main-wrapper-card relative">
       <div
-        className="product-card-one  h-[445px] bg-white relative group overflow-hidden"
+        className="product-card-one w-full h-[445px] bg-white relative group overflow-hidden"
         style={{ boxShadow: "0px 15px 64px 0px rgba(0, 0, 0, 0.05)" }}
       >
         <div className="product-card-img w-full h-[300px] -mt-2">
@@ -273,9 +273,8 @@ export default function ProductCardStyleOne({ datas }) {
               src={`${imgSrc ? imgSrc : "/assets/images/spinner.gif"}`}
               alt=""
               onLoadingComplete={() => loadImg(datas.image)}
-              className="w-full h-full object-contain hover:cursor-pointer group"
+              className="w-full h-full object-contain hover:cursor-pointer"
             />
-
             <div className="absolute bg-[var(--primary-color)] bg-opacity-10 hidden group-hover:flex group-hover:cursor-pointer w-full h-full items-center justify-center">
               <Link
                 href={{
@@ -292,15 +291,16 @@ export default function ProductCardStyleOne({ datas }) {
                 </span>
               </Link>
             </div>
+
             {/* product available progress */}
             {/*{datas.campaingn_product && (*/}
             {/*  <>*/}
             {/*    <div className="px-[30px] absolute left-0 top-3 w-full">*/}
             {/*      <div className="progress-title flex justify-between ">*/}
-            {/*        <p className="text-xs text-[var(--text-color)] font-400 leading-6">*/}
+            {/*        <p className="text-xs text-qblack font-400 leading-6">*/}
             {/*          Prodcuts Available*/}
             {/*        </p>*/}
-            {/*        <span className="text-sm text-[var(--text-color)] font-600 leading-6">*/}
+            {/*        <span className="text-sm text-qblack font-600 leading-6">*/}
             {/*          {datas.cam_product_available}*/}
             {/*        </span>*/}
             {/*      </div>*/}
@@ -340,7 +340,7 @@ export default function ProductCardStyleOne({ datas }) {
             <button
               onClick={() => addToCart(datas.id)}
               type="button"
-              className="yellow-btn group relative w-full h-full flex shadow  justify-center items-center overflow-hidden text-[var(--secondary-color)]"
+              className="yellow-btn group relative w-full h-full flex shadow  justify-center items-center overflow-hidden"
             >
               <div className="btn-content flex items-center space-x-3 rtl:space-x-reverse relative z-10">
                 <span>
@@ -385,7 +385,7 @@ export default function ProductCardStyleOne({ datas }) {
             passHref
           >
             <a rel="noopener noreferrer">
-              <p className="title mb-2 text-[15px] font-600 text-[var(--text-color)] leading-[24px] line-clamp-2 hover:text-blue-600 cursor-pointer">
+              <p className="title mb-2 text-[15px] font-600 text-qblack leading-[24px] line-clamp-2 hover:text-blue-600 cursor-pointer">
                 {datas.title}
               </p>
             </a>
@@ -394,9 +394,7 @@ export default function ProductCardStyleOne({ datas }) {
             <span
               suppressHydrationWarning
               className={`main-price  font-600 text-[18px] ${
-                offerPrice
-                  ? "line-through text-qgray"
-                  : "text-[var(--primary-color)]"
+                offerPrice ? "line-through text-qgray" : "text-qred"
               }`}
             >
               {offerPrice ? (
