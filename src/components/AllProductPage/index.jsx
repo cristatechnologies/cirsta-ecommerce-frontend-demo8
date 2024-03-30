@@ -1,21 +1,15 @@
 import { useEffect, useState } from "react";
 import "react-input-range/lib/css/index.css";
-// import BreadcrumbCom from "../BreadcrumbCom";
 import axios from "axios";
-import { useRouter } from "next/router";
-import Image from "next/image";
 import Link from "next/link";
-import { useSelector } from "react-redux";
-import InputRange from "react-input-range";
+import { useRouter } from "next/router";
+import ProductCardRowStyleTwo from "../Helpers/Cards/ProductCardRowStyleTwo";
 import ProductCardStyleOne from "../Helpers/Cards/ProductCardStyleOne";
 import DataIteration from "../Helpers/DataIteration";
-import Star from "../Helpers/icons/Star";
-import Layout from "../Partials/Layout";
-import ProductsFilter from "./ProductsFilter";
-import ProductCardRowStyleTwo from "../Helpers/Cards/ProductCardRowStyleTwo";
 import LoaderStyleOne from "../Helpers/Loaders/LoaderStyleOne";
 import ServeLangItem from "../Helpers/ServeLangItem";
-import FontAwesomeCom from "../Helpers/icons/FontAwesomeCom";
+import Layout from "../Partials/Layout";
+import ProductsFilter from "./ProductsFilter";
 
 export default function AllProductPage({ response, sellerInfo }) {
   const [resProducts, setProducts] = useState(null);
@@ -147,41 +141,41 @@ export default function AllProductPage({ response, sellerInfo }) {
     setNxtPage(response.data && response.data.products.next_page_url);
     setCategoriesFilter(
       response.data &&
-        response.data.categories.length > 0 &&
-        response.data.categories.map((item) => {
-          return {
-            ...item,
-            selected: false,
-          };
-        })
+      response.data.categories.length > 0 &&
+      response.data.categories.map((item) => {
+        return {
+          ...item,
+          selected: false,
+        };
+      })
     );
     setVariantsFilter(
       response.data &&
-        response.data.activeVariants.length > 0 &&
-        response.data.activeVariants.map((varient) => {
-          return {
-            ...varient,
-            active_variant_items:
-              varient.active_variant_items &&
-              varient.active_variant_items.length > 0 &&
-              varient.active_variant_items.map((variant_item) => {
-                return {
-                  ...variant_item,
-                  selected: false,
-                };
-              }),
-          };
-        })
+      response.data.activeVariants.length > 0 &&
+      response.data.activeVariants.map((varient) => {
+        return {
+          ...varient,
+          active_variant_items:
+            varient.active_variant_items &&
+            varient.active_variant_items.length > 0 &&
+            varient.active_variant_items.map((variant_item) => {
+              return {
+                ...variant_item,
+                selected: false,
+              };
+            }),
+        };
+      })
     );
     setBrands(
       response.data &&
-        response.data.brands.length > 0 &&
-        response.data.brands.map((item) => {
-          return {
-            ...item,
-            selected: false,
-          };
-        })
+      response.data.brands.length > 0 &&
+      response.data.brands.map((item) => {
+        return {
+          ...item,
+          selected: false,
+        };
+      })
     );
     setVolume({
       min:
@@ -221,8 +215,8 @@ export default function AllProductPage({ response, sellerInfo }) {
         const brandsQuery =
           selectedBrandsFilterItem.length > 0
             ? selectedBrandsFilterItem.map((value) => {
-                return `brands[]=${value}`;
-              })
+              return `brands[]=${value}`;
+            })
             : [];
         const brandString =
           brandsQuery.length > 0
@@ -232,8 +226,8 @@ export default function AllProductPage({ response, sellerInfo }) {
         const categoryQuery =
           selectedCategoryFilterItem.length > 0
             ? selectedCategoryFilterItem.map((value) => {
-                return `categories[]=${value}`;
-              })
+              return `categories[]=${value}`;
+            })
             : [];
         const categoryString =
           categoryQuery.length > 0
@@ -243,8 +237,8 @@ export default function AllProductPage({ response, sellerInfo }) {
         const variantQuery =
           selectedVarientFilterItem.length > 0
             ? selectedVarientFilterItem.map((value) => {
-                return `variantItems[]=${value}`;
-              })
+              return `variantItems[]=${value}`;
+            })
             : [];
         const variantString =
           variantQuery.length > 0
@@ -252,12 +246,9 @@ export default function AllProductPage({ response, sellerInfo }) {
             : "";
         axios
           .get(
-            `${process.env.NEXT_PUBLIC_BASE_URL}api/search-product?${
-              brandString && brandString
-            }${categoryString && categoryString}${
-              variantString && variantString
-            }min_price=${volume.min}&max_price=${volume.max}${
-              sellerInfo ? `&shop_name=${sellerInfo.seller.slug}` : ""
+            `${process.env.NEXT_PUBLIC_BASE_URL}api/search-product?${brandString && brandString
+            }${categoryString && categoryString}${variantString && variantString
+            }min_price=${volume.min}&max_price=${volume.max}${sellerInfo ? `&shop_name=${sellerInfo.seller.slug}` : ""
             }`
           )
           .then((res) => {
@@ -337,8 +328,8 @@ export default function AllProductPage({ response, sellerInfo }) {
       <Layout>
         <div className="products-page-wrapper w-full">
           <div className="container-x mx-auto">
-            {/*<BreadcrumbCom />*/}
-            <div className="w-full lg:flex lg:space-x-[30px] rtl:space-x-reverse">
+            {/* <BreadcrumbCom /> */}
+            <div className={`${products ? 'lg:flex lg:space-x-[30px] rtl:space-x-reverse' : ''} w-full "`}>
               <div className="lg:w-[270px]">
                 <ProductsFilter
                   filterToggle={filterToggle}
@@ -456,7 +447,7 @@ export default function AllProductPage({ response, sellerInfo }) {
               <div className="flex-1">
                 {response.data && response.data.products.data.length > 0 ? (
                   <div className="w-full">
-                    <div className="products-sorting w-full bg-white md:h-[70px] flex md:flex-row flex-col md:space-y-0 space-y-5 md:justify-between md:items-center p-[30px] mb-[40px]">
+                    <div className="products-sorting w-full bg-white md:h-[70px] flex md:flex-row flex-col md:space-y-0 space-y-5 md:justify-between md:items-center mb-[40px]">
                       <div className="flex items-center gap-3">
                         <Link href={"/"}>
                           <button className="text-sm bg-[var(--primary-color)] text-white p-2 rounded-md">
@@ -481,11 +472,10 @@ export default function AllProductPage({ response, sellerInfo }) {
                         <button
                           onClick={() => setCardViewStyle("col")}
                           type="button"
-                          className={`hover:text-qgreen w-6 h-6 ${
-                            cardViewStyle === "col"
-                              ? "text-qgreen"
-                              : "text-qgray"
-                          }`}
+                          className={`hover:text-qgreen w-6 h-6 ${cardViewStyle === "col"
+                            ? "text-qgreen"
+                            : "text-qgray"
+                            }`}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -499,11 +489,10 @@ export default function AllProductPage({ response, sellerInfo }) {
                         <button
                           onClick={() => setCardViewStyle("row")}
                           type="button"
-                          className={`hover:text-qgreen w-6 h-6 ${
-                            cardViewStyle === "row"
-                              ? "text-qgreen"
-                              : "text-qgray"
-                          }`}
+                          className={`hover:text-qgreen w-6 h-6 ${cardViewStyle === "row"
+                            ? "text-qgreen"
+                            : "text-qgray"
+                            }`}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -586,12 +575,12 @@ export default function AllProductPage({ response, sellerInfo }) {
                       <div className="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-[30px] gap-5 mb-[40px]">
                         <DataIteration
                           datas={products && products}
-                          // startLength={6}
-                          // endLength={
-                          //   products && products.length >= 14
-                          //     ? 14
-                          //     : products && products.length
-                          // }
+                        // startLength={6}
+                        // endLength={
+                        //   products && products.length >= 14
+                        //     ? 14
+                        //     : products && products.length
+                        // }
                         >
                           {({ datas }) => (
                             <div data-aos="fade-up" key={datas.id}>
@@ -605,12 +594,12 @@ export default function AllProductPage({ response, sellerInfo }) {
                       <div className="grid lg:grid-cols-2 grid-cols-1 xl:gap-[30px] gap-5 mb-[40px]">
                         <DataIteration
                           datas={products && products}
-                          // startLength={0}
-                          // endLength={
-                          //   products && products.length >= 8
-                          //     ? 8
-                          //     : products && products.length
-                          // }
+                        // startLength={0}
+                        // endLength={
+                        //   products && products.length >= 8
+                        //     ? 8
+                        //     : products && products.length
+                        // }
                         >
                           {({ datas }) => (
                             <div data-aos="fade-up" key={datas.id}>

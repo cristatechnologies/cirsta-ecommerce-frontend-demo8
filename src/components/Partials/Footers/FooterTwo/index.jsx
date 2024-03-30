@@ -16,8 +16,8 @@ export default function Footer({ settings }) {
     if (!firstCol) {
       setFirstCol(
         websiteSetup &&
-          websiteSetup.payload &&
-          websiteSetup.payload.footer_first_col
+        websiteSetup.payload &&
+        websiteSetup.payload.footer_first_col
       );
     }
   });
@@ -25,8 +25,8 @@ export default function Footer({ settings }) {
     if (!secondCol) {
       setSecondCol(
         websiteSetup &&
-          websiteSetup.payload &&
-          websiteSetup.payload.footer_second_col
+        websiteSetup.payload &&
+        websiteSetup.payload.footer_second_col
       );
     }
   });
@@ -34,15 +34,15 @@ export default function Footer({ settings }) {
     if (!thirdCol) {
       setThirdCol(
         websiteSetup &&
-          websiteSetup.payload &&
-          websiteSetup.payload.footer_third_col
+        websiteSetup.payload &&
+        websiteSetup.payload.footer_third_col
       );
     }
   });
 
   return (
     <footer className="footer-section-wrapper bg-white">
-      <div className="container-x block mx-auto pt-[83px]">
+      <div className="container-x block mx-auto pt-[83px] lg:pb-0 md:pb-0 sm:pb-[100px]">
         <div className="mb-14 text-center border-b border-gray-200">
           <Link href="/" passHref>
             <a>

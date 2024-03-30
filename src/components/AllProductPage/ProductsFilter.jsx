@@ -26,13 +26,12 @@ export default function ProductsFilter({
   const categoryList = websiteSetup && websiteSetup.payload.productCategories;
   return (
     <>
-      {searchProductFilter ? (
+      {searchProductFilter || filterToggle ? (
         <div
-          className={`filter-widget w-full fixed lg:relative left-0 top-0 h-screen z-10 lg:h-auto overflow-y-scroll lg:overflow-y-auto bg-white px-[30px] pt-[40px] ${
-            className || ""
-          }  ${filterToggle ? "block" : "hidden lg:block"}`}
+          className={`filter-widget w-full fixed lg:relative left-0 top-0 h-screen z-10 lg:h-auto overflow-y-scroll lg:overflow-y-auto bg-white px-[30px] pt-[40px] shadow-lg max-h-[600px]  overflow-auto ${className || ""
+            }  ${filterToggle ? "block" : "hidden lg:block"}`}
         >
-          <div className="filter-subject-item pb-10 border-b border-qgray-border">
+          <div className="filter-subject-item pb-10 border-b border-qgray-border ">
             <div className="subject-title mb-[30px]">
               <h1 className="text-black text-base font-500">
                 {ServeLangItem()?.Product_categories}
@@ -93,84 +92,84 @@ export default function ProductsFilter({
             </div>
           )}
           {/* <div className="filter-subject-item pb-10 border-b border-qgray-border mt-10">
-          <div className="subject-title mb-[30px]">
-            <h1 className="text-black text-base font-500">
-              {ServeLangItem()?.Brands}
-            </h1>
-          </div>
-          <div className="filter-items">
-            <ul>
-              {brands &&
-                brands.length > 0 &&
-                brands.map((brand, i) => (
-                  <li
-                    key={i}
-                    className="item flex justify-between items-center mb-5"
-                  >
-                    <div className="flex space-x-[14px] rtl:space-x-reverse items-center">
-                      <div>
-                        <Checkbox
-                          id={brand.name}
-                          name={brand.id}
-                          handleChange={(e) => brandsHandler(e)}
-                          checked={brand.selected}
-                        />
-                      </div>
-                      <label
-                        htmlFor={brand.name}
-                        className="text-xs font-black font-400 capitalize"
-                      >
-                        {brand.name}
-                      </label>
-                    </div>
-                  </li>
-                ))}
-            </ul>
-          </div>
-        </div> */}
-          {/* {variantsFilter &&
-          variantsFilter.length &&
-          variantsFilter.map((variant, i) => (
-            <div
-              key={i}
-              className="filter-subject-item pb-10 border-b border-qgray-border mt-10"
-            >
-              <div className="subject-title mb-[30px]">
-                <h1 className="text-black text-base font-500">
-                  {variant.name}
-                </h1>
-              </div>
-              <div className="filter-items">
-                <ul>
-                  {variant &&
-                    variant.active_variant_items.length > 0 &&
-                    variant.active_variant_items.map((varientItem, i) => (
-                      <li
-                        key={i}
-                        className="item flex justify-between items-center mb-5"
-                      >
-                        <div className="flex space-x-[14px] rtl:space-x-reverse items-center">
-                          <div>
-                            <Checkbox
-                              id={varientItem.name}
-                              name={varientItem.name}
-                              handleChange={(e) => varientHandler(e)}
-                              checked={varientItem.selected}
-                            />
-                          </div>
-                          <label
-                            htmlFor={varientItem.name}
-                            className="text-xs font-black font-400 capitalize"
-                          >
-                            {varientItem.name}
-                          </label>
-                        </div>
-                      </li>
-                    ))}
-                </ul>
-              </div>
+            <div className="subject-title mb-[30px]">
+              <h1 className="text-black text-base font-500">
+                {ServeLangItem()?.Brands}
+              </h1>
             </div>
-          ))} */}
+            <div className="filter-items">
+              <ul>
+                {brands &&
+                  brands.length > 0 &&
+                  brands.map((brand, i) => (
+                    <li
+                      key={i}
+                      className="item flex justify-between items-center mb-5"
+                    >
+                      <div className="flex space-x-[14px] rtl:space-x-reverse items-center">
+                        <div>
+                          <Checkbox
+                            id={brand.name}
+                            name={brand.id}
+                            handleChange={(e) => brandsHandler(e)}
+                            checked={brand.selected}
+                          />
+                        </div>
+                        <label
+                          htmlFor={brand.name}
+                          className="text-xs font-black font-400 capitalize"
+                        >
+                          {brand.name}
+                        </label>
+                      </div>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          </div> */}
+          {variantsFilter &&
+            variantsFilter.length &&
+            variantsFilter.map((variant, i) => (
+              <div
+                key={i}
+                className="filter-subject-item pb-10 border-b border-qgray-border mt-10"
+              >
+                <div className="subject-title mb-[30px]">
+                  <h1 className="text-black text-base font-500">
+                    {variant.name}
+                  </h1>
+                </div>
+                <div className="filter-items">
+                  <ul>
+                    {variant &&
+                      variant.active_variant_items.length > 0 &&
+                      variant.active_variant_items.map((varientItem, i) => (
+                        <li
+                          key={i}
+                          className="item flex justify-between items-center mb-5"
+                        >
+                          <div className="flex space-x-[14px] rtl:space-x-reverse items-center">
+                            <div>
+                              <Checkbox
+                                id={varientItem.name}
+                                name={varientItem.name}
+                                handleChange={(e) => varientHandler(e)}
+                                checked={varientItem.selected}
+                              />
+                            </div>
+                            <label
+                              htmlFor={varientItem.name}
+                              className="text-xs font-black font-400 capitalize"
+                            >
+                              {varientItem.name}
+                            </label>
+                          </div>
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
 
           <button
             onClick={filterToggleHandler}
@@ -192,8 +191,8 @@ export default function ProductsFilter({
           </button>
         </div>
       ) : (
-        <div className="min-h-[576px] h-auto w-[280px] border border-black-800 relative hidden lg:block sm:block bg-white">
-          <div className="hidden h-[41px] px-5 rounded-[5px] bg-[var(--primary-color)] lg:block sm:block">
+        <div className={`${products ? 'border border-black-800' : ''} h-auto w-[280px]  relative hidden lg:block bg-white mt-28 sm:hidden`}>
+          {/* <div className="hidden h-[41px] px-5 rounded-[5px] bg-[var(--primary-color)] lg:block sm:block">
             <button
               type="button"
               className="w-full h-full flex justify-between items-center cursor-default"
@@ -218,8 +217,8 @@ export default function ProductsFilter({
                 </span>
               </div>
             </button>
-          </div>
-          <ul className="all-categories-item bg-white">
+          </div> */}
+          {/* <ul className="all-categories-item bg-white">
             {categoryList &&
               categoryList.map((item) => (
                 <li
@@ -367,7 +366,7 @@ export default function ProductsFilter({
                   )}
                 </li>
               ))}
-          </ul>
+          </ul> */}
           {products && (
             <div className="filter-subject-item pb-10 border-b border-qgray-border mt-10 p-5">
               <div className="subject-title mb-[30px]">

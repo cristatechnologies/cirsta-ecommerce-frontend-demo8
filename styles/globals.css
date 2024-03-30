@@ -62,6 +62,22 @@
   --secondary-color: red;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+  height: 4px;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0px 0px 0px 0px;
+  background-color: var(--primary-color);
+}
+
+
 *,
 *:before,
 *:after {
