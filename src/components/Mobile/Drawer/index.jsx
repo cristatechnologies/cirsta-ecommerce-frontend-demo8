@@ -1,10 +1,9 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Compair from "../../Helpers/icons/Compair";
 import ThinLove from "../../Helpers/icons/ThinLove";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import FontAwesomeCom from "../../Helpers/icons/FontAwesomeCom";
 import ServeLangItem from "../../Helpers/ServeLangItem";
 import DrawerCategory from "./DrawerCategory";
 import auth from "../../../../utils/auth";
@@ -685,7 +684,7 @@ export default function Drawer({ className, open, action }) {
                 </li>
                 <li>
                   <div className="ml-4 mt-2">
-                    {auth ? (
+                    {auth() ? (
                       <span
                         onClick={logout}
                         className="flex items-center gap-3 border border-[var(--primary-color)] rounded-xl p-2 w-28 cursor-pointer"

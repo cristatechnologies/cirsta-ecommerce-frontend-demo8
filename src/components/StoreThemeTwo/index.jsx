@@ -20,7 +20,7 @@ import CategorySection from "./CategorySection";
 export default function StorePageThemeTwo({ homepageData }) {
   const getsectionTitles = homepageData.section_title;
   const [sectionTitles, setSectionTitles] = useState(null);
-  console.log('homepageData :>> ', homepageData);
+
   useEffect(() => {
     if (!sectionTitles) {
       let tem =

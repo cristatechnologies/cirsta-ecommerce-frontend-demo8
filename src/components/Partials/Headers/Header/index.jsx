@@ -204,7 +204,7 @@ export default function Header({ drawerAction, settings, contact }) {
                     </a>
                   </Link>
                   <div className="mt-5 ">
-                    {auth ? (
+                    {auth() ? (
                       <span
                         onClick={logout}
                         className="flex items-center gap-3 border border-[var(--primary-color)] rounded-xl p-2 w-28 cursor-pointer"
@@ -286,7 +286,7 @@ export default function Header({ drawerAction, settings, contact }) {
                 </span>
               </div>
               <div className="ml-8 lg:block hidden">
-                {auth ? (
+                {auth() ? (
                   <span
                     onClick={logout}
                     className="flex items-center gap-3 border border-[var(--primary-color)] rounded-xl p-2 w-28 cursor-pointer"
