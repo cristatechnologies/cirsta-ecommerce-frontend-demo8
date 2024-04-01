@@ -36,7 +36,7 @@ const Redirect = () => {
   );
 };
 
-export default function ProductCardStyleOne({ datas }) {
+export default function ProductCardStyleOne({ datas, quickViewHandler }) {
   const router = useRouter();
   const dispatch = useDispatch();
   const { wishlistData } = useSelector((state) => state.wishlistData);
@@ -59,31 +59,6 @@ export default function ProductCardStyleOne({ datas }) {
     }
   }, [websiteSetup]);
   const [arWishlist, setArWishlist] = useState(null);
-  const [quickViewModal, setQuickView] = useState(false);
-  const [quickViewData, setQuickViewData] = useState(null);
-  const quickViewHandler = (slug) => {
-    setQuickView(!quickViewModal);
-    if (!quickViewData) {
-      axios
-        .get(`${process.env.NEXT_PUBLIC_BASE_URL}api/product/${slug}`)
-        .then((res) => {
-          setQuickViewData(res.data ? res.data : null);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  };
-  useEffect(() => {
-    if (quickViewModal) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [quickViewModal]);
 
   useEffect(() => {
     if (wishlisted) {
@@ -472,53 +447,6 @@ export default function ProductCardStyleOne({ datas }) {
             </span>
           </button>
         </div>
-        {quickViewModal && quickViewData && (
-          <div className="quicke-view-wrapper w-full h-full flex fixed left-0 top-0 justify-center z-50 items-center ">
-            <div
-              onClick={() => setQuickView(!quickViewModal)}
-              className="w-full h-full fixed left-0 right-0 bg-black  bg-opacity-25"
-            ></div>
-            <div
-              data-aos="fade-up"
-              className=" md:mx-10 xl:mt-[100px] rounded w-full bg-white relative lg:py-[40px] pt-[80px] pb-[40px] sm:px-[38px] px-3 md:mt-12 h-full overflow-y-scroll xl:overflow-hidden xl:mt-0 "
-              style={{ zIndex: "999" }}
-            >
-              <div className="w-full h-full overflow-y-scroll overflow-style-none">
-                <ProductView
-                  images={
-                    quickViewData.gellery.length > 0
-                      ? quickViewData.gellery
-                      : []
-                  }
-                  quickViewData={quickViewData && quickViewData}
-                  product={quickViewData.product}
-                />
-              </div>
-              <button
-                onClick={() => setQuickView(!quickViewModal)}
-                type="button"
-                className="absolute right-3 top-3"
-              >
-                <span className="text-red-500 w-12 h-12 flex justify-center items-center rounded border border-qred">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    className="w-10 h-10"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6 18L18 6M6 6l12 12"
-                    ></path>
-                  </svg>
-                </span>
-              </button>
-            </div>
-          </div>
-        )}
       </div>
       <span className="anim bottom"></span>
       <span className="anim right"></span>
