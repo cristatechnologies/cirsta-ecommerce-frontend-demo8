@@ -16,7 +16,11 @@ export default function Ads({ handler }) {
       localStorage.setItem("ads", "false");
       let date = new Date();
       date.setDate(date.getDate() + parseInt(announcment.expired_date));
-      let nextDate = date.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' });
+      let nextDate = date.toLocaleDateString("en-US", {
+        month: "2-digit",
+        day: "2-digit",
+        year: "numeric",
+      });
       localStorage.setItem("upcoming_announcement", `${nextDate}`);
       setAds(false);
     }
@@ -54,7 +58,7 @@ export default function Ads({ handler }) {
           setAds(false);
         }
       } else {
-        setAds(false);
+        setAds(true);
       }
     }
   });
@@ -73,8 +77,9 @@ export default function Ads({ handler }) {
             <div
               className="lg:w-[812px] md:w-[650px] w-[310px] md:h-[509px] relative z-50 bg-slate-700 ltr:md:pl-10 ltr:pl-3 rtl:md:pr-10 rtl:pr-3 pr-3 md:py-[108px] py-20 flex flex-col justify-end overflow-hidden"
               style={{
-                backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_URL + announcment.image
-                  })`,
+                backgroundImage: `url(${
+                  process.env.NEXT_PUBLIC_BASE_URL + announcment.image
+                })`,
                 backgroundRepeat: " no-repeat",
                 backgroundSize: "cover",
               }}
@@ -86,10 +91,11 @@ export default function Ads({ handler }) {
                       <Image
                         width="152"
                         height="36"
-                        src={`${logo
-                          ? process.env.NEXT_PUBLIC_BASE_URL + logo
-                          : "/assets/images/logo.svg"
-                          }`}
+                        src={`${
+                          logo
+                            ? process.env.NEXT_PUBLIC_BASE_URL + logo
+                            : "/assets/images/logo.svg"
+                        }`}
                         alt="logo"
                       />
                     </a>
@@ -146,7 +152,10 @@ export default function Ads({ handler }) {
                   {ServeLangItem()?.Subscribe}
                 </button>
               </div>
-              <div className="absolute ltr:right-5 rtl:left-5 top-5" onClick={adsHandle} >
+              <div
+                className="absolute ltr:right-5 rtl:left-5 top-5"
+                onClick={adsHandle}
+              >
                 <svg
                   onClick={adsHandle}
                   viewBox="0 0 54 54"
