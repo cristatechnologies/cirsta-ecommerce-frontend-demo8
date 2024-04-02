@@ -142,15 +142,17 @@ export default function Footer({ settings }) {
                     {thirdCol.col_links.length > 0 &&
                       thirdCol.col_links.map((item, i) => (
                         <li key={i}>
-                          <li key={i} className="flex items-center gap-2">
-                            <FontAwesomeCom
-                              className={"w-4 h-4 text-[var(--text-color)]"}
-                              icon={item.link}
-                            />
-                            <span className="text-[var(--text-color)] text-[15px] hover:text-[var(--primary-color)] border-b border-transparent hover:border-qblack">
-                              {item.title}
-                            </span>
-                          </li>
+                          <ul>
+                            <li key={i} className="flex items-center gap-2">
+                              <FontAwesomeCom
+                                className={"w-4 h-4 text-[var(--text-color)]"}
+                                icon={item.link}
+                              />
+                              <span className="text-[var(--text-color)] text-[15px] hover:text-[var(--primary-color)] border-b border-transparent hover:border-qblack">
+                                {item.title}
+                              </span>
+                            </li>
+                          </ul>
                         </li>
                       ))}
                   </ul>
