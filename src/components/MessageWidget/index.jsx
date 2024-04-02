@@ -65,8 +65,7 @@ function Index({ pusher }) {
       } else {
         axios
           .get(
-            `${
-              process.env.NEXT_PUBLIC_BASE_URL
+            `${process.env.NEXT_PUBLIC_BASE_URL
             }api/user/message-with-seller?token=${auth().access_token}`
           )
           .then((res) => {
@@ -87,10 +86,8 @@ function Index({ pusher }) {
     if (auth()) {
       axios
         .get(
-          `${
-            process.env.NEXT_PUBLIC_BASE_URL
-          }api/user/load-active-seller-message/${parseInt(value)}?token=${
-            auth().access_token
+          `${process.env.NEXT_PUBLIC_BASE_URL
+          }api/user/load-active-seller-message/${parseInt(value)}?token=${auth().access_token
           }`
         )
         .then((res) => {
@@ -115,35 +112,34 @@ function Index({ pusher }) {
   const messageHandler = (e) => {
     setMessage(e.target.value);
   };
-  const send = (productId) => {
-    if (auth()) {
-      if (selectedSellerId) {
-        axios
-          .post(
-            `${
-              process.env.NEXT_PUBLIC_BASE_URL
-            }api/user/send-message-to-seller?token=${auth().access_token}`,
-            {
-              seller_id: parseInt(selectedSellerId),
-              message: message,
-              product_id: productId ? productId : null,
-            }
-          )
-          .then((res) => {
-            if (res) {
-              setSellerMessages(res.data.messages);
-              fixedScrollBottom();
-              setMessage("");
-              setProduct(null);
-            }
-          });
-      } else {
-        return false;
-      }
-    } else {
-      loginPopupBoard.handlerPopup(true);
-    }
-  };
+  // const send = (productId) => {
+  //   if (auth()) {
+  //     if (selectedSellerId) {
+  //       axios
+  //         .post(
+  //           `${process.env.NEXT_PUBLIC_BASE_URL
+  //           }api/user/send-message-to-seller?token=${auth().access_token}`,
+  //           {
+  //             seller_id: parseInt(selectedSellerId),
+  //             message: message,
+  //             product_id: productId ? productId : null,
+  //           }
+  //         )
+  //         .then((res) => {
+  //           if (res) {
+  //             setSellerMessages(res.data.messages);
+  //             fixedScrollBottom();
+  //             setMessage("");
+  //             setProduct(null);
+  //           }
+  //         });
+  //     } else {
+  //       return false;
+  //     }
+  //   } else {
+  //     loginPopupBoard.handlerPopup(true);
+  //   }
+  // };
   const messageRef = useRef(null);
   const fixedScrollBottom = () => {
     const messages = messageRef.current;
@@ -177,13 +173,13 @@ function Index({ pusher }) {
         getFirstVarients.map((v) => (v.price ? v.price : 0));
       const sumPrice = parseInt(
         prices.reduce((prev, curr) => parseInt(prev) + parseInt(curr), 0) +
-          parseInt(product.price)
+        parseInt(product.price)
       );
       setPrice(sumPrice);
       if (product.offer_price) {
         const sumOfferPrice = parseInt(
           prices.reduce((prev, curr) => parseInt(prev) + parseInt(curr), 0) +
-            parseInt(product.offer_price)
+          parseInt(product.offer_price)
         );
         setOffer(sumOfferPrice);
       }
@@ -213,29 +209,29 @@ function Index({ pusher }) {
       }
     }
   });
-  const fetchChat = () => {
-    if (auth()) {
-      axios
-        .get(
-          `${
-            process.env.NEXT_PUBLIC_BASE_URL
-          }api/user/message-with-seller?token=${auth().access_token}`
-        )
-        .then((res) => {
-          if (res && res.data) {
-            setMessages(res.data.seller_list);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  };
-  useEffect(() => {
-    if (!messages || messages.length === 0) {
-      fetchChat();
-    }
-  }, []);
+  // const fetchChat = () => {
+  //   if (auth()) {
+  //     axios
+  //       .get(
+  //         `${
+  //           process.env.NEXT_PUBLIC_BASE_URL
+  //         }api/user/message-with-seller?token=${auth().access_token}`
+  //       )
+  //       .then((res) => {
+  //         if (res && res.data) {
+  //           setMessages(res.data.seller_list);
+  //         }
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }
+  // };
+  // useEffect(() => {
+  //   if (!messages || messages.length === 0) {
+  //     fetchChat();
+  //   }
+  // }, []);
   useEffect(() => {
     if (messages && messages.length > 0) {
       fixedScrollBottom();
@@ -286,20 +282,20 @@ function Index({ pusher }) {
   //==watches
   const echo = new Echo(options);
   const [listenerAdded, setListenerAdded] = useState(false);
-  useEffect(() => {
-    if (!listenerAdded) {
-      echo
-        .private(`seller-to-user-message.${auth() && auth().user.id}`)
-        .listen("SellerToUser", (e) => {
-          let activeSeller = localStorage.getItem("active-chat-seller");
-          newMessageHandler(e, activeSeller);
-        });
-      setListenerAdded(true);
-    }
-    return () => {
-      echo.leave("seller-to-user-message");
-    };
-  }, [echo, listenerAdded]);
+  // useEffect(() => {
+  //   if (!listenerAdded) {
+  //     echo
+  //       .private(`seller-to-user-message.${auth() && auth().user.id}`)
+  //       .listen("SellerToUser", (e) => {
+  //         let activeSeller = localStorage.getItem("active-chat-seller");
+  //         newMessageHandler(e, activeSeller);
+  //       });
+  //     setListenerAdded(true);
+  //   }
+  //   return () => {
+  //     echo.leave("seller-to-user-message");
+  //   };
+  // }, [echo, listenerAdded]);
   const messageToggleAction = () => {
     if (auth()) {
       setSeller(null);
@@ -362,11 +358,10 @@ function Index({ pusher }) {
       >
         {/*w-[576px] h-[474px]*/}
         <div
-          className={`bg-white transform   transition duration-700 ease-in-out ${
-            toggleMessage.toggle
-              ? "translate-y-0 md:w-[576px] w-full md:h-[474px] h-full"
-              : "translate-y-[480px] w-0 h-0"
-          }`}
+          className={`bg-white transform   transition duration-700 ease-in-out ${toggleMessage.toggle
+            ? "translate-y-0 md:w-[576px] w-full md:h-[474px] h-full"
+            : "translate-y-[480px] w-0 h-0"
+            }`}
           style={{ boxShadow: "0px 4px 109px rgba(0, 0, 0, 0.12)" }}
         >
           <div
@@ -452,11 +447,10 @@ function Index({ pusher }) {
                             item.shop_or_vendor_id
                           )
                         }
-                        className={`flex w-[150px] md:w-auto space-x-3 items-center px-2.5 py-3 hover:bg-[#FFF2DA] cursor-pointer cursor-pointer ${
-                          item.shop_owner_id === selectedSellerId
-                            ? "bg-[#FFF2DA]"
-                            : ""
-                        }`}
+                        className={`flex w-[150px] md:w-auto space-x-3 items-center px-2.5 py-3 hover:bg-[#FFF2DA] cursor-pointer cursor-pointer ${item.shop_owner_id === selectedSellerId
+                          ? "bg-[#FFF2DA]"
+                          : ""
+                          }`}
                       >
                         <div className={`w-[44px] h-[44px]  relative `}>
                           <div className="w-full h-full rounded-full overflow-hidden bg-[#FAF9FA] relative shadow-lg">
@@ -534,10 +528,9 @@ function Index({ pusher }) {
                             <Image
                               layout="fill"
                               objectFit="contain"
-                              src={`${
-                                process.env.NEXT_PUBLIC_BASE_URL +
+                              src={`${process.env.NEXT_PUBLIC_BASE_URL +
                                 product.thumb_image
-                              }`}
+                                }`}
                               alt="seller"
                             />
                           </div>
@@ -584,11 +577,10 @@ function Index({ pusher }) {
                             <div className="flex space-x-2 items-baseline">
                               <span
                                 suppressHydrationWarning
-                                className={`main-price  font-600  ${
-                                  offerPrice
-                                    ? "line-through text-qgray text-xs"
-                                    : "text-qred text-xs"
-                                }`}
+                                className={`main-price  font-600  ${offerPrice
+                                  ? "line-through text-qgray text-xs"
+                                  : "text-qred text-xs"
+                                  }`}
                               >
                                 {offerPrice ? (
                                   <span>{currency_icon + price}</span>
@@ -628,8 +620,8 @@ function Index({ pusher }) {
                     )}
 
                   {sellerMessages &&
-                  sellerMessages.length > 0 &&
-                  selectedSellerId ? (
+                    sellerMessages.length > 0 &&
+                    selectedSellerId ? (
                     <>
                       <div id="message-body" className="w-full">
                         {sellerMessages.map((item, i) => (
@@ -706,10 +698,9 @@ function Index({ pusher }) {
                                           <Image
                                             layout="fill"
                                             objectFit="contain"
-                                            src={`${
-                                              process.env.NEXT_PUBLIC_BASE_URL +
+                                            src={`${process.env.NEXT_PUBLIC_BASE_URL +
                                               item.product.thumb_image
-                                            }`}
+                                              }`}
                                             alt="seller"
                                           />
                                         </div>
@@ -737,33 +728,33 @@ function Index({ pusher }) {
                                             {parseInt(
                                               item.product.averageRating
                                             ) < 5 && (
-                                              <>
-                                                {Array.from(
-                                                  Array(
-                                                    5 -
+                                                <>
+                                                  {Array.from(
+                                                    Array(
+                                                      5 -
                                                       parseInt(
                                                         item.product
                                                           .averageRating
                                                       )
-                                                  ),
-                                                  () => (
-                                                    <span
-                                                      key={
-                                                        parseInt(
-                                                          item.product
-                                                            .averageRating
-                                                        ) + Math.random()
-                                                      }
-                                                      className="text-gray-500"
-                                                    >
-                                                      <Star
-                                                        defaultValue={false}
-                                                      />
-                                                    </span>
-                                                  )
-                                                )}
-                                              </>
-                                            )}
+                                                    ),
+                                                    () => (
+                                                      <span
+                                                        key={
+                                                          parseInt(
+                                                            item.product
+                                                              .averageRating
+                                                          ) + Math.random()
+                                                        }
+                                                        className="text-gray-500"
+                                                      >
+                                                        <Star
+                                                          defaultValue={false}
+                                                        />
+                                                      </span>
+                                                    )
+                                                  )}
+                                                </>
+                                              )}
                                           </div>
                                           <p
                                             className={`text-[var(--text-color)] text-xs font-medium leading-[24px] line-clamp-1`}
