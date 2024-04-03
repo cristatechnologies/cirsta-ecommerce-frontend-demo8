@@ -1029,7 +1029,7 @@ function CheakoutPage() {
                   {!newAddress && (
                     <div className="addresses-widget w-full">
                       <div className="sm:flex justify-between items-center w-full mb-5">
-                        <div className=" border border-[#409BD1] rounded p-2">
+                        <div className=" border border-[var(--primary-color)] rounded p-2">
                           {/* <button
                             onClick={() => setActiveAddress("billing")}
                             type="button"
@@ -1080,7 +1080,7 @@ function CheakoutPage() {
                                 key={i}
                                 className={`w-full p-5 border cursor-pointer relative ${
                                   address.id === selectedBilling
-                                    ? "border-[#409BD1] bg-primarygray"
+                                    ? "border-[var(--primary-color)] bg-primarygray"
                                     : "border-transparent bg-[#DFDFDF]"
                                 }`}
                               >
