@@ -420,7 +420,7 @@ function SignupWidget({ redirect = true, signupActionPopup, changeContent }) {
                 </svg>
               )}
             </button>
-            {redirect ? (
+            {/* {redirect ? (
               <Link href="/seller-terms-condition">
                 <span className="text-base text-black cursor-pointer">
                   {ServeLangItem()?.I_agree_all_terms_and_condition_in_ecoShop}
@@ -432,7 +432,12 @@ function SignupWidget({ redirect = true, signupActionPopup, changeContent }) {
                   {ServeLangItem()?.I_agree_all_terms_and_condition_in_ecoShop}
                 </span>
               </button>
-            )}
+            )} */}
+            <button type="button">
+              <span className="text-base text-black cursor-pointer">
+                {ServeLangItem()?.I_agree_all_terms_and_condition_in_ecoShop}
+              </span>
+            </button>
           </div>
         </div>
         <div className="signin-area mb-5">
