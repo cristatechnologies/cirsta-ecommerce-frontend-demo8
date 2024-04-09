@@ -31,7 +31,7 @@ export default function EmptyWishlistError() {
             )}
           </div>
           <div data-aos="fade-up" className="wishlist-content w-full">
-            <h1 className="sm:text-xl text-base font-semibold text-center mb-5 text-white">
+            <h1 className="sm:text-xl text-base font-semibold text-center mb-5 text-[var(--text-color)]">
               {ServeLangItem()?.Empty_You_dont_Wishlist_any_Products}
             </h1>
             <Link href="/">

@@ -32,7 +32,7 @@ export default function EmptyCardError() {
             )}
           </div>
           <div data-aos="fade-up" className="empty-content w-full">
-            <h1 className="sm:text-xl text-base font-semibold text-center mb-5 text-white">
+            <h1 className="sm:text-xl text-base font-semibold text-center mb-5 text-[var(--text-color)]">
               {ServeLangItem()?.Empty_You_dont_Cart_any_Products}
             </h1>
             <Link href="/">

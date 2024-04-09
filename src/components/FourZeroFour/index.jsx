@@ -39,7 +39,7 @@ export default function FourZeroFour() {
                   )}
                 </div>
                 <div data-aos="fade-up" className="empty-content w-full">
-                  <h1 className="sm:text-xl text-base font-semibold text-center mb-5 text-white">
+                  <h1 className="sm:text-xl text-base font-semibold text-center mb-5 text-[var(--text-color)]">
                     {ServeLangItem()?.Sorry_We_cantt_Find_that_page}
                   </h1>
                   <Link href="/">
