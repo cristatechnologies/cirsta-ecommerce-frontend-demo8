@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import apiRequest from "../../../utils/apiRequest";
 import auth from "../../../utils/auth";
 import BreadcrumbCom from "../BreadcrumbCom";
-import ProductCardStyleOne from "../Helpers/Cards/ProductCardStyleOne";
+import ProductCardStyleOneTwo from "../Helpers/Cards/ProductCardStyleOneTwo";
 import DataIteration from "../Helpers/DataIteration";
 import InputCom from "../Helpers/InputCom";
 import LoaderStyleOne from "../Helpers/Loaders/LoaderStyleOne";
@@ -292,7 +292,7 @@ export default function SingleProductPage({ details }) {
                       >
                         {({ datas }) => (
                           <div key={datas.id} className="item">
-                            <ProductCardStyleOne datas={datas} />
+                            <ProductCardStyleOneTwo datas={datas} />
                           </div>
                         )}
                       </DataIteration>
