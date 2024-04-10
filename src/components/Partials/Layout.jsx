@@ -8,12 +8,35 @@ import Footer from "./Footers/Footer";
 import FooterTheme2 from "./Footers/FooterTwo";
 import apiRequest from "../../../utils/apiRequest";
 import HeaderTwo from "./Headers/HeaderTwo";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Layout({ children, childrenClasses }) {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
   const [settings, setSettings] = useState(null);
   const themeSetting = JSON.parse(localStorage.getItem("settings"));
   const [subscribeData, setSubScribeDAta] = useState(null);
   const [contact, setContact] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   useEffect(() => {
     if (!subscribeData) {
       axios
@@ -87,6 +110,14 @@ export default function Layout({ children, childrenClasses }) {
         {themeSetting && themeSetting.selected_theme === "theme2" && (
           <FooterTheme2 settings={settings} />
         )}
+        <button
+          onClick={scrollToTop}
+          className={`${
+            isVisible ? "block" : "hidden"
+          } fixed bottom-4 right-4 bg-[var(--primary-color)] text-white px-5 py-4 rounded-full`}
+        >
+          <FontAwesomeIcon icon={"fa fa-angle-up scroll-top-arrow"} />
+        </button>
       </div>
     </>
   );
