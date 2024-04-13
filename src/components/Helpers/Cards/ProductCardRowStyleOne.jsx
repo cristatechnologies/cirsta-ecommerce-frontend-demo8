@@ -45,10 +45,14 @@ export default function ProductCardRowStyleOne({ className, datas }) {
       const getId = websiteSetup.payload.flashSaleProducts.find(
         (item) => parseInt(item.product_id) === parseInt(datas.id)
       );
+      let lastDateSale = new Date(websiteSetup.payload.flashSale.end_time);
+      let currentDate = new Date();
       if (getId) {
-        setData(true);
-      } else {
-        setData(false);
+        if (currentDate.getTime() <= lastDateSale.getTime()) {
+          setData(true);
+        } else {
+          setData(false);
+        }
       }
     }
   }, [websiteSetup]);
@@ -127,8 +131,8 @@ export default function ProductCardRowStyleOne({ className, datas }) {
           .catch((err) => {
             toast.error(
               err.response &&
-              err.response.data.message &&
-              err.response.data.message
+                err.response.data.message &&
+                err.response.data.message
             );
           });
         dispatch(fetchCart());
@@ -144,8 +148,8 @@ export default function ProductCardRowStyleOne({ className, datas }) {
           .catch((err) => {
             toast.error(
               err.response &&
-              err.response.data.message &&
-              err.response.data.message
+                err.response.data.message &&
+                err.response.data.message
             );
           });
         dispatch(fetchCart());
@@ -169,14 +173,14 @@ export default function ProductCardRowStyleOne({ className, datas }) {
       if (datas.offer_price) {
         const sumOfferPrice = parseFloat(
           prices.reduce((prev, curr) => parseInt(prev) + parseInt(curr), 0) +
-          parseFloat(datas.offer_price)
+            parseFloat(datas.offer_price)
         );
         setPrice(datas.price);
         setOffer(sumOfferPrice);
       } else {
         const sumPrice = parseFloat(
           prices.reduce((prev, curr) => parseInt(prev) + parseInt(curr), 0) +
-          parseFloat(datas.price)
+            parseFloat(datas.price)
         );
         setPrice(sumPrice);
       }
@@ -237,8 +241,9 @@ export default function ProductCardRowStyleOne({ className, datas }) {
     <div className="main-wrapper-card relative">
       <div
         data-aos="fade-left"
-        className={`product-row-card-style-one  w-full lg:h-[250px] h-[200px] bg-white group relative overflow-hidden ${className || ""
-          }`}
+        className={`product-row-card-style-one  w-full lg:h-[250px] h-[200px] bg-white group relative overflow-hidden ${
+          className || ""
+        }`}
       >
         <div className="flex space-x-5 items-center w-full h-full lg:p-[30px] sm:p-5 p-2 border border-[var(--primary-color)]">
           <div className="lg:w-1/2 w-1/3 h-full relative transform scale-100 group-hover:scale-110 transition duration-300 ease-in-ou">
@@ -289,10 +294,11 @@ export default function ProductCardRowStyleOne({ className, datas }) {
               <p className="price mb-[26px]">
                 <span
                   suppressHydrationWarning
-                  className={`main-price  font-600 text-[18px] ${offerPrice
-                    ? "line-through text-qgray"
-                    : "text-[var(--primary-color)]"
-                    }`}
+                  className={`main-price  font-600 text-[18px] ${
+                    offerPrice
+                      ? "line-through text-qgray"
+                      : "text-[var(--primary-color)]"
+                  }`}
                 >
                   {offerPrice ? (
                     <span>{currency_icon && currency_icon + price}</span>

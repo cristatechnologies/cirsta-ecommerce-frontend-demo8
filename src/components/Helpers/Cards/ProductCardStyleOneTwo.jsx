@@ -51,10 +51,14 @@ export default function ProductCardStyleOneTwo({ datas }) {
       const getId = websiteSetup.payload.flashSaleProducts.find(
         (item) => parseInt(item.product_id) === parseInt(datas.id)
       );
+      let lastDateSale = new Date(websiteSetup.payload.flashSale.end_time);
+      let currentDate = new Date();
       if (getId) {
-        setData(true);
-      } else {
-        setData(false);
+        if (currentDate.getTime() <= lastDateSale.getTime()) {
+          setData(true);
+        } else {
+          setData(false);
+        }
       }
     }
   }, [websiteSetup]);
