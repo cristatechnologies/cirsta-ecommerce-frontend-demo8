@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import ShopNowBtn from "../../Helpers/Buttons/ShopNowBtn";
-import ServeLangItem from "../../Helpers/ServeLangItem";
+import ShopNowBtn from "../../../Helpers/Buttons/ShopNowBtn";
+import ServeLangItem from "../../../Helpers/ServeLangItem";
 
 function TwoColumnAds({ bannerOne, bannerTwo }) {
   return (

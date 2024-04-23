@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import settings from "../../../utils/settings";
-import SectionStyleFour from "../Helpers/SectionStyleFour";
-import SectionStyleOne from "../Helpers/SectionStyleOne";
-import SectionStyleThree from "../Helpers/SectionStyleThree";
-import SectionStyleTwo from "../Helpers/SectionStyleTwo";
-import ViewMoreTitle from "../Helpers/ViewMoreTitle";
-import Layout from "../Partials/Layout";
+import settings from "../../../../utils/settings";
+import SectionStyleFour from "../../Helpers/SectionStyleFour";
+import SectionStyleOne from "../../Helpers/SectionStyleOne";
+import SectionStyleThree from "../../Helpers/SectionStyleThree";
+import SectionStyleTwo from "../../Helpers/SectionStyleTwo";
+import ViewMoreTitle from "../../Helpers/ViewMoreTitle";
+import Layout from "../../Partials/Layout";
 import Ads from "./Ads";
 import Banner from "./Banner";
 import BestSellers from "./BestSellers";
@@ -17,9 +17,10 @@ import OneColumnAdsOne from "./ProductAds/OneColumnAdsOne";
 import OneColumnAdsTwo from "./ProductAds/OneColumnAdsTwo";
 import CategorySection from "./CategorySection";
 
-export default function StorePage({ homepageData }) {
+export default function StorePageThemeTwo({ homepageData }) {
   const getsectionTitles = homepageData.section_title;
   const [sectionTitles, setSectionTitles] = useState(null);
+
   useEffect(() => {
     if (!sectionTitles) {
       let tem =
@@ -43,9 +44,9 @@ export default function StorePage({ homepageData }) {
   }, [isMultivendor]);
   return (
     <>
-      <Layout childrenClasses="pt-[30px] pb-[60px]">
+      <Layout childrenClasses="pt-0 pb-[60px]">
         <Ads />
-        {/* {homepage && (
+        {homepage && (
           <Banner
             images={homepage.sliders}
             services={homepage.services}
@@ -53,13 +54,13 @@ export default function StorePage({ homepageData }) {
             sidebarImgTwo={homepage.sliderBannerTwo}
             className="banner-wrapper md:mb-[60px] mb-[30px]"
           />
-        )} */}
-        {homepage && (
+        )}
+        {/* {homepage && (
           <CategorySection
             categories={homepage.homepage_categories}
             sectionTitle={sectionTitles && sectionTitles.Trending_Category}
           />
-        )}
+        )} */}
         {/* {homepage && (
           <SectionStyleOne
             products={homepage.popularCategoryProducts}
@@ -91,39 +92,40 @@ export default function StorePage({ homepageData }) {
           />
         )} */}
 
-        {/* {homepage && (
+        {homepage && (
           <ViewMoreTitle
-            className="top-selling-product md:mb-[60px] mb-[30px]"
+            className="top-selling-product md:mb-[60px] mb-[30px] "
             seeMoreUrl={`/products?highlight=top_product`}
             categoryTitle={sectionTitles && sectionTitles.Top_Rated_Products}
           >
             <SectionStyleTwo
               products={
-                homepage.topRatedProducts.length&& homepage.topRatedProducts.length > 0
+                homepage.topRatedProducts.length &&
+                homepage.topRatedProducts.length > 0
                   ? homepage.topRatedProducts
                   : []
               }
             />
           </ViewMoreTitle>
-        )} */}
+        )}
         {/* {homepage && isMultivendor === 1 && (
           <ViewMoreTitle
             className="best-sallers-section md:mb-[60px] mb-[30px]"
             seeMoreUrl="/sellers"
-            categoryTitle={sectionTitles && sectionTitles.Shop_by_Brand ==='Shop by Brand' ? 'Shop by Artist' : 'Shop by Brand'}
+            categoryTitle={sectionTitles && sectionTitles.Shop_by_Brand === 'Shop by Brand' ? 'Shop by Artist' : 'Shop by Brand'}
           >
             <BestSellers
-              sallers={homepage.sellers.length > 0 ? homepage.sellers.slice(0,7) : []}
+              sallers={homepage.sellers.length > 0 ? homepage.sellers.slice(0, 7) : []}
             />
           </ViewMoreTitle>
         )} */}
 
-        {/* {homepage && (
+        {homepage && (
           <TwoColumnAds
             bannerOne={homepage.twoColumnBannerOne}
             bannerTwo={homepage.twoColumnBannerTwo}
           />
-        )} */}
+        )}
 
         {homepage && (
           <SectionStyleOne
@@ -139,7 +141,7 @@ export default function StorePage({ homepageData }) {
             categoryTitle={sectionTitles && sectionTitles.Featured_Products}
             products={
               homepage.featuredCategoryProducts.length > 0
-                ? homepage.featuredCategoryProducts.slice(0,12)
+                ? homepage.featuredCategoryProducts.slice(0, 12)
                 : []
             }
             sectionTitle={sectionTitles && sectionTitles.Featured_Products}
@@ -148,12 +150,12 @@ export default function StorePage({ homepageData }) {
           />
         )}
         {/* {homepage && <OneColumnAdsOne data={homepage.singleBannerOne} />} */}
-        
+
         {homepage && (
           <SectionStyleThree
             products={
               homepage.newArrivalProducts.length > 0
-                ? homepage.newArrivalProducts.slice(0,12)
+                ? homepage.newArrivalProducts.slice(0, 12)
                 : []
             }
             sectionTitle={sectionTitles && sectionTitles.New_Arrivals}
@@ -172,7 +174,9 @@ export default function StorePage({ homepageData }) {
         {homepage && (
           <SectionStyleFour
             products={
-              homepage.bestProducts.length > 0 ? homepage.bestProducts.slice(0,12) : []
+              homepage.bestProducts.length > 0
+                ? homepage.bestProducts.slice(0, 12)
+                : []
             }
             sectionTitle={sectionTitles && sectionTitles.Best_Products}
             seeMoreUrl={`/products?highlight=best_product`}

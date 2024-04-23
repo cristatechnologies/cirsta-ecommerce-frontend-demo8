@@ -2,9 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import Image from "next/image";
-import FontAwesomeCom from "../Helpers/icons/FontAwesomeCom";
-import ServeLangItem from "../Helpers/ServeLangItem";
-import Arrow from "../Helpers/icons/Arrow";
+import FontAwesomeCom from "../../Helpers/icons/FontAwesomeCom";
+import ServeLangItem from "../../Helpers/ServeLangItem";
+import Arrow from "../../Helpers/icons/Arrow";
 
 function CategorySection({ sectionTitle, categories }) {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);

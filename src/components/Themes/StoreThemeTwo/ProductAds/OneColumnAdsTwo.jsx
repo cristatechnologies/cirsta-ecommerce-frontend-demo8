@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/dist/client/link";
-import ServeLangItem from "../../Helpers/ServeLangItem";
+import ServeLangItem from "../../../Helpers/ServeLangItem";
 
 function OneColumnAdsTwo({ data }) {
   return (

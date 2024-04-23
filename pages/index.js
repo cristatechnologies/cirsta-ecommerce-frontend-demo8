@@ -1,6 +1,6 @@
 import PageHead from "../src/components/Helpers/PageHead";
-import StorePage from "../src/components/Store";
-import StorePageThemeTwo from "../src/components/StoreThemeTwo";
+import StorePage from "../src/components/Themes/Store";
+import StorePageThemeTwo from "../src/components/Themes/StoreThemeTwo";
 import settings from "../utils/settings";
 
 export default function HomePage({ data }) {
@@ -14,11 +14,9 @@ export default function HomePage({ data }) {
         metaDes={seoSetting.seo_description}
       />
       {/* < homepageData={data} /> */}
-      {selected_theme === 'theme1' &&
-        <StorePage homepageData={data} />}
+      {selected_theme === "theme1" && <StorePage homepageData={data} />}
 
-      {selected_theme === 'theme2' &&
-        <StorePageThemeTwo homepageData={data} />}
+      {selected_theme === "theme2" && <StorePageThemeTwo homepageData={data} />}
     </>
   );
 }

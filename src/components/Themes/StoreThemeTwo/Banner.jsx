@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { useEffect } from "react";
-import settings from "../../../utils/settings";
-import ShopNowBtn from "../Helpers/Buttons/ShopNowBtn";
-import ServeLangItem from "../Helpers/ServeLangItem";
-import SimpleSlider from "../Helpers/SliderCom";
-import FontAwesomeCom from "../Helpers/icons/FontAwesomeCom";
+import settings from "../../../../utils/settings";
+import ShopNowBtn from "../../Helpers/Buttons/ShopNowBtn";
+import ServeLangItem from "../../Helpers/ServeLangItem";
+import SimpleSlider from "../../Helpers/SliderCom";
+import FontAwesomeCom from "../../Helpers/icons/FontAwesomeCom";
 export default function Banner({
   className,
   images = [],
@@ -30,12 +30,12 @@ export default function Banner({
   return (
     <>
       <div className={`w-full ${className || ""}`}>
-        <div className="container-x mx-auto">
+        <div>
           <div className="main-wrapper w-full">
             <div className="banner-card xl:flex xl:space-x-[30px] rtl:space-x-0 xl:h-[600px]  mb-[30px] ">
               <div
                 data-aos="fade-right"
-                className="xl:w-[740px] rtl:ml-[30px] ltr:ml-0 w-full xl:h-full md:h-[500px] h-[220px] xl:mb-0 mb-2"
+                className="rtl:ml-[30px] ltr:ml-0 w-full xl:h-full md:h-[500px] h-[220px] xl:mb-0 mb-2"
               >
                 <div className="slider-wrapper w-full h-full">
                   <SimpleSlider settings={settingBanner}>
@@ -50,10 +50,10 @@ export default function Banner({
                               backgroundSize: "cover",
                               backgroundRepeat: "no-repeat",
                             }}
-                            className="flex w-full max-w-full h-full h-auto relative items-center rtl:pr-[30px] ltr:pl-[30px]"
+                            className="flex  w-full max-w-full  h-full relative rtl:pr-[30px] ltr:pl-[30px]"
                           >
-                            <div>
-                              <div className="inline-block md:w-[112px] w-[100px] shadow md:h-[25px] h-[18px] flex items-center justify-center  bg-white rounded-full md:mb-[30px] mb-[15px]">
+                            <div className="mt-20">
+                              <div className="md:w-[112px] w-[100px] shadow md:h-[25px] h-[18px] flex items-center justify-center  bg-white rounded-full md:mb-[30px] mb-[15px]">
                                 <span className="text-[var(--text-color)] uppercase md:text-xs text-[10px] font-semibold">
                                   {item.badge}
                                 </span>
@@ -86,7 +86,7 @@ export default function Banner({
                   </SimpleSlider>
                 </div>
               </div>
-              <div
+              {/* <div
                 data-aos="fade-left"
                 className="flex-1 flex xl:flex-col flex-row  xl:space-y-[30px] xl:h-full md:h-[350px] h-[150px]"
               >
@@ -240,9 +240,9 @@ export default function Banner({
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
-            <div
+            {/* <div
               data-aos="fade-up"
               className="best-services w-full bg-white flex flex-col space-y-10 lg:space-y-0 lg:flex-row lg:justify-between lg:items-center lg:h-[110px] px-10 lg:py-0 py-10"
             >
@@ -268,7 +268,7 @@ export default function Banner({
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import CountDown from "../Helpers/CountDown";
-import ShopNowBtn from "../Helpers/Buttons/ShopNowBtn";
-import GooglePlay from "../Helpers/icons/GooglePlay";
-import AppleStore from "../Helpers/icons/AppleStore";
-import ServeLangItem from "../Helpers/ServeLangItem";
+import CountDown from "../../Helpers/CountDown";
+import ShopNowBtn from "../../Helpers/Buttons/ShopNowBtn";
+import GooglePlay from "../../Helpers/icons/GooglePlay";
+import AppleStore from "../../Helpers/icons/AppleStore";
+import ServeLangItem from "../../Helpers/ServeLangItem";
 
 export default function CampaignCountDown({
   className,

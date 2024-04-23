@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import DataIteration from "../Helpers/DataIteration";
+import DataIteration from "../../Helpers/DataIteration";
 export default function BrandSection({ className, sectionTitle, brands = [] }) {
   return (
     <div data-aos="fade-up" className={`w-full ${className || ""}`}>
