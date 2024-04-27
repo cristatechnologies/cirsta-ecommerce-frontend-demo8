@@ -24,8 +24,9 @@ export default function Navbar({ className }) {
   }, [categoryToggle]);
   return (
     <div
-      className={`nav-widget-wrapper w-full  h-[60px] relative z-30  ${className || ""
-        }`}
+      className={`nav-widget-wrapper w-full  h-[60px] relative z-30  ${
+        className || ""
+      }`}
     >
       <div className="mx-24">
         <div className="w-full h-full relative">
@@ -76,8 +77,9 @@ export default function Navbar({ className }) {
                   style={{
                     boxShadow: " 0px 15px 50px 0px rgba(0, 0, 0, 0.14)",
                   }}
-                  className={`category-dropdown w-full absolute left-0 top-[40px]  ${categoryToggle ? "block" : "hidden"
-                    }`}
+                  className={`category-dropdown w-full absolute left-0 top-[40px]  ${
+                    categoryToggle ? "block" : "hidden"
+                  }`}
                 >
                   <ul className="categories-list relative">
                     {categoryList &&
@@ -134,10 +136,11 @@ export default function Navbar({ className }) {
                             </a>
                           </Link>
                           <div
-                            className={`sub-category-lvl-two absolute ltr:left-[200px] rtl:right-[200px] top-0 z-10 w-[200px] ${item.active_sub_categories.length > 0
-                              ? "bg-white"
-                              : ""
-                              }`}
+                            className={`sub-category-lvl-two absolute ltr:left-[200px] rtl:right-[200px] top-0 z-10 w-[200px] ${
+                              item.active_sub_categories.length > 0
+                                ? "bg-white"
+                                : ""
+                            }`}
                             style={{ height: `${subCatHeight}px` }}
                           >
                             <ul className="">
@@ -192,11 +195,12 @@ export default function Navbar({ className }) {
                                       </a>
                                     </Link>
                                     <div
-                                      className={`sub-category-lvl-three absolute ltr:left-[200px] rtl:right-[200px] top-0 z-10 w-[200px] ${subItem.active_child_categories.length >
+                                      className={`sub-category-lvl-three absolute ltr:left-[200px] rtl:right-[200px] top-0 z-10 w-[200px] ${
+                                        subItem.active_child_categories.length >
                                         0
-                                        ? "bg-white"
-                                        : ""
-                                        }`}
+                                          ? "bg-white"
+                                          : ""
+                                      }`}
                                       style={{ height: `${subCatHeight}px` }}
                                     >
                                       <ul className="">
@@ -268,7 +272,7 @@ export default function Navbar({ className }) {
                       </a>
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                       <span>{ServeLangItem()?.Shop}</span>
                       <span className="ml-1.5 ">
@@ -398,7 +402,7 @@ export default function Navbar({ className }) {
                         )}
                       </div>
                     </div>
-                  </li>
+                  </li> */}
 
                   <li>
                     <Link href="/blogs" passHref>
@@ -521,7 +525,6 @@ export default function Navbar({ className }) {
                 </ul>
               </div>
             </div>
-
           </div>
         </div>
       </div>
