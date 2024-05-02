@@ -9,6 +9,7 @@ import HeaderTwo from "./Headers/HeaderTwo";
 import HeaderThree from "./Headers/HeaderThree";
 import Footer from "./Footers/Footer";
 import FooterTheme2 from "./Footers/FooterTwo";
+import FooterTheme3 from "./Footers/FooterThree";
 import apiRequest from "../../../utils/apiRequest";
 
 export default function Layout({ children, childrenClasses }) {
@@ -78,7 +79,7 @@ export default function Layout({ children, childrenClasses }) {
 
   const themeHeaderComponents = {
     theme1: Header,
-    theme2: HeaderThree,
+    theme2: HeaderTwo,
     theme3: HeaderThree,
     // Add more themes as needed
   };
@@ -89,7 +90,7 @@ export default function Layout({ children, childrenClasses }) {
   const themeFooterComponents = {
     theme1: Footer,
     theme2: FooterTheme2,
-    // "home and garden 1": FooterTheme3,
+    theme3: FooterTheme3,
     // Add more themes as needed
   };
 
