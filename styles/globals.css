@@ -77,7 +77,6 @@
   background-color: var(--primary-color);
 }
 
-
 *,
 *:before,
 *:after {
@@ -229,7 +228,8 @@ body {
   margin-right: 10px;
 }
 
-.about-content :is(blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre) {
+.about-content
+  :is(blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre) {
   margin: revert !important;
 }
 
@@ -278,7 +278,11 @@ body {
   opacity: 60%;
 }
 
-.feedback-slider-wrapper .slick-slider .slick-list .slick-slide.slick-current .item {
+.feedback-slider-wrapper
+  .slick-slider
+  .slick-list
+  .slick-slide.slick-current
+  .item {
   opacity: 100%;
 }
 
@@ -294,7 +298,6 @@ body {
 }
 
 @keyframes rightDir {
-
   0%,
   100% {
     transform: translatex(-25%);
@@ -385,11 +388,14 @@ body {
   display: none;
 }
 
-.slider-wrapper :is(.slick-slider,
-  .slick-list,
-  .slick-track,
-  .slick-slide,
-  .slick-slide > div) {
+.slider-wrapper
+  :is(
+    .slick-slider,
+    .slick-list,
+    .slick-track,
+    .slick-slide,
+    .slick-slide > div
+  ) {
   height: 100%;
 }
 
@@ -495,17 +501,17 @@ body {
   right: 0;
 }
 
-.product-row-card-style-one:hover~span.top,
-.product-row-card-style-one:hover~span.bottom,
-.product-card-one:hover~span.top,
-.product-card-one:hover~span.bottom {
+.product-row-card-style-one:hover ~ span.top,
+.product-row-card-style-one:hover ~ span.bottom,
+.product-card-one:hover ~ span.top,
+.product-card-one:hover ~ span.bottom {
   transform: scaleX(1);
 }
 
-.product-row-card-style-one:hover~span.left,
-.product-row-card-style-one:hover~span.right,
-.product-card-one:hover~span.left,
-.product-card-one:hover~span.right {
+.product-row-card-style-one:hover ~ span.left,
+.product-row-card-style-one:hover ~ span.right,
+.product-card-one:hover ~ span.left,
+.product-card-one:hover ~ span.right {
   transform: scaleY(1);
 }
 
@@ -516,7 +522,8 @@ body {
   border-color: var(--primary-color);
 }
 
-.quomodo-shop-middle-bar :is(.compaire > span, .favorite > span, .cart-wrapper .cart > span) {
+.quomodo-shop-middle-bar
+  :is(.compaire > span, .favorite > span, .cart-wrapper .cart > span) {
   @apply text-white;
   background: var(--primary-color);
 }
@@ -548,20 +555,46 @@ body {
   color: white;
 }
 
-.nav-widget-wrapper .category-dropdown .categories-list .category-item .sub-category-lvl-two ul li.category-item {
+.nav-widget-wrapper
+  .category-dropdown
+  .categories-list
+  .category-item
+  .sub-category-lvl-two
+  ul
+  li.category-item {
   @apply bg-white text-[var(--text-color)];
 }
 
-.nav-widget-wrapper .category-dropdown .categories-list .category-item .sub-category-lvl-two ul li.category-item:hover {
+.nav-widget-wrapper
+  .category-dropdown
+  .categories-list
+  .category-item
+  .sub-category-lvl-two
+  ul
+  li.category-item:hover {
   background: var(--primary-color);
   color: white;
 }
 
-.nav-widget-wrapper .category-dropdown .categories-list .category-item .sub-category-lvl-two .sub-category-lvl-three ul li.category-item {
+.nav-widget-wrapper
+  .category-dropdown
+  .categories-list
+  .category-item
+  .sub-category-lvl-two
+  .sub-category-lvl-three
+  ul
+  li.category-item {
   @apply bg-white text-[var(--text-color)];
 }
 
-.nav-widget-wrapper .category-dropdown .categories-list .category-item .sub-category-lvl-two .sub-category-lvl-three ul li.category-item:hover {
+.nav-widget-wrapper
+  .category-dropdown
+  .categories-list
+  .category-item
+  .sub-category-lvl-two
+  .sub-category-lvl-three
+  ul
+  li.category-item:hover {
   background: var(--primary-color);
 }
 
@@ -570,13 +603,19 @@ body {
   @apply bg-qh2-green text-white;
 }
 
-.home-two :is(.cart-wrappwer,
-  .product-card-style-one-two,
-  .product-row-card-style-one-two) .yellow-btn {
+.home-two
+  :is(
+    .cart-wrappwer,
+    .product-card-style-one-two,
+    .product-row-card-style-one-two
+  )
+  .yellow-btn {
   @apply bg-qh2-green text-white;
 }
 
-.home-two .quomodo-shop-middle-bar :is(.compaire > span, .favorite > span, .cart-wrapper .cart > span) {
+.home-two
+  .quomodo-shop-middle-bar
+  :is(.compaire > span, .favorite > span, .cart-wrapper .cart > span) {
   @apply bg-qh2-green text-white;
 }
 
@@ -647,7 +686,7 @@ body {
 }
 
 /* ======mega menu====== */
-.nav-widget-wrapper .nav ul.nav-wrapper>li {
+.nav-widget-wrapper .nav ul.nav-wrapper > li {
   padding: 20px 0;
 }
 
@@ -668,51 +707,90 @@ body {
   display: none;
 }
 
-.nav-widget-wrapper ul.categories-list li.category-item .sub-category-lvl-two .sub-category-lvl-three {
+.nav-widget-wrapper
+  ul.categories-list
+  li.category-item
+  .sub-category-lvl-two
+  .sub-category-lvl-three {
   display: none;
 }
 
-.nav-widget-wrapper ul.categories-list li.category-item:hover .sub-category-lvl-two {
+.nav-widget-wrapper
+  ul.categories-list
+  li.category-item:hover
+  .sub-category-lvl-two {
   display: block;
 }
 
-.nav-widget-wrapper ul.categories-list li.category-item .sub-category-lvl-two ul li:hover .sub-category-lvl-three {
+.nav-widget-wrapper
+  ul.categories-list
+  li.category-item
+  .sub-category-lvl-two
+  ul
+  li:hover
+  .sub-category-lvl-three {
   display: block;
 }
 
 /*TODO: ===============home page============ */
 
-.header-section-wrapper .topbar-dropdowns :is(.country-select, .currency-select, .language-select) .my-select-box .my-select-box-btn>span {
+.header-section-wrapper
+  .topbar-dropdowns
+  :is(.country-select, .currency-select, .language-select)
+  .my-select-box
+  .my-select-box-btn
+  > span {
   @apply text-xs font-500 text-[var(--text-color)];
   text-transform: capitalize;
 }
 
-.header-section-wrapper .topbar-dropdowns .country-select .my-select-box .my-select-box-section {
+.header-section-wrapper
+  .topbar-dropdowns
+  .country-select
+  .my-select-box
+  .my-select-box-section {
   width: 150px;
   left: auto;
   right: 0;
 }
 
-.header-section-wrapper .topbar-dropdowns :is(.currency-select, .language-select) .my-select-box .my-select-box-section {
+.header-section-wrapper
+  .topbar-dropdowns
+  :is(.currency-select, .language-select)
+  .my-select-box
+  .my-select-box-section {
   width: 120px;
   left: auto;
   right: 0;
 }
 
-.header-section-wrapper .topbar-dropdowns .my-select-box .my-select-box-section {
+.header-section-wrapper
+  .topbar-dropdowns
+  .my-select-box
+  .my-select-box-section {
   width: 120px;
   left: auto;
   right: 0;
 }
 
-.header-section-wrapper .topbar-dropdowns :is(.country-select, .currency-select, .language-select) .my-select-box .my-select-box-section li {
+.header-section-wrapper
+  .topbar-dropdowns
+  :is(.country-select, .currency-select, .language-select)
+  .my-select-box
+  .my-select-box-section
+  li {
   font-size: 12px;
   text-transform: capitalize;
 }
 
 /*TODO: ===============all product page============ */
 
-.products-page-wrapper .filter-widget .filter-subject-item .filter-items ul li.item:last-child {
+.products-page-wrapper
+  .filter-widget
+  .filter-subject-item
+  .filter-items
+  ul
+  li.item:last-child {
   margin-bottom: 0;
 }
 
@@ -742,7 +820,10 @@ body {
 
 /*TODO: =============== product compaire============ */
 
-.products-compaire-wrapper .table-wrapper .table-row-wrapper .product:last-child {
+.products-compaire-wrapper
+  .table-wrapper
+  .table-row-wrapper
+  .product:last-child {
   border-right: none;
 }
 
@@ -750,13 +831,13 @@ body {
   padding-top: 26px;
 }
 
-.products-compaire-wrapper .table-wrapper .table-row-wrapper:last-child>td {
+.products-compaire-wrapper .table-wrapper .table-row-wrapper:last-child > td {
   padding-bottom: 45px;
 }
 
 /*TODO: =============== about compaire============ */
 
-.about-page-wrapper .feedback-slider-wrapper .slick-slide>div {
+.about-page-wrapper .feedback-slider-wrapper .slick-slide > div {
   margin: 0 15px;
 }
 
@@ -765,7 +846,9 @@ body {
 }
 
 /*TODO: =============== blog ============ */
-.blog-card-wrapper .article-area :is(p, h1, h2, h3, h5, h6, h4, span, table, ul, li) {
+.blog-card-wrapper
+  .article-area
+  :is(p, h1, h2, h3, h5, h6, h4, span, table, ul, li) {
   color: var(--text-color) !important;
 }
 
@@ -795,9 +878,11 @@ body {
   }
 } */
 
-@media (max-width: 1280px) {}
+@media (max-width: 1280px) {
+}
 
-@media (max-width: 1536px) {}
+@media (max-width: 1536px) {
+}
 
 /* TODO: ===============RESPONSIVE END */
 
@@ -890,4 +975,19 @@ body {
 .slick-next {
   background: var(--primary-color) !important;
   border-radius: 14px !important;
+  z-index: 1 !important;
+  width: 45px !important;
+  height: 45px !important;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 24px !important;
+}
+.category-slider::-webkit-scrollbar {
+  display: none;
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;
+  transition: all 0.15s ease-in;
+  scrollbar-width: none;
 }

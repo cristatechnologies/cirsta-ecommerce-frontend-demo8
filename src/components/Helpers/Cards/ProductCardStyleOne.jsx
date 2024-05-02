@@ -223,7 +223,7 @@ export default function ProductCardStyleOne({ datas, quickViewHandler }) {
       loginPopupBoard.handlerPopup(true);
     }
   };
-  const { currency_icon } = settings();
+  const { currency_icon, selected_theme } = settings();
   const [imgSrc, setImgSrc] = useState(null);
   const loadImg = (value) => {
     // const time = 3000;
@@ -409,48 +409,93 @@ export default function ProductCardStyleOne({ datas, quickViewHandler }) {
           </p>
         </div>
         {/* quick-access-btns */}
-        <div className="quick-access-btns flex flex-col space-y-2">
-          <button
-            className=" absolute group-hover:right-4 -right-10 top-20  transition-all ease-in-out"
-            onClick={() => quickViewHandler(datas.slug)}
-            type="button"
-          >
-            <span className="hover-ico w-10 h-10 flex justify-center text-black hover:text-white items-center transition-all duration-300 ease-in-out hover-primary-bg bg-primarygray rounded">
-              <QuickViewIco className="fill-current" />
-            </span>
-          </button>
-          {!arWishlist ? (
+        {selected_theme !== "theme3" ? (
+          <div className="quick-access-btns flex flex-col space-y-2">
             <button
-              className=" absolute group-hover:right-4 -right-10 top-[120px]  transition-all duration-300 ease-in-out"
+              className=" absolute group-hover:right-4 -right-10 top-20  transition-all ease-in-out"
+              onClick={() => quickViewHandler(datas.slug)}
               type="button"
-              onClick={() => addToWishlist(datas.id)}
             >
-              <span className="hover-ico w-10 h-10 flex text-black hover:text-white justify-center items-center transition-all duration-300 ease-in-out hover-primary-bg bg-primarygray rounded">
-                <ThinLove className="fill-current" />
+              <span className="hover-ico w-10 h-10 flex justify-center text-black hover:text-white items-center transition-all duration-300 ease-in-out hover-primary-bg bg-primarygray rounded">
+                <QuickViewIco className="fill-current" />
               </span>
             </button>
-          ) : (
-            <button
-              className="absolute group-hover:right-4 -right-10 top-[120px]  transition-all duration-300 ease-in-out"
-              type="button"
-              onClick={() => removeToWishlist(wishlisted && wishlisted.id)}
-            >
-              <span className="hover-ico w-10 h-10 flex justify-center items-center bg-primarygray rounded">
-                <ThinLove fill={true} />
-              </span>
-            </button>
-          )}
+            {!arWishlist ? (
+              <button
+                className=" absolute group-hover:right-4 -right-10 top-[120px]  transition-all duration-300 ease-in-out"
+                type="button"
+                onClick={() => addToWishlist(datas.id)}
+              >
+                <span className="hover-ico w-10 h-10 flex text-black hover:text-white justify-center items-center transition-all duration-300 ease-in-out hover-primary-bg bg-primarygray rounded">
+                  <ThinLove className="fill-current" />
+                </span>
+              </button>
+            ) : (
+              <button
+                className="absolute group-hover:right-4 -right-10 top-[120px]  transition-all duration-300 ease-in-out"
+                type="button"
+                onClick={() => removeToWishlist(wishlisted && wishlisted.id)}
+              >
+                <span className="hover-ico w-10 h-10 flex justify-center items-center bg-primarygray rounded">
+                  <ThinLove fill={true} />
+                </span>
+              </button>
+            )}
 
-          <button
-            className=" absolute group-hover:right-4 -right-10 top-[168px]  transition-all duration-500 ease-in-out"
-            type="button"
-            onClick={() => productCompare(datas.id)}
-          >
-            <span className="hover-ico w-10 h-10 flex justify-center text-black hover:text-white transition-all duration-300 ease-in-out items-center hover-primary-bg bg-primarygray rounded">
-              <Compair className="fill-current" />
-            </span>
-          </button>
-        </div>
+            <button
+              className=" absolute group-hover:right-4 -right-10 top-[168px]  transition-all duration-500 ease-in-out"
+              type="button"
+              onClick={() => productCompare(datas.id)}
+            >
+              <span className="hover-ico w-10 h-10 flex justify-center text-black hover:text-white transition-all duration-300 ease-in-out items-center hover-primary-bg bg-primarygray rounded">
+                <Compair className="fill-current" />
+              </span>
+            </button>
+          </div>
+        ) : (
+          <div className="quick-access-btns flex flex-col space-y-2">
+            <button
+              className={`${"group-hover:left-28 -left-10"} absolute  bottom-40  transition-all ease-in-out`}
+              onClick={() => quickViewHandler(datas.slug)}
+              type="button"
+            >
+              <span className="hover-ico w-10 h-10 flex justify-center text-black hover:text-white items-center transition-all duration-300 ease-in-out hover-primary-bg bg-primarygray rounded">
+                <QuickViewIco className="fill-current" />
+              </span>
+            </button>
+            {!arWishlist ? (
+              <button
+                className={`${"group-hover:left-44 -left-10"} absolute bottom-40  transition-all duration-300 ease-in-out`}
+                type="button"
+                onClick={() => addToWishlist(datas.id)}
+              >
+                <span className="hover-ico w-10 h-10 flex text-black hover:text-white justify-center items-center transition-all duration-300 ease-in-out hover-primary-bg bg-primarygray rounded">
+                  <ThinLove className="fill-current" />
+                </span>
+              </button>
+            ) : (
+              <button
+                className={`${"group-hover:left-44 -left-10"} absolute bottom-40  transition-all duration-300 ease-in-out`}
+                type="button"
+                onClick={() => removeToWishlist(wishlisted && wishlisted.id)}
+              >
+                <span className="hover-ico w-10 h-10 flex justify-center items-center bg-primarygray rounded">
+                  <ThinLove fill={true} />
+                </span>
+              </button>
+            )}
+
+            <button
+              className={`${"group-hover:left-60"} absolute  bottom-40  -left-10 transition-all duration-500 ease-in-out`}
+              type="button"
+              onClick={() => productCompare(datas.id)}
+            >
+              <span className="hover-ico w-10 h-10 flex justify-center text-black hover:text-white transition-all duration-300 ease-in-out items-center hover-primary-bg bg-primarygray rounded">
+                <Compair className="fill-current" />
+              </span>
+            </button>
+          </div>
+        )}
       </div>
       <span className="anim bottom"></span>
       <span className="anim right"></span>

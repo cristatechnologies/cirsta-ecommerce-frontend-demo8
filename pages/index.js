@@ -1,12 +1,20 @@
+import settings from "../utils/settings";
 import PageHead from "../src/components/Helpers/PageHead";
 import StorePage from "../src/components/Themes/Store";
 import StorePageThemeTwo from "../src/components/Themes/StoreThemeTwo";
-import settings from "../utils/settings";
+import StorePageThemeThree from "../src/components/Themes/StoreThemeThree";
 
 export default function HomePage({ data }) {
   const { seoSetting } = data;
   const { selected_theme } = settings();
 
+  const themeComponents = {
+    theme1: StorePage,
+    theme2: StorePageThemeTwo,
+    theme3: StorePageThemeThree,
+    // Add more themes as needed
+  };
+  const SelectedThemeComponent = themeComponents[selected_theme];
   return (
     <>
       <PageHead
@@ -14,9 +22,7 @@ export default function HomePage({ data }) {
         metaDes={seoSetting.seo_description}
       />
       {/* < homepageData={data} /> */}
-      {selected_theme === "theme1" && <StorePage homepageData={data} />}
-
-      {selected_theme === "theme2" && <StorePageThemeTwo homepageData={data} />}
+      <SelectedThemeComponent homepageData={data} />
     </>
   );
 }
