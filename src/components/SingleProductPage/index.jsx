@@ -1,22 +1,24 @@
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
-import apiRequest from "../../../utils/apiRequest";
-import auth from "../../../utils/auth";
+import Reviews from "./Reviews";
+import ProductView from "./ProductView";
+import SallerInfo from "./SallerInfo";
 import BreadcrumbCom from "../BreadcrumbCom";
-import ProductCardStyleOneTwo from "../Helpers/Cards/ProductCardStyleOneTwo";
+import Layout from "../Partials/Layout";
 import DataIteration from "../Helpers/DataIteration";
 import InputCom from "../Helpers/InputCom";
+import ProductCardStyleOneTwo from "../Helpers/Cards/ProductCardStyleOneTwo";
 import LoaderStyleOne from "../Helpers/Loaders/LoaderStyleOne";
-import Layout from "../Partials/Layout";
-import Multivendor from "../Shared/Multivendor";
-import ProductView from "./ProductView";
-import Reviews from "./Reviews";
-import SallerInfo from "./SallerInfo";
 import ServeLangItem from "../Helpers/ServeLangItem";
+import Multivendor from "../Shared/Multivendor";
+import apiRequest from "../../../utils/apiRequest";
+import auth from "../../../utils/auth";
+import settings from "../../../utils/settings";
 
 export default function SingleProductPage({ details }) {
   const router = useRouter();
+  const { selected_theme } = settings();
   const [tab, setTab] = useState("des");
   const reviewElement = useRef(null);
   const [report, setReport] = useState(false);
@@ -142,134 +144,281 @@ export default function SingleProductPage({ details }) {
               </div>
             </div>
 
-            <div
-              className="product-des-wrapper w-full relative pb-[60px]"
-              ref={reviewElement}
-            >
-              <div className="tab-buttons w-full mb-10 mt-5 sm:mt-0">
-                <div className="container-x mx-auto">
-                  <ul className="flex space-x-12 ">
-                    <li>
-                      <span
-                        onClick={() => setTab("des")}
-                        className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer text-[var(--text-color)] ${
-                          tab === "des"
-                            ? "border-[var(--primary-color)] text-[var(--text-color)] "
-                            : "border-transparent text-qgray"
-                        }`}
-                      >
-                        {ServeLangItem()?.Description}
-                      </span>
-                    </li>
-                    <li>
-                      <span
-                        onClick={() => setTab("review")}
-                        className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer text-[var(--text-color)] ${
-                          tab === "review"
-                            ? "border-[var(--primary-color)] text-[var(--text-color)] "
-                            : "border-transparent text-qgray"
-                        }`}
-                      >
-                        {ServeLangItem()?.Reviews}
-                      </span>
-                    </li>
-                    {/*{Multivendor() === 1 && details.is_seller_product && (*/}
-                    {/*  <li>*/}
-                    {/*    <span*/}
-                    {/*      onClick={() => setTab("info")}*/}
-                    {/*      className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer ${*/}
-                    {/*        tab === "info"*/}
-                    {/*          ? "border-qyellow text-[var(--text-color)] "*/}
-                    {/*          : "border-transparent text-qgray"*/}
-                    {/*      }`}*/}
-                    {/*    >*/}
-                    {/*      {ServeLangItem()?.Seller_Info}*/}
-                    {/*    </span>*/}
-                    {/*  </li>*/}
-                    {/*)}*/}
-                  </ul>
+            {selected_theme !== "theme3" ? (
+              <div
+                className="product-des-wrapper w-full relative pb-[60px]"
+                ref={reviewElement}
+              >
+                <div className="tab-buttons w-full mb-10 mt-5 sm:mt-0">
+                  <div className="container-x mx-auto">
+                    <ul className="flex space-x-12 ">
+                      <li>
+                        <span
+                          onClick={() => setTab("des")}
+                          className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer text-[var(--text-color)] ${
+                            tab === "des"
+                              ? "border-[var(--primary-color)] text-[var(--text-color)] "
+                              : "border-transparent text-qgray"
+                          }`}
+                        >
+                          {ServeLangItem()?.Description}
+                        </span>
+                      </li>
+                      <li>
+                        <span
+                          onClick={() => setTab("review")}
+                          className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer text-[var(--text-color)] ${
+                            tab === "review"
+                              ? "border-[var(--primary-color)] text-[var(--text-color)] "
+                              : "border-transparent text-qgray"
+                          }`}
+                        >
+                          {ServeLangItem()?.Reviews}
+                        </span>
+                      </li>
+                      {/*{Multivendor() === 1 && details.is_seller_product && (*/}
+                      {/*  <li>*/}
+                      {/*    <span*/}
+                      {/*      onClick={() => setTab("info")}*/}
+                      {/*      className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer ${*/}
+                      {/*        tab === "info"*/}
+                      {/*          ? "border-qyellow text-[var(--text-color)] "*/}
+                      {/*          : "border-transparent text-qgray"*/}
+                      {/*      }`}*/}
+                      {/*    >*/}
+                      {/*      {ServeLangItem()?.Seller_Info}*/}
+                      {/*    </span>*/}
+                      {/*  </li>*/}
+                      {/*)}*/}
+                    </ul>
+                  </div>
+                  <div className="w-full h-[1px] bg-[#E8E8E8] absolute left-0 sm:top-[50px] top-[36px] -z-10"></div>
                 </div>
-                <div className="w-full h-[1px] bg-[#E8E8E8] absolute left-0 sm:top-[50px] top-[36px] -z-10"></div>
-              </div>
-              <div className="tab-contents w-full ">
-                <div className="container-x mx-auto">
-                  {tab === "des" && (
-                    <>
-                      <h6 className="text-[20px] font-bold text-[var(--text-color)] mb-5">
-                        {ServeLangItem()?.Introduction}
-                      </h6>
-                      <div
-                        className="product-detail-des mb-10 text-[var(--text-color)]"
-                        dangerouslySetInnerHTML={{
-                          __html: details.product.long_description,
-                        }}
-                      ></div>
+                <div className="tab-contents w-full ">
+                  <div className="container-x mx-auto">
+                    {tab === "des" && (
+                      <>
+                        <h6 className="text-[20px] font-bold text-[var(--text-color)] mb-5">
+                          {ServeLangItem()?.Introduction}
+                        </h6>
+                        <div
+                          className="product-detail-des mb-10 text-[var(--text-color)]"
+                          dangerouslySetInnerHTML={{
+                            __html: details.product.long_description,
+                          }}
+                        ></div>
 
-                      {details.specifications &&
-                        details.specifications.length > 0 && (
-                          <div className="product-specifications">
-                            <h6 className="text-[20px] font-bold mb-4 text-[var(--text-color)]">
-                              {ServeLangItem()?.Features} :
-                            </h6>
-                            <ul className="">
-                              {details.specifications.map((item, i) => {
-                                {
-                                  return (
-                                    <li
-                                      key={i}
-                                      className=" leading-9 flex space-x-3 items-center"
-                                    >
-                                      <span className="text-[var(--text-color)] font-medium capitalize">
-                                        {" "}
-                                        {item.key?.key}:
-                                      </span>
-                                      <span className="font-normal text-[var(--text-color)]">
-                                        {item.specification}
-                                      </span>
-                                    </li>
-                                  );
-                                }
-                              })}
-                            </ul>
-                          </div>
-                        )}
-                      {/*</div>*/}
-                    </>
-                  )}
-                  {tab === "review" && (
-                    <div data-aos="fade-up" className="w-full tab-content-item">
-                      <h6 className="text-[20px] font-bold text-[var(--text-color)] mb-2">
-                        {ServeLangItem()?.Reviews}
-                      </h6>
-                      {/* review-comments */}
-                      <div className="w-full">
-                        <Reviews
-                          comments={commnets.length > 0 && commnets.slice(0, 2)}
-                        />
+                        {details.specifications &&
+                          details.specifications.length > 0 && (
+                            <div className="product-specifications">
+                              <h6 className="text-[20px] font-bold mb-4 text-[var(--text-color)]">
+                                {ServeLangItem()?.Features} :
+                              </h6>
+                              <ul className="">
+                                {details.specifications.map((item, i) => {
+                                  {
+                                    return (
+                                      <li
+                                        key={i}
+                                        className=" leading-9 flex space-x-3 items-center"
+                                      >
+                                        <span className="text-[var(--text-color)] font-medium capitalize">
+                                          {" "}
+                                          {item.key?.key}:
+                                        </span>
+                                        <span className="font-normal text-[var(--text-color)]">
+                                          {item.specification}
+                                        </span>
+                                      </li>
+                                    );
+                                  }
+                                })}
+                              </ul>
+                            </div>
+                          )}
+                        {/*</div>*/}
+                      </>
+                    )}
+                    {tab === "review" && (
+                      <div
+                        data-aos="fade-up"
+                        className="w-full tab-content-item"
+                      >
+                        <h6 className="text-[20px] font-bold text-[var(--text-color)] mb-2">
+                          {ServeLangItem()?.Reviews}
+                        </h6>
+                        {/* review-comments */}
+                        <div className="w-full">
+                          <Reviews
+                            comments={
+                              commnets.length > 0 && commnets.slice(0, 2)
+                            }
+                          />
+                        </div>
                       </div>
-                    </div>
-                  )}
-                  {tab === "info" && (
-                    <div data-aos="fade-up" className="w-full tab-content-item">
-                      {details.seller && (
-                        <SallerInfo
-                          sellerInfo={sellerInfo}
-                          products={
-                            details.this_seller_products.length > 0 &&
-                            details.this_seller_products.slice(
-                              0,
-                              details.this_seller_products.length > 8
-                                ? 8
-                                : details.this_seller_products.length
-                            )
-                          }
-                        />
-                      )}
-                    </div>
-                  )}
+                    )}
+                    {tab === "info" && (
+                      <div
+                        data-aos="fade-up"
+                        className="w-full tab-content-item"
+                      >
+                        {details.seller && (
+                          <SallerInfo
+                            sellerInfo={sellerInfo}
+                            products={
+                              details.this_seller_products.length > 0 &&
+                              details.this_seller_products.slice(
+                                0,
+                                details.this_seller_products.length > 8
+                                  ? 8
+                                  : details.this_seller_products.length
+                              )
+                            }
+                          />
+                        )}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div
+                className="product-des-wrapper w-full relative pb-[60px] flex lg:justify-evenly flex-wrap      lg:flex-nowrap"
+                ref={reviewElement}
+              >
+                <div className="tab-buttons mb-10 mt-5 sm:mt-0 w-fit">
+                  <div className="container-x mx-auto">
+                    <ul className="flex flex-col lg:w-fit w-full ">
+                      <li>
+                        <span
+                          onClick={() => setTab("des")}
+                          className={`py-[15px] sm:text-[15px] text-sm font-medium border cursor-pointer text-[var(--text-color)] block w-72 p-3 rounded-md ${
+                            tab === "des"
+                              ? "bg-[var(--primary-color)]"
+                              : "border-[var(--primary-color)]"
+                          }`}
+                        >
+                          {ServeLangItem()?.Description}
+                        </span>
+                      </li>
+                      <li>
+                        <span
+                          onClick={() => setTab("review")}
+                          className={`py-[15px] sm:text-[15px] text-sm block border mt-5 p-3 rounded-md font-medium cursor-pointer w-72 text-[var(--text-color)] ${
+                            tab === "review"
+                              ? "bg-[var(--primary-color)] "
+                              : "border-[var(--primary-color)] "
+                          }`}
+                        >
+                          {ServeLangItem()?.Reviews}
+                        </span>
+                      </li>
+                      {/*{Multivendor() === 1 && details.is_seller_product && (*/}
+                      {/*  <li>*/}
+                      {/*    <span*/}
+                      {/*      onClick={() => setTab("info")}*/}
+                      {/*      className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer ${*/}
+                      {/*        tab === "info"*/}
+                      {/*          ? "border-qyellow text-[var(--text-color)] "*/}
+                      {/*          : "border-transparent text-qgray"*/}
+                      {/*      }`}*/}
+                      {/*    >*/}
+                      {/*      {ServeLangItem()?.Seller_Info}*/}
+                      {/*    </span>*/}
+                      {/*  </li>*/}
+                      {/*)}*/}
+                    </ul>
+                  </div>
+                  {/* <div className="w-full h-[1px] bg-[#E8E8E8] absolute left-0 sm:top-[50px] top-[36px] -z-10"></div> */}
+                </div>
+                <div className="tab-contents lg:w-3/5 w-full ">
+                  <div className="container-x mx-auto">
+                    {tab === "des" && (
+                      <>
+                        <h6 className="text-[20px] font-bold text-[var(--text-color)] mb-5">
+                          {ServeLangItem()?.Introduction}
+                        </h6>
+                        <div
+                          className="product-detail-des mb-10 text-[var(--text-color)]"
+                          dangerouslySetInnerHTML={{
+                            __html: details.product.long_description,
+                          }}
+                        ></div>
+
+                        {details.specifications &&
+                          details.specifications.length > 0 && (
+                            <div className="product-specifications">
+                              <h6 className="text-[20px] font-bold mb-4 text-[var(--text-color)]">
+                                {ServeLangItem()?.Features} :
+                              </h6>
+                              <ul className="">
+                                {details.specifications.map((item, i) => {
+                                  {
+                                    return (
+                                      <li
+                                        key={i}
+                                        className=" leading-9 flex space-x-3 items-center"
+                                      >
+                                        <span className="text-[var(--text-color)] font-medium capitalize">
+                                          {" "}
+                                          {item.key?.key}:
+                                        </span>
+                                        <span className="font-normal text-[var(--text-color)]">
+                                          {item.specification}
+                                        </span>
+                                      </li>
+                                    );
+                                  }
+                                })}
+                              </ul>
+                            </div>
+                          )}
+                        {/*</div>*/}
+                      </>
+                    )}
+                    {tab === "review" && (
+                      <div
+                        data-aos="fade-up"
+                        className="w-full tab-content-item"
+                      >
+                        <h6 className="text-[20px] font-bold text-[var(--text-color)] mb-2">
+                          {ServeLangItem()?.Reviews}
+                        </h6>
+                        {/* review-comments */}
+                        <div className="w-full">
+                          <Reviews
+                            comments={
+                              commnets.length > 0 && commnets.slice(0, 2)
+                            }
+                          />
+                        </div>
+                      </div>
+                    )}
+                    {tab === "info" && (
+                      <div
+                        data-aos="fade-up"
+                        className="w-full tab-content-item"
+                      >
+                        {details.seller && (
+                          <SallerInfo
+                            sellerInfo={sellerInfo}
+                            products={
+                              details.this_seller_products.length > 0 &&
+                              details.this_seller_products.slice(
+                                0,
+                                details.this_seller_products.length > 8
+                                  ? 8
+                                  : details.this_seller_products.length
+                              )
+                            }
+                          />
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
             {relatedProducts.length > 0 && (
               <div className="related-product w-full">
                 <div className="container-x mx-auto">
