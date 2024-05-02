@@ -1,14 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import DiscountBanner from "../DiscountBanner";
 import Drawer from "../Mobile/Drawer";
 import Header from "./Headers/Header";
+import HeaderTwo from "./Headers/HeaderTwo";
+import HeaderThree from "./Headers/HeaderThree";
 import Footer from "./Footers/Footer";
 import FooterTheme2 from "./Footers/FooterTwo";
 import apiRequest from "../../../utils/apiRequest";
-import HeaderTwo from "./Headers/HeaderTwo";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export default function Layout({ children, childrenClasses }) {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
   const [settings, setSettings] = useState(null);
@@ -76,8 +78,8 @@ export default function Layout({ children, childrenClasses }) {
 
   const themeHeaderComponents = {
     theme1: Header,
-    theme2: HeaderTwo,
-    // theme3: HeaderThree,
+    theme2: HeaderThree,
+    theme3: HeaderThree,
     // Add more themes as needed
   };
 
