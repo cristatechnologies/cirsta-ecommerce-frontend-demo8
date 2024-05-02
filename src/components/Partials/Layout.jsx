@@ -74,20 +74,32 @@ export default function Layout({ children, childrenClasses }) {
 
   const [drawer, setDrawer] = useState(false);
 
+  const themeHeaderComponents = {
+    theme1: Header,
+    theme2: HeaderTwo,
+    // theme3: HeaderThree,
+    // Add more themes as needed
+  };
+
+  const SelectedThemeHeaderComponent =
+    themeHeaderComponents[themeSetting.selected_theme];
+
+  const themeFooterComponents = {
+    theme1: Footer,
+    theme2: FooterTheme2,
+    // "home and garden 1": FooterTheme3,
+    // Add more themes as needed
+  };
+
+  const SelectedThemeFooterComponent =
+    themeFooterComponents[themeSetting.selected_theme];
+
   return (
     <>
       <Drawer open={drawer} action={() => setDrawer(!drawer)} />
       <div className="w-full overflow-x-hidden">
-        {themeSetting && themeSetting.selected_theme === "theme1" && (
-          <Header
-            contact={contact && contact}
-            settings={settings}
-            drawerAction={() => setDrawer(!drawer)}
-          />
-        )}
-
-        {themeSetting && themeSetting.selected_theme === "theme2" && (
-          <HeaderTwo
+        {themeSetting && (
+          <SelectedThemeHeaderComponent
             contact={contact && contact}
             settings={settings}
             drawerAction={() => setDrawer(!drawer)}
@@ -103,13 +115,8 @@ export default function Layout({ children, childrenClasses }) {
         </div>
         {subscribeData && <DiscountBanner datas={subscribeData} />}
 
-        {themeSetting && themeSetting.selected_theme === "theme1" && (
-          <Footer settings={settings} />
-        )}
+        {themeSetting && <SelectedThemeFooterComponent settings={settings} />}
 
-        {themeSetting && themeSetting.selected_theme === "theme2" && (
-          <FooterTheme2 settings={settings} />
-        )}
         <button
           onClick={scrollToTop}
           className={`${
