@@ -168,7 +168,6 @@ function CheakoutPage() {
         }`
       )
       .then((res) => {
-        console.log("res", res);
         setPhonepeStatus(
           !!res.data &&
             res.data.sslcommerz &&
