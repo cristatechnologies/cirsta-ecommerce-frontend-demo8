@@ -7,6 +7,7 @@ import Drawer from "../Mobile/Drawer";
 import Header from "./Headers/Header";
 import HeaderTwo from "./Headers/HeaderTwo";
 import HeaderThree from "./Headers/HeaderThree";
+import HeaderFour from "./Headers/HeaderFour";
 import Footer from "./Footers/Footer";
 import FooterTheme2 from "./Footers/FooterTwo";
 import FooterTheme3 from "./Footers/FooterThree";
@@ -80,7 +81,8 @@ export default function Layout({ children, childrenClasses }) {
   const themeHeaderComponents = {
     theme1: Header,
     theme2: HeaderTwo,
-    theme3: HeaderThree,
+    theme3: HeaderFour,
+    theme4: HeaderFour,
     // Add more themes as needed
   };
 
