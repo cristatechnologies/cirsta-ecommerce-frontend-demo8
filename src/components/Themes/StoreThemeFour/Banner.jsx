@@ -15,7 +15,7 @@ export default function Banner({
   const settingBanner = {
     infinite: true,
     dots: true,
-    autoplay: true,
+    autoplay: false,
     arrows: false,
     fade: true,
   };
@@ -41,43 +41,64 @@ export default function Banner({
                   <SimpleSlider settings={settingBanner}>
                     {images.length > 0 &&
                       images.map((item, i) => (
-                        <div key={i} className="item w-full h-full group">
+                        <div
+                          key={i}
+                          className="item w-full h-full group relative"
+                        >
                           <div
                             style={{
-                              backgroundImage: `url(${
-                                process.env.NEXT_PUBLIC_BASE_URL + item.image
-                              })`,
-                              backgroundSize: "cover",
-                              backgroundRepeat: "no-repeat",
+                              position: "relative",
+                              height: "100%",
+                              width: "100%",
+                              display: " flex",
+                              alignItems: "center",
+                              justifyContent: "center",
                             }}
-                            className="flex  w-full max-w-full  h-full relative rtl:pr-[30px] ltr:pl-[30px]"
+                            className="flex w-full h-full relative items-center justify-center"
                           >
-                            <div className="mt-20">
-                              <div className="md:w-[112px] w-[100px] shadow md:h-[25px] h-[18px] flex items-center justify-center  bg-white rounded-full md:mb-[30px] mb-[15px]">
+                            <div
+                              style={{
+                                position: "absolute",
+                                top: "0",
+                                right: "0",
+                                bottom: "0",
+                                left: "0",
+                                filter: " brightness(0.8)",
+                                backgroundImage: `url(${
+                                  process.env.NEXT_PUBLIC_BASE_URL + item.image
+                                })`,
+                                backgroundSize: "cover",
+                                backgroundRepeat: "no-repeat",
+                              }}
+                            ></div>
+                            <div className="text-center relative z-10">
+                              <div className="md:w-[112px] w-[100px] shadow md:h-[25px] h-[18px] flex items-center justify-center bg-white rounded-full md:mb-[30px] mb-[15px]">
                                 <span className="text-[var(--text-color)] uppercase md:text-xs text-[10px] font-semibold">
                                   {item.badge}
                                 </span>
                               </div>
                               <div className="md:mb-[30px] mb-[15px]">
-                                <p className="md:text-[50px] text-[20px] leading-none text-[var(--text-color)] md:mb-3">
+                                <p className="md:text-[50px] text-[20px] leading-none text-[var(--secondary-color)] md:mb-3 w-fit">
                                   {item.title_one}
                                 </p>
-                                <h1 className="md:text-[50px] text-[20px] md:w-[400px] md:leading-[66px] text-[var(--text-color)] font-bold">
+                                <h1 className="md:text-[50px] text-[20px] md:w-[400px] md:leading-[66px] text-[var(--secondary-color)] font-bold !w-fit">
                                   {item.title_two}
                                 </h1>
                               </div>
-                              <div className="w-[90px]">
-                                <Link
-                                  href={{
-                                    pathname: "/single-product",
-                                    query: { slug: item.product_slug },
-                                  }}
-                                  passHref
-                                >
-                                  <a rel="noopener noreferrer">
-                                    <ShopNowBtn />
-                                  </a>
-                                </Link>
+                              <div className="text-start">
+                                <button className="h-10 text-[var(--secondary-color)] bg-[var(--primary-color)] rounded-md hover:bg-[var(--secondary-color)] hover:text-[var(--primary-color)] font-bold">
+                                  <Link
+                                    href={{
+                                      pathname: "/single-product",
+                                      query: { slug: item.product_slug },
+                                    }}
+                                    passHref
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="p-5">Shop Now</span>
+                                    </a>
+                                  </Link>
+                                </button>
                               </div>
                             </div>
                           </div>
