@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import Arrow from "../../../Helpers/icons/Arrow";
 import FontAwesomeCom from "../../../Helpers/icons/FontAwesomeCom";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
+import SearchBoxTwo from "../../../Helpers/SearchBoxTwo";
 
 export default function Navbar({ className }) {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
@@ -28,11 +29,11 @@ export default function Navbar({ className }) {
         className || ""
       }`}
     >
-      <div className="mx-24">
+      <div className="ml-10">
         <div className="w-full h-full relative">
           <div className="w-full h-full flex justify-start items-center">
             <div className="flex row-auto ">
-              <div className="categorycategory ml-10 w-[270px] h-[51px] bg-[var(--secondary-color)] px-5 rounded-[5px] relative">
+              <div className="categorycategory  w-[270px] h-[51px] bg-[var(--secondary-color)] px-5 rounded-[5px] relative">
                 <button
                   onClick={handler}
                   type="button"
@@ -247,7 +248,7 @@ export default function Navbar({ className }) {
                 </div>
               </div>
             </div>
-            <div className="category-and-nav flex xl:rtl:space-x-reverse  rtl:space-x-reverse space-x-3 items-center">
+            {/* <div className="category-and-nav flex xl:rtl:space-x-reverse  rtl:space-x-reverse space-x-3 items-center">
               <div className="nav ml-10">
                 <ul className="nav-wrapper flex xl:space-x-10 rtl:space-x-reverse space-x-5">
                   <li>
@@ -272,7 +273,7 @@ export default function Navbar({ className }) {
                       </a>
                     </Link>
                   </li>
-                  {/* <li>
+                  <li>
                     <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                       <span>{ServeLangItem()?.Shop}</span>
                       <span className="ml-1.5 ">
@@ -402,7 +403,7 @@ export default function Navbar({ className }) {
                         )}
                       </div>
                     </div>
-                  </li> */}
+                  </li> 
 
                   <li>
                     <Link href="/blogs" passHref>
@@ -433,7 +434,7 @@ export default function Navbar({ className }) {
                       </a>
                     </Link>
                   </li>
-                  {/* <li className="relative">
+                  <li className="relative">
                     <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                       <span>{ServeLangItem()?.Pages}</span>
                       <span className="ml-1.5 ">
@@ -521,9 +522,18 @@ export default function Navbar({ className }) {
                         </div>
                       </div>
                     </div>
-                  </li> */}
+                  </li> 
                 </ul>
               </div>
+            </div> */}
+            <div className="topbar-nav ml-10">
+              <ul className="flex space-x-6 items-center w-full">
+                <li className="rtl:ml-6 ltr:ml-0">
+                  <div className="w-[470px]">
+                    <SearchBoxTwo className="search-com" />
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
