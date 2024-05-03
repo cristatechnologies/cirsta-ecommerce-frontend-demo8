@@ -111,6 +111,7 @@ function CheakoutPage() {
   const [paypalStatus, setPaypalStatus] = useState(null);
   const [bankPaymentStatus, setBankPaymentStatus] = useState(null);
   const [sslStatus, setSslStatus] = useState(null);
+  const [phonepeStatus, setPhonepeStatus] = useState(null);
   const [totalWeight, setTotalWeight] = useState(null);
   const [totalQty, setQty] = useState(null);
 
@@ -167,6 +168,12 @@ function CheakoutPage() {
         }`
       )
       .then((res) => {
+        console.log("res", res);
+        setPhonepeStatus(
+          !!res.data &&
+            res.data.sslcommerz &&
+            parseInt(res.data.phonepe.status) === 1
+        );
         setSslStatus(
           !!(
             res.data &&
@@ -955,7 +962,6 @@ function CheakoutPage() {
             });
 
             if (response) {
-              console.log("response", response);
               try {
                 const provideUrl = `${
                   process.env.NEXT_PUBLIC_BASE_URL
@@ -2331,7 +2337,7 @@ function CheakoutPage() {
                               )}
                             </div>
                           )}
-                          {checkDeliverable.pre_paid && (
+                          {checkDeliverable.pre_paid && phonepeStatus && (
                             <div
                               onClick={() => setPaymentMethod("debitCard")}
                               className={`payment-item relative bg-[#F8F8F8] text-center w-full h-[50px] text-sm text-qgreen flex justify-center items-center px-3 uppercase cursor-pointer
@@ -2369,7 +2375,7 @@ function CheakoutPage() {
                             </div>
                           )}
 
-                          {checkDeliverable.pre_paid && (
+                          {checkDeliverable.pre_paid && phonepeStatus && (
                             <div
                               onClick={() => setPaymentMethod("creditCard")}
                               className={`payment-item relative bg-[#F8F8F8] text-center w-full h-[50px] text-sm text-qgreen flex justify-center items-center px-3 uppercase cursor-pointer
@@ -2407,7 +2413,7 @@ function CheakoutPage() {
                             </div>
                           )}
 
-                          {checkDeliverable.pre_paid && (
+                          {checkDeliverable.pre_paid && phonepeStatus && (
                             <div
                               onClick={() => setPaymentMethod("netBanking")}
                               className={`payment-item relative bg-[#F8F8F8] text-center w-full h-[50px] text-sm text-qgreen flex justify-center items-center px-3 uppercase cursor-pointer
@@ -2444,7 +2450,7 @@ function CheakoutPage() {
                               )}
                             </div>
                           )}
-                          {checkDeliverable.pre_paid && (
+                          {checkDeliverable.pre_paid && phonepeStatus && (
                             <div
                               onClick={() => setPaymentMethod("wallet")}
                               className={`payment-item relative bg-[#F8F8F8] text-center w-full h-[50px] text-sm text-qgreen flex justify-center items-center px-3 uppercase cursor-pointer
