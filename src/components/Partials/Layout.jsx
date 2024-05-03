@@ -11,6 +11,7 @@ import HeaderFour from "./Headers/HeaderFour";
 import Footer from "./Footers/Footer";
 import FooterTheme2 from "./Footers/FooterTwo";
 import FooterTheme3 from "./Footers/FooterThree";
+import FooterTheme4 from "./Footers/FooterFour";
 import apiRequest from "../../../utils/apiRequest";
 
 export default function Layout({ children, childrenClasses }) {
@@ -81,7 +82,7 @@ export default function Layout({ children, childrenClasses }) {
   const themeHeaderComponents = {
     theme1: Header,
     theme2: HeaderTwo,
-    theme3: HeaderFour,
+    theme3: HeaderThree,
     theme4: HeaderFour,
     // Add more themes as needed
   };
@@ -93,6 +94,7 @@ export default function Layout({ children, childrenClasses }) {
     theme1: Footer,
     theme2: FooterTheme2,
     theme3: FooterTheme3,
+    theme4: FooterTheme4,
     // Add more themes as needed
   };
 
