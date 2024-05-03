@@ -23,7 +23,7 @@ export default function HeaderFour({
 
   return (
     <header className={` ${className || ""} header-section-wrapper relative `}>
-      <div className="border-b border-b-gray-200 bg-slate-900 ">
+      <div className="border-b border-b-gray-200 bg-[var(--primary-color)] ">
         <div className="container-x lg:!pl-0 h-full mx-auto p-3">
           <Link href="tel:+380961381876" passHref>
             <a rel="noopener noreferrer">
@@ -38,7 +38,7 @@ export default function HeaderFour({
           </Link>
           <span className="text-sm leading-6 !text-white font-500 capitalize ml-20">
             TAKE CARE OF YOUR Health{" "}
-            <span className="text-[var(--primary-color)]">25% OFF</span>
+            <span className="text-[var(--secondary-color)]">25% OFF</span>
             &nbsp; USE CODE “ DOFIX03 ”
           </span>
         </div>

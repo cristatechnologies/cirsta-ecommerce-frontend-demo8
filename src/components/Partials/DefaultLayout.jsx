@@ -82,12 +82,14 @@ export default function DefaultLayout({ children }) {
     dispatch(fetchCompareProducts());
     const themeColor = JSON.parse(localStorage.getItem("settings"));
     if (themeColor) {
+      const themeBgRemove = ["theme2", "theme3", "theme4"];
       const root = document.querySelector(":root");
       root.style.setProperty("--primary-color", `${themeColor?.theme_one}`);
       root.style.setProperty("--secondary-color", `${themeColor?.theme_two}`);
       root.style.setProperty("--text-color", `${themeColor?.text_color}`);
-      if (themeColor.selected_theme === 'theme2') {
-        document.body.style.backgroundImage = 'none';
+
+      if (themeBgRemove.includes(themeColor.selected_theme)) {
+        document.body.style.backgroundImage = "none";
       }
     }
     if (languageModel()) {
@@ -157,8 +159,9 @@ export default function DefaultLayout({ children }) {
             const itemQueryStr = itemsQuery
               .map((value) => value + "&")
               .join("");
-            const uri = `token=${auth().access_token}&product_id=${holdData.id
-              }&${variantString}${itemQueryStr}quantity=${holdData.quantity}`;
+            const uri = `token=${auth().access_token}&product_id=${
+              holdData.id
+            }&${variantString}${itemQueryStr}quantity=${holdData.quantity}`;
             apiRequest
               .addToCard(uri)
               .then((res) => {
@@ -170,14 +173,15 @@ export default function DefaultLayout({ children }) {
                 console.log(err);
                 toast.error(
                   err.response &&
-                  err.response.data.message &&
-                  err.response.data.message
+                    err.response.data.message &&
+                    err.response.data.message
                 );
               });
             dispatch(fetchCart());
           } else {
-            const uri = `token=${auth().access_token}&product_id=${holdData.id
-              }&quantity=${holdData.quantity}`;
+            const uri = `token=${auth().access_token}&product_id=${
+              holdData.id
+            }&quantity=${holdData.quantity}`;
             apiRequest
               .addToCard(uri)
               .then((res) => {
@@ -189,8 +193,8 @@ export default function DefaultLayout({ children }) {
                 console.log(err);
                 toast.error(
                   err.response &&
-                  err.response.data.message &&
-                  err.response.data.message
+                    err.response.data.message &&
+                    err.response.data.message
                 );
               });
             dispatch(fetchCart());

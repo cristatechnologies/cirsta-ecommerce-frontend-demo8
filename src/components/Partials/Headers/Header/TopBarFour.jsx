@@ -179,7 +179,7 @@ export default function TopBarFour({ className, contact, settings }) {
                     </Link>
                   )}
 
-                  <span className="w-[18px] h-[18px] rounded-full  absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px] bg-[var(--primary-color)]">
+                  <span className="w-[18px] h-[18px] rounded-full  absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px] bg-[var(--primary-color)] text-[var(--secondary-color)]">
                     {compareProducts ? compareProducts.products.length : 0}
                   </span>
                 </div>
@@ -191,7 +191,7 @@ export default function TopBarFour({ className, contact, settings }) {
                       </span>
                     </a>
                   </Link>
-                  <span className="w-[18px] h-[18px] rounded-full  absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px] bg-[var(--primary-color)]">
+                  <span className="w-[18px] h-[18px] rounded-full  absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px] bg-[var(--primary-color)] text-[var(--secondary-color)]">
                     {wishlists ? wishlists.data.length : 0}
                   </span>
                 </div>
@@ -207,7 +207,7 @@ export default function TopBarFour({ className, contact, settings }) {
                         </span>
                       </a>
                     </Link>
-                    <span className="w-[18px] h-[18px] rounded-full  absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px]  bg-[var(--primary-color)]">
+                    <span className="w-[18px] h-[18px] rounded-full  absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px]  bg-[var(--primary-color)] text-[var(--secondary-color)]">
                       {cartItem ? cartItem : 0}
                     </span>
                   </div>
