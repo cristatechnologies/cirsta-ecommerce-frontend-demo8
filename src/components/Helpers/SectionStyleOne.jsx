@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { slider_settings } from "../../constant/constant";
 import CategoryCard from "./Cards/CategoryCard";
 import ProductCardStyleOne from "./Cards/ProductCardStyleOne";
 import DataIteration from "./DataIteration";
 import LoaderStyleTwo from "./Loaders/LoaderStyleTwo";
 import ViewMoreTitle from "./ViewMoreTitle";
+import Slider from "react-slick";
 export default function SectionStyleOne({
   className,
   categoryTitle,
@@ -16,6 +18,19 @@ export default function SectionStyleOne({
   const [selectedId, setId] = useState(
     categories.length > 0 && categories[0].category_id
   );
+  const quickViewHandler = (slug) => {
+    setQuickView(!quickViewModal);
+    if (!quickViewData) {
+      axios
+        .get(`${process.env.NEXT_PUBLIC_BASE_URL}api/product/${slug}`)
+        .then((res) => {
+          setQuickViewData(res.data ? res.data : null);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  };
   const [load, setLoad] = useState(false);
   const cp =
     products.length > 0 &&
@@ -51,6 +66,18 @@ export default function SectionStyleOne({
         >
           <ViewMoreTitle categoryTitle={sectionTitle} seeMoreUrl={seeMoreUrl}>
             <div className="products-section w-full">
+              <div>
+            <Slider {...slider_settings} className="width--full ">
+              {cp.map((datas) => (
+                <div data-aos="fade-up" key={datas.id} className="item w-full">
+                  <ProductCardStyleOne
+                    datas={datas}
+                    quickViewHandler={quickViewHandler}
+                  />
+                </div>
+              ))}
+            </Slider>
+            </div>
               <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-[30px] gap-5">
                 {/* <div className="category-card hidden xl:block w-full">
                   <CategoryCard
