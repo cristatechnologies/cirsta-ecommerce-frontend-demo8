@@ -23,6 +23,103 @@ export default function Navbar({ className }) {
     let categorySelector = document.querySelector(".category-dropdown");
     setHeight(categorySelector.offsetHeight);
   }, [categoryToggle]);
+
+  const renderParentCategories = (categories) => {
+    return (
+      <ul className="all-categories-item bg-white">
+        {categories.map((category) => (
+          <li
+            className=" text-[var(--text-color)] group/parent"
+            key={category.id}
+          >
+            <Link
+              href={{
+                pathname: "/products",
+                query: { category: category.slug },
+              }}
+              passHref
+            >
+              <a rel="noopener noreferrer">
+                <div className="flex justify-between items-center px-5 h-10 transition-all duration-500 cursor-pointer group-hover/parent:bg-gray-200 ease-out">
+                  <div className="flex items-center rtl:space-x-reverse space-x-6 ">
+                    <span>
+                      <FontAwesomeCom
+                        className="w-4 h-4 "
+                        icon={category.icon}
+                      />
+                    </span>
+                    <span className="text-xs font-400">{category.name}</span>
+                  </div>
+                  {category.children.length > 0 && (
+                    <div>
+                      <span>
+                        <svg
+                          className={`transform rtl:rotate-180 fill-current group-hover/parent:rotate-90`}
+                          width="6"
+                          height="9"
+                          viewBox="0 0 6 9"
+                          fill="text-[var(--text-color)]"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect
+                            x="1.49805"
+                            y="0.818359"
+                            width="5.78538"
+                            height="1.28564"
+                            transform="rotate(45 1.49805 0.818359)"
+                          />
+                          <rect
+                            x="5.58984"
+                            y="4.90918"
+                            width="5.78538"
+                            height="1.28564"
+                            transform="rotate(135 5.58984 4.90918)"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </a>
+            </Link>
+            {category.children.length > 0 &&
+              renderChildCategories(category.children)}
+          </li>
+        ))}
+      </ul>
+    );
+  };
+
+  const renderChildCategories = (children) => {
+    return (
+      <ul className="children-categories ml-5">
+        {children.map((child) => (
+          <li
+            key={child.id}
+            className="text-[var(--text-color)] hidden group-hover/parent:block"
+          >
+            <Link
+              href={{
+                pathname: "/products",
+                query: { category: child.slug },
+              }}
+              passHref
+            >
+              <a rel="noopener noreferrer">
+                <div className="flex justify-between items-center px-5 h-10 transition-all duration-300 ease-in-out cursor-pointer ">
+                  <div className="flex items-center rtl:space-x-reverse space-x-6">
+                    <span className={"text-xs font-400"}>{child.name}</span>
+                  </div>
+                </div>
+              </a>
+            </Link>
+            {child.children.length > 0 && renderChildCategories(child.children)}
+          </li>
+        ))}
+      </ul>
+    );
+  };
+
   return (
     <div
       className={`nav-widget-wrapper w-full  h-[60px] relative z-30  ${
@@ -82,7 +179,7 @@ export default function Navbar({ className }) {
                     categoryToggle ? "block" : "hidden"
                   }`}
                 >
-                  <ul className="categories-list relative">
+                  {/* <ul className="categories-list relative">
                     {categoryList &&
                       categoryList.map((item) => (
                         <li key={item.id} className="category-item">
@@ -244,7 +341,8 @@ export default function Navbar({ className }) {
                           </div>
                         </li>
                       ))}
-                  </ul>
+                  </ul> */}
+                  {renderParentCategories(categoryList)}
                 </div>
               </div>
             </div>

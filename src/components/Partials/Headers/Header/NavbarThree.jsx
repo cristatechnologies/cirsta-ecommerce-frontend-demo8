@@ -18,6 +18,102 @@ export default function Navbar({ className }) {
   const handler = () => {
     setToggle(!categoryToggle);
   };
+  
+  const renderParentCategories = (categories) => {
+    return (
+      <ul className="all-categories-item bg-white">
+        {categories.map((category) => (
+          <li
+            className=" text-[var(--text-color)] group/parent"
+            key={category.id}
+          >
+            <Link
+              href={{
+                pathname: "/products",
+                query: { category: category.slug },
+              }}
+              passHref
+            >
+              <a rel="noopener noreferrer">
+                <div className="flex justify-between items-center px-5 h-10 transition-all duration-500 cursor-pointer group-hover/parent:bg-gray-200 ease-out">
+                  <div className="flex items-center rtl:space-x-reverse space-x-6 ">
+                    <span>
+                      <FontAwesomeCom
+                        className="w-4 h-4 "
+                        icon={category.icon}
+                      />
+                    </span>
+                    <span className="text-xs font-400">{category.name}</span>
+                  </div>
+                  {category.children.length > 0 && (
+                    <div>
+                      <span>
+                        <svg
+                          className={`transform rtl:rotate-180 fill-current group-hover/parent:rotate-90`}
+                          width="6"
+                          height="9"
+                          viewBox="0 0 6 9"
+                          fill="text-[var(--text-color)]"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect
+                            x="1.49805"
+                            y="0.818359"
+                            width="5.78538"
+                            height="1.28564"
+                            transform="rotate(45 1.49805 0.818359)"
+                          />
+                          <rect
+                            x="5.58984"
+                            y="4.90918"
+                            width="5.78538"
+                            height="1.28564"
+                            transform="rotate(135 5.58984 4.90918)"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </a>
+            </Link>
+            {category.children.length > 0 &&
+              renderChildCategories(category.children)}
+          </li>
+        ))}
+      </ul>
+    );
+  };
+
+  const renderChildCategories = (children) => {
+    return (
+      <ul className="children-categories ml-5">
+        {children.map((child) => (
+          <li
+            key={child.id}
+            className="text-[var(--text-color)] hidden group-hover/parent:block"
+          >
+            <Link
+              href={{
+                pathname: "/products",
+                query: { category: child.slug },
+              }}
+              passHref
+            >
+              <a rel="noopener noreferrer">
+                <div className="flex justify-between items-center px-5 h-10 transition-all duration-300 ease-in-out cursor-pointer ">
+                  <div className="flex items-center rtl:space-x-reverse space-x-6">
+                    <span className={"text-xs font-400"}>{child.name}</span>
+                  </div>
+                </div>
+              </a>
+            </Link>
+            {child.children.length > 0 && renderChildCategories(child.children)}
+          </li>
+        ))}
+      </ul>
+    );
+  };
 
   useEffect(() => {
     let categorySelector = document.querySelector(".category-dropdown");
@@ -29,11 +125,11 @@ export default function Navbar({ className }) {
         className || ""
       }`}
     >
-      <div className="ml-10">
+      <div>
         <div className="w-full h-full relative">
           <div className="w-full h-full flex justify-start items-center">
             <div className="flex row-auto ">
-              <div className="categorycategory  w-[270px] h-[51px] bg-[var(--secondary-color)] px-5 rounded-[5px] relative">
+              <div className="categorycategory ml-10 w-[270px] h-[51px] bg-[var(--secondary-color)] px-5 rounded-[5px] relative">
                 <button
                   onClick={handler}
                   type="button"
@@ -82,7 +178,7 @@ export default function Navbar({ className }) {
                     categoryToggle ? "block" : "hidden"
                   }`}
                 >
-                  <ul className="categories-list relative">
+                  {/* <ul className="categories-list relative">
                     {categoryList &&
                       categoryList.map((item) => (
                         <li key={item.id} className="category-item">
@@ -244,14 +340,24 @@ export default function Navbar({ className }) {
                           </div>
                         </li>
                       ))}
-                  </ul>
+                  </ul> */}
+                  {renderParentCategories(categoryList)}
                 </div>
               </div>
             </div>
-            {/* <div className="category-and-nav flex xl:rtl:space-x-reverse  rtl:space-x-reverse space-x-3 items-center">
+            <div className="category-and-nav flex xl:rtl:space-x-reverse  rtl:space-x-reverse space-x-3 items-center">
               <div className="nav ml-10">
-                <ul className="nav-wrapper flex xl:space-x-10 rtl:space-x-reverse space-x-5">
-                  <li>
+                <div className="topbar-nav">
+                  <ul className="flex space-x-6 items-center w-full">
+                    <li className="rtl:ml-6 ltr:ml-0">
+                      <div className="w-[470px]">
+                        <SearchBoxTwo className="search-com" />
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                {/* <ul className="nav-wrapper flex xl:space-x-10 rtl:space-x-reverse space-x-5"> */}
+                {/* <li>
                     <Link href="/" passHref>
                       <a rel="noopener noreferrer">
                         <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
@@ -403,7 +509,7 @@ export default function Navbar({ className }) {
                         )}
                       </div>
                     </div>
-                  </li> 
+                  </li>
 
                   <li>
                     <Link href="/blogs" passHref>
@@ -433,8 +539,8 @@ export default function Navbar({ className }) {
                         </span>
                       </a>
                     </Link>
-                  </li>
-                  <li className="relative">
+                  </li> */}
+                {/* <li className="relative">
                     <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                       <span>{ServeLangItem()?.Pages}</span>
                       <span className="ml-1.5 ">
@@ -522,18 +628,9 @@ export default function Navbar({ className }) {
                         </div>
                       </div>
                     </div>
-                  </li> 
-                </ul>
+                  </li> */}
+                {/* </ul> */}
               </div>
-            </div> */}
-            <div className="topbar-nav ml-10">
-              <ul className="flex space-x-6 items-center w-full">
-                <li className="rtl:ml-6 ltr:ml-0">
-                  <div className="w-[470px]">
-                    <SearchBoxTwo className="search-com" />
-                  </div>
-                </li>
-              </ul>
             </div>
           </div>
         </div>
