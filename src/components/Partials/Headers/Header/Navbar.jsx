@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useSelector } from "react-redux";
 import Arrow from "../../../Helpers/icons/Arrow";
 import FontAwesomeCom from "../../../Helpers/icons/FontAwesomeCom";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
-
+import LoginContext from "../../../Contexts/LoginContext";
+import { useRouter } from "next/router"; 
+import Multivendor from "../../../Shared/Multivendor";
 export default function Navbar({ className }) {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
   const categoryList = websiteSetup && websiteSetup.payload.productCategories;
