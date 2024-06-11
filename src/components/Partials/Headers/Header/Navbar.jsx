@@ -14,6 +14,19 @@ export default function Navbar({ className }) {
   // const customPages = websiteSetup && websiteSetup.payload.customPages;
   const [categoryToggle, setToggle] = useState(false);
   const [subCatHeight, setHeight] = useState(null);
+   const router = useRouter();
+   const getLoginContexts = useContext(LoginContext);
+   const [auth, setAuth] = useState(null);
+
+   useEffect(() => {
+     if (getLoginContexts.loginPopup === false) {
+       setAuth(() => JSON.parse(localStorage.getItem("auth")));
+     }
+   }, [getLoginContexts.loginPopup]);
+
+   useEffect(() => {
+     setAuth(JSON.parse(localStorage.getItem("auth")));
+   }, []);
   const handler = () => {
     setToggle(!categoryToggle);
   };
