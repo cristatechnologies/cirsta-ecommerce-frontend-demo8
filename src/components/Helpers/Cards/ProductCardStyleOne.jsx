@@ -240,7 +240,7 @@ export default function ProductCardStyleOne({ datas, quickViewHandler }) {
       >
         <div className="product-card-img w-full h-[300px] -mt-2">
           <div
-            className="w-full h-full relative flex justify-center items-center transform scale-100 group-hover:scale-110 transition duration-300 ease-in-out"
+            className="w-full h-full relative flex justify-center items-center transform scale-100  group-hover:scale-100 transition duration-300 ease-in-out"
             // style={{
             //   background: `url(${datas.image}) no-repeat center`,
             //   backgroundSize: "contain",
@@ -315,7 +315,7 @@ export default function ProductCardStyleOne({ datas, quickViewHandler }) {
         </div>
         <div className="product-card-details px-[30px] pb-[30px] relative pt-2">
           {/* add to card button */}
-          <div className="absolute w-full h-10 px-[30px] left-0 top-40 group-hover:top-[85px] transition-all duration-300 ease-in-out">
+          <div className="absolute w-full h-10 px-[30px] left-0 top-40 group-hover:top-[95px] transition-all duration-300 ease-in-out">
             <button
               onClick={() => addToCart(datas.id)}
               type="button"
@@ -338,7 +338,7 @@ export default function ProductCardStyleOne({ datas, quickViewHandler }) {
                   {ServeLangItem()?.Add_To_Cart}
                 </span>
               </div>
-              <div className="bg-shape w-full h-full absolute  bg-qblack"></div>
+              <div className="bg-shape w-full h-full absolute  bg-black"></div>
             </button>
           </div>
           <div className="reviews flex space-x-[1px] mb-3">

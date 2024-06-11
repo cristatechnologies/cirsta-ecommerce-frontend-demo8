@@ -1,55 +1,38 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Arrow from "../../../Helpers/icons/Arrow";
 import FontAwesomeCom from "../../../Helpers/icons/FontAwesomeCom";
-import Multivendor from "../../../Shared/Multivendor";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
-import LoginContext from "../../../Contexts/LoginContext";
-import { useRouter } from "next/router";
 
 export default function Navbar({ className }) {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
   const categoryList = websiteSetup && websiteSetup.payload.productCategories;
   const mageMenuList = websiteSetup && websiteSetup.payload.megaMenuCategories;
   const megaMenuBanner = websiteSetup && websiteSetup.payload.megaMenuBanner;
-  const customPages = websiteSetup && websiteSetup.payload.customPages;
+  // const customPages = websiteSetup && websiteSetup.payload.customPages;
   const [categoryToggle, setToggle] = useState(false);
   const [subCatHeight, setHeight] = useState(null);
-  const router = useRouter();
-  const getLoginContexts = useContext(LoginContext);
-  const [auth, setAuth] = useState(null);
-
-  useEffect(() => {
-    if (getLoginContexts.loginPopup === false) {
-      setAuth(() => JSON.parse(localStorage.getItem("auth")));
-    }
-  }, [getLoginContexts.loginPopup]);
-
-  useEffect(() => {
-    setAuth(JSON.parse(localStorage.getItem("auth")));
-  }, []);
-
   const handler = () => {
     setToggle(!categoryToggle);
   };
 
-  // useEffect(() => {
-  //   let categorySelector = document.querySelector(".category-dropdown");
-  //   setHeight(categorySelector.offsetHeight);
-  // }, [categoryToggle]);
+  useEffect(() => {
+    let categorySelector = document.querySelector(".category-dropdown");
+    setHeight(categorySelector.offsetHeight);
+  }, [categoryToggle]);
   return (
     <div
       className={`nav-widget-wrapper w-full  h-[60px] relative z-30  ${
         className || ""
       }`}
     >
-      <div className="container-x mx-auto h-full">
+      <div className="mx-24">
         <div className="w-full h-full relative">
-          <div className="w-full h-full flex justify-center items-center">
-            <div className="category-and-nav flex xl:rtl:space-x-reverse rtl:space-x-reverse space-x-7 items-center">
-              {/* <div className="category ml-10 w-[270px] h-[41px] bg-[var(--secondary-color)] px-5 rounded-[5px] relative">
+          <div className="w-full h-full flex justify-start items-center">
+            <div className="flex row-auto ">
+              <div className="categorycategory ml-10 w-[270px] h-[51px] bg-[var(--secondary-color)] px-5 rounded-[5px] relative">
                 <button
                   onClick={handler}
                   type="button"
@@ -94,7 +77,7 @@ export default function Navbar({ className }) {
                   style={{
                     boxShadow: " 0px 15px 50px 0px rgba(0, 0, 0, 0.14)",
                   }}
-                  className={`category-dropdown w-full absolute left-0 top-[53px]  ${
+                  className={`category-dropdown w-full absolute left-0 top-[40px]  ${
                     categoryToggle ? "block" : "hidden"
                   }`}
                 >
@@ -153,16 +136,14 @@ export default function Navbar({ className }) {
                             </a>
                           </Link>
                           <div
-                            className={`sub-category-lvl-two absolute ltr:left-[270px] rtl:right-[270px] top-0 z-10 w-[270px] ${
-                              item.active_sub_categories.length > 0
-                                ? "bg-white"
-                                : ""
+                            className={`sub-category-lvl-two absolute ltr:left-[200px] rtl:right-[200px] top-0 z-10 w-[200px] ${
+                              item.children.length > 0 ? "bg-white" : ""
                             }`}
                             style={{ height: `${subCatHeight}px` }}
                           >
                             <ul className="">
-                              {item.active_sub_categories.length > 0 &&
-                                item.active_sub_categories.map((subItem) => (
+                              {item.children.length > 0 &&
+                                item.children.map((subItem) => (
                                   <li
                                     key={subItem.id}
                                     className="category-item"
@@ -212,46 +193,42 @@ export default function Navbar({ className }) {
                                       </a>
                                     </Link>
                                     <div
-                                      className={`sub-category-lvl-three absolute ltr:left-[270px] rtl:right-[270px] top-0 z-10 w-[270px] ${
-                                        subItem.active_child_categories.length >
-                                        0
+                                      className={`sub-category-lvl-three absolute ltr:left-[200px] rtl:right-[200px] top-0 z-10 w-[200px] ${
+                                        subItem.children.length > 0
                                           ? "bg-white"
                                           : ""
                                       }`}
                                       style={{ height: `${subCatHeight}px` }}
                                     >
                                       <ul className="">
-                                        {subItem.active_child_categories
-                                          .length > 0 &&
-                                          subItem.active_child_categories.map(
-                                            (subsubitem) => (
-                                              <li
-                                                key={subsubitem.id}
-                                                className="category-item"
+                                        {subItem.children.length > 0 &&
+                                          subItem.children.map((subsubitem) => (
+                                            <li
+                                              key={subsubitem.id}
+                                              className="category-item"
+                                            >
+                                              <Link
+                                                href={{
+                                                  pathname: "/products",
+                                                  query: {
+                                                    child_category:
+                                                      subsubitem.slug,
+                                                  },
+                                                }}
+                                                passHref
                                               >
-                                                <Link
-                                                  href={{
-                                                    pathname: "/products",
-                                                    query: {
-                                                      child_category:
-                                                        subsubitem.slug,
-                                                    },
-                                                  }}
-                                                  passHref
-                                                >
-                                                  <a rel="noopener noreferrer">
-                                                    <div className=" flex justify-between items-center px-5 h-10 transition-all duration-300 ease-in-out cursor-pointer">
-                                                      <div>
-                                                        <span className="text-xs font-400">
-                                                          {subsubitem.name}
-                                                        </span>
-                                                      </div>
+                                                <a rel="noopener noreferrer">
+                                                  <div className=" flex justify-between items-center px-5 h-10 transition-all duration-300 ease-in-out cursor-pointer">
+                                                    <div>
+                                                      <span className="text-xs font-400">
+                                                        {subsubitem.name}
+                                                      </span>
                                                     </div>
-                                                  </a>
-                                                </Link>
-                                              </li>
-                                            )
-                                          )}
+                                                  </div>
+                                                </a>
+                                              </Link>
+                                            </li>
+                                          ))}
                                       </ul>
                                     </div>
                                   </li>
@@ -262,43 +239,33 @@ export default function Navbar({ className }) {
                       ))}
                   </ul>
                 </div>
-              </div> */}
-              <div className="nav">
-                <ul className="nav-wrapper flex  ">
-                  {/* <li className="relative">
-                    <Link href="/">
-                      <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
-                        <span>Homepage</span>
-                        <span className="ml-1.5 ">
-                          <Arrow className="fill-current" />
+              </div>
+            </div>
+            <div className="category-and-nav flex xl:rtl:space-x-reverse  rtl:space-x-reverse space-x-3 items-center">
+              <div className="nav ml-10">
+                <ul className="nav-wrapper flex xl:space-x-10 rtl:space-x-reverse space-x-5">
+                  <li>
+                    <Link href="/" passHref>
+                      <a rel="noopener noreferrer">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
+                          <span className="capitalize">
+                            {ServeLangItem()?.home}
+                          </span>
                         </span>
-                      </span>
+                      </a>
                     </Link>
-                    <div className="sub-menu w-[220px] absolute left-0 top-[60px]">
-                      <div
-                        className="w-full bg-white flex justify-between items-center "
-                        style={{
-                          boxShadow: "0px 15px 50px 0px rgba(0, 0, 0, 0.14)",
-                        }}
-                      >
-                        <div className="categories-wrapper w-full h-full p-5">
-                          <div>
-                            <div className="category-items">
-                              <ul className="flex flex-col space-y-2">
-                                <li>
-                                  <Link href="/home-two">
-                                    <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:primary-text cursor-pointer">
-                                      Home two
-                                    </span>
-                                  </Link>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li> */}
+                  </li>
+                  <li>
+                    <Link href="/products" passHref>
+                      <a rel="noopener noreferrer">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
+                          <span className="capitalize">
+                            {ServeLangItem()?.products}
+                          </span>
+                        </span>
+                      </a>
+                    </Link>
+                  </li>
                   {/* <li>
                     <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                       <span>{ServeLangItem()?.Shop}</span>
@@ -356,10 +323,9 @@ export default function Navbar({ className }) {
                         {megaMenuBanner && (
                           <div
                             style={{
-                              backgroundImage: `url(${
-                                process.env.NEXT_PUBLIC_BASE_URL +
+                              backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_URL +
                                 megaMenuBanner.image
-                              })`,
+                                })`,
                               backgroundSize: "contain",
                               backgroundRepeat: "no-repeat",
                             }}
@@ -432,43 +398,10 @@ export default function Navbar({ className }) {
                     </div>
                   </li> */}
 
-                  <li
-                    className={`border border-l-black border-t-0 border-b-0 ${
-                      router.pathname === "/" ? "bg-gray-200" : ""
-                    }`}
-                  >
-                    <Link href="/" passHref>
-                      <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] px-3">
-                          <span>
-                            {/* { ServeLangItem()?.Sellers } */}
-                            {ServeLangItem()?.home}
-                          </span>
-                        </span>
-                      </a>
-                    </Link>
-                  </li>
-                  <li
-                    className={`border  border-l-black border-t-0 border-b-0 ${
-                      router.pathname === "/products" ? "bg-gray-200" : ""
-                    }`}
-                  >
-                    <Link href="/products" passHref>
-                      <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] px-3 ">
-                          <span>{ServeLangItem()?.Product}</span>
-                        </span>
-                      </a>
-                    </Link>
-                  </li>
-                  <li
-                    className={`border border-l-black border-t-0 border-b-0 ${
-                      router.pathname === "/blogs" ? "bg-gray-200" : ""
-                    }`}
-                  >
+                  <li>
                     <Link href="/blogs" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] px-3 ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                           <span className="capitalize">
                             {ServeLangItem()?.blogs}
                           </span>
@@ -476,49 +409,24 @@ export default function Navbar({ className }) {
                       </a>
                     </Link>
                   </li>
-                  <li
-                    className={`border border-l-black border-t-0 border-b-0 ${
-                      router.pathname === "/about" ? "bg-gray-200" : ""
-                    }`}
-                  >
+                  <li>
                     <Link href="/about" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] px-3 ">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                           <span>{ServeLangItem()?.About}</span>
                         </span>
                       </a>
                     </Link>
                   </li>
-                  <li
-                    className={`border border-l-black border-t-0 border-b-0 ${
-                      router.pathname === "/contact" ? "bg-gray-200" : ""
-                    }`}
-                  >
+                  <li>
                     <Link href="/contact" passHref>
                       <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] px-3 ">
-                          <span>{ServeLangItem()?.Contact_Us}</span>
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
+                          <span>{ServeLangItem()?.Contact}</span>
                         </span>
                       </a>
                     </Link>
                   </li>
-                  <li
-                    className={`border border-l-black border-r-black border-t-0 border-b-0 ${
-                      router.pathname === "/profile" ? "bg-gray-200" : ""
-                    }`}
-                  >
-                    <Link
-                      href={auth ? "/profile#dashboard" : "/login"}
-                      passHref
-                    >
-                      <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] px-3 ">
-                          <span>{ServeLangItem()?.Account}</span>
-                        </span>
-                      </a>
-                    </Link>
-                  </li>
-
                   {/* <li className="relative">
                     <span className="flex items-center text-sm font-600 cursor-pointer text-[var(--text-color)] ">
                       <span>{ServeLangItem()?.Pages}</span>

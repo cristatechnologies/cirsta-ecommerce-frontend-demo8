@@ -91,6 +91,18 @@ export default function StorePageThemeTwo({ homepageData }) {
             lastDate={homepage.flashSale.end_time}
           />
         )} */}
+        {homepage && (
+          <ViewMoreTitle
+            className="feature md:mb-[60px] mb-[30px] "
+            seeMoreUrl={`/products?highlight=categories`}
+            categoryTitle={sectionTitles && sectionTitles.Featured_Category}
+          >
+            <CategorySection
+              categories={homepage.featuredCategories}
+              sectionTitle={sectionTitles && sectionTitles.Featured_Category}
+            />
+          </ViewMoreTitle>
+        )}
 
         {homepage && (
           <ViewMoreTitle

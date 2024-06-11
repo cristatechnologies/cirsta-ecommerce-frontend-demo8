@@ -7,6 +7,7 @@ import ServeLangItem from "../../Helpers/ServeLangItem";
 import Arrow from "../../Helpers/icons/Arrow";
 
 function CategorySection({ sectionTitle, categories }) {
+  
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
   const categoryList = websiteSetup && websiteSetup.payload.productCategories;
   const mageMenuList = websiteSetup && websiteSetup.payload.megaMenuCategories;
@@ -70,13 +71,13 @@ function CategorySection({ sectionTitle, categories }) {
     <div className="category-section-wrapper container-x mx-auto flex px-10 py-10">
       <div className="container-x mx-auto pb-[60px] w-1/2 !pl-0">
         <div className="max-w-7xl mx-auto py-5 h-full flex flex-col justify-center relative">
-          <div className="absolute rounded-full bg-[var(--primary-color)] p-2 h-14 w-14 flex justify-center items-center top-16 right-0 transition-all ease-in duration-150 z-10">
+          {/* <div className="absolute rounded-full bg-[var(--primary-color)] p-2 h-14 w-14 flex justify-center items-center top-16 right-0 transition-all ease-in duration-150 z-10">
             <button onClick={slideRight}>
               <Arrow
                 className={"w-5 h-5 fill-[var(--secondary-color)] -rotate-90"}
               />
             </button>
-          </div>
+          </div> */}
           {/*<div className="section-title flex justify-between items-center mb-5">*/}
           {/*    <div>*/}
           {/*        <h1 className="sm:text-3xl text-xl font-600 text-[var(--text-color)]text">*/}
@@ -85,13 +86,12 @@ function CategorySection({ sectionTitle, categories }) {
           {/*    </div>*/}
           {/*</div>*/}
           <div
-            className="w-full flex gap-9 overflow-x-scroll overflow-y-hidden whitespace-nowrap scroll-smooth px-6 py-2 transition-all ease-in duration-150 category-slider"
+            className="w-full flex gap-2 overflow-x-scroll overflow-y-hidden whitespace-nowrap scroll-smooth px-4 py-2 transition-all ease-in duration-150 category-slider"
             id="slider"
             ref={sliderRef}
           >
             {categories &&
-              categories.length > 0 &&
-              categories.map((item, i) => (
+              categories.slice(0, 5).map((item, i) => (
                 <div
                   data-aos="fade-left"
                   data-aos-delay={i + "00"}
@@ -101,7 +101,7 @@ function CategorySection({ sectionTitle, categories }) {
                   <Link
                     href={{
                       pathname: "/products",
-                      query: { category: item.slug },
+                      query: { category: item.category.slug },
                     }}
                     passhref
                   >
@@ -109,31 +109,37 @@ function CategorySection({ sectionTitle, categories }) {
                       rel="noopener noreferrer"
                       className="flex flex-col justify-center items-center"
                     >
-                      <div className="w-32 h-32 relative rounded flex justify-center items-center">
-                        <div className="w-full h-full relative transform scale-100 group-hover:scale-110 transition duration-300 ease-in-out">
+                      <div className="w-48 h-48 relative rounded-full flex justify-center items-center hover:brightness-50 ">
+                        <div className="relative w-full h-full rounded-full overflow-hidden transform hover:scale-90 transition-transform duration-500 ease-in-out">
                           <Image
                             layout="fill"
-                            objectFit="scale-down"
-                            src={process.env.NEXT_PUBLIC_BASE_URL + item.image}
+                            objectFit="cover"
+                            src={
+                              process.env.NEXT_PUBLIC_BASE_URL +
+                              item.category.image
+                            }
                             alt=""
+                            className="rounded-full"
                           />
+                          <div className="absolute inset-0 flex items-center justify-center text-base text-[var(--text-color)] text-center group-hover:translate-y-[-10px] transition-transform duration-200 ease-in-out">
+                            <div className="p-2 bg-white rounded-2xl max-w-[150px] mx-auto whitespace-normal">
+                              <p>{item.category.name}</p>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      <p className="text-base text-[var(--text-color)] text-center mt-5 group-hover:text-qgreen transition duration-300 ease-in-out">
-                        {item.name}
-                      </p>
                     </a>
                   </Link>
                 </div>
               ))}
           </div>
-          <div className="absolute rounded-full bg-[var(--primary-color)] p-2 h-14 w-14 flex justify-center items-center top-16 transition-all ease-in duration-150 -left-0">
+          {/* <div className="absolute rounded-full bg-[var(--primary-color)] p-2 h-14 w-14 flex justify-center items-center top-16 transition-all ease-in duration-150 -left-0">
             <button onClick={slideLeft}>
               <Arrow
                 className={"w-5 h-5 fill-[var(--secondary-color)] rotate-90"}
               />
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
