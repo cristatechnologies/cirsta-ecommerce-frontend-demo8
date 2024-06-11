@@ -55,11 +55,23 @@ export default function StorePage({ homepageData }) {
           />
         )} */}
         {homepage && (
+          <ViewMoreTitle
+            className="feature md:mb-[60px] mb-[30px] "
+            seeMoreUrl={`/products?highlight=categories`}
+            categoryTitle={sectionTitles && sectionTitles.Featured_Category}
+          >
+            <CategorySection
+              categories={homepage.featuredCategories}
+              sectionTitle={sectionTitles && sectionTitles.Featured_Category}
+            />
+          </ViewMoreTitle>
+        )}
+        {/* {homepage && (
           <CategorySection
             categories={homepage.homepage_categories}
             sectionTitle={sectionTitles && sectionTitles.Trending_Category}
           />
-        )}
+        )} */}
         {/* {homepage && (
           <SectionStyleOne
             products={homepage.popularCategoryProducts}

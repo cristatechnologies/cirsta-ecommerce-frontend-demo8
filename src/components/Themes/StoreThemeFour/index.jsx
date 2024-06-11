@@ -56,10 +56,16 @@ export default function StorePageThemeTwo({ homepageData }) {
           />
         )}
         {homepage && (
-          <CategorySection
-            categories={homepage.homepage_categories}
-            sectionTitle={sectionTitles && sectionTitles.Trending_Category}
-          />
+          <ViewMoreTitle
+            className="feature md:mb-[60px] mb-[30px] "
+            seeMoreUrl={`/products?highlight=categories`}
+            categoryTitle={sectionTitles && sectionTitles.Featured_Category}
+          >
+            <CategorySection
+              categories={homepage.featuredCategories}
+              sectionTitle={sectionTitles && sectionTitles.Featured_Category}
+            />
+          </ViewMoreTitle>
         )}
         {/* {homepage && (
           <SectionStyleOne

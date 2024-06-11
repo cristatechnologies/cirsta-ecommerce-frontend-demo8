@@ -19,6 +19,7 @@ export default function Layout({ children, childrenClasses }) {
   const [settings, setSettings] = useState(null);
   const themeSetting = JSON.parse(localStorage.getItem("settings"));
   const [subscribeData, setSubScribeDAta] = useState(null);
+  
   const [contact, setContact] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
 

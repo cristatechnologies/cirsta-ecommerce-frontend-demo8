@@ -56,12 +56,18 @@ export default function StorePageThemeTwo({ homepageData }) {
           />
         )}
         {homepage && (
-          <CategorySection
-            categories={homepage.homepage_categories}
-            sectionTitle={sectionTitles && sectionTitles.Trending_Category}
-          />
+          <ViewMoreTitle
+            className="feature md:mb-[60px] mb-[30px] "
+            seeMoreUrl={`/products?highlight=categories`}
+            categoryTitle={sectionTitles && sectionTitles.Featured_Category}
+          >
+            <CategorySection
+              categories={homepage.featuredCategories}
+              sectionTitle={sectionTitles && sectionTitles.Featured_Category}
+            />
+          </ViewMoreTitle>
         )}
-        {homepage && (
+        {/* {homepage && (
           <SectionStyleOne
             products={homepage.popularCategoryProducts}
             categories={homepage.popularCategories}
@@ -74,7 +80,7 @@ export default function StorePageThemeTwo({ homepageData }) {
             seeMoreUrl={`/products?highlight=popular_category`}
             className="category-products md:mb-[60px] mb-[30px]"
           />
-        )}
+        )} */}
         {/* {homepage && (
           <BrandSection
             brands={homepage.brands.length > 0 ? homepage.brands : []}

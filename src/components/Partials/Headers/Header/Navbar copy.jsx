@@ -137,15 +137,15 @@ export default function Navbar({ className }) {
                           </Link>
                           <div
                             className={`sub-category-lvl-two absolute ltr:left-[200px] rtl:right-[200px] top-0 z-10 w-[200px] ${
-                              item.active_sub_categories.length > 0
+                              item.children.length > 0
                                 ? "bg-white"
                                 : ""
                             }`}
                             style={{ height: `${subCatHeight}px` }}
                           >
                             <ul className="">
-                              {item.active_sub_categories.length > 0 &&
-                                item.active_sub_categories.map((subItem) => (
+                              {item.children.length > 0 &&
+                                item.children.map((subItem) => (
                                   <li
                                     key={subItem.id}
                                     className="category-item"
@@ -196,7 +196,7 @@ export default function Navbar({ className }) {
                                     </Link>
                                     <div
                                       className={`sub-category-lvl-three absolute ltr:left-[200px] rtl:right-[200px] top-0 z-10 w-[200px] ${
-                                        subItem.active_child_categories.length >
+                                        subItem.children.length >
                                         0
                                           ? "bg-white"
                                           : ""
@@ -204,9 +204,9 @@ export default function Navbar({ className }) {
                                       style={{ height: `${subCatHeight}px` }}
                                     >
                                       <ul className="">
-                                        {subItem.active_child_categories
+                                        {subItem.children
                                           .length > 0 &&
-                                          subItem.active_child_categories.map(
+                                          subItem.children.map(
                                             (subsubitem) => (
                                               <li
                                                 key={subsubitem.id}
