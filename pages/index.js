@@ -4,7 +4,7 @@ import StorePage from "../src/components/Themes/Store";
 import StorePageThemeTwo from "../src/components/Themes/StoreThemeTwo";
 import StorePageThemeThree from "../src/components/Themes/StoreThemeThree";
 import StorePageThemeFour from "../src/components/Themes/StoreThemeFour";
-
+import StorePageThemeFive from "../src/components/Themes/StoreThemeFive";
 export default function HomePage({ data }) {
   const { seoSetting } = data;
   const { selected_theme } = settings();
@@ -14,6 +14,7 @@ export default function HomePage({ data }) {
     theme2: StorePageThemeTwo,
     theme3: StorePageThemeThree,
     theme4: StorePageThemeFour,
+    theme5: StorePageThemeFive
     // Add more themes as needed
   };
   const SelectedThemeComponent = themeComponents[selected_theme];
