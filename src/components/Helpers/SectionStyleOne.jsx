@@ -48,10 +48,8 @@ export default function SectionStyleOne({
         variants: item.active_variants ? item.active_variants : [],
       };
     });
-    console.log(cp);
   const filterProducts =
     cp && cp.filter((item) => item.category_id === selectedId);
-    console.log(filterProducts); 
   const categoryHandler = (id) => {
     setLoad(true);
     setTimeout(() => {
@@ -81,7 +79,7 @@ export default function SectionStyleOne({
             </Slider>
             </div>
               {/* <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-[30px] gap-5">
-                {/* <div className="category-card hidden xl:block w-full">
+                <div className="category-card hidden xl:block w-full">
                   <CategoryCard
                     moreUrl={seeMoreUrl}
                     background={categoryBackground}
