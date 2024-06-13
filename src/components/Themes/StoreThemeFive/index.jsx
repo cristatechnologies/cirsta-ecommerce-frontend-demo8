@@ -8,14 +8,17 @@ import ViewMoreTitle from "../../Helpers/ViewMoreTitle";
 import Layout from "../../Partials/Layout";
 import Ads from "./Ads";
 import Banner from "./Banner";
-import BestSellers from "./BestSellers";
-import BrandSection from "./BrandSection";
+// import BestSellers from "./BestSellers";
+// import BrandSection from "./BrandSection";
 import CampaignCountDown from "./CampaignCountDown";
 // import ProductsAds from "./ProductsAds";
 import TwoColumnAds from "./ProductAds/TwoColumnAds";
 import OneColumnAdsOne from "./ProductAds/OneColumnAdsOne";
 import OneColumnAdsTwo from "./ProductAds/OneColumnAdsTwo";
 import CategorySection from "./CategorySection";
+
+import Heading from "./Heading";
+import ShopByCard from "./ShopByCard";
 
 export default function StorePageThemeFive({ homepageData }) {
   const getsectionTitles = homepageData.section_title;
@@ -49,23 +52,27 @@ export default function StorePageThemeFive({ homepageData }) {
         {homepage && (
           <Banner
             images={homepage.sliders}
-              // remove service slider
+            // remove service slider
             sidebarImgOne={homepage.sliderBannerOne}
             sidebarImgTwo={homepage.sliderBannerTwo}
             className="banner-wrapper md:mb-[60px] mb-[30px]"
           />
         )}
         {homepage && (
-          <ViewMoreTitle
-            className="feature md:mb-[60px] mb-[30px] "
-            seeMoreUrl={`/products?highlight=categories`}
-            categoryTitle={sectionTitles && sectionTitles.Featured_Category}
-          >
-            <CategorySection
-              categories={homepage.featuredCategories}
+           <section>
+          <div className="container mx-auto px-4 py-8">
+            <Heading
+              className="feature md:mb-[60px] mb-[30px] "
+              seeMoreUrl={`/products?highlight=categories`}
+              categoryTitle={sectionTitles && sectionTitles.Featured_Category}
+              
+            ></Heading>
+            <ShopByCard
+              categories={homepage.productCategories}
               sectionTitle={sectionTitles && sectionTitles.Featured_Category}
             />
-          </ViewMoreTitle>
+        </div>
+        </section>
         )}
         {/* {homepage && (
           <SectionStyleOne
