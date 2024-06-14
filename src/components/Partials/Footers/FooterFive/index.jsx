@@ -66,90 +66,90 @@ export default function FooterFive({ settings }) {
 
         {firstCol && (
           <>
-            <div className="flex flex-col item-center justify-center py-6  w-2/4 lg:w-1/6">
-              <h2 className="text-cnvsThemeColor font-serif text-sm ">
+            <div className="flex flex-col item-center justify-center py-6  w-2/4 lg:w-1/6 ">
+              <h2 className="text-[var(--primary-color)] font-serif text-sm font-semibold">
                 {firstCol.columnTitle}
               </h2>
-            </div>
 
-            <ul className="leading-10">
-              {firstCol.col_links.length > 0 &&
-                firstCol.col_links.map((item, i) => (
-                  <li key={i}>
-                    <Link href={item.link}>
-                      <span className="text-[#9A9A9A] text-[15px] hover:text-[var(--text-color)] border-b border-transparent hover:border-qblack cursor-pointer">
-                        {item.title}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-            </ul>
+              <ul className="leading-10">
+                {firstCol.col_links.length > 0 &&
+                  firstCol.col_links.map((item, i) => (
+                    <li key={i}>
+                      <Link href={item.link}>
+                        <span className="text-[var(--primary-color)] text-sm hover:text-[var(--text-color)] cursor-pointer font-sans">
+                          {item.title}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            </div>
           </>
         )}
 
         {secondCol && (
           <>
             <div className="flex flex-col item-center justify-center py-6  w-2/4 lg:w-1/6">
-              <h2 className="text-cnvsThemeColor font-serif text-sm ">
+              <h2 className="text-[var(--primary-color)] font-serif text-sm font-semibold">
                 {secondCol.columnTitle}
               </h2>
-            </div>
 
-            <ul className="leading-10">
-              {secondCol.col_links.length > 0 &&
-                secondCol.col_links.map((item, i) => (
-                  <li key={i}>
-                    <Link href={item.link}>
-                      <span className="text-[#9A9A9A] text-[15px] hover:text-[var(--text-color)] border-b border-transparent hover:border-qblack cursor-pointer">
-                        {item.title}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-            </ul>
+              <ul className="leading-10">
+                {secondCol.col_links.length > 0 &&
+                  secondCol.col_links.map((item, i) => (
+                    <li key={i}>
+                      <Link href={item.link}>
+                        <span className="text-[var(--primary-color)] text-sm hover:text-[var(--text-color)] cursor-pointer font-sans">
+                          {item.title}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            </div>
           </>
         )}
         {thirdCol && (
           <>
             <div className="flex flex-col item-center justify-center py-6  w-2/4 lg:w-1/6">
-              <h2 className="text-cnvsThemeColor font-serif text-sm ">
+              <h2 className="text-[var(--primary-color)] font-serif text-sm font-semibold">
                 {thirdCol.columnTitle}
               </h2>
-            </div>
 
-            <ul className="leading-10">
-              {thirdCol.col_links.length > 0 &&
-                thirdCol.col_links.map((item, i) => (
-                  <li key={i}>
-                    <Link href={item.link}>
-                      <span className="text-[#9A9A9A] text-[15px] hover:text-[var(--text-color)] border-b border-transparent hover:border-qblack cursor-pointer">
-                        {item.title}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-            </ul>
+              <ul className="leading-10">
+                {thirdCol.col_links.length > 0 &&
+                  thirdCol.col_links.map((item, i) => (
+                    <li key={i}>
+                      <Link href={item.link}>
+                        <span className="text-[var(--primary-color)] text-sm hover:text-[var(--text-color)] cursor-pointer font-sans">
+                          {item.title}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            </div>
           </>
         )}
 
         <div className="flex flex-col item-center justify-center py-4 w-full lg:w-2/6 ">
-          <h2 className="text-cnvsThemeColor font-serif text-lg ">
+          <h2 className="text-[var(--primary-color)] font-serif text-lg font-semibold ">
             {" "}
             Subscribe us
           </h2>
-          <p>
+          <p className="font-sans">
             Subscribe to Our Newsletter to get Important News, Amazing Offers &
             Inside Scoops:
           </p>
           <div className="flex justify-center">
-            <input className=" w-4/6 border-4 border-cnvsThemecolorLight p-4"></input>
-            <button className="bg-cnvsThemeColor p-4 text-white h-full w-2/6 hover:bg-cnvsThemecolorLight hover:text-cnvsThemeColor  ">
+            <input className=" w-4/6 border-4 border-[var(--secondary-color)] p-2"></input>
+            <button className="bg-[var(--primary-color)] p-4 text-white h-auto w-2/6 hover:bg-[var(--secondary-color)] hover:text-[var(--primary-color)]  ">
               Subscribe
             </button>
           </div>
         </div>
       </div>
-      <div className="w-full border-1 bg-cnvsThemecolorLight p-6 flex justify-between ">
+      <div className="w-full border-1 bg-[var(--secondary-color)] p-6 flex justify-between ">
         <span>© 2023 All Rights Reserved by Canvas Inc.</span>
         <span>Terms of Use / Privacy Policy</span>
       </div>

@@ -19,11 +19,12 @@ import CategorySection from "./CategorySection";
 
 import Heading from "./Heading";
 import ShopByCard from "./ShopByCard";
+import NewArrival from "./NewArrival";
 
 export default function StorePageThemeFive({ homepageData }) {
   const getsectionTitles = homepageData.section_title;
   const [sectionTitles, setSectionTitles] = useState(null);
-
+console.log(homepageData)
   useEffect(() => {
     if (!sectionTitles) {
       let tem =
@@ -45,6 +46,7 @@ export default function StorePageThemeFive({ homepageData }) {
       setIsMultivendor(enable_multivendor && parseInt(enable_multivendor));
     }
   }, [isMultivendor]);
+  console.log(homepage.productCategories);
   return (
     <>
       <Layout childrenClasses="pt-0 pb-[60px]">
@@ -59,20 +61,25 @@ export default function StorePageThemeFive({ homepageData }) {
           />
         )}
         {homepage && (
-           <section>
-          <div className="container mx-auto px-4 py-8">
-            <Heading
-              className="feature md:mb-[60px] mb-[30px] "
-              seeMoreUrl={`/products?highlight=categories`}
-              categoryTitle={sectionTitles && sectionTitles.Featured_Category}
-              
-            ></Heading>
-            <ShopByCard
-              categories={homepage.productCategories}
-              sectionTitle={sectionTitles && sectionTitles.Featured_Category}
-            />
-        </div>
-        </section>
+          <section>
+            <div className="container mx-auto px-4 py-8">
+              <Heading
+                className="feature md:mb-[60px] mb-[30px] "
+                seeMoreUrl={`/products?highlight=categories`}
+                categoryTitle={sectionTitles && sectionTitles.Featured_Category}
+              ></Heading>
+              <ShopByCard
+                categories={homepage.featuredCategories}
+                sectionTitle={sectionTitles && sectionTitles.Featured_Category}
+              />
+            </div>
+          </section>
+        )}
+        {homepage && (
+          <NewArrival
+            categories={homepage.newArrivalProducts}
+            categoryTitle={sectionTitles && sectionTitles.New_Arrivals}
+          />
         )}
         {/* {homepage && (
           <SectionStyleOne
@@ -95,7 +102,25 @@ export default function StorePageThemeFive({ homepageData }) {
             className="brand-section-wrapper md:mb-[60px] mb-[30px]"
           />
         )} */}
-
+        {homepage && (
+          <section>
+            <div className="container mx-auto px-4 py-8">
+              <Heading
+                className="feature md:mb-[60px] mb-[30px] "
+                seeMoreUrl={`/products?highlight=featured_product`}
+                categoryTitle={sectionTitles && sectionTitles.Featured_Products}
+              ></Heading>
+              <ShopByCard
+                categories={
+              homepage.featuredCategoryProducts.length > 0
+                ? homepage.featuredCategoryProducts.slice(0, 12)
+                : []
+            }
+                sectionTitle={sectionTitles && sectionTitles.Featured_Products}
+              />
+            </div>
+          </section>
+        )}
         {homepage && (
           <ViewMoreTitle
             className="top-selling-product md:mb-[60px] mb-[30px] "
@@ -123,14 +148,12 @@ export default function StorePageThemeFive({ homepageData }) {
             />
           </ViewMoreTitle>
         )} */}
-
         {homepage && (
           <TwoColumnAds
             bannerOne={homepage.twoColumnBannerOne}
             bannerTwo={homepage.twoColumnBannerTwo}
           />
         )}
-
         {homepage && (
           <SectionStyleOne
             categories={
@@ -154,8 +177,7 @@ export default function StorePageThemeFive({ homepageData }) {
           />
         )}
         {/* {homepage && <OneColumnAdsOne data={homepage.singleBannerOne} />} */}
-
-        {homepage && (
+        {/* {homepage && (
           <SectionStyleThree
             products={
               homepage.newArrivalProducts.length > 0
@@ -166,8 +188,7 @@ export default function StorePageThemeFive({ homepageData }) {
             seeMoreUrl={`/products?highlight=new_arrival`}
             className="new-products md:mb-[60px] mb-[30px]"
           />
-        )}
-
+        )} */}
         {/* {homepage && (
           <div className="w-full text-white md:mb-[60px] mb-[30px]">
             <div className="container-x mx-auto">

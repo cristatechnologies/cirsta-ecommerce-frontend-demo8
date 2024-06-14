@@ -8,6 +8,7 @@ import StorePageThemeFive from "../src/components/Themes/StoreThemeFive";
 export default function HomePage({ data }) {
   const { seoSetting } = data;
   const { selected_theme } = settings();
+  console.log(data)
 
   const themeComponents = {
     theme1: StorePage,

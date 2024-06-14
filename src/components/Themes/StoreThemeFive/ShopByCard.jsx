@@ -12,14 +12,14 @@ export default function ShopByCard({ sectionTitle, categories }) {
   // const mageMenuList = websiteSetup && websiteSetup.payload.megaMenuCategories;
   // const megaMenuBanner = websiteSetup && websiteSetup.payload.megaMenuBanner;
   // const customPages = websiteSetup && websiteSetup.payload.customPages;
-
+console.log(categories);
 
 
   return (
     <div className="flex justify-center pb-10">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 font-serif uppercase text-sm font-bold text-cnvsThemeColor">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 font-serif uppercase text-sm font-bold text-[var(--text-color)]">
         {categories &&
-          categories.slice(0, 5).map((item, i) => (
+          categories.map((item, i) => (
             <div
               data-aos="fade-left"
               data-aos-delay={i + "00"}
@@ -29,7 +29,12 @@ export default function ShopByCard({ sectionTitle, categories }) {
               <Link
                 href={{
                   pathname: "/products",
-                  query: { category: item.category.slug },
+                  query: {
+                    category:
+                      item.category && item.category.slug
+                        ? item.category.slug
+                        : item.slug,
+                  },
                 }}
                 passhref
               >
@@ -42,13 +47,20 @@ export default function ShopByCard({ sectionTitle, categories }) {
                       height={300} // Example height
                       objectFit="cover"
                       src={
-                        process.env.NEXT_PUBLIC_BASE_URL + item.category.image
+                        process.env.NEXT_PUBLIC_BASE_URL +
+                        (item.category && item.category.image
+                          ?  item.category.image
+                          : item.thumb_image)
                       }
-                      alt=""
+                      alt={item.category && item.category.name ? item.category.name : item.name}
                       className="w-full h-auto hover:opacity-80"
                     />
-                    <div className="absolute bottom-0 left-0 bg-white  p-4">
-                      <p>{item.category.name}</p>
+                    <div className="absolute bottom-0 left-0 bg-white  p-4 text-[var(--primary-color)]">
+                      <p>
+                        {item.category && item.category.name
+                          ? item.category.name
+                          : item.name}
+                      </p>
                     </div>
                   </div>
                 </a>

@@ -101,7 +101,11 @@ function CategorySection({ sectionTitle, categories }) {
                   <Link
                     href={{
                       pathname: "/products",
-                      query: { category: item.category.slug },
+                      query: {
+                        category: item.category.slug
+                          ? item.category.slug
+                          : item.slug,
+                      },
                     }}
                     passhref
                   >
