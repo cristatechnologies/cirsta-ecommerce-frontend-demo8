@@ -32,7 +32,7 @@ export default function Banner({
       <div className={`w-full ${className || ""}`}>
         <div>
           <div className="main-wrapper w-full">
-            <div className="banner-card xl:flex xl:space-x-[30px] rtl:space-x-0 xl:h-[600px]  mb-[30px] ">
+            <div className="banner-card xl:flex xl:space-x-[30px] rtl:space-x-0 xl:h-[600px]  ">
               <div
                 data-aos="fade-right"
                 className="rtl:ml-[30px] ltr:ml-0 w-full xl:h-full md:h-[500px] h-[220px] xl:mb-0 mb-2"
@@ -264,32 +264,27 @@ export default function Banner({
               </div> */}
             </div>
             <div
-              data-aos="fade-up"
-              className="best-services w-full bg-white flex flex-col space-y-10 lg:space-y-0 lg:flex-row lg:justify-between lg:items-center lg:h-[110px] px-10 lg:py-0 py-10"
-            >
-              {services.map((service) => (
-                <div key={service.id} className="item">
-                  <div className="flex space-x-5 rtl:space-x-reverse items-center">
-                    <div>
-                      <span className="w-10 h-10 primary-text">
-                        <FontAwesomeCom
-                          className="w-8 h-8"
-                          icon={service.icon}
-                        />
-                      </span>
-                    </div>
-                    <div>
-                      <p className="text-black text-[15px] font-700 tracking-wide mb-1">
-                        {service.title}
-                      </p>
-                      <p className="text-sm text-qgray line-clamp-1">
-                        {service.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+  data-aos="fade-up"
+  className="best-services w-full bg-[var(--secondary-color)] flex flex-wrap justify-around items-center px-10 py-10 md:px-10 lg:py-10"
+>
+  {services.map((service) => (
+    <div key={service.id} className="item w-full sm:w-1/2 md:w-1/2 lg:w-auto mb-5 last:mb-0">
+      <div className="flex flex-row justify-center items-center space-y-2">
+        <span className="w-10 h-10 primary-text">
+          <FontAwesomeCom className="w-8 h-8" icon={service.icon} />
+        </span>
+        <div>
+          <p className="text-black text-[15px] font-700 tracking-wide mb-1">
+            {service.title}
+          </p>
+          <p className="text-sm text-gray line-clamp-1">
+            {service.description}
+          </p>
+      </div>
+    </div>
+    </div>
+  ))}
+</div>
           </div>
         </div>
       </div>

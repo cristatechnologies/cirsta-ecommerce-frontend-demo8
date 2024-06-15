@@ -2,8 +2,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-export default function NewArrival({ categories, sectionTitle, categoryTitle = "",
-  }) {
+import Link from "next/link";
+
+export default function NewArrival({
+  categories,
+  sectionTitle,
+  seeMoreUrl = "",
+  categoryTitle = "",
+}) {
   return (
     <section className="bg-[var(--secondary-color)] flex flex-wrap px-12 w-full h-auto ">
       <div className="w-full sm:first:w-full lg:first:w-[25%] md:first:w-[75%] grid align-middle py-10 ">
@@ -18,12 +24,17 @@ export default function NewArrival({ categories, sectionTitle, categoryTitle = "
         <div className="flex  justify-start   h-fit">
           <button className="border-2  border-[var(--primary-color)] rounded:md bg-slate-50 hover:bg-[var(--primary-color)] text-[var(--primary-color)] hover:text-white  flex justify-center items-center ">
             {" "}
-            <span className="px-6 p-2"> {categoryTitle}</span>
+            <Link href={seeMoreUrl} passHref>
+              <a rel="noopener noreferrer" className="px-6 p-2">
+                {" "}
+                {categoryTitle}
+              </a>
+            </Link>
           </button>
         </div>
       </div>
       {categories &&
-        categories.slice(0,8).map((item, i) => (
+        categories.slice(0, 8).map((item, i) => (
           <div
             className=" rounded-xl lg:w-[25%] md:w-[50%] sm:w-full    "
             key={i}
@@ -31,20 +42,27 @@ export default function NewArrival({ categories, sectionTitle, categoryTitle = "
             <a href="#" className="block m-8 ">
               <Image
                 objectFit="cover"
-                src={process.env.NEXT_PUBLIC_BASE_URL + item.thumb_image}
+                src={
+                  process.env.NEXT_PUBLIC_BASE_URL +
+                  (item.category && item.category.image
+                    ? item.category.image
+                    : item.thumb_image)
+                }
                 height={600}
                 width={400}
                 alt=""
                 className="h-64 w-full object-cover sm:h-70 lg:h-55 hover:opacity-80"
               />
-
               <h3 className="m-4 text-lg font-bold font-serif text-[var(--primary-color)] sm:text-xl">
                 {item.name}
               </h3>
-
-              <p className="mt-2 m-4 max-w-sm font-serif text-[var(--text-color)] font-semibold">
-                ₹ {item.price}
-              </p>
+              { item.price ? (
+                <p className="mt-2 m-4 max-w-sm font-serif text-[var(--text-color)] font-semibold">
+                  {"₹ " + item.price}
+                </p>
+              ) : (
+                <></>
+              )}
             </a>
           </div>
         ))}

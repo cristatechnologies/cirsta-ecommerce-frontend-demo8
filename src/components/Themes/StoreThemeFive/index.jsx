@@ -20,6 +20,7 @@ import CategorySection from "./CategorySection";
 import Heading from "./Heading";
 import ShopByCard from "./ShopByCard";
 import NewArrival from "./NewArrival";
+import ChooseUs from "../../Partials/Static/Theme5/chooseUs";
 
 export default function StorePageThemeFive({ homepageData }) {
   const getsectionTitles = homepageData.section_title;
@@ -53,18 +54,20 @@ console.log(homepageData)
         <Ads />
         {homepage && (
           <Banner
+          services={homepage.services}
             images={homepage.sliders}
             // remove service slider
             sidebarImgOne={homepage.sliderBannerOne}
             sidebarImgTwo={homepage.sliderBannerTwo}
-            className="banner-wrapper md:mb-[60px] mb-[30px]"
+            className="banner-wrapper "
           />
         )}
+        <ChooseUs className={"pt-20"}/>
         {homepage && (
           <section>
             <div className="container mx-auto px-4 py-8">
               <Heading
-                className="feature md:mb-[60px] mb-[30px] "
+                className="feature mb-[5px]  "
                 seeMoreUrl={`/products?highlight=categories`}
                 categoryTitle={sectionTitles && sectionTitles.Featured_Category}
               ></Heading>
@@ -81,27 +84,24 @@ console.log(homepageData)
             categoryTitle={sectionTitles && sectionTitles.New_Arrivals}
           />
         )}
-        {/* {homepage && (
-          <SectionStyleOne
-            products={homepage.popularCategoryProducts}
+         {homepage && (
+          <NewArrival
+         
             categories={homepage.popularCategories}
-            categoryBackground={
-              process.env.NEXT_PUBLIC_BASE_URL +
-              homepage.popularCategorySidebarBanner
-            }
+           
             categoryTitle={sectionTitles && sectionTitles.Popular_Category}
-            sectionTitle={sectionTitles && sectionTitles.Popular_Category}
+           
             seeMoreUrl={`/products?highlight=popular_category`}
-            className="category-products md:mb-[60px] mb-[30px]"
+            
           />
-        )} */}
+        )} 
         {/* {homepage && (
           <BrandSection
             brands={homepage.brands.length > 0 ? homepage.brands : []}
             sectionTitle={sectionTitles && sectionTitles.Shop_by_Brand}
             className="brand-section-wrapper md:mb-[60px] mb-[30px]"
           />
-        )} */}
+        )}  */}
         {homepage && (
           <section>
             <div className="container mx-auto px-4 py-8">
@@ -112,30 +112,31 @@ console.log(homepageData)
               ></Heading>
               <ShopByCard
                 categories={
-              homepage.featuredCategoryProducts.length > 0
-                ? homepage.featuredCategoryProducts.slice(0, 12)
-                : []
-            }
+                  homepage.featuredCategoryProducts.length > 0
+                    ? homepage.featuredCategoryProducts.slice(0, 12)
+                    : []
+                }
                 sectionTitle={sectionTitles && sectionTitles.Featured_Products}
               />
             </div>
           </section>
         )}
         {homepage && (
-          <ViewMoreTitle
-            className="top-selling-product md:mb-[60px] mb-[30px] "
-            seeMoreUrl={`/products?highlight=top_product`}
-            categoryTitle={sectionTitles && sectionTitles.Top_Rated_Products}
-          >
-            <SectionStyleTwo
-              products={
+          <>
+            <Heading
+              className="top-selling-product md:mb-[60px] mb-[30px] "
+              seeMoreUrl={`/products?highlight=top_product`}
+              categoryTitle={sectionTitles && sectionTitles.Top_Rated_Products}
+            />
+            <ShopByCard
+              categories={
                 homepage.topRatedProducts.length &&
                 homepage.topRatedProducts.length > 0
                   ? homepage.topRatedProducts
                   : []
               }
             />
-          </ViewMoreTitle>
+          </>
         )}
         {/* {homepage && isMultivendor === 1 && (
           <ViewMoreTitle
@@ -197,13 +198,13 @@ console.log(homepageData)
           </div>
         )} */}
         {homepage && (
-          <SectionStyleFour
-            products={
+          <NewArrival
+            categories={
               homepage.bestProducts.length > 0
                 ? homepage.bestProducts.slice(0, 12)
                 : []
             }
-            sectionTitle={sectionTitles && sectionTitles.Best_Products}
+            categoryTitle={sectionTitles && sectionTitles.Best_Products}
             seeMoreUrl={`/products?highlight=best_product`}
             className="category-products md:mb-[60px] mb-[30px]"
           />

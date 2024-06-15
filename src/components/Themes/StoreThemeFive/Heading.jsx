@@ -15,7 +15,7 @@ export default function Heading({ categoryTitle = "", className, children, seeMo
     <>
       {/* {selected_theme === "theme5" ? ( */}
     
-            <h1 className="flex justify-center font-serif font-thin text-[var(--primary-color)] lg:text-5xl pt-20 pb-12">
+            <h1 className="flex justify-center font-serif font-thin text-[var(--primary-color)] lg:text-5xl text-4xl pt-20 pb-12">
               {categoryTitle}
             </h1>
             <div className="flex justify-center pb-10">
