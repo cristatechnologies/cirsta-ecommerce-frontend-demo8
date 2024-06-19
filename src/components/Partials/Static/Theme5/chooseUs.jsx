@@ -10,7 +10,7 @@ export default function ChooseUs({className}){
           <span className="svg-underline inline-block relative z-1 before:absolute before:bottom-[-2px] before:left-0 before:right-0 before:h-3 before:bg-underline-svg before:bg-100% before:bg-bottom before:opacity-70">
             <span className="">
               Choose
-              <div data-aos="fade-right" data-aos-delay={63} className="">
+              {/* <div data-aos="fade-right" data-aos-delay={63} className="">
                  <svg
                   className="inline-block"
                   height="13"
@@ -25,7 +25,7 @@ export default function ChooseUs({className}){
                     <path d="M58.126 7.711a6.871 6.871 0 00-2.3.2c.2.2 2.3.6 2.3-.2zm150.1 2.2c-.1 0-.3.1-.4.1a.6.6 0 00.4-.1zm8.1-.4a1.381 1.381 0 00-.4-.3c0 .3.1.5.4.3zm-37.8.8c.7-.4 1-.7 1-1-.4.1-.7.3-1 1zm-15.5-1.1c-.1.1-.2.1-.3.2.3-.1.3-.2.3-.2zm-32.8-.6a9.3 9.3 0 012.4-.5c-.7.2-1.9-.3-2.4.5zm95.9-.6l-.7.6.8-.4zm-7.5.6c-.3-.1-1.7.3-1.3.6a3.79 3.79 0 011.3-.6zm-29-.6l-.3.6.7-.5z" />
                   </g>
                 </svg> 
-              </div>
+              </div> */}
             </span>
           </span>{" "}
           Us?

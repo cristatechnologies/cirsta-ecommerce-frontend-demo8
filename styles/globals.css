@@ -852,6 +852,52 @@ body {
   color: var(--text-color) !important;
 }
 
+
+
+.parent {
+  position: relative;
+}
+
+.child {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100vw !important;
+  background-color: white;
+  display: none;
+  z-index: 1;
+}
+
+.parent:hover .child {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+/* Align child elements to the left */
+}
+
+.child a {
+  flex: 1; /* Make each child element take equal width */
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #333;
+  text-align: center;
+}
+
+.child a:hover {
+  background-color: #f0f0f0;
+}
+
+/* Add these styles in your global CSS file or a CSS module */
+
+.group:hover .group-hover\:block {
+  display: block;
+}
+
+.group .group-hover\:block {
+  display: none;
+}
+
 /* TODO: ===============RESPONSIVE */
 
 /* @media (max-width: 640px) {
