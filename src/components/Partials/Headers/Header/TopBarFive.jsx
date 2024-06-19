@@ -158,7 +158,7 @@ export default function TopBarFive({ className, contact, settings }) {
                               passHref
                               key={childIndex}
                             >
-                              <a   
+                              <a
                                 rel="noopener no referrer"
                                 className="border-t-2 border-[var(--primary-color)] flex px-4 py-3 hover:bg-gray-50 text-sm min-w-max"
                               >
@@ -265,7 +265,10 @@ export default function TopBarFive({ className, contact, settings }) {
                       className="cursor-pointer"
                       onClick={handleSearchClick}
                     >
-                      <FontAwesomeIcon icon="fas fa-search" />
+                      <FontAwesomeIcon
+                        icon="fas fa-search"
+                        style={{ color: "var(--primary-color)" }}
+                      />
                     </span>
                   </div>
                 )}

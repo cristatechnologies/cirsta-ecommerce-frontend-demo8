@@ -84,10 +84,19 @@ export default function DefaultLayout({ children }) {
     if (themeColor) {
       const themeBgRemove = ["theme2", "theme3", "theme4"];
       const root = document.querySelector(":root");
-      root.style.setProperty("--primary-color", `${themeColor?.theme_one}`);
-      root.style.setProperty("--secondary-color", `${themeColor?.theme_two}`);
-      root.style.setProperty("--text-color", `${themeColor?.text_color}`);
-
+      root.style.setProperty("--primary-color", `${themeColor?.primary_color}`);
+      root.style.setProperty(
+        "--secondary-color",
+        `${themeColor?.secondary_color}`
+      );
+      root.style.setProperty(
+        "--primary-text-color",
+        `${themeColor?.primary_text_color}`
+      );
+      root.style.setProperty(
+        "--secondary-text-color",
+        `${themeColor?.secondary_text_color}`
+      );
       if (themeBgRemove.includes(themeColor.selected_theme)) {
         document.body.style.backgroundImage = "none";
       }
