@@ -7,7 +7,6 @@ import ServeLangItem from "../../Helpers/ServeLangItem";
 import Arrow from "../../Helpers/icons/Arrow";
 
 function CategorySection({ sectionTitle, categories }) {
-  
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
   const categoryList = websiteSetup && websiteSetup.payload.productCategories;
   const mageMenuList = websiteSetup && websiteSetup.payload.megaMenuCategories;
@@ -18,7 +17,7 @@ function CategorySection({ sectionTitle, categories }) {
   const [dragging, setDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-  console.log(categories.slug);
+
   useEffect(() => {
     const slider = sliderRef.current;
 
@@ -101,11 +100,7 @@ function CategorySection({ sectionTitle, categories }) {
                   <Link
                     href={{
                       pathname: "/products",
-                      query: {
-                        category: item.category.slug
-                          ? item.category.slug
-                          : item.slug,
-                      },
+                      query: { category: item.category.slug },
                     }}
                     passhref
                   >

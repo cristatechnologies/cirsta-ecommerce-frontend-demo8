@@ -12,7 +12,9 @@ import Footer from "./Footers/Footer";
 import FooterTheme2 from "./Footers/FooterTwo";
 import FooterTheme3 from "./Footers/FooterThree";
 import FooterTheme4 from "./Footers/FooterFour";
+import FooterTheme5 from "./Footers/FooterFive";
 import apiRequest from "../../../utils/apiRequest";
+import HeaderFive from "./Headers/HeaderFive";
 
 export default function Layout({ children, childrenClasses }) {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
@@ -85,6 +87,7 @@ export default function Layout({ children, childrenClasses }) {
     theme2: HeaderTwo,
     theme3: HeaderThree,
     theme4: HeaderFour,
+    theme5: HeaderFive    
     // Add more themes as needed
   };
 
@@ -96,6 +99,8 @@ export default function Layout({ children, childrenClasses }) {
     theme2: FooterTheme2,
     theme3: FooterTheme3,
     theme4: FooterTheme4,
+    theme5: FooterTheme5
+   
     // Add more themes as needed
   };
 
@@ -121,7 +126,7 @@ export default function Layout({ children, childrenClasses }) {
         >
           {children && children}
         </div>
-        {subscribeData && <DiscountBanner datas={subscribeData} />}
+        {/* {subscribeData && <DiscountBanner datas={subscribeData} />} */}
 
         {themeSetting && <SelectedThemeFooterComponent settings={settings} />}
 

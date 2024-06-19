@@ -78,8 +78,8 @@ export default function SectionStyleOne({
               ))}
             </Slider>
             </div>
-              <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-[30px] gap-5">
-                {/* <div className="category-card hidden xl:block w-full">
+              {/* <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-[30px] gap-5">
+                <div className="category-card hidden xl:block w-full">
                   <CategoryCard
                     moreUrl={seeMoreUrl}
                     background={categoryBackground}
@@ -90,7 +90,7 @@ export default function SectionStyleOne({
                       parseInt(i.category_id)
                     )}
                   />
-                </div> */}
+                </div> 
       
                 {load === false ? (
                   filterProducts.length > 0 && (
@@ -113,7 +113,7 @@ export default function SectionStyleOne({
                     <LoaderStyleTwo />
                   </div>
                 )}
-              </div>
+              </div> */}
             </div>
           </ViewMoreTitle>
         </div>
