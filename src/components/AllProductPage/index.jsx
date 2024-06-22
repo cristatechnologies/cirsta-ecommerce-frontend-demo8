@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "react-input-range/lib/css/index.css";
+
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -46,10 +46,10 @@ export default function AllProductPage({ response, sellerInfo }) {
   );
   const [selectedBrandsFilterItem, setSelectedBrandsFilterItem] = useState([]);
   const [volume, setVolume] = useState({ min: 0, max: 0 });
-
-  const volumeHandler = (value) => {
-    setVolume(value);
-  };
+  
+ const volumeHandler = (value) => {
+   setVolume({ min: value[0], max: value[1] });
+ };
   const varientHandler = (e) => {
     const { name } = e.target;
     const filterVariant =
@@ -329,7 +329,11 @@ export default function AllProductPage({ response, sellerInfo }) {
         <div className="products-page-wrapper w-full">
           <div className="container-x mx-auto">
             {/* <BreadcrumbCom /> */}
-            <div className={`${products ? 'lg:flex lg:space-x-[30px] rtl:space-x-reverse' : ''} w-full "`}>
+            <div
+              className={`${
+                products ? "lg:flex lg:space-x-[30px] rtl:space-x-reverse" : ""
+              } w-full "`}
+            >
               <div className="lg:w-[270px]">
                 <ProductsFilter
                   filterToggle={filterToggle}
@@ -357,7 +361,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                       )
                     )
                   }
-                  volumeHandler={(value) => volumeHandler(value)}
+                  volumeHandler={volumeHandler}
                   className="mb-[30px]"
                   variantsFilter={variantsFilter}
                   searchProductFilter={pathname === "/search" ? true : false}
@@ -472,10 +476,11 @@ export default function AllProductPage({ response, sellerInfo }) {
                         <button
                           onClick={() => setCardViewStyle("col")}
                           type="button"
-                          className={`hover:text-qgreen w-6 h-6 ${cardViewStyle === "col"
-                            ? "text-qgreen"
-                            : "text-qgray"
-                            }`}
+                          className={`hover:text-qgreen w-6 h-6 ${
+                            cardViewStyle === "col"
+                              ? "text-qgreen"
+                              : "text-qgray"
+                          }`}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -489,10 +494,11 @@ export default function AllProductPage({ response, sellerInfo }) {
                         <button
                           onClick={() => setCardViewStyle("row")}
                           type="button"
-                          className={`hover:text-qgreen w-6 h-6 ${cardViewStyle === "row"
-                            ? "text-qgreen"
-                            : "text-qgray"
-                            }`}
+                          className={`hover:text-qgreen w-6 h-6 ${
+                            cardViewStyle === "row"
+                              ? "text-qgreen"
+                              : "text-qgray"
+                          }`}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -575,12 +581,12 @@ export default function AllProductPage({ response, sellerInfo }) {
                       <div className="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-[30px] gap-5 mb-[40px]">
                         <DataIteration
                           datas={products && products}
-                        // startLength={6}
-                        // endLength={
-                        //   products && products.length >= 14
-                        //     ? 14
-                        //     : products && products.length
-                        // }
+                          // startLength={6}
+                          // endLength={
+                          //   products && products.length >= 14
+                          //     ? 14
+                          //     : products && products.length
+                          // }
                         >
                           {({ datas }) => (
                             <div data-aos="fade-up" key={datas.id}>
@@ -594,12 +600,12 @@ export default function AllProductPage({ response, sellerInfo }) {
                       <div className="grid lg:grid-cols-2 grid-cols-1 xl:gap-[30px] gap-5 mb-[40px]">
                         <DataIteration
                           datas={products && products}
-                        // startLength={0}
-                        // endLength={
-                        //   products && products.length >= 8
-                        //     ? 8
-                        //     : products && products.length
-                        // }
+                          // startLength={0}
+                          // endLength={
+                          //   products && products.length >= 8
+                          //     ? 8
+                          //     : products && products.length
+                          // }
                         >
                           {({ datas }) => (
                             <div data-aos="fade-up" key={datas.id}>

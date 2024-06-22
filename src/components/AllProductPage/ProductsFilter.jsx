@@ -1,5 +1,5 @@
-import InputRange from "react-input-range";
-import "react-input-range/lib/css/index.css";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 import Checkbox from "../Helpers/Checkbox";
 import ServeLangItem from "../Helpers/ServeLangItem";
 import Link from "next/link";
@@ -28,8 +28,9 @@ export default function ProductsFilter({
     <>
       {searchProductFilter || filterToggle ? (
         <div
-          className={`filter-widget w-full fixed lg:relative left-0 top-0 h-screen z-10 lg:h-auto overflow-y-scroll lg:overflow-y-auto bg-white px-[30px] pt-[40px] shadow-lg max-h-[600px]  overflow-auto ${className || ""
-            }  ${filterToggle ? "block" : "hidden lg:block"}`}
+          className={`filter-widget w-full fixed lg:relative left-0 top-0 h-screen z-10 lg:h-auto overflow-y-scroll lg:overflow-y-auto bg-white px-[30px] pt-[40px] shadow-lg max-h-[600px]  overflow-auto ${
+            className || ""
+          }  ${filterToggle ? "block" : "hidden lg:block"}`}
         >
           <div className="filter-subject-item pb-10 border-b border-qgray-border ">
             <div className="subject-title mb-[30px]">
@@ -77,10 +78,13 @@ export default function ProductsFilter({
               {volume && (
                 <>
                   <div className="price-range mb-5">
-                    <InputRange
-                      maxValue={priceMax}
-                      minValue={priceMin}
-                      value={volume}
+                    <Slider
+                      range
+                      allowCross={false}
+                      min={priceMin}
+                      max={priceMax}
+                      defaultValue={[priceMin, priceMax]}
+                      value={[volume.min, volume.max]}
                       onChange={volumeHandler}
                     />
                   </div>
@@ -191,7 +195,11 @@ export default function ProductsFilter({
           </button>
         </div>
       ) : (
-        <div className={`${products ? 'border border-black-800' : ''} h-auto w-[280px]  relative hidden lg:block bg-white mt-28 sm:hidden`}>
+        <div
+          className={`${
+            products ? "border border-black-800" : ""
+          } h-auto w-[280px]  relative hidden lg:block bg-white mt-28 sm:hidden`}
+        >
           {/* <div className="hidden h-[41px] px-5 rounded-[5px] bg-[var(--primary-color)] lg:block sm:block">
             <button
               type="button"
@@ -377,10 +385,13 @@ export default function ProductsFilter({
               {volume && (
                 <>
                   <div className="price-range mb-5">
-                    <InputRange
-                      maxValue={priceMax}
-                      minValue={priceMin}
-                      value={volume}
+                    <Slider
+                      range
+                      allowCross={false}
+                      min={priceMin}
+                      max={priceMax}
+                      defaultValue={[priceMin, priceMax]}
+                      value={[volume.min, volume.max]}
                       onChange={volumeHandler}
                     />
                   </div>
